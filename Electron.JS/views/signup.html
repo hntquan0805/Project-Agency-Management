@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
 </head>
 <body>
     <h1>Sign Up</h1>
     <form id="signup-form">
-        <input type="text" id="username" placeholder="Username" required />
-        <input type="email" id="email" placeholder="Email" required />
-        <input type="password" id="password" placeholder="Password" required />
+        <label>Username: <input type="text" id="username" required /></label><br />
+        <label>Password: <input type="password" id="password" required /></label><br />
         <button type="submit">Sign Up</button>
     </form>
-    <script src="../renderer.js"></script>
+    <script src="../renderer/signupRenderer.js"></script>
 </body>
 </html>

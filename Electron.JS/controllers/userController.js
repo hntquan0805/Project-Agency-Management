@@ -1,12 +1,14 @@
-const { User } = require('../models');
+const bcrypt = require('bcrypt');
+const User = require('../models/user');
 
-async function createUser(data) {
+async function signUpUser(username, password) {
     try {
-        const newUser = await User.create(data);
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = await User.create({ username, password: hashedPassword });
         return { success: true, user: newUser };
     } catch (error) {
-        return { success: false, error: error.message };
+        return { success: false, message: error.message };
     }
 }
 
-module.exports = { createUser };
+module.exports = { signUpUser };
