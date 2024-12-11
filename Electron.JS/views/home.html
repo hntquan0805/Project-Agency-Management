@@ -3,10 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Group06 - Agent Management Software</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../public/home.css">
 </head>
+
 <body>
-    <h1>Welcome to the Home Page!</h1>
-    <script src="../renderer/homeRenderer.js"></script>
+    <header id="demo-header">
+        <span class="softwareName">Agent Management Software</span>
+    </header>
+
+    <div id="sidebar" class="">
+        <div class="inner">
+            <!-- Menu -->
+                <nav id="menu">
+                    <ul>
+                        <!-- <li><img src="https://files.fm/thumb_show.php?i=sbhtgw62kp"><a href="#">Dashboard</a></li> -->
+                        <li><i class="fa-solid fa-gauge-high"></i><a href="#">Dashboard</a></li>
+                        <li>
+                            <span class="opener">
+                                <i class="fa-solid fa-people-group"></i>Manage Agent<i class="fa-solid fa-angle-down"></i>
+                            </span>
+                            <ul>
+                                <li><a href="#">Add Agent</a></li>
+                                <li><a href="#">Search Agent</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">
+                                <i class="fa-solid fa-file-lines"></i>Paper Work<i class="fa-solid fa-angle-down"></i>
+                            </span>
+                            <ul>
+                                <li><a href="#">Goods Delivery Note</a></li>
+                                <li><a href="#">Goods Received Note</a></li>
+                                <li><a href="#">Monthly Report</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="opener">
+                                <i class="fa-solid fa-id-card"></i>Manage Account<i class="fa-solid fa-angle-down"></i>
+                            </span>
+                            <ul>
+                                <li><a href="#">Personal Infomation</a></li>
+                                <li><a href="#">Personel Management</a></li>
+                            </ul>
+                        </li>
+                        <li><i class="fa-solid fa-gear"></i><a href="#">Setting</a></li>
+                    </ul>
+                </nav>
+
+            <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">Inc © 2024 - Copyright by Group 06</p>
+                </footer>
+
+        </div>
+    </div>
+
+    <section id="banner">
+        <header>
+            <h1>WELCOME TO AGENT MANAGEMENT SOFTWARE</h1>
+        </header>
+    </section>
+
+    <div class="introBar">
+        <div class="introItem" style="background: #3072B5;">
+            <i class="fa-solid fa-store"></i>
+            <div class="introTitle">
+                <h3 class="titleIntro">Total Agents</h3>
+                <h3 class="introNumber">64</h3>
+            </div>            
+        </div>
+        <div class="introItem" style="background: #D77B7D;">
+            <i class="fa-solid fa-cubes"></i>
+            <div class="introTitle">
+                <h3 class="titleIntro">Total Goods</h3>
+                <h3 class="introNumber">100</h3>
+            </div>
+            
+        </div>
+        <div class="introItem" style="background: #55A397;">
+            <i class="fa-solid fa-truck-fast"></i>
+            <div class="introTitle">
+                <h3 class="titleIntro">Total Orders</h3>
+                <h3 class="introNumber">190</h3>
+            </div>
+        </div>
+        <div class="introItem" style="background: #7D7DCC;">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <div class="introTitle">
+                <h3 class="titleIntro">Hot Items</h3>
+                <h3 style="color: #FFEB3B;">Banana Milk<br>Honey Almond</h3>
+            </div>            
+        </div>
+    </div>
+
+    <div class="timeInfo">
+        <div class="timeContent">
+            <p><b>The system will undergo maintenance from 6:00 am to 10:00 am.</b><br>
+            <small>Thanks for your understanding!</small></p>
+        </div>
+        <div class="date">11/12/2024</div>
+    </div>
+
+    <section class="Tools">
+        <header class="commonTools">
+            <h2>COMMON TOOLS FOR YOU</h2>
+        </header>
+        
+        <div class="features">
+            <article>
+              <div class="titleContent">
+                <h3>Search Agent<i class="fa-solid fa-map-pin" ></i></h3>
+            </div>
+                <div class="content">
+                    <p>Look up agent information here.</p>
+                </div>
+            </article>
+            <article>
+                <div class="titleContent">
+                  <h3>Search Goods<i class="fa-solid fa-dice-d6" ></i><br><small>Comming Soon</small> </h3>
+              </div>
+                <div class="content">
+                    <p>Look up product information here.</p>
+                </div>
+            </article>
+            <article>
+                <div class="titleContent">
+                  <h3>Export Report<i class="fa-solid fa-chart-line" ></i></h3>
+              </div>
+                <div class="content">
+                    <p>Create and export monthly report here.</p>
+                </div>
+            </article>
+            <article>                
+                <div class="titleContent">
+                  <h3>Create Delivery Note<i class="fa-solid fa-file-lines" ></i></h3>
+                  
+              </div>
+                <div class="content">
+                    <p>Create and export delivery note here.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+    
 </body>
 </html>
