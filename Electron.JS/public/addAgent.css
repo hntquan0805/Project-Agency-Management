@@ -16,12 +16,12 @@ h3{
 
 .agentInfo{
     position: absolute;
-    right: 30px;
+    right: 60px;
 }
 
 .title{
     background: #F57D31;
-    width: 74.797vw;
+    width: 73.6vw;
     height: 30px;
     border: 1px solid #B8B8B8;
     text-align: center;
@@ -31,7 +31,7 @@ h3{
 form{
     background: white;
     border: 1px solid #B8B8B8;
-    width: 69.52vw;
+    width: 70vw;
     height: 245px;
     padding: 1px 55px;
     padding-right: 0px;
