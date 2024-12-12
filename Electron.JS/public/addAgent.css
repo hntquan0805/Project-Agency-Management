@@ -1,0 +1,76 @@
+h1, h3{
+    color: white;
+}
+
+h1{
+    font-size: 18px;
+    margin: 0;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+
+h3{
+    position: absolute;
+    margin: 0;
+}
+
+.agentInfo{
+    position: absolute;
+    right: 30px;
+}
+
+.title{
+    background: #F57D31;
+    width: 74.797vw;
+    height: 30px;
+    border: 1px solid #B8B8B8;
+    text-align: center;
+    margin-top: 40px;
+}
+
+form{
+    background: white;
+    border: 1px solid #B8B8B8;
+    width: 70vw;
+    height: 250px;
+    padding: 10px 50px;
+    padding-right: 0px;
+    position: relative;
+}
+
+label{
+    font-size: 13px;
+}
+
+input{
+    font-size: 14px;
+    width: 280px;
+    height: 25px;
+    padding: 2px 10px;
+}
+
+select{
+    font-size: 14px;
+    width: 305px;
+    height: 35px;
+    padding: 2px 10px;
+}
+
+button{
+    background: #F57D31;
+    border: 1px solid #B8B8B8;
+    width: 170px;
+    height: 35px;
+    position: absolute;
+    right: 40px;
+}
+
+.buttonName{
+    top: 8px;
+    left: 38px;
+}
+
+.input{
+    display: inline-block;
+    margin-right: 50px;
+}

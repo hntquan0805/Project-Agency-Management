@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group06 - Agent Management System</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../public/main.css">
+    <link rel="stylesheet" href="../public/addAgent.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Images/logo.png" alt="logo" class="miniLogo">
+            <div class="softwareName"><p class="swName">Agent Management Software</p></div>
+        </div>
+        <span class="open-active">
+            <div class="mini-avatar">
+                <!-- <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" alt="avatar" class="avatar"> -->
+            </div>
+            <div class="userinfo">
+                <p class="username">Admin</p>
+                <p class="acc-title">Administrator</p>
+            </div>
+            <i class="fa-solid fa-angle-down"></i>
+        </span>
+    </header>
+
+    <div class="agentInfo">
+        <h1 class="title">Agent Infomation</h1>
+        <form class="inputBox">
+            <div class="input">
+                <label for="agentName">Agent Name</label><br>
+                <input type="text" id="agentName" name="agent_name">
+            </div>
+            <div class="input">
+                <label for="type">Type</label><br>
+                <select name="type" id="type">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+                <!-- <input type="number" id="type" name="type"> -->
+            </div>
+            <div class="input">
+                <label for="receptionDate">Reception date</label><br>
+                <input type="date" id="receptionDate" name="reception_date">
+            </div>
+            <div class="input">
+                <label for="phoneNumber">Phone number</label><br>
+                <input type="text" id="phoneNumber" name="phone_number">
+            </div>
+            <div class="input">
+                <label for="address">Address</label><br>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="input">
+                <label for="district">District</label><br>
+                <input type="text" id="district" name="district">
+            </div>
+            <div class="input">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+            <br>
+            <button><h3 class="buttonName">Add agent <i class="fa-solid fa-plus"></i></h3></button>
+        </form>
+    </div>
+</body>
+</html>
