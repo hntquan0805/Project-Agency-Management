@@ -31,9 +31,9 @@ h3{
 form{
     background: white;
     border: 1px solid #B8B8B8;
-    width: 70vw;
-    height: 250px;
-    padding: 10px 50px;
+    width: 69.52vw;
+    height: 245px;
+    padding: 1px 55px;
     padding-right: 0px;
     position: relative;
 }
@@ -62,7 +62,8 @@ button{
     width: 170px;
     height: 35px;
     position: absolute;
-    right: 40px;
+    right: 70px;
+    bottom: 30px
 }
 
 .buttonName{
@@ -72,5 +73,6 @@ button{
 
 .input{
     display: inline-block;
+    margin-bottom: 5px;
     margin-right: 50px;
 }
