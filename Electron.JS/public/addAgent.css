@@ -114,10 +114,12 @@ table th{
     width: fit-content;
     padding: 5px 10px;
     text-wrap: nowrap;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
 table tbody th{
-    font-weight: 400;
+    font-weight: 500;
 }
 
 table thead tr, .inner-title{

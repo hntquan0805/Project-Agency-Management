@@ -36,8 +36,9 @@ header{
     position: absolute;
     left: 6px;
     top: 6px;
-    width: 235px;
+    width: fit-content;
     height: 32px;
+    text-wrap: nowrap;
 }
 
 .miniLogo{
@@ -50,7 +51,7 @@ header{
 .softwareName{
     position: absolute;
     top: 7px;
-    right: 0;
+    left: 38px;
 }
 
 .swName{
