@@ -3,8 +3,24 @@
 body{
     font-family: "Roboto", sans-serif;
     background: #F5F5F5;
+    margin: 0;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+button{
+    border: none;
+}
+
+/* Header */
 header{
     position: sticky;
     left: 0;
@@ -28,6 +44,7 @@ header{
     background: white;
     width: 32px;
     height: 32px;
+    border-radius: 50%;
 }
 
 .softwareName{
@@ -38,51 +55,60 @@ header{
 
 .swName{
     margin: 0;
-    color: #F1912E;
+    background: linear-gradient(to right, #F08211 0%, #ED2712 100%); 
+    background-clip: text;
+    color: transparent;
     font-size: 15px;
     font-weight: 500;
 }
 
-.open-active{
+.open-list{
     position: absolute;
     width: 180px;
-    height: 45px;
+    height: 43px;
     right: 0;
     top: 0;
+    padding: 0;
+    border: none;
+    background: #FFE9D6;
 }
 
 .mini-avatar{
     background-image: url(https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg);
     background-size: contain;
     position: absolute;
-    left: 5px;
+    left: 15px;
     top: 5px;
     width: 35px;
     height: 35px;
     border: 1px solid white;
+    border-radius: 50%;
 }
 
 .userinfo{
     position: absolute;
-    left: 52px;
-    height: 45px;
+    top: 0;
+    left: 57px;
+    height: 40px;
     text-align: left;
 }
 
 .username{
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
-    margin-top: 7px;
+    margin-top: 3px;
     margin-bottom: 0;
 }
 
 .acc-title{
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 500;
     color: white;
     background: #F57D31;
     width: fit-content;
     margin: 0;
+    border-radius: 10px;
+    padding: 1px;
 }
 
 .fa-solid.fa-angle-down{
@@ -90,3 +116,51 @@ header{
     right: 15px;
     top: 40%;
 }
+
+header .open-active:hover .open-list{
+    background: #D9D9D9;
+}
+
+header .open-active:hover .sub-button{
+    display: block;
+}
+
+header .open-active .sub-button .sub:hover{
+    background: #C0C0C0;
+}
+
+.sub-button{
+    position: absolute;
+    top: 44px;
+    right: 0;
+    height: fit-content;
+    align-items: center;
+    list-style: none;
+    display: none;
+}
+
+.sub{
+    position: relative;
+    width: 180px;
+    height: 39px;
+    text-align: center;
+    justify-content: space-between;  
+    padding-top: 7px;
+    background: #EBE9E9;
+    border: 1px solid #C0C0C0;
+}
+
+.sub-button i{
+    color: black;
+    padding-top: 5px;
+    position: absolute;
+    top: 7px;
+    right: 20px; 
+}
+
+.sub-title{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+}
+/* End Header */

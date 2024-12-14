@@ -1,78 +1,224 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
 h1, h3{
     color: white;
+}
+
+nav{
+    float: left;
+    background: #FFE9D6;
+    width: 250px;
+    height: 100vh;
+}
+
+.main-content{
+    position: relative;
+    margin-left: 260px;
+    text-align: center;
+}
+
+/* class agentInfo */
+.agentInfo{
+    text-align: left;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    max-width: 1110px;
+    width: fit-content;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    overflow: auto;
+}
+
+.title{
+    background: #F57D31;
+    text-align: center;
 }
 
 h1{
     font-size: 18px;
     margin: 0;
-    padding-top: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     text-transform: uppercase;
-}
-
-h3{
-    position: absolute;
-    margin: 0;
-}
-
-.agentInfo{
-    background: #F57D31;
-    position: absolute;
-    right: 60px;
-    border: 1px solid #B8B8B8;
-    margin-top: 40px;
-}
-
-.title{    
-    width: 73.6vw;
-    height: 30px;    
-    text-align: center;
-}
-
-form{
-    background: white;
-    border: 1px solid #B8B8B8;
-    width: 70vw;
-    height: 245px;
-    padding: 1px 55px;
-    padding-right: 0px;
-    position: relative;
 }
 
 label{
     font-size: 13px;
 }
 
-input{
+input, select, button{
     font-size: 14px;
     width: 280px;
     height: 25px;
     padding: 2px 10px;
 }
 
-select{
-    font-size: 14px;
-    width: 305px;
-    height: 35px;
-    padding: 2px 10px;
+.agentInfo .info{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-button{
+.button{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.addButton{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
     background: #F57D31;
     border: 1px solid #B8B8B8;
-    width: 170px;
-    height: 35px;
-    position: absolute;
-    right: 70px;
-    bottom: 30px
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    margin: 0;   
 }
+/* End class agentInfo */
 
-.buttonName{
-    top: 8px;
-    left: 38px;
-}
-
-.input{
+/* Agent List */
+.agent-list{
+    font-size: 14px;
+    text-align: center;
+    align-items: center;
+    max-width: 100%;
+    width: fit-content;
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: inline-block;
-    margin-bottom: 5px;
-    margin-right: 50px;
+    overflow: auto;
 }
+
+table{
+    max-width: 1110px;
+    border-radius: 5px;
+}
+
+table tr{
+    border: 1px solid #B8B8B8
+}
+
+/* table tr:first-child th:last-child, table thead{
+    border-radius: 0 5px 0 0;
+} */
+
+table th{
+    width: fit-content;
+    padding: 5px 10px;
+    text-wrap: nowrap;
+}
+
+table tbody th{
+    font-weight: 400;
+}
+
+table thead tr, .inner-title{
+    background: #F57D31;
+    color: white;
+    text-transform:initial;
+}
+
+.fix-button, .delete-button{
+    width: fit-content;
+    background: none;
+    color: #F57D31;
+}
+
+.inner-title{
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+    width: fit-content;
+    border-bottom: 1px solid #B8B8B8; 
+}
+/* End Agent List */
+
+/* Pagination */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+/* html,
+body {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  text-align: center;
+  background: 
+} */
+::selection {
+  color: #fff;
+  background: #f23b26;
+}
+.pag {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+    /* box-shadow: 0px 0.5vh 5px 0px rgba(0, 0, 0, 0.25); */
+}
+.pagination {    
+    width: 1098.58px;
+    margin: 5px 0 0;
+}
+.pagination,
+.pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pagination li {
+    background: #F57D31;
+  list-style: none;
+}
+.pagination li a {
+  text-decoration: none;
+  color: #fdfdfd;
+  height: 30px;
+  width: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  padding-top: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-right-width: 0px;
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.35);
+}
+.pagination li:last-child a {
+  border-right-width: 1px;
+}
+.pagination li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.35);
+  border-bottom-color: rgba(0, 0, 0, 0.5);
+}
+.pagination li a:focus,
+.pagination li a:active {
+  padding-top: 4px;
+  border-left-width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0px 2px 1px 0px rgba(0, 0, 0, 0.25);
+}
+.pagination li.icon a {
+  min-width: 120px;
+}
+.pagination li:first-child span {
+  padding-right: 8px;
+}
+.pagination li:last-child span {
+  padding-left: 8px;
+}
+/* End Pagination */
