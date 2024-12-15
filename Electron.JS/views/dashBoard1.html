@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/dashBoard1.css">
+</head>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button"> 
+                    <i class="bi bi-grid"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">Menu</a>
+                </div>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>DashBoard</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgent" 
+                    aria-expanded="false" aria-controls="manageAgent">
+                        <i class="bi bi-building"></i>
+                        <span>Manage Agent</span>
+                    </a>
+
+                    <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Add Agent</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Serch Agent</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#paperWork" 
+                    aria-expanded="false" aria-controls="paperWork">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Paper Work</span>
+                    </a>
+
+                    <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Delivery Note</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Received Note</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Monthly Report</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAccount" 
+                    aria-expanded="false" aria-controls="manageAccount">
+                        <i class="bi bi-person-vcard"></i>
+                        <span>Manage Account</span>
+                    </a>
+
+                    <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personal Infomation</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personel Management</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <div class="detail-footer">
+                    <div class="text-footer">Agent Management Software</div>
+                    <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="child-wrapper">
+            <header>
+                <div class="logo">
+                    <img src="./Images/logo.png" alt="logo" class="miniLogo">
+                    <div class="softwareName"><p class="swName">Agent Management Software</p></div>
+                </div>
+                <div class="open-active">
+                    <div class="open-list">
+                        <div class="mini-avatar"></div>
+                        <div class="userinfo">
+                            <p class="username">Admin 123</p>
+                            <p class="acc-title">Administrator</p>
+                        </div>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <ul class="sub-button">
+                        <li class="sub">
+                            <a href="#"><span class="name-span">
+                                <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
+                            </span></a>
+                        </li>
+                        <li class="sub">
+                            <a href="login.html"><span class="name-span">
+                                <span class="sub-title">Log Out</span> <i class="fa-solid fa-person-through-window"></i>
+                            </span></a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+    
+            <div class="main"> 
+                <div class="d-flex justify-content-center welcome-header">
+                    WELCOME TO AGENT MANAGEMENT SOFTWARE
+                </div>
+                
+                <div class="container">
+                    <div class="row justify-content-between g-5">
+                        
+                        <div class="col-sm-12 col-md-6 col-xl-3">
+                            <div class="box" style="background-color: #3072B5;">
+                                <i class="bi bi-shop box-icon"></i> 
+                                <div class="box-content">
+                                    <div class="box-title">Total Agents</div>
+                                    <div class="box-num">64</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-12 col-md-6 col-xl-3">
+                            <div class="box" style="background-color: #D77B7D;">
+                                <i class="bi bi-boxes box-icon"></i>
+                                <div class="box-content">
+                                    <div class="box-title">Total Goods</div>
+                                    <div class="box-num">100</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-12 col-md-6 col-xl-3">
+                            <div class="box" style="background-color: #55A397;">
+                                <i class="bi bi-truck box-icon"></i>
+                                <div class="box-content">
+                                    <div class="box-title">Total Orders</div>
+                                    <div class="box-num">190</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-sm-12 col-md-6 col-xl-3">
+                            <div class="box" style="background-color: #7D7DCC;">
+                                <i class="bi bi-fire box-icon"></i>
+                                <div class="box-content">
+                                    <div class="box-title">Hot Items</div>
+                                    <div class="box-desc">
+                                        <div>Bandana</div>
+                                        <div>Scrunchie</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>    
+                
+                <div class="notification">
+                    <div class="noti-content">
+                        <div class="main-content">The system will undergo maintenance from 6:00 am to 10:00 am.</div>
+                        <div class="sub-content">Thanks for your understanding!</div>
+                    </div>
+    
+                    <div class="date">11/12/2024</div>
+                </div>
+    
+                <div class="common-tools">               
+                    <div class="container">
+                        <div class="tools-header">
+                            COMMON TOOLS FOR YOU
+                        </div>
+                        <div class="row justify-content-evenly g-5">
+                            <div class="col-sm-12 col-md-6 col-xl-3">
+                                <div class="feature-header">
+                                    <h3 class="feature-title">Search Agent <i class="fa-solid fa-magnifying-glass"></i></h3>
+                                </div>
+                                <div class="feature-desc">
+                                    <p class="desc">Look up agent information here.</p>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-12 col-md-6 col-xl-3">
+                                <div class="feature-header">
+                                    <h3 class="feature-title">Search Goods <i class="bi bi-box-seam"></i></h3>
+                                </div>
+                                <div class="feature-desc">
+                                    <p class="desc">Look up product information here.</p>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-12 col-md-6 col-xl-3">
+                                <div class="feature-header">
+                                    <h3 class="feature-title">Export Report <i class="fa-solid fa-chart-line"></i></h3>
+                                </div>
+                                <div class="feature-desc">
+                                    <p class="desc">Create and export monthly report here.</p>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm-12 col-md-6 col-xl-3">
+                                <div class="feature-header">
+                                    <h3 class="feature-title">Create Delivery Note <i class="fa-regular fa-file-lines"></i></h3>
+                                </div>
+                                <div class="feature-desc">
+                                    <p class="desc">Create and export delivery note here.</p>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>
+
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

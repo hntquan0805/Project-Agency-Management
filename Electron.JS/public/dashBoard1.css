@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html
+{
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* SIDEBAR */
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #F5F5F5;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    height: 100vh;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color:#F57D31;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: #FFF solid 1px;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;   /* Sidebar khi mở ra không đổi size dù có thu nhỏ web */
+}
+
+.d-flex{
+    height: 5rem;
+} 
+
+/* Nút mở thanh menu */
+.toggle-btn {
+    background-color: transparent; /* Nền trong suốt */
+    cursor: pointer;   /* Khi di chuột vào hiển thị bàn tay thông báo có thể nhấn vào */
+    border: 0; /* Loại bỏ viền mặc định các nút bấm */
+    padding: 0rem 2.4rem;
+}
+
+/* Icon nút mở thanh menu */
+.toggle-btn i {
+    font-size: 2.5rem;
+    color: #FFF;
+}
+
+/* Dòng Agent Management Software ở nút mở thanh menu */
+/* Thiết lập lề */
+.sidebar-logo {
+    margin: auto 0;
+}
+
+/* Định dạng cho Agent Management Software */
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+/* Không hiển thị các dòng tiêu đề của menu và footer khi slidebar đóng*/
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span,
+#sidebar:not(.expand) .sidebar-footer {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 0;
+    flex: 1 1 auto;
+}
+
+/* Định dạng cho mỗi mục của menu */
+a.sidebar-link {
+    padding: 1rem 1.2em;
+    color: #FFF;
+    display: block;
+    font-size: 1.55rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+/* Định dạng cho icon của các mục trong menu */
+.sidebar-link i {
+    font-size: 2.5rem;
+    margin-right: 1.2rem;
+}
+
+/* Di chuột vào các mục của menu đổi màu */
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #FFE9D6;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+/* Khi menu đóng: di chuột vào menu có submenu thì submenu hiện sang bên trái*/
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color:#F57D31;
+    padding: 0;
+    min-width: 24rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 24em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 0.12rem 0.12rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 2.4rem;
+    top: 2.24rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.sidebar-footer{
+    padding: 10px;
+    background-color:#b8b8b849;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-footer{
+    width: 3rem;
+    height: auto;
+    margin-right: 0.9rem;
+    background-color: #f5f5f5ed;
+}
+
+.text-footer{
+    font-size: 1.1rem;
+}
+
+.copy-right{
+    font-size: 0.9rem;
+}
+
+/* END SIDEBAR */
+
+/* CHILDWRAPPER CHỨA HEADER VÀ MAIN*/
+.child-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header{
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: #F57D31;
+    border-bottom: 1px solid #FFF;
+    z-index: 999;
+}
+
+.logo{
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: fit-content;
+    height: 32px;
+    text-wrap: nowrap; 
+    text-align: center;
+}
+
+.miniLogo{
+    background: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.softwareName{
+    position: absolute;
+    top: 5px;
+    left: 38px;
+}
+
+.swName{
+    margin: 0;
+    background-color: #FFE9D6;
+    background-clip: text;
+    color: transparent;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.open-list{
+    position: absolute;
+    width: 180px;
+    height: 48px;
+    right: 0;
+    top: 0;
+    padding: 0;
+    border: none;
+    background: #F57D31;
+}
+
+.mini-avatar{
+    background-image: url(https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg);
+    background-size: contain;
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.userinfo{
+    position: absolute;
+    top: 0;
+    left: 57px;
+    height: 40px;
+    text-align: left;
+}
+
+.username{
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 3px;
+    margin-bottom: 0;
+    padding: 1px;
+    text-align: left;
+}
+
+.acc-title{
+    font-size: 10px;
+    font-weight: 500;
+    color: #FFF;
+    border: #FFF solid 0.5px;
+    background: linear-gradient(to right, #F08211 0%, #ED2712 100%); 
+
+    width: 80px;
+    margin: 0;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1px;
+}
+
+.fa-solid.fa-angle-down{
+    position: absolute;
+    right: 15px;
+    top: 40%;
+}
+
+header .open-active:hover .open-list{
+    /* background: #D9D9D9; */
+    background: #FFE9D6;
+
+}
+
+header .open-active:hover .acc-title{
+    background: white;
+    color: #F57D31;
+    font-weight: 600;
+}
+
+header .open-active:hover .sub-button{
+    display: block;
+}
+
+header .open-active .sub-button .sub:hover{
+    /* background: #C0C0C0; */
+    background: #ffdcbd;
+
+}
+
+.sub-button{
+    position: absolute;
+    top: 44px;
+    right: 0;
+    height: fit-content;
+    align-items: center;
+    list-style: none;
+    display: none;
+}
+
+.sub{
+    position: relative;
+    width: 180px;
+    height: 39px;
+    text-align: center;
+    justify-content: space-between;  
+    padding-top: 7px;
+    background: #ffeee0;
+    border: 1px solid #C0C0C0;
+}
+
+.sub-button i{
+    color: black;
+    padding-top: 5px;
+    position: absolute;
+    top: 7px;
+    right: 20px; 
+}
+
+.sub-title{
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+}
+/* End Header */
+
+/* MAIN */
+.main {
+    padding: 0 30px 30px 30px;
+}
+
+/* Welcome Header */
+.welcome-header {
+    margin: 2rem 3rem 3rem 3rem;
+    color: #F57D31;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: bold;
+    text-align: center;
+    line-height: 4rem;
+}
+/* End Welcome Header */
+
+/* Statistics Box */
+.box {
+    background-color: #F57D31;
+    color: white;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-height: clamp(10rem, 20vw, 15rem);
+    border: #B8B8B8 solid 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.box-icon {
+    font-size: clamp(3.5rem, 5vw, 7rem);
+    color: #FFFFFF;
+    margin-right: 5%;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 1;
+}
+
+.box-title {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    color: #FFFFFF;
+}
+
+.box-num {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.box-desc {
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    color: #FFEB3B;
+}
+
+/* End Statistics Box */
+
+/* Notification */
+.notification {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 0.5rem 1.5rem;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    align-items: center; 
+    border-radius: 5px;
+    border: #B8B8B8 solid 1px;
+    border-left: #4B9941 solid 8px;
+}
+
+.noti-content {
+    color: #000;
+    max-width: 75%; /* Giới hạn chiều rộng phần nội dung */
+}
+
+.main-content {
+    font-size: clamp(1.3rem, 2vw, 1.5rem);
+    font-weight: bold;
+}
+
+.sub-content {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: normal;
+}
+
+.date {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: bold;
+}
+
+/* End Notification */
+
+/* Common Tool Boxs */
+.common-tools{
+    background-color: #FFFFFF;
+    border-radius: 5px;   
+    border: #B8B8B8 solid 1px;
+    padding: 2rem 3rem 3rem 3rem;
+}
+
+.tools-header{
+    background-color: #FFFFFF;
+    color: #3072B5;
+    border-bottom: #3072B5 solid 2px; 
+    font-weight: bold; 
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Ô chứa tên tính năng thường dùng*/
+.feature-header {
+    background-color: #F57D31;
+    text-align: center;
+    border: #B8B8B8 solid;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 110px;
+    min-width: 200px; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-title{
+    background-color: #F57D31;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.feature-title i{
+    background-color: #F57D31;
+    font-size: 2.3rem;
+    margin: 0;
+    margin-left: 0.8rem;
+}
+
+/* Ô chứa mô tả của các tính năng thường dùng*/
+.feature-desc {
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin-top: 0px;
+
+    border: #B8B8B8 solid;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 110px;
+    min-width: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+} 
+
+.desc{
+    color: black;
+    font-size: 18px;
+    font-weight: 500px;
+    margin: 0;
+}
+
+/* End Common Tool Boxs */
