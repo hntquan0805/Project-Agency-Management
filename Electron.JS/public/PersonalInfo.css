@@ -1,0 +1,161 @@
+:root{
+    --border-clr: #B8B8B8;
+    --bg-clr: #F57D31;
+    --menu-bg-clr: #FFE9D6;
+    --img-border-clr: #4c4a4a;
+}
+
+header{
+    position: relative;
+}
+
+nav{
+    float: left;
+    background: var(--menu-bg-clr);
+    width: 250px;
+    height: 100vh;
+    z-index: 998;
+    position: relative;
+}
+
+h1, h3, p, i{
+    margin: 0;
+}
+
+button{
+    border: none;
+}
+
+.main-content{    
+    font-family: figtree;
+}
+
+/* Section-1 (Avatar/BG)*/
+.section-1{
+    background-image: url(../views/Images/BG-PersonalInfo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-left: 250px;
+    height: 450px;
+    border-radius: 0 0 20px 0;
+    position: relative;
+}
+
+.cover-photo{
+    height: 280px;
+    background: #C4C4C4;
+    position: relative;
+}
+.cover-photo .change-bg-button{
+    background: #fff;
+    border-radius: 10px;
+    width: 198px;
+    height: 40px;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+.cover-photo .change-bg-button .content-button{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 15px;
+    color: black;
+    align-items: center;
+}
+.cover-photo .change-bg-button .content-button i{
+    font-size: 20px;
+}
+.cover-photo .change-bg-button .content-button p{
+    font-weight: 700;
+}
+.avatar{
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: 80%;
+    left: 7%;
+}
+.avatar .photo{
+    width: 180px;
+    height: 180px;
+    background-image: url(https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 90px;
+    border: 5px solid white;
+}
+.avatar .change-ava{
+    width: 45px;
+    height: 45px;
+    background: white;
+    border-radius: 90px;
+    border: 1px solid #D9D9D9;
+    position: absolute;
+    bottom: -3%;
+    left: 70%;
+    color: var(--img-border-clr);
+    font-size: 22px;
+}
+
+.status-info{
+    position: absolute;
+    bottom: 2%;
+    left: calc(180px*1.7 + 250px);
+    height: calc(450px - 280px);
+    font-weight: bold;
+    text-wrap: nowrap;
+}
+.status-info .ava-username{
+    padding-top: 20px;
+}
+.status-info .name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+}
+.status-info h1{
+    font-weight: 700;
+    font-size: 30px;
+}
+.status-info .acc-title{
+    background: var(--border-clr);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 1px 5px;
+    margin-top: 3px;
+}
+.status-info .status{
+    position: absolute;
+    bottom: 10px;
+    color: #1C7491;
+}
+
+.section-1 .noti-button{
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    color: var(--bg-clr);
+    background: white;
+    border-radius: 90px;
+    border: 1px solid var(--border-clr);
+    position: absolute;
+    right: 90px;
+    bottom: 100px;
+}
+
+.section-1 .change-pass-button{
+    width: 144px;
+    height: 38px;
+    color: var(--bg-clr);
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border-clr);
+    position: absolute;
+    right: 35px;
+    bottom: 30px;
+}
+/*End Section-1 */

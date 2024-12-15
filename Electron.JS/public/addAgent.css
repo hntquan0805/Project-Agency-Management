@@ -4,6 +4,10 @@ h1, h3{
     color: white;
 }
 
+button{
+    border: none;
+}
+
 nav{
     float: left;
     background: #FFE9D6;
@@ -50,7 +54,7 @@ label{
     font-size: 13px;
 }
 
-input, select, button{
+input, select, .addButton{
     font-size: 14px;
     width: 280px;
     height: 25px;
@@ -63,7 +67,7 @@ input, select, button{
     margin-right: auto;
 }
 
-.button{
+.agentInfo .button{
     text-align: center;
     margin-top: 10px;
 }
@@ -111,7 +115,7 @@ table tr{
 } */
 
 table th{
-    width: fit-content;
+    width: 1110px;
     padding: 5px 10px;
     text-wrap: nowrap;
     font-weight: 600;
@@ -119,7 +123,7 @@ table th{
 }
 
 table tbody th{
-    font-weight: 500;
+    font-weight: 400;
 }
 
 table thead tr, .inner-title{
@@ -150,6 +154,8 @@ table thead tr, .inner-title{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+.pagination{    
     font-family: "Poppins", sans-serif;
 }
 /* html,

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Agent - Agent Management System</title>
+    <title>Search Agent - Agent Management System</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
 integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
 crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../public/main.css">
-    <link rel="stylesheet" href="../public/addAgent.css">    
+    <link rel="stylesheet" href="../public/main.css">    
+    <link rel="stylesheet" href="../public/searchAgent.css"> 
 </head>
 <body>
     <header>
@@ -47,49 +47,42 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     </nav>
 
     <main class="main-content">
-        <div class="agentInfo">
+        <div class="search-form">
             <div class="container">
-                <div class="row title">
+                <div class="row inner-head">
                     <div class="col-12">
-                        <h1>Agent Infomation</h1>
+                        <h1 class="inner-title">Search Agent</h1>
                     </div>
                 </div>
-                <form action="#" class="row">
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="agentName">Agent Name</label><br>
-                        <input type="text" id="agentName" name="agent_name" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="type">Type</label><br>
-                        <select name="type" id="type" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="receptionDate">Reception date</label><br>
-                        <input type="date" id="receptionDate" name="reception_date" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="phoneNumber">Phone number</label><br>
-                        <input type="text" id="phoneNumber" name="phone_number" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="address">Address</label><br>
-                        <input type="text" id="address" name="address" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="district">District</label><br>
-                        <input type="text" id="district" name="district" required>
-                    </div>
-                    <div class=" col-xl-4 col-md-6 col-12 info">
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="col-xl-8 col-md-6"></div><div class="col-xl-8 col-md-6"></div>
-                    <div class="col-xl-4 col-md-12 col-12 button">
-                        <button class="addButton">Add agent <i class="fa-solid fa-plus"></i></button>                        
-                    </div>
+                <form class="inner-main">
+                    <div class="row">
+                        <div class="col-12 inner-desc">
+                            <p class="desc">Enter at least 1 information to search</p>
+                        </div>
+                        <div class="col-lg-4 col-6">
+                            <label for="agentName">Agent Name</label>
+                            <input type="text" id="agentName" name="agent_name">
+                        </div>
+                        <div class="col-lg-2 col-6" id="input-type">
+                            <label for="type">Type</label>
+                            <select name="type" id="type">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 col-sm-8 col-12">
+                            <label for="district">District</label>
+                            <input type="text" id="district" name="district">
+                        </div>
+                        <div class=" col-xl-2 col-12">
+                            <button class="search-button">
+                                <div class="content-button">
+                                    <h3>Search</h3>
+                                    <i class="fa-solid fa-map-pin" ></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>                        
                 </form>
             </div>
         </div>
@@ -97,7 +90,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
         <div class="agent-list">
             <div class="inner-head">
                 <div class="inner-title">
-                    Recently added agent list
+                    Agent Information
                 </div>
             </div>
             <table class="table-agent">
@@ -105,12 +98,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                     <tr>
                         <th>Serial</th>
                         <th>Agent Name</th>
-                        <th>type</th>
-                        <th>Address</th>
+                        <th>Type</th>
                         <th>District</th>
-                        <th>Reception Date</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Debt</th>
                         <th class="fix"></th>
                         <th class="delete"></th>
                     </tr>
@@ -120,125 +110,113 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                         <th>1</th>
                         <th>Elite Mart</th>
                         <th>2</th>
-                        <th>15 Nguyễn Huệ, P.Bến Nghé</th>
                         <th>1</th>
-                        <th>28/10/2024</th>
-                        <th>0901232565</th>
-                        <th>elitemart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <th>Golden Deals</th>
-                        <th>2</th>
-                        <th>33 Dương Bá Trạc, P.1</th>
-                        <th>1</th>
-                        <th>25/10/2024</th>
-                        <th>0901234460</th>
-                        <th>goldendeals@gmail.com</th>
+                        <th>100.000.000 VND</th>
                         <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
                         <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
                     </tr>
                     <tr>
                         <th>3</th>
-                        <th>Great Mall</th>
+                        <th>Golden Deals</th>
+                        <th>2</th>
                         <th>1</th>
-                        <th>7 Phan Văn Trị, P.11</th>
-                        <th>Bình Tân</th>
-                        <th>07/10/2024</th>
-                        <th>0901437762</th>
-                        <th>greatmall@gmail.com</th>
+                        <th>25.000.000 VND</th>
                         <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
                         <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
                     </tr>
                     <tr>
                         <th>4</th>
-                        <th>MegaMart Agents</th>
-                        <th>2</th>
-                        <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
-                        <th>Tân Bình</th>
-                        <th>20/10/2024</th>
-                        <th>0905234564</th>
-                        <th>megamart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <th>TradeMasters</th>
-                        <th>1</th>
-                        <th>30 Đặng Thuỳ Trâm</th>
-                        <th>Bình Thạnh</th>
-                        <th>03/11/2024</th>
-                        <th>0901534562</th>
-                        <th>trademaster@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <th>SmartChoice</th>
-                        <th>1</th>
-                        <th>10 Lý Tự Trọng, P.12</th>
-                        <th>Phú Nhuận</th>
-                        <th>12/10/2024</th>
-                        <th>0909234569</th>
-                        <th>smartchoice@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <th>Elite Mart</th>
-                        <th>2</th>
-                        <th>15 Nguyễn Huệ, P.Bến Nghé</th>
-                        <th>1</th>
-                        <th>28/10/2024</th>
-                        <th>0901232565</th>
-                        <th>elitemart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>8</th>
-                        <th>Golden Deals</th>
-                        <th>2</th>
-                        <th>33 Dương Bá Trạc, P.1</th>
-                        <th>1</th>
-                        <th>25/10/2024</th>
-                        <th>0901234460</th>
-                        <th>goldendeals@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>9</th>
                         <th>Great Mall</th>
                         <th>1</th>
-                        <th>7 Phan Văn Trị, P.11</th>
                         <th>Bình Tân</th>
-                        <th>07/10/2024</th>
-                        <th>0901437762</th>
-                        <th>greatmall@gmail.com</th>
+                        <th>38.000.000 VND</th>
                         <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
                         <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
                     </tr>
                     <tr>
-                        <th>10</th>
+                        <th>17</th>
                         <th>MegaMart Agents</th>
                         <th>2</th>
-                        <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
                         <th>Tân Bình</th>
-                        <th>20/10/2024</th>
-                        <th>0905234564</th>
-                        <th>megamart@gmail.com</th>
+                        <th>23.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>25</th>
+                        <th>TradeMasters</th>
+                        <th>1</th>
+                        <th>Bình Thạnh</th>
+                        <th>54.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>26</th>
+                        <th>SmartChoice</th>
+                        <th>1</th>
+                        <th>Phú Nhuận</th>
+                        <th>1.163.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <th>Elite Mart</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>100.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <th>Golden Deals</th>
+                        <th>2</th>
+                        <th>1</th>
+                        <th>25.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <th>Great Mall</th>
+                        <th>1</th>
+                        <th>Bình Tân</th>
+                        <th>38.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>17</th>
+                        <th>MegaMart Agents</th>
+                        <th>2</th>
+                        <th>Tân Bình</th>
+                        <th>23.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>25</th>
+                        <th>TradeMasters</th>
+                        <th>1</th>
+                        <th>Bình Thạnh</th>
+                        <th>54.000.000 VND</th>
+                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                    </tr>
+                    <tr>
+                        <th>26</th>
+                        <th>SmartChoice</th>
+                        <th>1</th>
+                        <th>Phú Nhuận</th>
+                        <th>1.163.000.000 VND</th>
                         <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
                         <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
                     </tr>
                 </tbody>
             </table>
-            <div class="form-pagination">
+            <!-- <div class="form-pagination">
                 <div class="container pag">
                     <ul class="pagination">
                       <li class="icon">
@@ -259,9 +237,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                       </li>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div> -->
     </main>
+
     
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DashBoard</title>
+    <title>Personal Infomation - Agent Management System</title>
 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
 integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
 crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../public/main.css">    
-    <link rel="stylesheet" href="../public/searchAgent.css"> 
+    <link rel="stylesheet" href="../public/PersonalInfo.css"> 
 </head>
 <body>
     <header>
@@ -47,54 +47,40 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     </nav>
 
     <main class="main-content">
-        <div class="searchForm">
-            <div class="inner-head">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="inner-title">Search Agent</h1>
+        <div class="section-1">
+            <div class="cover-photo">
+                <button class="change-bg-button">
+                    <div class="content-button">
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <p>Change Cover Photo</p>
+                    </div>
+                </button>
+                <div class="avatar">
+                    <div class="photo"></div>
+                    <button class="change-ava">
+                        <div class="change-ava-button">
+                            <i class="fa-solid fa-camera"></i>
                         </div>
-                    </div>
-                    <div class="inner-main">
-                        <div class="row">
-                            <div class="col-12 inner-desc">
-                                <p class="desc">Enter at least 1 information to search</p>
-                            </div>
-                            <div class="col-xl-4">
-
-                            </div>
-                            <div class="col-xl-2">
-
-                            </div>
-                            <div class="col-xl-4">
-
-                            </div>
-                            <div class="col-xl-2">
-                                <button class="search-button">
-                                    <div class="content-button">
-                                        <h3>Search</h3>
-                                        <i class="fa-solid fa-map-pin" ></i>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>                        
-                    </div>
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+            <div class="status-info">
+                <div class="ava-username">
+                    <div class="name">
+                        <h1>Admin</h1>
+                        <p class="acc-title">Administrator</p>
+                    </div>
+                    <div class="store-code">Store- Code: 42379</div>
+                    <div class="status">Status: Online</div>
+                </div>
+            </div> 
+            <button class="noti-button">
+                <i class="fa-solid fa-bell"></i>
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+            <button class="change-pass-button">Change Password</button>
         </div>
     </main>
-
     
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
