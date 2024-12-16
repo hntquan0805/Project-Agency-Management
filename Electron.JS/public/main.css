@@ -348,6 +348,7 @@ header .open-active .sub-button .sub:hover{
     position: absolute;
     top: 7px;
     right: 20px; 
+    font-size: 17px;
 }
 
 .sub-title{

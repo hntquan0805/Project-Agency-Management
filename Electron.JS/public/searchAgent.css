@@ -5,11 +5,9 @@
     --menu-bg-clr: #FFE9D6
 }
 
-nav{
-    float: left;
-    background: var(--menu-bg-clr);
-    width: 250px;
-    height: 100vh;
+body{
+    font-family: roboto;
+    font-size: 13px;
 }
 
 h1, h3, p, i{
@@ -100,6 +98,7 @@ button{
 }
 label{
     font-size: 13px;
+    font-weight: 400;
     margin-right: 13px;
 }
 input{
@@ -135,7 +134,7 @@ input, select{
     display: flex;
     justify-content: space-evenly;
     color: white;
-    
+    font-size: 18px;
 }
 /* End Search Form */
 
