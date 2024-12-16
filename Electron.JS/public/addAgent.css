@@ -1,24 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
+.main{
+    font-family: Roboto;
+}
+
 h1, h3{
     color: white;
 }
 
 button{
     border: none;
-}
-
-nav{
-    float: left;
-    background: #FFE9D6;
-    width: 250px;
-    height: 100vh;
-}
-
-.main-content{
-    position: relative;
-    margin-left: 260px;
-    text-align: center;
 }
 
 /* class agentInfo */
@@ -29,12 +20,20 @@ nav{
     border: 1px solid #B8B8B8;
     max-width: 1110px;
     width: fit-content;
+    height: fit-content;
     padding-bottom: 10px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
     overflow: auto;
+}
+
+.agentInfo form div[class|="col"]{
+    height: 50px;
+}
+.agentInfo form div:nth-child(8), .agentInfo form div:nth-child(9){
+    height: 0;
 }
 
 .title{
@@ -57,7 +56,7 @@ label{
 input, select, .addButton{
     font-size: 14px;
     width: 280px;
-    height: 25px;
+    height: auto;
     padding: 2px 10px;
 }
 
@@ -67,6 +66,11 @@ input, select, .addButton{
     margin-right: auto;
 }
 
+.agentInfo form div:last-child{
+    height: fit-content;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 .agentInfo .button{
     text-align: center;
     margin-top: 10px;
@@ -97,7 +101,8 @@ input, select, .addButton{
     width: fit-content;
     margin-top: 30px;
     margin-bottom: 30px;
-    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
     overflow: auto;
 }
 

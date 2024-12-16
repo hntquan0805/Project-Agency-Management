@@ -5,19 +5,6 @@
     --img-border-clr: #4c4a4a;
 }
 
-header{
-    position: relative;
-}
-
-nav{
-    float: left;
-    background: var(--menu-bg-clr);
-    width: 250px;
-    height: 100vh;
-    z-index: 998;
-    position: relative;
-}
-
 h1, h3, p, i{
     margin: 0;
 }
@@ -26,21 +13,24 @@ button{
     border: none;
 }
 
-.main-content{    
+.main{    
     font-family: figtree;
+    font-size: 15px;
+    padding: 0;
 }
-
 /* Section-1 (Avatar/BG)*/
 .section-1{
     background-image: url(../views/Images/BG-PersonalInfo.png);
     background-repeat: no-repeat;
     background-size: cover;
-    padding-left: 250px;
     height: 450px;
     border-radius: 0 0 20px 0;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Cover Photo */
 .cover-photo{
     height: 280px;
     background: #C4C4C4;
@@ -48,6 +38,7 @@ button{
 }
 .cover-photo .change-bg-button{
     background: #fff;
+    opacity: 80%;
     border-radius: 10px;
     width: 198px;
     height: 40px;
@@ -68,12 +59,15 @@ button{
 .cover-photo .change-bg-button .content-button p{
     font-weight: 700;
 }
+
+/* Avatar */
 .avatar{
     width: 180px;
     height: 180px;
     position: absolute;
-    top: 80%;
-    left: 7%;
+    left: 8%;
+    bottom: -49%;
+    z-index: 2;
 }
 .avatar .photo{
     width: 180px;
@@ -97,11 +91,16 @@ button{
     font-size: 22px;
 }
 
-.status-info{
+/* show status info */
+.section-1 .show-info{
+    width: 100%;
+    height: calc(100%-280px);
+}
+
+.section-1 .show-info .status-info{
     position: absolute;
-    bottom: 2%;
-    left: calc(180px*1.7 + 250px);
-    height: calc(450px - 280px);
+    left: 25%;
+    height: 450px;
     font-weight: bold;
     text-wrap: nowrap;
 }
@@ -112,7 +111,8 @@ button{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
+    width: 230px;
+    margin-bottom: 5px;
 }
 .status-info h1{
     font-weight: 700;
@@ -120,14 +120,16 @@ button{
 }
 .status-info .acc-title{
     background: var(--border-clr);
+    width: fit-content;
     font-size: 12px;
     font-weight: 700;
     padding: 1px 5px;
     margin-top: 3px;
 }
+.status-info .store-code{
+    margin-bottom: 45px;
+}
 .status-info .status{
-    position: absolute;
-    bottom: 10px;
     color: #1C7491;
 }
 
@@ -138,10 +140,10 @@ button{
     color: var(--bg-clr);
     background: white;
     border-radius: 90px;
-    border: 1px solid var(--border-clr);
+    border: 1px solid var(--bg-clr);
     position: absolute;
-    right: 90px;
-    bottom: 100px;
+    right: 65px;
+    bottom: 75px;
 }
 
 .section-1 .change-pass-button{
@@ -153,9 +155,9 @@ button{
     align-items: center;
     background: white;
     border-radius: 10px;
-    border: 1px solid var(--border-clr);
+    border: 1px solid var(--bg-clr);
     position: absolute;
-    right: 35px;
-    bottom: 30px;
+    right: 15px;
+    bottom: 25px;
 }
 /*End Section-1 */

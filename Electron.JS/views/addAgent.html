@@ -5,264 +5,366 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Agent - Agent Management System</title>
 
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
-integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
-crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/main.css">
     <link rel="stylesheet" href="../public/addAgent.css">    
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="./Images/logo.png" alt="logo" class="miniLogo">
-            <div class="softwareName"><p class="swName">Agent Management Software</p></div>
-        </div>
-        <div class="open-active">
-            <div class="open-list">
-                <div class="mini-avatar"></div>
-                <div class="userinfo">
-                    <p class="username">Admin</p>
-                    <p class="acc-title">Administrator</p>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button"> 
+                    <i class="bi bi-grid"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">Menu</a>
                 </div>
-                <i class="fa-solid fa-angle-down"></i>
             </div>
-            <ul class="sub-button">
-                <li class="sub">
-                    <a href="#"><span class="name-span">
-                        <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
-                    </span></a>
+    
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>DashBoard</span>
+                    </a>
                 </li>
-                <li class="sub">
-                    <a href="login.html"><span class="name-span">
-                        <span class="sub-title">Log Out</span> <i class="fa-solid fa-person-through-window"></i>
-                    </span></a>
+    
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgent" 
+                    aria-expanded="false" aria-controls="manageAgent">
+                        <i class="bi bi-building"></i>
+                        <span>Manage Agent</span>
+                    </a>
+    
+                    <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Add Agent</a>
+                        </li>
+    
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Serch Agent</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#paperWork" 
+                    aria-expanded="false" aria-controls="paperWork">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Paper Work</span>
+                    </a>
+    
+                    <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Delivery Note</a>
+                        </li>
+    
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Received Note</a>
+                        </li>
+    
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Monthly Report</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAccount" 
+                    aria-expanded="false" aria-controls="manageAccount">
+                        <i class="bi bi-person-vcard"></i>
+                        <span>Manage Account</span>
+                    </a>
+    
+                    <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personal Infomation</a>
+                        </li>
+    
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personel Management</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Setting</span>
+                    </a>
                 </li>
             </ul>
-        </div>
-    </header>
-
-    <nav class="menu" style="text-align: center; padding-top: 30%;">
-        <b>Mè nú</b>
-    </nav>
-
-    <main class="main-content">
-        <div class="agentInfo">
-            <div class="container">
-                <div class="row title">
-                    <div class="col-12">
-                        <h1>Agent Infomation</h1>
-                    </div>
-                </div>
-                <form action="#" class="row">
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="agentName">Agent Name</label><br>
-                        <input type="text" id="agentName" name="agent_name" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="type">Type</label><br>
-                        <select name="type" id="type" required>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="receptionDate">Reception date</label><br>
-                        <input type="date" id="receptionDate" name="reception_date" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="phoneNumber">Phone number</label><br>
-                        <input type="text" id="phoneNumber" name="phone_number" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="address">Address</label><br>
-                        <input type="text" id="address" name="address" required>
-                    </div>
-                    <div class="col-xl-4 col-md-6 col-12 info">
-                        <label for="district">District</label><br>
-                        <input type="text" id="district" name="district" required>
-                    </div>
-                    <div class=" col-xl-4 col-md-6 col-12 info">
-                        <label for="email">Email</label><br>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="col-xl-8 col-md-6"></div><div class="col-xl-8 col-md-6"></div>
-                    <div class="col-xl-4 col-md-12 col-12 button">
-                        <button class="addButton">Add agent <i class="fa-solid fa-plus"></i></button>                        
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="agent-list">
-            <div class="inner-head">
-                <div class="inner-title">
-                    Recently added agent list
+    
+            <div class="sidebar-footer">
+                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <div class="detail-footer">
+                    <div class="text-footer">Agent Management Software</div>
+                    <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
                 </div>
             </div>
-            <table class="table-agent">
-                <thead class="table-head">
-                    <tr>
-                        <th>Serial</th>
-                        <th>Agent Name</th>
-                        <th>type</th>
-                        <th>Address</th>
-                        <th>District</th>
-                        <th>Reception Date</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th class="fix"></th>
-                        <th class="delete"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th>
-                        <th>Elite Mart</th>
-                        <th>2</th>
-                        <th>15 Nguyễn Huệ, P.Bến Nghé</th>
-                        <th>1</th>
-                        <th>28/10/2024</th>
-                        <th>0901232565</th>
-                        <th>elitemart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <th>Golden Deals</th>
-                        <th>2</th>
-                        <th>33 Dương Bá Trạc, P.1</th>
-                        <th>1</th>
-                        <th>25/10/2024</th>
-                        <th>0901234460</th>
-                        <th>goldendeals@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <th>Great Mall</th>
-                        <th>1</th>
-                        <th>7 Phan Văn Trị, P.11</th>
-                        <th>Bình Tân</th>
-                        <th>07/10/2024</th>
-                        <th>0901437762</th>
-                        <th>greatmall@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <th>MegaMart Agents</th>
-                        <th>2</th>
-                        <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
-                        <th>Tân Bình</th>
-                        <th>20/10/2024</th>
-                        <th>0905234564</th>
-                        <th>megamart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <th>TradeMasters</th>
-                        <th>1</th>
-                        <th>30 Đặng Thuỳ Trâm</th>
-                        <th>Bình Thạnh</th>
-                        <th>03/11/2024</th>
-                        <th>0901534562</th>
-                        <th>trademaster@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <th>SmartChoice</th>
-                        <th>1</th>
-                        <th>10 Lý Tự Trọng, P.12</th>
-                        <th>Phú Nhuận</th>
-                        <th>12/10/2024</th>
-                        <th>0909234569</th>
-                        <th>smartchoice@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <th>Elite Mart</th>
-                        <th>2</th>
-                        <th>15 Nguyễn Huệ, P.Bến Nghé</th>
-                        <th>1</th>
-                        <th>28/10/2024</th>
-                        <th>0901232565</th>
-                        <th>elitemart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>8</th>
-                        <th>Golden Deals</th>
-                        <th>2</th>
-                        <th>33 Dương Bá Trạc, P.1</th>
-                        <th>1</th>
-                        <th>25/10/2024</th>
-                        <th>0901234460</th>
-                        <th>goldendeals@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>9</th>
-                        <th>Great Mall</th>
-                        <th>1</th>
-                        <th>7 Phan Văn Trị, P.11</th>
-                        <th>Bình Tân</th>
-                        <th>07/10/2024</th>
-                        <th>0901437762</th>
-                        <th>greatmall@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                    <tr>
-                        <th>10</th>
-                        <th>MegaMart Agents</th>
-                        <th>2</th>
-                        <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
-                        <th>Tân Bình</th>
-                        <th>20/10/2024</th>
-                        <th>0905234564</th>
-                        <th>megamart@gmail.com</th>
-                        <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                        <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="form-pagination">
-                <div class="container pag">
-                    <ul class="pagination">
-                      <li class="icon">
-                        <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
-                      </li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#">6</a></li>
-                      <li><a href="#">7</a></li>
-                      <li><a href="#">8</a></li>
-                      <li><a href="#">9</a></li>
-                      <li><a href="#">10</a></li>
-                      <li class="icon">
-                        <a href="#">Next<span class="fas fa-angle-right"></span></a>
-                      </li>
+        </aside>
+        
+        <div class="child-wrapper">
+            <header>
+                <div class="logo">
+                    <img src="./Images/logo.png" alt="logo" class="miniLogo">
+                    <div class="softwareName"><p class="swName">Agent Management Software</p></div>
+                </div>
+                <div class="open-active">
+                    <div class="open-list">
+                        <div class="mini-avatar"></div>
+                        <div class="userinfo">
+                            <p class="username">Admin 123</p>
+                            <p class="acc-title">Administrator</p>
+                        </div>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <ul class="sub-button">
+                        <li class="sub">
+                            <a href="#"><span class="name-span">
+                                <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
+                            </span></a>
+                        </li>
+                        <li class="sub">
+                            <a href="login.html"><span class="name-span">
+                                <span class="sub-title">Log Out</span> <i class="fa-solid fa-person-through-window"></i>
+                            </span></a>
+                        </li>
                     </ul>
                 </div>
-            </div>
+            </header>
+            <main class="main">
+                <div class="agentInfo">
+                    <div class="container">
+                        <div class="row title">
+                            <div class="col-12">
+                                <h1>Agent Infomation</h1>
+                            </div>
+                        </div>
+                        <form action="#" class="row">
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="agentName">Agent Name</label><br>
+                                <input type="text" id="agentName" name="agent_name" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="type">Type</label><br>
+                                <select name="type" id="type" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="receptionDate">Reception date</label><br>
+                                <input type="date" id="receptionDate" name="reception_date" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="phoneNumber">Phone number</label><br>
+                                <input type="text" id="phoneNumber" name="phone_number" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="address">Address</label><br>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="district">District</label><br>
+                                <input type="text" id="district" name="district" required>
+                            </div>
+                            <div class=" col-xl-4 col-md-6 col-12 info">
+                                <label for="email">Email</label><br>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="col-xl-8 col-md-6"></div><div class="col-xl-8 col-md-6"></div>
+                            <div class="col-xl-4 col-md-12 col-12 button">
+                                <button class="addButton">Add agent <i class="fa-solid fa-plus"></i></button>                        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="agent-list">
+                    <div class="inner-head">
+                        <div class="inner-title">
+                            Recently added agent list
+                        </div>
+                    </div>
+                    <table class="table-agent">
+                        <thead class="table-head">
+                            <tr>
+                                <th>Serial</th>
+                                <th>Agent Name</th>
+                                <th>type</th>
+                                <th>Address</th>
+                                <th>District</th>
+                                <th>Reception Date</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th class="fix"></th>
+                                <th class="delete"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <th>Elite Mart</th>
+                                <th>2</th>
+                                <th>15 Nguyễn Huệ, P.Bến Nghé</th>
+                                <th>1</th>
+                                <th>28/10/2024</th>
+                                <th>0901232565</th>
+                                <th>elitemart@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <th>Golden Deals</th>
+                                <th>2</th>
+                                <th>33 Dương Bá Trạc, P.1</th>
+                                <th>1</th>
+                                <th>25/10/2024</th>
+                                <th>0901234460</th>
+                                <th>goldendeals@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <th>Great Mall</th>
+                                <th>1</th>
+                                <th>7 Phan Văn Trị, P.11</th>
+                                <th>Bình Tân</th>
+                                <th>07/10/2024</th>
+                                <th>0901437762</th>
+                                <th>greatmall@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>4</th>
+                                <th>MegaMart Agents</th>
+                                <th>2</th>
+                                <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
+                                <th>Tân Bình</th>
+                                <th>20/10/2024</th>
+                                <th>0905234564</th>
+                                <th>megamart@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>5</th>
+                                <th>TradeMasters</th>
+                                <th>1</th>
+                                <th>30 Đặng Thuỳ Trâm</th>
+                                <th>Bình Thạnh</th>
+                                <th>03/11/2024</th>
+                                <th>0901534562</th>
+                                <th>trademaster@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>6</th>
+                                <th>SmartChoice</th>
+                                <th>1</th>
+                                <th>10 Lý Tự Trọng, P.12</th>
+                                <th>Phú Nhuận</th>
+                                <th>12/10/2024</th>
+                                <th>0909234569</th>
+                                <th>smartchoice@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>7</th>
+                                <th>Elite Mart</th>
+                                <th>2</th>
+                                <th>15 Nguyễn Huệ, P.Bến Nghé</th>
+                                <th>1</th>
+                                <th>28/10/2024</th>
+                                <th>0901232565</th>
+                                <th>elitemart@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>8</th>
+                                <th>Golden Deals</th>
+                                <th>2</th>
+                                <th>33 Dương Bá Trạc, P.1</th>
+                                <th>1</th>
+                                <th>25/10/2024</th>
+                                <th>0901234460</th>
+                                <th>goldendeals@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>9</th>
+                                <th>Great Mall</th>
+                                <th>1</th>
+                                <th>7 Phan Văn Trị, P.11</th>
+                                <th>Bình Tân</th>
+                                <th>07/10/2024</th>
+                                <th>0901437762</th>
+                                <th>greatmall@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>10</th>
+                                <th>MegaMart Agents</th>
+                                <th>2</th>
+                                <th>100 Võ Văn Kiệt, P.Cầu Kho</th>
+                                <th>Tân Bình</th>
+                                <th>20/10/2024</th>
+                                <th>0905234564</th>
+                                <th>megamart@gmail.com</th>
+                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-pagination">
+                        <div class="container pag">
+                            <ul class="pagination">
+                              <li class="icon">
+                                <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
+                              </li>
+                              <li><a href="#">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#">6</a></li>
+                              <li><a href="#">7</a></li>
+                              <li><a href="#">8</a></li>
+                              <li><a href="#">9</a></li>
+                              <li><a href="#">10</a></li>
+                              <li class="icon">
+                                <a href="#">Next<span class="fas fa-angle-right"></span></a>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
-    </main>
+    </div>
     
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>
+
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
