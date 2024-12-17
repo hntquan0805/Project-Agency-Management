@@ -37,14 +37,13 @@ li {
 #sidebar {
     width: 70px;
     min-width: 70px;
-    /* height: 100vh; */
-    height: 100vh;
+    height: 100vh; /* Set 100vh để thanh sidebar hiện full chiều cao màn hình */
     z-index: 1000;
     transition: all .25s ease-in-out;
     background-color:#F57D31;
     display: flex;
     flex-direction: column;
-    /* position: sticky; */
+
     position: fixed;
     top: 0;
     left: 0;
@@ -53,7 +52,7 @@ li {
 
 #sidebar.expand {
     width: 260px;
-    min-width: 260px;   /* Sidebar khi mở ra không đổi size dù có thu nhỏ web */
+    /* min-width: 260px; */
 }
 
 .d-flex{
@@ -366,173 +365,146 @@ header .open-active .sub-button .sub:hover{
 /* End Header */
 
 /* MAIN */
-/* Welcome Header */
-.welcome-header {
-    margin: 0 3rem 3rem 3rem;
-    color: #F57D31;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: bold;
-    text-align: center;
-    line-height: 4rem;
-}
-/* End Welcome Header */
 
-/* Statistics Box */
-.box {
+/* Khoảng cách. giữa các section */
+.section1, .section2{
+    margin-bottom: 3rem; /* Khoảng cách giữa các section trong container */
+}
+
+.section3{
+    margin-bottom: 0px;
+}
+
+.section4{
+    padding: 0px;
+}
+
+/* SECTION 1 + SECTION 2 - FORM */
+
+/* Phần header của form */
+.section1-title-row, .section2-title-row{
     background-color: #F57D31;
-    color: white;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    min-height: clamp(10rem, 20vw, 15rem);
-    border: #B8B8B8 solid 0.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: clamp(1rem, 2vw, 1.5rem);
-}
-
-.box-icon {
-    font-size: clamp(3.5rem, 5vw, 7rem);
-    color: #FFFFFF;
-    margin-right: 5%;
-}
-
-.box-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 1;
-}
-
-.box-title {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    color: #FFFFFF;
-}
-
-.box-num {
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    border: #B8B8B8 solid 2px;
+    color: #FFF;
+    font-size: 1.7rem;
     font-weight: bold;
-    color: #FFFFFF;
-}
-
-.box-desc {
-    font-size: clamp(1rem, 2vw, 1.8rem);
-    color: #FFEB3B;
-}
-
-/* End Statistics Box */
-
-/* Notification */
-.notification {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    padding: 0.5rem 1.5rem;
-    background-color: #FFFFFF;
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between;
-    align-items: center; 
-    border-radius: 5px;
-    border: #B8B8B8 solid 1px;
-    border-left: #4B9941 solid 8px;
-}
-
-.noti-content {
-    color: #000;
-    max-width: 75%; /* Giới hạn chiều rộng phần nội dung */
-}
-
-.main-content {
-    font-size: clamp(1.3rem, 2vw, 1.5rem);
-    font-weight: bold;
-}
-
-.sub-content {
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-    font-weight: normal;
-}
-
-.date {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-    font-weight: bold;
-}
-
-/* End Notification */
-
-/* Common Tool Boxs */
-.common-tools{
-    background-color: #FFFFFF;
-    border-radius: 5px;   
-    border: #B8B8B8 solid 1px;
-    padding: 2rem 3rem 3rem 3rem;
-}
-
-.tools-header{
-    background-color: #FFFFFF;
-    color: #3072B5;
-    border-bottom: #3072B5 solid 2px; 
-    font-weight: bold; 
-    text-align: center;
-    font-size: 2rem;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-}
-
-/* Ô chứa tên tính năng thường dùng*/
-.feature-header {
-    background-color: #F57D31;
-    text-align: center;
-    border: #B8B8B8 solid;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    min-height: 110px;
-    min-width: 200px; 
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 5px 20px;
     text-align: center;
 }
 
-.feature-title{
-    background-color: #F57D31;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    margin: 0;
-}
-
-.feature-title i{
-    background-color: #F57D31;
-    font-size: 2.3rem;
-    margin: 0;
-    margin-left: 0.8rem;
-}
-
-/* Ô chứa mô tả của các tính năng thường dùng*/
-.feature-desc {
-    background-color: #FFFFFF;
-    padding: 10px;
-    margin-top: 0px;
-
-    border: #B8B8B8 solid;
+/* Phần body của form */
+.section1-form-row, .section2-form-row{
+    background-color: #FFF;
+    border-left:#B8B8B8 solid 2px;
+    border-right:#B8B8B8 solid 2px;
+    border-bottom:#B8B8B8 solid 2px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    min-height: 110px;
-    min-width: 200px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-} 
-
-.desc{
-    color: black;
-    font-size: 18px;
-    font-weight: 500px;
-    margin: 0;
+    padding: 1.5rem;
 }
 
-/* End Common Tool Boxs */
+.form-label{
+    font-size: 1.2rem;
+}
+
+.form-control, .form-select{
+    font-size: 1.4rem;
+    border:#B8B8B8 solid 1px;
+}
+
+.update-button{
+    text-align: right;
+    margin-top: 10px; /* Khoảng cách giữa button và các row nội dung form */
+    padding: auto; /* Padding auto box bao quanh update button để bên trong nội dung có thể chỉnh lớn nhỏ được */
+}
+
+.update-button-title{
+    padding: 3px 20px;
+    background-color: #F57D31;
+    border:#B8B8B8 solid 1px;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 1.4rem;
+    font-weight: bold;
+
+}
+
+.update-icon{
+    margin-left: 3px;
+    font-size: 1.4rem;
+    text-shadow: 0 0 1px #FFF;
+}
+
+/* END SECTION 1 + SECTION 2 - FORM */
+
+
+/* SECTION 3 - TABLE */
+.section3-title{
+    background-color: #F57D31;
+    border: #B8B8B8 solid 2px;
+    border-bottom: 0px;
+    color: #FFF;
+    font-size: 1.7rem;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 20px 0px 20px;
+    text-align: center;
+}
+
+.choose-agent-row{
+    background-color: #F57D31;
+    color:#FFF;
+    border-left:#B8B8B8 solid 2px;
+    border-right:#B8B8B8 solid 2px;
+    padding: 0px 3px;
+}
+
+.choose-agent-title{
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: right;
+    background-color: #F57D31;
+}
+
+.choose-agent-select{
+    background-color: #F57D31;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+} 
+
+.form-select-type{
+    width: 75%;
+    margin-left: 7.5px;
+    height: fit-content;
+    font-size: 1.2rem;
+}
+                
+.custom-table{
+    border:#B8B8B8 solid 2px;
+}
+
+.custom-table thead th {
+    background-color: #F57D31;
+    color: #FFF;
+    font-size: 1.5rem;
+}
+
+.custom-table tbody td{
+    font-size: 1.4rem;
+}
+
+.custom-table tbody .edit-button{
+    border: 0px;
+    background-color: transparent;
+    color: #F57D31;
+    font-size: large;
+}
+
+/* END SECTION 3 - TABLE*/
+
+/* END MAIN */
+
