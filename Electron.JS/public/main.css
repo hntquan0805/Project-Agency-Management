@@ -22,7 +22,6 @@ li {
 }
 
 .wrapper {
-    width: 100%;
     display: flex;
 }
 
@@ -32,18 +31,20 @@ li {
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     background-color: #F5F5F5;
+    padding: 30px;
 }
 
 #sidebar {
     width: 70px;
     min-width: 70px;
-    /* min-height: 100vh; */
-    height: 100%;
+    /* height: 100vh; */
+    height: 100vh;
     z-index: 1000;
     transition: all .25s ease-in-out;
     background-color:#F57D31;
     display: flex;
     flex-direction: column;
+    /* position: sticky; */
     position: fixed;
     top: 0;
     left: 0;
@@ -189,11 +190,18 @@ a.sidebar-link:hover {
 
 /* CHILDWRAPPER CHỨA HEADER VÀ MAIN*/
 .child-wrapper {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-left: 68.2px;
+    width: 100%;
+
+    margin-left: 70px;
+    transition: margin-left 0.25s ease-in-out;
 }
+
+/* Đẩy nội dung sang phải tương ứng với độ rộng sidebar khi sidebar mở */
+#sidebar.expand ~ .child-wrapper {
+    margin-left: 260px; 
+} 
 
 /* Header */
 header{
@@ -323,7 +331,7 @@ header .open-active .sub-button .sub:hover{
 
 .sub-button{
     position: absolute;
-    top: 49px;
+    top: 48px;
     right: 0;
     height: fit-content;
     align-items: center;
@@ -343,12 +351,12 @@ header .open-active .sub-button .sub:hover{
 }
 
 .sub-button i{
+    font-size: 16px;
     color: black;
     padding-top: 5px;
     position: absolute;
     top: 7px;
     right: 20px; 
-    font-size: 17px;
 }
 
 .sub-title{
@@ -358,7 +366,7 @@ header .open-active .sub-button .sub:hover{
 }
 /* End Header */
 
-/* Main */
+/* Main
 .main {
     min-height: 100vh;
     min-width: 100%;
@@ -367,4 +375,4 @@ header .open-active .sub-button .sub:hover{
     transition: all 0.35s ease-in-out;
     background-color: #F5F5F5;
     padding: 30px;
-}
+} */

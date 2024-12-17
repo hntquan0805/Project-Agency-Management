@@ -28,7 +28,9 @@ button{
     margin-bottom: 30px;
     overflow: auto;
 }
-
+.agentInfo form{
+    padding-top: 10px;
+}
 .agentInfo form div[class|="col"]{
     height: 50px;
 }

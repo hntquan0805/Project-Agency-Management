@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Infomation - Agent Management System</title>
+    <title>Personal Information - Agent Management System</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
     integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
@@ -140,7 +140,7 @@
                 </div>
             </header>
 
-            <main class="main">
+            <main class="main">              
                 <div class="section-1">
                     <div class="container">
                         <div class="row cover-photo">
@@ -179,16 +179,119 @@
                                         </button>
                                     </div>
                                     <div class="bell">
-                                        <button class="change-pass-button">Change Password</button>
+                                        <button class="change-pass-button open-modal">Change Password</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>                                  
                 </div>
+
+                <div class="modal-content hidden-modal">
+                    <div class="container">
+                        <div class="row modal-header">
+                            <div class="col-11"></div>
+                            <div class="col-1">
+                                <button class="close-modal">&times;</button>
+                            </div>
+                        </div>
+                
+                        <div class="row modal-body">
+                            <form action="#" method="post">
+                                <div class="col-4">
+                                    <label for="pass">Enter your password:</label><br>
+                                    <input type="password" id="pass" name="pass" required>
+                                </div>
+                                <div class="col-1 button">
+                                    <button class="addButton">CONFIRM</i></button>   
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> 
+            
+                <div class="blur-bg hidden-blur"></div>
+
+                <div class="section-2">
+                    <div class="personal-info">
+                        <div class="container">
+                            <div class="row title">
+                                <div class="col-12">
+                                    <h2>Personal Information</h2>
+                                </div>
+                            </div>
+                            <form action="#" class="row">
+                                <div class="col-xl-4 col-md-6 col-12 info">
+                                    <label for="fullName">Full Name</label><br>
+                                    <input type="text" id="fullName" name="full_name" required>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info">
+                                    <label for="gender">Gender</label><br>
+                                    <select name="gender" id="gender" required>
+                                        <option value="unknown">Unknown</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info def">
+                                    <label for="createDate">Account Creation date</label><br>
+                                    <input type="date" id="creationDate" name="creation_date" readonly>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info def">
+                                    <label for="id">ID Account</label><br>
+                                    <input type="text" id="id" name="id" readonly>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info">
+                                    <label for="address">Address</label><br>
+                                    <input type="text" id="address" name="address" required>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info">
+                                    <label for="phoneNumber">Phone number</label><br>
+                                    <input type="text" id="phoneNumber" name="phone_number" maxlength="10" required>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info">
+                                    <label for="email">Email</label><br>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="col-xl-4 col-md-6 col-12 info def">
+                                    <label for="Position">Position</label><br>
+                                    <input type="text" id="position" name="position" readonly>
+                                </div>
+                                <div class=" col-xl-4 col-md-6 col-12 info">
+                                    <label for="birth">Date of Birth</label><br>
+                                    <input type="date" id="birth" name="birth">
+                                </div>
+                                <div class=" col-xl-4 col-md-6 col-12 info">
+                                    <label for="citizen-id">Citizen Identification</label><br>
+                                    <input type="text" id="citizen-id" name="citizen-id" maxlength="12">
+                                </div>
+                                <div class="col-xl-8 col-md-8 col-0"></div><div class="col-xl-8 col-md-6 col-0"></div>
+                                <div class="col-xl-4 col-md-12 col-12 button">
+                                    <button class="addButton">Update <i class="fa-solid fa-plus"></i></button>                        
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-3">
+                    <div class="log-out">
+                        <button type="button" onclick="log_out()">
+                            <span class="log-out-title">Log Out </span> 
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            <!-- <i class="fa-solid fa-person-running"></i> -->
+                        </button>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
+
+    <script>
+        function log_out(){
+            location.assign("./login.html");
+        }
+    </script>
     
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
@@ -197,6 +300,7 @@
         });
     </script>
 
+    <script src="../public/personalInfo.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
