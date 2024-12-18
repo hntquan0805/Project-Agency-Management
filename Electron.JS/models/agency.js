@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
       })
       this.hasMany(models.PaymentReceipt, {
-        foreignKey: 'agencyCode',
+        foreignKey: 'agentCode',
         sourceKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
@@ -47,7 +47,8 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     type: DataTypes.INTEGER,
     onboardDate: DataTypes.DATE,
-    district: DataTypes.STRING
+    district: DataTypes.STRING,
+    address: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Agency',

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE',
       })
       this.belongsTo(models.Agency, {
-        foreignKey: 'agencyCode',
+        foreignKey: 'agentCode',
         targetKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     paymentDate: DataTypes.DATE,
     amount: DataTypes.DOUBLE,
-    agencyCode: DataTypes.STRING,
+    agentCode: DataTypes.STRING,
     createdBy: DataTypes.STRING
   }, {
     sequelize,

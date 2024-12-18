@@ -14,7 +14,7 @@ module.exports = {
       amount: {
         type: Sequelize.DOUBLE
       },
-      agencyCode: {
+      agentCode: {
         type: Sequelize.STRING,
         references: {
           model: 'Agency',
