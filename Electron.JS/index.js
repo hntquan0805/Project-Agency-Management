@@ -1,13 +1,15 @@
-const { app, BrowserWindow} = require('electron');
+const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { signUpUser } = require('./controllers/userController');
 const path = require('path');
 
 let mainWindow;
 
 app.on('ready', () => {
+    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: width,
+        height: height,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
@@ -16,7 +18,7 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/signup.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/dashBoard.html'));
 });
 
 ipcMain.handle('sign-up', async (event, { username, password }) => {
