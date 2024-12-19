@@ -19,8 +19,8 @@ const RevenueReport = sequelize.define('RevenueReport', {
 
 RevenueReport.associate = function(models) {
   this.belongsTo(models.Agency, {
-    foreignKey: 'agentCode',
-    targetKey: 'agentCode',
+    foreignKey: 'agencyCode',
+    targetKey: 'agencyCode',
     onUpdate: 'CASCADE',
   });
 };

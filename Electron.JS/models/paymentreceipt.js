@@ -23,8 +23,8 @@ PaymentReceipt.associate = function(models) {
     onUpdate: 'CASCADE',
   });
   this.belongsTo(models.Agency, {
-    foreignKey: 'agentCode',
-    targetKey: 'agentCode',
+    foreignKey: 'agencyCode',
+    targetKey: 'agencyCode',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
   });
