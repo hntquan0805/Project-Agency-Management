@@ -11,30 +11,30 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.DeliveryNote, {
+      Agency.hasMany(models.DeliveryNote, {
         foreignKey: 'agentCode',
         sourceKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       })
-      this.hasMany(models.RevenueReport, {
+      Agency.hasMany(models.RevenueReport, {
         foreignKey: 'agentCode',
         sourceKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       })
-      this.hasMany(models.DebtHistory, {
+      Agency.hasMany(models.DebtHistory, {
         foreignKey: 'agentCode',
         sourceKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       })
-      this.hasMany(models.PaymentReceipt, {
+      Agency.hasMany(models.PaymentReceipt, {
         foreignKey: 'agentCode',
         sourceKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      });
+      })
     }
   }
   Agency.init({

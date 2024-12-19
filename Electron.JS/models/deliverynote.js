@@ -11,19 +11,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Agency, {
+      DeliveryNote.belongsTo(models.Agency, {
         foreignKey: 'agentCode',
         targetKey: 'agentCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       })
-      this.belongsTo(models.Account, {
+      DeliveryNote.belongsTo(models.Account, {
         foreignKey: 'createdBy',
         targetKey: 'personnelCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
       })
-      this.hasMany(models.DeliveryNoteDetail, {
+      DeliveryNote.hasMany(models.DeliveryNoteDetail, {
         foreignKey: 'deliveryNoteCode',
         sourceKey: 'deliveryNoteCode',
         onDelete: 'SET NULL',

@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { signUpUser } = require('./controllers/userController');
+const { searchAgencies } = require('./controllers/searchAgencyController');
 const path = require('path');
 
 let mainWindow;
@@ -14,11 +15,15 @@ app.on('ready', () => {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             enableRemoteModule: false,
-            nodeIntegration: false,
+            nodeIntegration: true,
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/dashBoard.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/signup.html'));
+});
+
+ipcMain.handle('search', async (event, criteria) => {
+    return await searchAgencies(criteria);
 });
 
 ipcMain.handle('sign-up', async (event, { username, password }) => {
