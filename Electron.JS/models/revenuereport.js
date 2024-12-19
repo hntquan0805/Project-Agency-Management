@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Agency, {
-        foreignKey: 'agentCode',
-        targetKey: 'agentCode',
-        onUpdate: 'CASCADE',
-      })
+      // this.belongsTo(models.Agency, {
+      //   foreignKey: 'agencyCode',
+      //   targetKey: 'agencyCode',
+      //   onUpdate: 'CASCADE',
+      // })
     }
   }
   RevenueReport.init({
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    agentCode: {
+    agencyCode: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'RevenueReport',
     freezeTableName: true,
+    tableName: 'RevenueReport',
   });
   return RevenueReport;
 };

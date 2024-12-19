@@ -9,18 +9,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Account, {
-        foreignKey: 'createdBy',
-        targetKey: 'personnelCode',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      })
-      this.belongsTo(models.Agency, {
-        foreignKey: 'agentCode',
-        targetKey: 'agentCode',
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      })
+      // this.belongsTo(models.Account, {
+      //   foreignKey: 'createdBy',
+      //   targetKey: 'personnelCode',
+      //   onDelete: 'SET NULL',
+      //   onUpdate: 'CASCADE',
+      // })
+      // this.belongsTo(models.Agency, {
+      //   foreignKey: 'agencyCode',
+      //   targetKey: 'agencyCode',
+      //   onDelete: 'SET NULL',
+      //   onUpdate: 'CASCADE',
+      // })
     }
   }
   PaymentReceipt.init({
@@ -31,12 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     paymentDate: DataTypes.DATE,
     amount: DataTypes.DOUBLE,
-    agentCode: DataTypes.STRING,
+    agencyCode: DataTypes.STRING,
     createdBy: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'PaymentReceipt',
     freezeTableName: true,
+    tableName: 'PaymentReceipt',
   });
   return PaymentReceipt;
 };

@@ -3,12 +3,12 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('DebtHistory', {
-      agentCode: {
+      agencyCode: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: 'Agency',
-          key: 'agentCode',
+          key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
       },
@@ -36,7 +36,7 @@ module.exports = {
     });
 
     await queryInterface.addConstraint('DebtHistory', {
-      fields: ['agentCode', 'date'],
+      fields: ['agencyCode', 'date'],
       type: 'primary key',
       name: 'pk_DebtHistory'
     });

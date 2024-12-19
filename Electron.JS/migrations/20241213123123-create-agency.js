@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Agency', {
-      agentCode: {
+      agencyCode: {
         type: Sequelize.STRING,
         primaryKey: true,
         unique: true,
