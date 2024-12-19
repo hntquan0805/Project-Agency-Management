@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { signUpUser } = require('./controllers/userController');
 const { addAgency } = require('./controllers/agencyController');
 const { connect } = require('./config/database');
+const { searchAgencies } = require('./controllers/searchAgencyController');
 const path = require('path');
 
 connect();
@@ -18,11 +19,15 @@ app.on('ready', () => {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             enableRemoteModule: false,
-            nodeIntegration: false,
+            nodeIntegration: true,
         },
     });
 
     mainWindow.loadFile(path.join(__dirname, 'views/signup.html'));
+});
+
+ipcMain.handle('search', async (event, criteria) => {
+    return await searchAgencies(criteria);
 });
 
 ipcMain.handle('add-agency', async (event, agencyData) => {

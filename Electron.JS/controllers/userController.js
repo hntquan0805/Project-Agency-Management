@@ -18,7 +18,7 @@ async function signUpUser(username, password) {
         const newUser = await db.User.create({ 
             username, 
             password: hashedPassword, 
-            salt 
+            salt        
         });
         return { success: true, user: newUser };
     // } catch (error) {
