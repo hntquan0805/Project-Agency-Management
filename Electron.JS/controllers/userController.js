@@ -13,7 +13,7 @@ async function hashPassword(password) {
 }
 
 async function signUpUser(username, password) {
-    // try {
+    try {
         const { hashedPassword, salt } = await hashPassword(password);
         const newUser = await db.User.create({ 
             username, 
@@ -21,9 +21,9 @@ async function signUpUser(username, password) {
             salt        
         });
         return { success: true, user: newUser };
-    // } catch (error) {
-    //     return { success: false, message: error.message };
-    // }
+    } catch (error) {
+        return { success: false, message: error.message };
+    }
 }
 
 module.exports = { signUpUser };
