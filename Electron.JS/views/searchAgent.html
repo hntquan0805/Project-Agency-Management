@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../public/css/style/searchAgent.css"> 
 </head>
 <body>
-    <!-- <div class="wrapper">
+    <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button"> 
@@ -148,7 +148,7 @@
                                 <h1 class="inner-title">Search Agent</h1>
                             </div>
                         </div>
-                        <form class="inner-main">
+                        <form id="search-form" class="inner-main">
                             <div class="row">
                                 <div class="col-12 inner-desc">
                                     <p class="desc">Enter at least 1 information to search</p>
@@ -169,7 +169,7 @@
                                     <input type="text" id="district" name="district">
                                 </div>
                                 <div class=" col-xl-2 col-12">
-                                    <button class="search-button">
+                                    <button type="submit" class="search-button">
                                         <div class="content-button">
                                             <h3>Search</h3>
                                             <i class="fa-solid fa-map-pin" ></i>
@@ -204,28 +204,7 @@
                     </table>
             </main>
         </div>
-    </div> -->
-
-    <h1>Product Search</h1>
-    <form id="search-form">
-        <input type="text" id="agentName" placeholder="Name">
-        <select id="type">
-            <option value="1">1</option>
-            <option value="2">2</option>
-        </select>
-        <input type="text" id="district" placeholder="District">
-        <button type="submit">Search</button>
-    </form>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>District</th>
-        </tr>
-        </thead>
-        <tbody id="results"></tbody>
-    </table>
+    </div>
 
     <script src = "../renderers/searchAgencyRenderer.js"></script>
 </body>

@@ -23,20 +23,24 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/signup.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/searchAgent.html'));
 });
 
 ipcMain.handle('search', async (event, criteria) => {
-    return await searchAgencies(criteria);
+    try {
+        return await searchAgencies(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
 });
 
 ipcMain.handle('add-agency', async (event, agencyData) => {
     try {
-        const result = await addAgency({ body: agencyData });
-        return result;
+        return await addAgency({ body: agencyData });
     } catch (error) {
         console.error(error);
-        return { success: false, message: 'Lỗi xử lý từ backend.' };
+        return { success: false, message: 'Error adding data!' };
     }
 });
 

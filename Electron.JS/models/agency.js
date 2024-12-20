@@ -59,4 +59,4 @@ Agency.associate = (models) => {
     });
 };
 
-module.exports = { Agency };
+module.exports =  { Agency };

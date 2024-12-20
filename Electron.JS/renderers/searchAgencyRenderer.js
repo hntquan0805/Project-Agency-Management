@@ -9,16 +9,18 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
   if (type) filters.type = type;
   if (district) filters.district = district;
 
-  const results = await window.api.searchAgencies({ name, filters });
-
+  const results = await window.api.searchAgencies({name, filters});
+  console.log('Results:', results);
+  
   const resultsTable = document.getElementById('results');
   resultsTable.innerHTML = '';
   results.forEach(agency => {
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${agency.name}</td>
-      <td>${agency.description}</td>
-      <td>$${agency.price}</td>
+      <th>${agency.dataValues.agencyCode}</th>
+      <th>${agency.dataValues.name}</th>
+      <th>${agency.dataValues.type}</th>
+      <th>${agency.dataValues.district}</th>
     `;
     resultsTable.appendChild(row);
   });
