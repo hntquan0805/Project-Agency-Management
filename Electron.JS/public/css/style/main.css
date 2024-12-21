@@ -11,6 +11,10 @@ html
     padding: 0;
 }
 
+.main{
+    padding: 0;
+}
+
 /* SIDEBAR */
 
 a {
@@ -243,8 +247,9 @@ header{
     background-color: #FFE9D6;
     background-clip: text;
     color: transparent;
-    font-size: 15px;
-    font-weight: 500;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .open-list{
@@ -279,8 +284,10 @@ header{
 }
 
 .username{
-    font-size: 15px;
+    font-family: Roboto;
+    font-size: 14px;
     font-weight: 500;
+    color: black;
     margin-top: 3px;
     margin-bottom: 0;
     padding: 1px;
