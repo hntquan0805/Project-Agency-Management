@@ -4,7 +4,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Agency', [
       {
-        agentCode: 'AG001',
+        agencyCode: 'AG001',
         name: 'Prime Market',
         phone: '0987654321',
         email: 'primemarket@gmail.com',
@@ -16,7 +16,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        agentCode: 'AG002',
+        agencyCode: 'AG002',
         name: 'TradeMasters',
         phone: '0912345678',
         email: 'trademasters@gmail.com',
@@ -28,7 +28,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        agentCode: 'AG003',
+        agencyCode: 'AG003',
         name: 'Elite Mart',
         phone: '0987651234',
         email: 'elitemart@gmail.com',
@@ -40,7 +40,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        agentCode: 'AG004',
+        agencyCode: 'AG004',
         name: 'ValueLine',
         phone: '0987753159',
         email: 'valueline@gmail.com',
@@ -52,7 +52,7 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        agentCode: 'AG005',
+        agencyCode: 'AG005',
         name: 'Golden Deals',
         phone: '0987896541',
         email: 'goldendeals@gmail.com',

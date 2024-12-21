@@ -9,11 +9,11 @@ module.exports = {
         unique: true,
         primaryKey: true,
       },
-      agentCode: {
+      agencyCode: {
         type: Sequelize.STRING,
         references: {
           model: 'Agency',
-          key: 'agentCode',
+          key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',

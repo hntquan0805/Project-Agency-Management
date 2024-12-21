@@ -7,12 +7,12 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      agentCode: {
+      agencyCode: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
           model: 'Agency',
-          key: 'agentCode',
+          key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
       },
@@ -36,7 +36,7 @@ module.exports = {
     });
 
     await queryInterface.addConstraint('RevenueReport', {
-      fields: ['date', 'agentCode'],
+      fields: ['date', 'agencyCode'],
       type: 'primary key',
       name: 'pk_RevenueReport'
     });

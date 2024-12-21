@@ -254,6 +254,9 @@ input, select, .addButton{
     margin-left: auto;
     margin-right: auto;
 }
+.personal-info .info input{
+    color: black;
+}
 
 .personal-info form div:last-child{
     height: fit-content;

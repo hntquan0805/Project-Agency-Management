@@ -223,7 +223,7 @@
                             <form action="#" class="row">
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="fullName">Full Name</label><br>
-                                    <input type="text" id="fullName" name="full_name" required>
+                                    <input type="text" id="fullName" name="full_name" value="Admin 123" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="gender">Gender</label><br>
@@ -235,27 +235,27 @@
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info def">
                                     <label for="createDate">Account Creation date</label><br>
-                                    <input type="date" id="createDate" name="creation_date" readonly>
+                                    <input type="text" id="createDate" name="creation_date" placeholder="21/12/2022" readonly>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info def">
                                     <label for="id">ID Account</label><br>
-                                    <input type="text" id="id" name="id" readonly>
+                                    <input type="text" id="id" name="id" placeholder="1234567" readonly>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="address">Address</label><br>
-                                    <input type="text" id="address" name="address" required>
+                                    <input type="text" id="address" name="address" value="123 Tôn Thất Tùng" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="phoneNumber">Phone number</label><br>
-                                    <input type="text" id="phoneNumber" name="phone_number" maxlength="10" required>
+                                    <input type="text" id="phoneNumber" name="phone_number" value="0123456789" minlength="10" maxlength="10" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="email">Email</label><br>
-                                    <input type="email" id="email" name="email" required>
+                                    <input type="email" id="email" name="email" value="ahihi@gmail.com" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info def">
                                     <label for="position">Position</label><br>
-                                    <input type="text" id="position" name="position" readonly>
+                                    <input type="text" id="position" name="position" placeholder="Administrator" readonly>
                                 </div>
                                 <div class=" col-xl-4 col-md-6 col-12 info">
                                     <label for="birth">Date of Birth</label><br>
@@ -263,7 +263,7 @@
                                 </div>
                                 <div class=" col-xl-4 col-md-6 col-12 info">
                                     <label for="citizen-id">Citizen Identification</label><br>
-                                    <input type="text" id="citizen-id" name="citizen-id" maxlength="12">
+                                    <input type="text" id="citizen-id" name="citizen-id" value="012345667899" minlength="12" maxlength="12" required>
                                 </div>
                                 <div class="col-xl-6 col-0"></div>
                                 <div class="col-xl-8 col-md-8 col-0"></div><div class="col-xl-8 col-md-6 col-0"></div>
@@ -302,6 +302,6 @@
     </script>
 
     <script src="../public/js/personalInfo.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

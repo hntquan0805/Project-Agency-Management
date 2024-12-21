@@ -148,7 +148,7 @@
                                 <h1 class="inner-title">Search Agent</h1>
                             </div>
                         </div>
-                        <form action="#" class="inner-main">
+                        <form id="search-form" class="inner-main">
                             <div class="row">
                                 <div class="col-12 inner-desc">
                                     <p class="desc">Enter at least 1 information to search</p>
@@ -169,7 +169,7 @@
                                     <input type="text" id="district" name="district">
                                 </div>
                                 <div class=" col-xl-2 col-12">
-                                    <button class="search-button">
+                                    <button type="submit" class="search-button">
                                         <div class="content-button">
                                             <h3>Search</h3>
                                             <i class="fa-solid fa-map-pin" ></i>
@@ -199,153 +199,14 @@
                                 <th class="delete"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th>1</th>
-                                <th>Elite Mart</th>
-                                <th>2</th>
-                                <th>1</th>
-                                <th>100.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <th>Golden Deals</th>
-                                <th>2</th>
-                                <th>1</th>
-                                <th>25.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>4</th>
-                                <th>Great Mall</th>
-                                <th>1</th>
-                                <th>Bình Tân</th>
-                                <th>38.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>17</th>
-                                <th>MegaMart Agents</th>
-                                <th>2</th>
-                                <th>Tân Bình</th>
-                                <th>23.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>25</th>
-                                <th>TradeMasters</th>
-                                <th>1</th>
-                                <th>Bình Thạnh</th>
-                                <th>54.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>26</th>
-                                <th>SmartChoice</th>
-                                <th>1</th>
-                                <th>Phú Nhuận</th>
-                                <th>1.163.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>1</th>
-                                <th>Elite Mart</th>
-                                <th>2</th>
-                                <th>1</th>
-                                <th>100.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>3</th>
-                                <th>Golden Deals</th>
-                                <th>2</th>
-                                <th>1</th>
-                                <th>25.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>4</th>
-                                <th>Great Mall</th>
-                                <th>1</th>
-                                <th>Bình Tân</th>
-                                <th>38.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>17</th>
-                                <th>MegaMart Agents</th>
-                                <th>2</th>
-                                <th>Tân Bình</th>
-                                <th>23.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>25</th>
-                                <th>TradeMasters</th>
-                                <th>1</th>
-                                <th>Bình Thạnh</th>
-                                <th>54.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
-                            <tr>
-                                <th>26</th>
-                                <th>SmartChoice</th>
-                                <th>1</th>
-                                <th>Phú Nhuận</th>
-                                <th>1.163.000.000 VND</th>
-                                <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
-                            </tr>
+                        <tbody id = "results">
                         </tbody>
                     </table>
             </main>
         </div>
     </div>
 
-    <div class="test">        
-            <!-- <div class="form-pagination">
-                <div class="container pag">
-                    <ul class="pagination">
-                      <li class="icon">
-                        <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
-                      </li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#">6</a></li>
-                      <li><a href="#">7</a></li>
-                      <li><a href="#">8</a></li>
-                      <li><a href="#">9</a></li>
-                      <li><a href="#">10</a></li>
-                      <li class="icon">
-                        <a href="#">Next<span class="fas fa-angle-right"></span></a>
-                      </li>
-                    </ul>
-                </div>
-            </div> -->
-    </div>
-
-    <script>
-        const hamBurger = document.querySelector(".toggle-btn");
-        hamBurger.addEventListener("click", function () {
-        document.querySelector("#sidebar").classList.toggle("expand");
-        });
-    </script>
-
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src = "../renderers/searchAgencyRenderer.js"></script>
+    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

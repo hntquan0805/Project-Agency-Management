@@ -1,48 +1,44 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class DeliveryNote extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      this.belongsTo(models.Agency, {
-        foreignKey: 'agentCode',
-        targetKey: 'agentCode',
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/database');
+
+const DeliveryNote = sequelize.define('DeliveryNote', {
+    deliveryNoteCode: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+    },
+    agencyCode: {
+        type: DataTypes.STRING,
+    },
+    deliveryDate: {
+        type: DataTypes.DATE,
+    },
+    createdBy: {
+        type: DataTypes.STRING,
+    }
+}, {
+    freezeTableName: true,
+    tableName: 'DeliveryNote',
+});
+
+DeliveryNote.associate = (models) => {
+    DeliveryNote.belongsTo(models.Agency, {
+        foreignKey: 'agencyCode',
+        targetKey: 'agencyCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      })
-      this.belongsTo(models.Account, {
+    });
+    DeliveryNote.belongsTo(models.Account, {
         foreignKey: 'createdBy',
         targetKey: 'personnelCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      })
-      this.hasMany(models.DeliveryNoteDetail, {
+    });
+    DeliveryNote.hasMany(models.DeliveryNoteDetail, {
         foreignKey: 'deliveryNoteCode',
         sourceKey: 'deliveryNoteCode',
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
-      })
-    }
-  }
-  DeliveryNote.init({
-    deliveryNoteCode: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-    },
-    agentCode: DataTypes.STRING,
-    deliveryDate: DataTypes.DATE,
-    createdBy: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'DeliveryNote',
-    freezeTableName: true,
-  });
-  return DeliveryNote;
+    });
 };
+
+module.exports = { DeliveryNote };

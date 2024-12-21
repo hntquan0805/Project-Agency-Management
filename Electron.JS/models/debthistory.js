@@ -1,39 +1,35 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class DebtHistory extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-      this.belongsTo(models.Agency, {
-        foreignKey: 'agentCode',
-        targetKey: 'agentCode',
-        onUpdate: 'CASCADE',
-      })
-    }
-  }
-  DebtHistory.init({
-    agentCode: {
-      type: DataTypes.STRING,
-      allowNull: false,
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/database');
+
+const DebtHistory = sequelize.define('DebtHistory', {
+    agencyCode: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
     date: {
-      type: DataTypes.DATE,
-      allowNull: false,
+        type: DataTypes.DATE,
+        allowNull: false,
     },
-    initialDebt: DataTypes.DOUBLE,
-    endDebt: DataTypes.DOUBLE,
-    incurredDebt: DataTypes.DOUBLE
-  }, {
-    sequelize,
-    modelName: 'DebtHistory',
+    initialDebt: {
+        type: DataTypes.DOUBLE,
+    },
+    endDebt: {
+        type: DataTypes.DOUBLE,
+    },
+    incurredDebt: {
+        type: DataTypes.DOUBLE,
+    }
+}, {
     freezeTableName: true,
-  });
-  return DebtHistory;
+    tableName: 'DebtHistory',
+});
+
+DebtHistory.associate = (models) => {
+    DebtHistory.belongsTo(models.Agency, {
+        foreignKey: 'agencyCode',
+        targetKey: 'agencyCode',
+        onUpdate: 'CASCADE',
+    });
 };
+
+module.exports = { DebtHistory };
