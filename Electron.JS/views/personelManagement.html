@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personel Management - Agencies Management System</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
+    integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../public/css/bootstrap/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../public/css/style/main.css">
+    <link rel="stylesheet" href="../public/css/style/personelManagement.css"> 
+</head>
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button"> 
+                    <i class="bi bi-grid"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="#">Menu</a>
+                </div>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>DashBoard</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgent" 
+                    aria-expanded="false" aria-controls="manageAgent">
+                        <i class="bi bi-building"></i>
+                        <span>Manage Agent</span>
+                    </a>
+
+                    <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Add Agent</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Serch Agent</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#paperWork" 
+                    aria-expanded="false" aria-controls="paperWork">
+                        <i class="bi bi-file-earmark-text"></i>
+                        <span>Paper Work</span>
+                    </a>
+
+                    <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Delivery Note</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Goods Received Note</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Monthly Report</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAccount" 
+                    aria-expanded="false" aria-controls="manageAccount">
+                        <i class="bi bi-person-vcard"></i>
+                        <span>Manage Account</span>
+                    </a>
+
+                    <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personal Infomation</a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Personel Management</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Setting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <div class="detail-footer">
+                    <div class="text-footer">Agent Management Software</div>
+                    <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="child-wrapper">
+            <header>
+                <div class="logo">
+                    <img src="../public/images/logo.png" alt="logo" class="miniLogo">
+                    <div class="softwareName"><p class="swName">Agent Management Software</p></div>
+                </div>
+                <div class="open-active">
+                    <div class="open-list">
+                        <div class="mini-avatar"></div>
+                        <div class="userinfo">
+                            <p class="username">Admin 123</p>
+                            <p class="acc-title">Administrator</p>
+                        </div>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </div>
+                    <ul class="sub-button">
+                        <li class="sub">
+                            <a href="#"><span class="name-span">
+                                <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
+                            </span></a>
+                        </li>
+                        <li class="sub">
+                            <a href="login.html"><span class="name-span">
+                                <span class="sub-title">Log Out</span> <i class="fa-solid fa-person-through-window"></i>
+                            </span></a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <main class="main">
+                <div class="section-1">
+                    <h1 class="page-title">USER ACCOUNT MANAGEMENT</h1> 
+                </div>  
+
+                <div class="section-2">
+                    <div class="account-approval-list">
+                        <div class="inner-head">
+                            <div class="inner-title">
+                                LIST OF ACCOUNTS PENDING FOR APPROVAL
+                            </div>
+                        </div>
+                        <table class="table-account-pending">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Registration Date</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th class="accept">Accept</th>
+                                    <th class="delete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <th>Alice</th>
+                                    <th>22/12/2024</th>
+                                    <th>0901232565</th>
+                                    <th>alice@gmail.com</th>
+                                    <th><button class="accept-button btn" title="accept">
+                                        <div class="button-title">Accept</div>
+                                        <i class="bi bi-person-plus"></i>
+                                    </button></th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <th>Bob</th>                                    
+                                    <th>25/12/2024</th>
+                                    <th>0901234460</th>
+                                    <th>bob@gmail.com</th>
+                                    <th><button class="accept-button btn" title="accept">
+                                        <div class="button-title">Accept</div>
+                                        <i class="bi bi-person-plus"></i>
+                                    </button></th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <th>Caleus</th>
+                                    <th>25/12/2024</th>
+                                    <th>0901437762</th>
+                                    <th>greatmall@gmail.com</th>
+                                    <th><button class="accept-button btn" title="accept">
+                                        <div class="button-title">Accept</div>
+                                        <i class="bi bi-person-plus"></i>
+                                    </button></th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <th>John</th>
+                                    <th>24/12/2024</th>
+                                    <th>0905234564</th>
+                                    <th>megamart@gmail.com</th>
+                                    <th><button class="accept-button btn" title="accept">
+                                        <div class="button-title">Accept</div>
+                                        <i class="bi bi-person-plus"></i>
+                                    </button></th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>5</th>
+                                    <th>Julius</th>
+                                    <th>23/12/2024</th>
+                                    <th>0901534562</th>
+                                    <th>trademaster@gmail.com</th>
+                                    <th><button class="accept-button btn" title="accept">
+                                        <div class="button-title">Accept</div>
+                                        <i class="bi bi-person-plus"></i>
+                                    </button></th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>                                
+                            </tbody>
+                        </table>
+
+                        <div class="time-delete-note">
+                            <p>Account creation requests will be deleted if not approved within 7 days.</p>
+                        </div>
+
+                        <div class="form-pagination">
+                            <div class="container pag">
+                                <ul class="pagination">
+                                  <li class="icon">
+                                    <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
+                                  </li>
+                                  <li><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">4</a></li>
+                                  <li><a href="#">5</a></li>
+                                  <li><a href="#">6</a></li>
+                                  <li><a href="#">7</a></li>
+                                  <li><a href="#">8</a></li>
+                                  <li><a href="#">9</a></li>
+                                  <li><a href="#">10</a></li>
+                                  <li class="icon">
+                                    <a href="#">Next<span class="fas fa-angle-right"></span></a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-3">
+                    <div class="user-account-list">
+                        <div class="inner-head">
+                            <div class="inner-title">
+                                USER ACCOUNT LIST
+                            </div>
+                        </div>
+                        <table class="table-user-account">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Account creation date</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th class="delete">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <th>Alice</th>
+                                    <th>22/12/2024</th>
+                                    <th>0901232565</th>
+                                    <th>alice@gmail.com</th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <th>Bob</th>                                    
+                                    <th>25/12/2024</th>
+                                    <th>0901234460</th>
+                                    <th>bob@gmail.com</th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <th>Caleus</th>
+                                    <th>25/12/2024</th>
+                                    <th>0901437762</th>
+                                    <th>greatmall@gmail.com</th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <th>John</th>
+                                    <th>24/12/2024</th>
+                                    <th>0905234564</th>
+                                    <th>megamart@gmail.com</th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>
+                                <tr>
+                                    <th>5</th>
+                                    <th>Julius</th>
+                                    <th>23/12/2024</th>
+                                    <th>0901534562</th>
+                                    <th>trademaster@gmail.com</th>
+                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                        <div class="form-pagination">
+                            <div class="container pag">
+                                <ul class="pagination">
+                                  <li class="icon">
+                                    <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
+                                  </li>
+                                  <li><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">4</a></li>
+                                  <li><a href="#">5</a></li>
+                                  <li><a href="#">6</a></li>
+                                  <li><a href="#">7</a></li>
+                                  <li><a href="#">8</a></li>
+                                  <li><a href="#">9</a></li>
+                                  <li><a href="#">10</a></li>
+                                  <li class="icon">
+                                    <a href="#">Next<span class="fas fa-angle-right"></span></a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-4">
+                    <div class="admin-list">
+                        <div class="inner-head">
+                            <div class="inner-title">
+                                ADMIN LIST
+                            </div>
+                        </div>
+                        <table class="table-admin-account">
+                            <thead class="table-head">
+                                <tr>
+                                    <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Account creation date</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <th>Alice</th>
+                                    <th>22/12/2024</th>
+                                    <th>0901232565</th>
+                                    <th>alice@gmail.com</th>
+                                </tr>
+                                <tr>
+                                    <th>2</th>
+                                    <th>Bob</th>                                    
+                                    <th>25/12/2024</th>
+                                    <th>0901234460</th>
+                                    <th>bob@gmail.com</th>
+                                </tr>
+                                <tr>
+                                    <th>3</th>
+                                    <th>Caleus</th>
+                                    <th>25/12/2024</th>
+                                    <th>0901437762</th>
+                                    <th>greatmall@gmail.com</th>
+                                </tr>
+                                <tr>
+                                    <th>4</th>
+                                    <th>John</th>
+                                    <th>24/12/2024</th>
+                                    <th>0905234564</th>
+                                    <th>megamart@gmail.com</th>
+                                </tr>
+                                <tr>
+                                    <th>5</th>
+                                    <th>Julius</th>
+                                    <th>23/12/2024</th>
+                                    <th>0901534562</th>
+                                    <th>trademaster@gmail.com</th>
+                                </tr>                                
+                            </tbody>
+                        </table>
+                        <div class="form-pagination">
+                            <div class="container pag">
+                                <ul class="pagination">
+                                  <li class="icon">
+                                    <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
+                                  </li>
+                                  <li><a href="#">1</a></li>
+                                  <li><a href="#">2</a></li>
+                                  <li><a href="#">3</a></li>
+                                  <li><a href="#">4</a></li>
+                                  <li><a href="#">5</a></li>
+                                  <li><a href="#">6</a></li>
+                                  <li><a href="#">7</a></li>
+                                  <li><a href="#">8</a></li>
+                                  <li><a href="#">9</a></li>
+                                  <li><a href="#">10</a></li>
+                                  <li class="icon">
+                                    <a href="#">Next<span class="fas fa-angle-right"></span></a>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>
+
+    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+</html>
