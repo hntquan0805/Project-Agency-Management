@@ -141,6 +141,10 @@ input, select{
     color: white;
     font-size: 18px;
 }
+.search-button:hover{
+    background: #d65a12;
+    border: 1px solid #ded5d5;
+}
 /* End Search Form */
 
 /* Agent List */
@@ -189,6 +193,9 @@ table thead tr, .inner-title{
     width: fit-content;
     background: none;
     color: #F57D31;
+}
+.agent-list button:hover{
+    color: #b94401;
 }
 
 .agent-list .inner-title{
