@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
+
+html
+{
+    font-size: 62.5%;
+}
 
 * {
     margin: 0;
@@ -6,279 +13,167 @@
   }
 
   body {
-    background-image: url('../views/Images/background_login.png');
+    background-image: url("../../images/BG-LogIn.png");
     background-size: cover; /* Đảm bảo hình nền phủ toàn bộ trang */
     background-position: center; /* Căn giữa hình nền */
     background-repeat: no-repeat; /* Ngăn chặn việc lặp lại hình nền */
 
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
- .container {
-    
-    width: 80%;
-    max-width: 300px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    background-color: rgb(255, 245, 228);
-    border-radius: 20px;
-    /*display: flex;*/
-    /*padding: 30px;*/
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-  
-  }
-  
-  .logo-section {
-    text-align: center;
-    margin-bottom: 70px;
-  
- 
-  }
-  
-  .logo {
-    max-width: 130px;
-    margin-bottom: 10px;
-    
-  }
-  
-  h1 {
-    color: #f76c5e;
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-  h2 {
-    
-    font-weight: bold;
-    font-size: 10px;
-    font-style: italic;
-    
-  }
-
-  p {
-    color: #f76c5e;
-  }
-
-
-/* Tabs Login/Sign-Up */
-.login-signup-tabs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  
-}
-
-.tab {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  font-size: 16px;
-  color: rgb(244, 181, 66);
-  background-color: rgb(232, 230, 230);
-  border: 2px solid rgb(244, 181, 66);
-  border-radius: 10px;
-  cursor: pointer;
-  outline: none;
- 
-}
-
-.tab.active {
-  background-color:rgb(255, 245, 228);
-  font-weight: bold;
-  border: none;
-
-}
-
-.tab:hover {
-  background-color: rgb(255, 245, 200);
-}
-
-
-  
-  /*.login-section {
-    flex: 2;
-    padding-left: 20px;
-    background-color: rgb(255, 245, 228);
-    border: 2px solid rgb(244, 181, 66); 
-    border-radius: 10px; 
-  }*/
-  .login-section {
-    display: flex;
-    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
-    align-items: center; /* Căn giữa theo chiều ngang */
-    justify-content: center; /* Căn giữa theo chiều dọc */
-    background-color: rgb(255, 245, 228); /* Giữ màu nền như trước */
-    border: 2px solid rgb(244, 181, 66); 
-    border-radius: 10px;
-    padding: 20px;
-    height: 100%; /* Đảm bảo chiếm toàn bộ chiều cao */
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-
-  
-  .login-section h3 {
-    color: rgb(244, 181, 66);
-    margin-bottom: 10px;
-  }
-  
-  .login-section h4 {
-    color: rgb(244, 181, 66);
-    margin-bottom: 10px;
-    font-size: 7px;
-  }
-
-  form {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
-  
-  label {
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  
-  /*input {
-    padding: 10px;
-    position: relative;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }*/
-  .input-group {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Biểu tượng bên trong */
-  .icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 245, 228); /* Nền của biểu tượng */
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-   
-  }
-  
-  .icon-container i {
-    font-size: 18px;
-    color: rgb(244, 181, 66);
-  }
-  
-  /* Văn bản và ô nhập */
-  label {
-    font-size: 14px;
-    color: rgb(244, 181, 66);
-    margin-right: 10px;
-  
-  }
-  
-  input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: black;
-    background-color: transparent;
-  }
-  
-  input:focus {
-    outline: none;
-  }
-  input::placeholder {
-    color: orange;  /* Màu placeholder */
-  }
-  
 
-
-
-
-  
-  .forgot-password {
-    text-align: right;
-    font-size: 12px;
-    color: rgb(240, 110, 74);
-    text-decoration: none;
-  }
-  
-  .forgot-password:hover {
-    text-decoration: underline;
-  }
-  
-
-  button.login-btn {
-    background-color: rgb(244, 181, 66);
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    max-width: 400px; /* Giới hạn chiều rộng */
-  margin-top: 10px;
-    
-  }
-
-
-  
-  .login-btn:hover {
-    background-color: orange;
-  }
-  
-  a {
-    color: #f76c5e;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  footer {
-    background-color: rgb(250, 165, 54); /* Màu cam */
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-  }
-  
-  .left p {
-    margin: 0;
-    color: white;
-  }
-  
-  .right p {
-    margin: 0;
-    text-align: right;
-    color: black;
-  }
-
-  .right span {
-    margin-right: 20px; /* Khoảng cách giữa các phần tử */
-  }
-
-  .right i {
-    margin-right: 10px; /* Khoảng cách giữa biểu tượng và văn bản */
-    color: black;
+/* FOOTER */
+footer{
+  background-color: #FFA556;
+  color: white;
 }
+
+.col-footer-content{
+  width: fit-content;
+}
+
+.group{
+  font-size: clamp(10px, 1vw, 18px);
+  font-weight: bold;
+  text-align: center; /* Khi chữ bị xuống dòng sẽ được canh giữa, chữ bình thường không bị xuống dòng thì đã fit-content nên không cần canh giữa */
+  margin-left: 5px; /* Khoảng cách giữa logo và group 06 */
+}
+
+.website, .phone, .email{
+  font-size: clamp(10px, 1vw, 18px);
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo-footer{
+  background-color: #FFF;
+  border-radius: 360px;
+  width: clamp(10px, 2vw, 30px);
+  height: auto;
+}
+
+/* END FOOTER */
+
+/* LEFT SECTION */
+.left-section-logo{
+  width: clamp(200px, 50vw, 300px);
+  height: auto;
+}
+
+.left-section-header{
+  margin-top: 20px;
+  font-size: clamp(20px, 5vw, 35px);
+  font-weight: bold;
+  color: #F0641F;
+  font-family: "Roboto";
+
+}
+
+.left-section-sub-header{
+  margin-top: 10px;
+  font-size: clamp(10px, 5vw, 20px);
+  color: #F0641F;
+  font-family: "Gadala";
+  font-style: italic;
+}
+
+/* END LEFT SECTION */
+
+/* RIGHT SECTION */
+.right-section-box{
+  border: #FEA14C solid 3px;
+  background-color: #FCEFE6;
+  border-radius: 20px;
+  max-width: 400px; /* Giới hạn độ rộng của box log in */
+  width: 90%;
+}
+
+.log-in-selection{
+  margin: 0px;
+}
+
+.log-in-tab{
+  color: #F26208;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 25px 0px;
+}
+
+.sign-up-tab{
+  color: #f2620858;
+  border: #FEA14C solid 3px;
+  border-radius: 20px;
+  border-top-right-radius: 15px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 25px 0px;
+  background-color: #e7dcd5;
+}
+
+.log-in-form-wrapper{
+  padding: 20px 20px 0px 20px; /* Bottom không cần padding vì form đã tự cách ra */
+}
+
+.log-in-header{
+  font-size: 4rem;
+  color: #FEA14C;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+
+}
+
+.log-in-sub-header{
+  font-size: 1.5rem;
+  color: #fcb471;
+  font-family: "Roboto", sans-serif;
+}
+
+.log-in-form{
+  margin: 40px 0px 20px 0px;
+}
+
+.log-in-form-control{
+  padding: 20px 70px; /* Padding left vào nhiều để chừa chỗ cho icon */
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.5rem;
+}
+
+input::placeholder{
+  font-size: 1.3rem;
+  color:#FEA14C !important; /* Important để placeholder ưu tiên sử dụng màu. này*/
+}
+
+.log-in-button{
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #FEA14C;
+  border: none;
+  color: #FFF;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.input-container{
+  position: relative;
+}
+
+.username-icon, .password-icon{
+ font-size: 25px;
+ position: absolute;
+ left: 15px;
+ top: 13px;
+
+ background-color: #FFE9CA;
+ border-radius: 10px;
+ padding-left: 5px;
+ padding-right: 5px;
+
+ color:#F26208;
+}
+  
+/* END RIGHT SECTION */
