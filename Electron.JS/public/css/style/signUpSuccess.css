@@ -111,70 +111,35 @@ footer{
     padding: 25px 0px;
   }
 
-
-  .sign-up-form-wrapper{
-    padding: 20px 20px 0px 20px; /* Bottom không cần padding vì form đã tự cách ra */
+ 
+  .sign-up-success-wrapper{
+    padding: 30px 40px 10px 40px;
   }
 
-  .sign-up-header{
+  .sign-up-success-header{
     font-size: 3rem;
+    color: #F0641F;
+    border-bottom: #F0641F solid 2px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+    padding: 5px;
+  }
+
+  .sign-up-success-content-box{
+    font-size: 1.8rem;
     color: #FEA14C;
-    font-weight: bold;
     font-family: "Roboto", sans-serif;
-
+    background-color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: left;
   }
 
-  .sign-up-sub-header{
-    font-size: 1.3rem;
-    color: #fcb471;
-    font-family: "Roboto", sans-serif;
-  }
+  .sign-up-success-content{
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-  .sign-up-form{
-    margin: 10px 0px 20px 0px;
-  }
-
-  .sign-up-form-control{
-    padding: 20px 70px; /* Padding left vào nhiều để chừa chỗ cho icon */
-    margin-bottom: 30px;
-    border-radius: 10px;
-    border: none;
-    font-size: 1.5rem;
-  }
-
-  input::placeholder{
-    font-size: 1.3rem;
-    color:#FEA14C !important; /* Important để placeholder ưu tiên sử dụng màu này*/
-  }
-
-  .sign-up-button{
-    width: 100%;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #FEA14C;
-    border: none;
-    color: #FFF;
-    font-size: 2rem;
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-  }
-
-  .input-container{
-    position: relative;
-  }
-
-  .username-icon, .password-icon, .email-icon, .phone-icon{
-   font-size: 25px;
-   position: absolute;
-   left: 15px;
-   top: 13px;
-
-   background-color: #FFE9CA;
-   border-radius: 10px;
-   padding-left: 5px;
-   padding-right: 5px;
-
-   color:#F26208;
-  }
 /* END RIGHT SECTION */
-
