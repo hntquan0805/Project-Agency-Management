@@ -79,8 +79,9 @@ tbody tr:hover{
     padding: 0;
     height: fit-content;
     border-radius: 5px;
-    border: 1px solid var(--bg-clr);
-    color:var(--bg-clr);   
+    border: 2px solid var(--bg-clr);
+    color:var(--bg-clr);  
+    background: rgba(255, 255, 255, 0.5); 
 }
 .table-account-pending .accept-button i, .table-account-pending .delete-button i{
     font-size: 14px;
@@ -90,7 +91,7 @@ tbody tr:hover{
 }
 .table-account-pending button:hover{
     color: var(--button-hover-bg);
-    border: 1px solid var(--button-hover-bg);
+    border: 2px solid var(--button-hover-bg);
 }
 
 /* Note */
