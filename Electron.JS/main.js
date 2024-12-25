@@ -25,7 +25,7 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/addAgent.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 
 ipcMain.handle('search', async (event, criteria) => {

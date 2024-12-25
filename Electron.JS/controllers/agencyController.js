@@ -1,8 +1,18 @@
 const { Agency } = require('../models/agency');
+const { Regulation } = require('../models/regulation');
 
 async function addAgency(agencyData) {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {
+        const regulation = await Regulation.findOne();
+        const maxAgenciesPerDistrict = regulation ? regulation.maxAgenciesPerDistrict : 4;
+
+        const agencyCountInDistrict = await Agency.count({ where: { district } });
+
+        if (agencyCountInDistrict >= maxAgenciesPerDistrict) {
+            return { success: false, message: `The number of agencies in the current district has exceeded the allowed limit of ${maxAgenciesPerDistrict}!` };
+        }
+
         // Get the largest agencyCode currently to generate the new code
         const lastAgency = await Agency.findOne({
             order: [['agencyCode', 'DESC']],

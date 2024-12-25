@@ -43,7 +43,7 @@ app.on('ready', function () {
       nodeIntegration: true
     }
   });
-  mainWindow.loadFile(path.join(__dirname, 'views/addAgent.html'));
+  mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 ipcMain.handle('search', function _callee(event, criteria) {
   return regeneratorRuntime.async(function _callee$(_context) {
