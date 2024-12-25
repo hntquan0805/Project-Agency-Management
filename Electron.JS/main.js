@@ -4,11 +4,8 @@ const { addAgency } = require('./controllers/agencyController');
 const { connect } = require('./config/database');
 const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
-<<<<<<< HEAD
 const { getProductsByAgency } = require('./controllers/getProductsByAgency');
-=======
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
->>>>>>> 98d48394d30090876ce3daba2db710f8de0e45fb
 const path = require('path');
 
 connect();
@@ -29,8 +26,6 @@ app.on('ready', () => {
         },
     });
 
-<<<<<<< HEAD
-
     mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 
@@ -41,9 +36,6 @@ ipcMain.handle('get-products', async (event, type) => {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
     }
-=======
-    mainWindow.loadFile(path.join(__dirname, 'views/addAgent.html'));
->>>>>>> 98d48394d30090876ce3daba2db710f8de0e45fb
 });
 
 ipcMain.handle('search', async (event, criteria) => {
@@ -61,10 +53,6 @@ ipcMain.handle('add-agency', async (event, agencyData) => {
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error adding data!' };
-<<<<<<< HEAD
-=======
-
->>>>>>> 98d48394d30090876ce3daba2db710f8de0e45fb
     }
 });
 
@@ -81,9 +69,7 @@ ipcMain.handle('agency-rule-1', async (event, updateData) => {
 
 ipcMain.handle('agency-type-1', async (event, updateData) => {
     try {
-        // Giả sử bạn có một hàm updateSettings trong backend để xử lý cập nhật dữ liệu.
-        const result = await updateAgencyTypeSettings(updateData); // Bạn sẽ thực hiện hành động cần thiết với `updateData`
-
+        const result = await updateAgencyTypeSettings(updateData);
         return result;
     } catch (error) {
         console.error('Error in ipcMain handle updateSettings:', error);
