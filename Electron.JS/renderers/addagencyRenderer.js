@@ -15,28 +15,28 @@ document.getElementById('add-agency').addEventListener('click', async function(e
     window.api.addAgency(agencyData).then((result) => {
 
         if (result.success) {
-            alert('Đại lý đã được thêm thành công!');
+            alert('Agency has been successfully added!');
             document.querySelector('form').reset();
             
-            // Cập nhật bảng sau khi thêm đại lý mới
+            // Update the table after adding a new agency
             updateAgencyTable(result.agencies);
         } else {
-            alert(`Thêm đại lý thất bại: ${result.message}`);
+            alert(`Failed to add agency: ${result.message}`);
         }
     }).catch((error) => {
         console.error('Error in frontend:', error);
-        alert(`Đã xảy ra lỗi: ${error.message}`);
+        alert(`An error occurred: ${error.message}`);
     });
 });
 
 function formatDate(dateString) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
 }
 
 function updateAgencyTable(agencies) {
     const tableBody = document.querySelector('.table-agent tbody');
-    tableBody.innerHTML = ''; // Xóa các hàng cũ
+    tableBody.innerHTML = ''; // Clear old rows
     console.log(agencies);
     agencies.forEach((agency, index) => {
         const row = document.createElement('tr');

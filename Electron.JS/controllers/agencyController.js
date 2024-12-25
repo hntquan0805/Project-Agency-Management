@@ -3,7 +3,7 @@ const { Agency } = require('../models/agency');
 async function addAgency(agencyData) {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {
-        // Lấy agencyCode lớn nhất hiện tại để tạo mã mới
+        // Get the largest agencyCode currently to generate the new code
         const lastAgency = await Agency.findOne({
             order: [['agencyCode', 'DESC']],
             attributes: ['agencyCode']
@@ -12,13 +12,13 @@ async function addAgency(agencyData) {
         const nextNumber = lastAgency ? parseInt(lastAgency.agencyCode.substring(2)) + 1 : 1;
         const agencyCode = `AG${nextNumber.toString().padStart(3, '0')}`;
 
-        // Kiểm tra đại lý có tồn tại không
+        // Check if the agency already exists
         const existingAgency = await Agency.findOne({ where: { name } });
         if (existingAgency) {
-            return { success: false, message: 'Đại lý đã tồn tại với tên này.' };
+            return { success: false, message: 'An agency with this name already exists.' };
         }
 
-        // Thêm đại lý mới
+        // Add the new agency
         await Agency.create({
             agencyCode,
             name,
@@ -30,12 +30,12 @@ async function addAgency(agencyData) {
             district
         });
 
-        // Lấy tất cả các đại lý và chuyển đổi thành object thuần túy
+        // Get all agencies and convert them to plain objects
         const agencies = await Agency.findAll();
-        return { success: true, agencies};
+        return { success: true, agencies };
     } catch (error) {
         console.error('Error in addAgency:', error);
-        return { success: false, message: `Lỗi khi thêm đại lý: ${error.message}` };
+        return { success: false, message: `Error adding agency: ${error.message}` };
     }
 }
 
