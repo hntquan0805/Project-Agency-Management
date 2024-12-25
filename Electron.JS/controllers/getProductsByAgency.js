@@ -4,7 +4,7 @@ const { Inventory } = require('../models/inventory');
 const getProductsByAgency = async (type) => {
     try {
         const products = await Distribution.findAll({
-            where: { agencyCode: type },
+            where: { type: type },
             attributes: ['productCode', 'unit', 'price'],
             include: [
                 {
