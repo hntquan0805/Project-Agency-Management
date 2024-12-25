@@ -1,0 +1,87 @@
+:root{
+    --border-clr: #B8B8B8;
+    --bg-clr: #F57D31;
+    --menu-bg-clr: #FFE9D6;
+    --img-border-clr: #4c4a4a;
+}
+
+.child-wrapper, header, main{
+    width: 100%;
+    margin: 0;
+}
+
+.main{
+    padding-top: 50px;
+    font-size: 13px;
+}
+
+/* Section-1 */
+.section-1{
+    margin: auto 60px;
+    background: white;
+    padding: 50px 80px;
+    border-radius: 5px;
+    border: 2px solid var(--border-clr);
+}
+
+/* Close-button */
+.section-1 .close{
+    display: flex;
+    justify-content: flex-end;
+}
+.close-button {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    font-size: 40px;
+}    
+.close-button:hover {
+    color: #fa5252;
+}
+
+/* Inner-head */
+.section-1 .inner-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+h1{    
+    color: var(--bg-clr);
+}
+
+/* desc */
+.section-1 .desc{
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+/* label, input */
+.section-1 label{
+    font-size: 14px;
+    color: black;
+}
+.section-1 input{
+    height: 35px;
+    font-size: 15px;
+}
+
+/* Confirm button */
+.section-1 .confirm-button{
+    height: fit-content;
+    margin-top: 40px;
+    text-align: right;
+}
+.section-1  .confirm-button-title{
+    padding: 5px 10px;
+    background: var(--bg-clr);
+    border-radius: 5px;
+    border: 2px solid var(--border-clr);
+    color: white;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* End Section-1 */

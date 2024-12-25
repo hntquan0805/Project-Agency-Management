@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+.main{
+    font-family: Roboto;
+    text-align: center;
+}
+
+h1, h3{
+    color: white;
+}
+button{
+    border: none;
+}
+
+.child-wrapper{
+    width: calc(100% - 70px);
+}
+
+/* class goodDelivery */
+.goodDelivery{
+    text-align: left;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    min-width: 100%;
+    width: fit-content;
+    height: fit-content;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    overflow: auto;
+}
+.goodDelivery .container{
+    min-width: 100%;
+}
+.goodDelivery .container h2{
+    color: white;
+}
+
+
+.goodDelivery form{
+    padding-top: 10px;
+}
+.goodDelivery form div[class|="col"]{
+    height: 50px;
+}
+
+/*input new*/
+.title{
+    background: #F57D31;
+    text-align: center;
+    min-width: 100%;
+}
+
+h1 {
+    background: #F57D31;
+    color: #FFFFFF; /* Màu chữ trắng */
+    text-align: center; /* Căn chữ trong h1 */
+    display: inline-block;
+    padding: 5px 60px; /* Khoảng cách giữa chữ và phần nền */
+    margin: 0 auto; /* Căn giữa phần thẻ h1 */
+    font-size: 2em; /* Kích thước chữ */
+  
+}
+
+
+
+label{
+    font-size: 13px;
+}
+
+input, select,.createButton {
+    font-size: 14px;
+    width: 280px;
+    height: auto;
+    padding: 2px 10px;
+}
+select{
+    height: 28.2px;
+}
+
+.input-wrapper {
+    position: relative; /* Để căn chỉnh nút bên trong ô input */
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding-right: 40px; /* Chừa khoảng trống cho nút search */
+    height: 40px;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    padding-left: 10px;
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước ô */
+}
+.search-input {
+    margin-bottom: 40px; /* Khoảng cách lớn hơn giữa Search và các nhóm input bên dưới */
+}
+
+.input-wrapper .search-btn:hover {
+    background-color: #d96627; /* Hiệu ứng hover */
+}
+
+.input-wrapper .search-btn {
+    position: absolute;
+    right: 10px; /* Đặt nút ở cạnh phải bên trong input */
+    top: 50%;
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    background-color: #F57D31;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.Button {
+    text-align: center; /* Căn giữa nội dung trong container */
+}
+
+.addButton {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: #F57D31;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    display: inline-block; /* Không chiếm toàn bộ chiều ngang */
+    cursor: pointer;
+    margin: 0 auto; /* Không cần thiết nếu có text-align trong container */
+}
+
+.addButton:hover {
+    background-color: #f96406; /* Hiệu ứng hover */
+}
+
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 70%;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #F57D31;
+}
+
+.modal-body {
+    max-height: 60vh; /* Prevent overflow */
+    overflow-y: auto;
+}
+
+.modal-done {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: #F57D31;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    display: inline-block; /* Không chiếm toàn bộ chiều ngang */
+    cursor: pointer;
+    margin: 0 auto; /* Không cần thiết nếu có text-align trong container */
+}
+
+.modal-done:hover {
+    background-color: #f96406;
+}
+
+
+
+
+
+
+.cart-table th, .cart-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+.cart-table .bi-pencil {
+    color: #F57D31; /* Màu cam cho biểu tượng */
+    cursor: pointer; /* Hiển thị con trỏ chuột khi hover */
+    font-size: 16px; /* Kích thước biểu tượng */
+}
+
+.cart-table .bi-pencil:hover {
+    color: #f96406; /* Đậm hơn khi hover */
+}
+
+
+.createButton{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: #F57D31;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    margin: 10px auto; 
+    display: block;
+    
+}
+.createButton:hover {
+    background-color: #f96406; /* Màu đỏ sáng hơn khi hover */
+}
+
+
+
+
+
+.cart {
+    margin: 0; /* Xóa khoảng cách xung quanh toàn bộ phần Cart */
+    padding: 0; /* Xóa padding nếu có */
+}
+
+.cart-table {
+    width: 100%;
+    border-collapse: collapse; /* Xóa đường viền giữa các ô */
+    margin: 0; /* Xóa khoảng cách bên ngoài bảng */
+}
+
+.cart-table thead {
+    background-color: #F57D31; /* Màu nền cam */
+    color: white; /* Màu chữ trắng */
+    font-weight: bold; /* Đậm chữ */
+}
+
+
+
+
+.inner-head {
+    display: flex;
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+    background-color:  #f1f1f1; /* Làm trong suốt nền của toàn bộ hàng */
+    padding: 0; /* Xóa khoảng cách */
+    margin: 0; /* Xóa margin */
+    position: relative; /* Để dùng cho phần tử con */
+    box-shadow: none; /* Xóa đổ bóng */
+}
+.inner-title {
+    background-color: #F57D31; /* Màu nền cho tiêu đề */
+    color: white; /* Màu chữ */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm chữ */
+    border-radius: 10px 10px 0 0; /* Bo góc chỉ cho phần đầu */
+    display: inline-block; /* Để nội dung không kéo dài */
+    margin: 0;
+    box-shadow: none;
+}
+
+
+.cart-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.cart-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.cart-table tbody tr:hover {
+    background-color: #f1f1f1;
+}

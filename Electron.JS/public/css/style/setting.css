@@ -11,6 +11,10 @@ html
     padding: 0;
 }
 
+.main{
+    font-family: "Roboto", sans-serif;
+}
+
 /* SIDEBAR */
 
 a {

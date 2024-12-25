@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&display=swap');
+
+html
+{
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-image: url("../../images/BG-SignUp.png");
+    background-size: cover; /* Đảm bảo hình nền phủ toàn bộ trang */
+    background-position: center; /* Căn giữa hình nền */
+    background-repeat: no-repeat; /* Ngăn chặn việc lặp lại hình nền */
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+/* FOOTER */
+footer{
+  background-color: #FFA556;
+  color: white;
+}
+
+.col-footer-content{
+  width: fit-content;
+}
+
+.group{
+  font-size: clamp(10px, 1vw, 18px);
+  font-weight: bold;
+  text-align: center; /* Khi chữ bị xuống dòng sẽ được canh giữa, chữ bình thường không bị xuống dòng thì đã fit-content nên không cần canh giữa */
+  margin-left: 5px; /* Khoảng cách giữa logo và group 06 */
+}
+
+.website, .phone, .email{
+  font-size: clamp(10px, 1vw, 18px);
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo-footer{
+  background-color: #FFF;
+  border-radius: 360px;
+  width: clamp(10px, 2vw, 30px);
+  height: auto;
+}
+
+/* END FOOTER */
+
+/* LEFT SECTION */
+.left-section-logo{
+  width: clamp(200px, 50vw, 300px);
+  height: auto;
+}
+
+.left-section-header{
+  margin-top: 20px;
+  font-size: clamp(20px, 5vw, 35px);
+  font-weight: bold;
+  color: #F0641F;
+  font-family: "Roboto";
+
+}
+
+.left-section-sub-header{
+  margin-top: 10px;
+  font-size: clamp(10px, 5vw, 20px);
+  color: #F0641F;
+  font-family: "Gadala";
+  font-style: italic;
+}
+
+/* END LEFT SECTION */
+
+/* RIGHT SECTION */
+.right-section-box{
+    border: #FEA14C solid 3px;
+    background-color: #FCEFE6;
+    border-radius: 20px;
+    max-width: 400px; /* Giới hạn độ rộng của box sign up */
+    width: 90%;
+  }
+
+  .sign-up-selection{
+    margin: 0px;
+  }
+
+  .log-in-tab{
+    color: #f2620858;
+    border: #FEA14C solid 3px;
+    border-radius: 20px;
+    border-top-left-radius: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 25px 0px;
+    background-color: #e7dcd5;
+  }
+
+  .sign-up-tab{
+    color: #F26208;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 25px 0px;
+  }
+
+
+  .sign-up-form-wrapper{
+    padding: 20px 20px 0px 20px; /* Bottom không cần padding vì form đã tự cách ra */
+  }
+
+  .sign-up-header{
+    font-size: 3rem;
+    color: #FEA14C;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+
+  }
+
+  .sign-up-sub-header{
+    font-size: 1.3rem;
+    color: #fcb471;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .sign-up-form{
+    margin: 10px 0px 20px 0px;
+  }
+
+  .sign-up-form-control{
+    padding: 20px 70px; /* Padding left vào nhiều để chừa chỗ cho icon */
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.5rem;
+  }
+
+  input::placeholder{
+    font-size: 1.3rem;
+    color:#FEA14C !important; /* Important để placeholder ưu tiên sử dụng màu này*/
+  }
+
+  .sign-up-button{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #FEA14C;
+    border: none;
+    color: #FFF;
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+  }
+
+  .input-container{
+    position: relative;
+  }
+
+  .username-icon, .password-icon, .email-icon, .phone-icon{
+   font-size: 25px;
+   position: absolute;
+   left: 15px;
+   top: 13px;
+
+   background-color: #FFE9CA;
+   border-radius: 10px;
+   padding-left: 5px;
+   padding-right: 5px;
+
+   color:#F26208;
+  }
+/* END RIGHT SECTION */
+

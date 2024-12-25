@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+.main{
+    font-family: Roboto;
+}
+
+h1, h3{
+    color: white;
+}
+
+button{
+    border: none;
+}
+
+.child-wrapper{
+    width: calc(100% - 70px);
+}
+/* class goodReceived */
+.goodReceived{
+    text-align: left;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #B8B8B8;
+    min-width: 100%;
+    width: fit-content;
+    height: fit-content;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    overflow: auto;
+}
+.goodReceived .container{
+    min-width: 100%;
+}
+.goodReceived form{
+    padding-top: 10px;
+}
+.goodReceived form div[class|="col"]{
+    height: 50px;
+}
+
+/*input new*/
+.title{
+    background: #F57D31;
+    text-align: center;
+    min-width: 100%;
+}
+
+h1{
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-transform: uppercase;
+}
+
+label{
+    font-size: 13px;
+}
+
+input, select, .createButton{
+    font-size: 14px;
+    width: 280px;
+    height: auto;
+    padding: 2px 10px;
+}
+select{
+    height: 28.2px;
+}
+
+.goodReceived .info, .goodReceived .button{
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.goodReceived form div:last-child{
+    /* height: fit-content; */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.goodReceived .button{
+    width: 295px;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.createButton{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    text-align: center;
+    background: #F57D31;
+    border: 1px solid #B8B8B8;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    margin: 10px auto; 
+    display: block;
+}
+.createButton:hover {
+    background-color: #f96406; /* Màu đỏ sáng hơn khi hover */
+}
+
+/*view input*/
+
+.result {
+    background-color: rgb(200, 197, 197);
+}
+
+.result h2{
+    background: #F57D31;
+    text-align: center;
+    min-width: 100%;
+    color: white;
+}
+
+
+/* Tổng thể của bảng thông tin */
+.result-container {
+    background-color: #ffffff; /* Nền trắng */
+    padding: 20px;
+    border-radius: 5px;
+    width: 60%; /* Chiều rộng bảng */
+    margin: 20px auto; /* Căn giữa màn hình */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+    font-family: Arial, sans-serif;
+    text-align: left; /* Canh trái nội dung */
+}
+
+/* Tiêu đề bảng */
+.result-container h3 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Các thông tin trong bảng */
+.result-container p {
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 1.6; /* Tăng khoảng cách dòng */
+}
+
+/* Các tiêu đề nhỏ */
+.result-container p strong {
+    font-weight: bold;
+    color: #333333; /* Màu chữ đậm */
+}
+
+/* Nhóm nút */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+    display: flex; /* Sử dụng flexbox để dễ điều chỉnh */
+    justify-content: center; /* Căn giữa các nút */
+    gap: 20px; /* Khoảng cách giữa các nút */
+}
+
+/* Nút Close và Print */
+.button-group button {
+    font-size: 14px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Nút Close */
+.closeButton {
+    background-color: #F57D31;
+    color: white;
+    margin: 0; /* Đặt margin riêng nếu cần */
+}
+
+/* Nút Print */
+.printButton {
+    background-color: #4caf50;
+    color: white;
+    margin: 0; /* Đặt margin riêng nếu cần */
+}
+
+/* Hover hiệu ứng */
+.closeButton:hover {
+    background-color: #f5660e;
+}
+
+.printButton:hover {
+    background-color: #17a71e;
+}
+
