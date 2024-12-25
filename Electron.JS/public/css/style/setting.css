@@ -11,6 +11,10 @@ html
     padding: 0;
 }
 
+.main{
+    font-family: "Roboto", sans-serif;
+}
+
 /* SIDEBAR */
 
 a {
@@ -73,13 +77,13 @@ li {
     color: #FFF;
 }
 
-/* Dòng Agent Management Software ở nút mở thanh menu */
+/* Dòng Agency Management Software ở nút mở thanh menu */
 /* Thiết lập lề */
 .sidebar-logo {
     margin: auto 0;
 }
 
-/* Định dạng cho Agent Management Software */
+/* Định dạng cho Agency Management Software */
 .sidebar-logo a {
     color: #FFF;
     font-size: 2.5rem;
@@ -428,7 +432,6 @@ header .open-active .sub-button .sub:hover{
     color: #FFF;
     font-size: 1.4rem;
     font-weight: bold;
-
 }
 
 .update-icon{
@@ -454,7 +457,7 @@ header .open-active .sub-button .sub:hover{
     text-align: center;
 }
 
-.choose-agent-row{
+.choose-agency-type-row{
     background-color: #F57D31;
     color:#FFF;
     border-left:#B8B8B8 solid 2px;
@@ -462,14 +465,14 @@ header .open-active .sub-button .sub:hover{
     padding: 0px 3px;
 }
 
-.choose-agent-title{
+.choose-agency-type-label{
     font-size: 1.4rem;
     font-weight: bold;
     text-align: right;
     background-color: #F57D31;
 }
 
-.choose-agent-select{
+.choose-agency-type-select{
     background-color: #F57D31;
     padding: 5px;
     text-align: center;
@@ -485,6 +488,7 @@ header .open-active .sub-button .sub:hover{
                 
 .custom-table{
     border:#B8B8B8 solid 2px;
+    margin-bottom: 0; /* Không margin dưới để nút add nằm sát bảng */
 }
 
 .custom-table thead th {
@@ -497,14 +501,103 @@ header .open-active .sub-button .sub:hover{
     font-size: 1.4rem;
 }
 
-.custom-table tbody .edit-button{
+.custom-table tbody .edit-button, .delete-button{
     border: 0px;
     background-color: transparent;
     color: #F57D31;
     font-size: large;
 }
 
+.add-goods-button{
+    text-align: end;
+}
+
+.add-goods-button-title{
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 3px 35px;
+    background: #F57D31;
+    color: white;
+    border: #B8B8B8 solid 2px; 
+    border-top: 0;   
+}
+
+.add-goods-button-icon{
+    color: #FFF;
+    font-size: 1.4rem;
+    margin-left: 5px;
+}
+
 /* END SECTION 3 - TABLE*/
 
 /* END MAIN */
+
+
+/* POP UP GOODS INFORMATION */
+
+.pop-up-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: #555555 solid 1px;
+}
+
+.pop-up-header-title{
+    color: #F57D31;
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.add-button{
+    text-align: end;
+}
+
+.add-button-title{
+    padding: 3px 30px;
+    font-size: 1.3rem;
+    background: #F57D31;
+    color: white;
+    border-radius: 5px;
+    border: #CCC solid 1px;
+}
+
+.form-label-pop-up{
+    font-size: 1.2rem;
+}
+
+.form-control-pop-up{
+    border: #F57D31 solid 1px;
+}
+
+.overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.pop-up{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #FFF;
+    z-index: 1001;
+    width: 80%;
+    max-width: 500px;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+/* END POP UP GOODS INFORMATION */
+
 

@@ -28,26 +28,26 @@
 
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="./dashBoard.html" class="sidebar-link">
                         <i class="bi bi-speedometer2"></i>
                         <span>DashBoard</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgent" 
-                    aria-expanded="false" aria-controls="manageAgent">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgency" 
+                    aria-expanded="false" aria-controls="manageAgency">
                         <i class="bi bi-building"></i>
-                        <span>Manage Agent</span>
+                        <span>Manage Agency</span>
                     </a>
 
-                    <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="manageAgency" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Add Agent</a>
+                            <a href="./addAgent.html" class="sidebar-link">Add Agency</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Search Agent</a>
+                            <a href="./searchAgent.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -61,15 +61,15 @@
 
                     <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Goods Delivery Note</a>
+                            <a href="./goodDeliveryNote.html" class="sidebar-link">Goods Delivery Note</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Goods Received Note</a>
+                            <a href="./goodReceivedNote.html" class="sidebar-link">Goods Received Note</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Monthly Report</a>
+                            <a href="./monthlyReport.html" class="sidebar-link">Monthly Report</a>
                         </li>
                     </ul>
                 </li>
@@ -83,17 +83,17 @@
 
                     <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Personal Infomation</a>
+                            <a href="./PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Personel Management</a>
+                            <a href="./personelManagement.html" class="sidebar-link">Personel Management</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="./setting.html" class="sidebar-link">
                         <i class="bi bi-gear"></i>
                         <span>Setting</span>
                     </a>
@@ -101,9 +101,9 @@
             </ul>
 
             <div class="sidebar-footer">
-                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <img src="../public/images/logo.png" alt="Logo" class="logo-footer">
                 <div class="detail-footer">
-                    <div class="text-footer">Agent Management Software</div>
+                    <div class="text-footer">Agency Management Software</div>
                     <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
                 </div>
             </div>
@@ -112,8 +112,8 @@
         <div class="child-wrapper">
             <header>
                 <div class="logo">
-                    <img src="./Images/logo.png" alt="logo" class="miniLogo">
-                    <div class="softwareName"><p class="swName">Agent Management Software</p></div>
+                    <img src="../public/images/logo.png" alt="logo" class="miniLogo">
+                    <div class="softwareName"><p class="swName">Agency Management Software</p></div>
                 </div>
                 <div class="open-active">
                     <div class="open-list">
@@ -143,29 +143,29 @@
                 <div class="container section1">
                     <div class="row section1-title-row">
                         <div class="col-12 form-header">
-                            SETTING UP AGENT RULES
+                            AGENCY RULE SETTINGS
                         </div>    
                     </div>
                     
-                    <form action="#" target="_self" method="GET" class="row section1-form-row">
+                    <form action="#" target="_self" method="post" class="row section1-form-row">
                         <div class="col-lg-4">
                             <div class="mb-1">
-                                <label for="inputNumAgentTypes" class="form-label">Number Of Agent Types</label>
-                                <input type="number" class="form-control" id="inputNumAgentTypes" min="1" required>
+                                <label for="inputAgencyTypes" class="form-label">Agency Type</label>
+                                <input type="number" class="form-control" id="inputAgencyTypes" min="1" required>
                             </div>   
                         </div>
 
                         <div class="col-lg-4">
                             <div class="mb-1">
-                                <label for="inputMaxAgentsInDist" class="form-label">Maximum Number Of Agents In District</label>
-                                <input type="number" class="form-control" id="inputMaxAgentsInDist" min="1" required>
+                                <label for="inputMaxAgenciesPerDist" class="form-label">Maximum Agencies per District</label>
+                                <input type="number" class="form-control" id="inputMaxAgenciesPerDist" min="1" required>
                             </div>
                         </div>
 
                         <div class="col-lg-4">
                             <div class="mb-1">
                                 <label for="currencyUnit" class="form-label">Currency Unit</label>
-                                <select class="form-select" id = "currencyUnit" aria-label="selectCurrencyUnit">
+                                <select class="form-select" id = "currencyUnit">
                                     <option selected value="VND">VND</option>
                                     <option value="USD">USD</option>
                                     <option value="EUR">EUR</option>
@@ -185,15 +185,15 @@
                 <div class="container section2">
                     <div class="row section2-title-row">
                         <div class="form-header">
-                            SETTING BY AGENT TYPES
+                            AGENCY TYPE SETTINGS
                         </div>
                     </div>
                     
-                    <form action="#" target="_self" method="GET" class="row section2-form-row">
+                    <form action="#" target="_self" method="post" class="row section2-form-row" autocomplete="off">
                         <div class="col-lg-4">
                             <div class="mb-1">
-                                <label for="agentType" class="form-label">Agent Type</label>
-                                <select class="form-select" id="agentType" aria-label="selectAgentType">
+                                <label for="agencyType" class="form-label">Agency Type</label>
+                                <select class="form-select" id="agencyType">
                                     <option selected value="1">1</option>
                                     <option value="2">2</option>
                                 </select>
@@ -202,8 +202,8 @@
 
                         <div class="col-lg-4">
                             <div class="mb-1">
-                                <label for="inputNumerOfGoods" class="form-label">Number Of Goods</label>
-                                <input type="number" class="form-control" id="inputNumerOfGoods" min="1" required>
+                                <label for="inputMaxGoodsPerBill" class="form-label">Maximum Goods per Bill</label>
+                                <input type="number" class="form-control" id="inputMaxGoodsPerBill" min="1" required>
                             </div>   
                         </div>
 
@@ -223,13 +223,13 @@
                 <div class="container section3">
                     <div class="row section3-title">
                         <div class="col-12 form-header">
-                            SETTING UP AGENT RULES
+                            GOODS BY AGENCY TYPES
                         </div>    
                     </div>
 
-                    <form action="#" target="_self" method="POST" class="row choose-agent-row align-items-center">
-                        <label for="type" class="col-7 col-md-6 col-form-label choose-agent-title">Agent Type:</label>
-                        <div class="col-3 col-sm-2 col-lg-1 choose-agent-select">
+                    <form action="#" target="_self" method="post" class="row align-items-center choose-agency-type-row" autocomplete="off">
+                        <label for="type" class="col-7 col-md-6 choose-agency-type-label">Agency Type:</label>
+                        <div class="col-3 col-sm-2 col-lg-1 choose-agency-type-select">
                             <select class="form-select form-select-type" id="type" aria-label="selectType">
                                 <option selected value="1">1</option>
                                 <option value="2">2</option>
@@ -244,11 +244,14 @@
                         <table class="table table-hover text-center align-middle custom-table">
                             <thead>
                                 <tr>
-                                    <th>Order</th>
-                                    <th>Name Of Goods</th>
+                                    <th>Code</th>
+                                    <th>Goods</th>
                                     <th>Calculation Unit</th>
                                     <th>Price</th>
+                                    <th>Stock Quantity</th>
                                     <th></th>
+                                    <th></th>
+
                                 </tr>
                             </thead>
 
@@ -258,7 +261,9 @@
                                     <td>Banana Milk</td>
                                     <td>gal</td>
                                     <td>220.000 VND</td>
+                                    <td>100</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>    
 
                                 <tr>
@@ -266,7 +271,9 @@
                                     <td>Coconut Milk</td>
                                     <td>gal</td>
                                     <td>230.000 VND</td>
+                                    <td>200</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>    
 
                                 <tr>
@@ -274,7 +281,9 @@
                                     <td>Oat Milk</td>
                                     <td>gal</td>
                                     <td>280.000 VND</td>
+                                    <td>150</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>    
 
                                 <tr>
@@ -282,7 +291,9 @@
                                     <td>Soy Milk</td>
                                     <td>gal</td>
                                     <td>120.000 VND</td>
+                                    <td>60</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>    
 
                                 <tr>
@@ -290,7 +301,9 @@
                                     <td>Strawberry Milk</td>
                                     <td>gal</td>
                                     <td>130.000 VND</td>
+                                    <td>70</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>   
 
                                 <tr>
@@ -298,7 +311,9 @@
                                     <td>Melon Milk</td>
                                     <td>gal</td>
                                     <td>250.000 VND</td>
+                                    <td>240</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>   
 
                                 <tr>
@@ -306,7 +321,9 @@
                                     <td>Chocolate Milk</td>
                                     <td>gal</td>
                                     <td>120.000 VND</td>
+                                    <td>135</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>   
 
                                 <tr>
@@ -314,15 +331,90 @@
                                     <td>Papaya Milk</td>
                                     <td>gal</td>
                                     <td>240.000 VND</td>
+                                    <td>238</td>
                                     <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
                                 </tr>   
                             </tbody>
                         </table>
+                        <div class="mb-3 add-goods-button">
+                            <button id="add-goods-button" class="add-goods-button-title">Add<i class="bi bi-plus-circle add-goods-button-icon"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>   
     </div>
+
+    <div id="overlay" class="overlay"></div>
+    
+    <div id="goods-pop-up" class="pop-up">
+        <div class="pop-up-header">
+            <div class="pop-up-header-title">GOODS INFORMATION</div>
+            <buton id="close-pop-up-button" class="btn-close"></buton>
+        </div>
+
+        <form action="#" method="post" autocomplete="off">
+            <div class="mb-3">
+                <label for="goods-code" class="form-label form-label-pop-up">Code</label>
+                <input type="text" id="goods-code" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-name" class="form-label form-label-pop-up">Name</label>
+                <input type="text" id="goods-name" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-calculation-unit" class="form-label form-label-pop-up">Calculation Unit</label>
+                <input type="text" id="goods-calculation-unit" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-price" class="form-label form-label-pop-up">Price</label>
+                <input type="number" id="goods-price" class="form-control form-control-pop-up" min="0" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-stock-quantity" class="form-label form-label-pop-up">Stock Quantity</label>
+                <input type="number" id="goods-stock-quantity" class="form-control form-control-pop-up" min="0" required>
+            </div>
+            <div class="mb-3 add-button">
+                <button type="submit" class="add-button-title">Add</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script>
+        const addGoodsButton = document.getElementById("add-goods-button");
+        const editButtons = document.querySelectorAll(".edit-button");
+        const closePopUpButton = document.getElementById("close-pop-up-button");
+        const overlay = document.getElementById("overlay");
+        const popUp = document.getElementById("goods-pop-up");
+        const body = document.body;
+
+        function openPopUp(){
+            body.classList.add("no-scroll");
+            overlay.style.display = "block";
+            popUp.style.display = "block";
+        }
+
+        function closePopUp(){
+            body.classList.remove("no-scroll");
+            overlay.style.display = "none";
+            popUp.style.display = "none";
+        }
+
+        // Gán sự kiện cho tất cả nút Edit
+        editButtons.forEach(button => {
+            button.addEventListener("click", () => openPopUp());
+        });
+        
+        addGoodsButton.addEventListener("click", openPopUp);
+        
+        closePopUpButton.addEventListener("click", closePopUp);
+    </script>
 
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
@@ -331,6 +423,10 @@
         });
     </script>
 
+<<<<<<< HEAD
     <script src="../renderers/settingAgencyRuleRenderer.js"></script>
+=======
+    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+>>>>>>> 347b6554297e30eb0ef9adaa6d9819282de14d25
 </body>
 </html>

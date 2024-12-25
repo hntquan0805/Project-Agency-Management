@@ -6,8 +6,9 @@
 }
 
 .main{
-    font-family: roboto;
-    font-size: 13px;
+    font-family: Roboto;
+    font-size: 13px;    
+    color: black;
 }
 
 h1, h3, p, i{
@@ -17,11 +18,14 @@ h1, h3, p, i{
 .search-form h1{
     text-transform: uppercase;
     font-size: 22px;
+    font-weight: bold;
     color: white;
 }
 
 h3{    
     font-size: 16px;
+    color: white;
+    font-weight: bold;
 }
 
 button{
@@ -37,20 +41,21 @@ button{
 /* Search Form */
 .search-form{
     margin-top: 30px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
     margin-bottom: 30px;
     border-radius: 5px;
     border: 1px solid var(--border-clr);
     padding-bottom: 10px;
     background: white;
 }
-.search-form .row {
-    max-width: 965px;
+.search-form .container{
+    min-width: 100%;
+    margin: 0;
 }
+
 .search-form .inner-main .row {
     padding-left: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .search-form .inner-desc~div[class|="col-lg"]{
     width: fit-content;
@@ -58,7 +63,7 @@ button{
     margin-bottom: 5px;
 }
 .search-form .inner-main .row div[class|="col-lg"]{
-    width: 300px;
+    /* width: 300px; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -75,7 +80,6 @@ button{
 } */
 
 .search-form .inner-head{
-    max-width: 965px;
     height: 44px;
     text-align: center;
     align-items: center;
@@ -97,16 +101,17 @@ button{
     text-align: right;
 }
 label{
+    width: 72px;
     font-size: 13px;
     font-weight: 400;
     margin-right: 13px;
 }
 input{
-    width: 200px;
+    width: 250px;
     height: 35px;
 }
 select{
-    width: 89px;
+    width: 250px;
     height: 35px;
 }
 input, select{
@@ -136,6 +141,10 @@ input, select{
     color: white;
     font-size: 18px;
 }
+.search-button:hover{
+    background: #d65a12;
+    border: 1px solid #ded5d5;
+}
 /* End Search Form */
 
 /* Agent List */
@@ -143,19 +152,18 @@ input, select{
     font-size: 14px;
     text-align: center;
     align-items: center;
-    max-width: 100%;
+    min-width: 100%;
     width: fit-content;
     margin-top: 60px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    
+    margin-bottom: 30px;    
     max-height: 510px;
     overflow: auto;
 }
-
+.agent-list .inner-head{
+    width: 100%;
+}
 table{
-    width: 965px;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -164,7 +172,7 @@ table tr{
 }
 
 table th{
-    width: fit-content;
+    /* width: fit-content; */
     padding: 5px 10px;
     text-wrap: nowrap;
     font-weight: 600;
@@ -185,6 +193,9 @@ table thead tr, .inner-title{
     width: fit-content;
     background: none;
     color: #F57D31;
+}
+.agent-list button:hover{
+    color: #b94401;
 }
 
 .agent-list .inner-title{

@@ -1,0 +1,265 @@
+:root {
+    --border-clr: #B8B8B8;
+    --bg-clr: #F57D31;
+    --menu-bg-clr: #FFE9D6;
+    --text-color: #333;
+    --button-bg: #F57D31;
+    --button-hover-bg: #e66b2a;
+}
+
+/* General Styling */
+body {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 13px;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Report Form */
+.report-form {
+    border-radius: 10px;
+    padding: 20px 30px;
+    margin: 30px auto;
+    width: 80%;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.input-group select {
+    width: 120px;
+    padding: 5px;
+    border: 1px solid var(--border-clr);
+    border-radius: 5px;
+    font-size: 14px;
+    background: #fff;
+}
+
+/* Export Button */
+.export-button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+    display: block;
+    white-space: nowrap;
+}
+
+.export-button:hover {
+    background-color: var(--button-hover-bg);
+}
+
+/* Table Styling */
+.sales-report {
+    margin-top: 20px;
+    display: none; /* Mặc định ẩn */
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    margin: 30px auto;
+  
+}
+
+.sales-report .inner-head {
+    display: flex;
+    align-items: center; /* Căn giữa nội dung theo chiều dọc */
+    background-color:  #f1f1f1; /* Làm trong suốt nền của toàn bộ hàng */
+    padding: 0; /* Xóa khoảng cách */
+    margin: 0; /* Xóa margin */
+    position: relative; /* Để dùng cho phần tử con */
+    box-shadow: none; /* Xóa đổ bóng */
+}
+
+.sales-report .inner-title {
+    background: var(--bg-clr); /* Màu nền cho tiêu đề */
+    color: white; /* Màu chữ */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    font-weight: bold; /* Đậm chữ */
+    border-radius: 10px 10px 0 0; /* Bo góc chỉ cho phần đầu */
+    display: inline-block; /* Để nội dung không kéo dài */
+    margin: 0;
+    box-shadow: none;
+}
+
+.sales-report table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.sales-report th, .sales-report td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-clr);
+}
+
+.sales-report thead {
+    background: var(--bg-clr);
+    color: white;
+    font-weight: bold;
+}
+
+.sales-report tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.sales-report tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.sales-report tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sales-report {
+        width: 95%;
+    }
+
+    .export-button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+
+/* CSS cho biểu tượng trong nút chỉnh sửa */
+.fix-button i {
+    color: #F57D31; /* Màu vàng cho icon chỉnh sửa */
+    font-size: 16px;
+}
+
+/* CSS cho biểu tượng trong nút xóa */
+.delete-button i {
+    color: #F57D31; /* Màu đỏ cho icon xóa */
+    font-size: 16px;
+}
+
+/* Hover hiệu ứng */
+.fix-button:hover i {
+    color: #ffca2c; /* Màu vàng sáng hơn khi hover */
+}
+
+.delete-button:hover i {
+    color: #ffca2c; /* Màu đỏ sáng hơn khi hover */
+}
+
+
+.download-container {
+    text-align: right; /* Căn nút sang phải */
+    margin: 10px 20px; /* Khoảng cách từ bảng */
+}
+
+.download-button {
+    background-color: var(--bg-clr);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-button i {
+    font-size: 16px; /* Kích thước biểu tượng */
+}
+
+.download-button:hover {
+    background-color: #e66b2a; /* Màu khi hover */
+}
+
+
+
+/* Table Styling */
+.agent-debt-report {
+    margin-top: 20px;
+    display: none;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    margin: 30px auto;
+}
+
+.agent-debt-report .inner-head {
+    background: var(--bg-clr);
+    padding: 10px;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.agent-debt-report table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+.agent-debt-report th, .agent-debt-report td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-clr);
+    
+}
+
+.agent-debt-report thead {
+    background: var(--bg-clr);
+    color: white;
+    font-weight: bold;
+}
+
+.agent-debt-report tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.agent-debt-report tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.agent-debt-report tbody tr:hover {
+    background-color: #f1f1f1;
+}

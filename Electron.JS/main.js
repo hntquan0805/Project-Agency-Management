@@ -24,20 +24,33 @@ app.on('ready', () => {
         },
     });
 
+<<<<<<< HEAD
     mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
+=======
+    mainWindow.loadFile(path.join(__dirname, 'views/searchAgent.html'));
+>>>>>>> 347b6554297e30eb0ef9adaa6d9819282de14d25
 });
 
 ipcMain.handle('search', async (event, criteria) => {
-    return await searchAgencies(criteria);
+    try {
+        return await searchAgencies(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
 });
 
 ipcMain.handle('add-agency', async (event, agencyData) => {
     try {
-        const result = await addAgency({ body: agencyData });
-        return result;
+        return await addAgency({ body: agencyData });
     } catch (error) {
+<<<<<<< HEAD
         console.error('Error in ipcMain handle add-agency:', error);
         return { success: false, message: 'Lỗi xử lý từ backend.' };
+=======
+        console.error(error);
+        return { success: false, message: 'Error adding data!' };
+>>>>>>> 347b6554297e30eb0ef9adaa6d9819282de14d25
     }
 });
 

@@ -1,7 +1,7 @@
 const { Agency } = require('../models/agency');
 
-const searchAgencies = async (criteria) => {
-  try{
+function searchAgencies(criteria) {
+  try {
     const { name, filters } = criteria;
     const where = {};
     if (name) where.name = { [Op.like]: `%${name}%` };
@@ -10,11 +10,11 @@ const searchAgencies = async (criteria) => {
       if (filters.district) where.district = filters.district;
     }
 
-    return await Agency.findAll({ where });
+    return Agency.findAll({ where });
 
-  } catch (error){
+  } catch (error) {
     console.error('Error:', error);
   }
-};
+}
 
 module.exports =  { searchAgencies };
