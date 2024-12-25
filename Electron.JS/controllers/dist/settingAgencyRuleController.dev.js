@@ -2,7 +2,6 @@
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// Import model Regulation (giả sử bạn đã định nghĩa mô hình Regulation)
 var _require = require('../models/regulation'),
     Regulation = _require.Regulation;
 
@@ -13,7 +12,7 @@ var _require3 = require('../models/agencyType'),
     AgencyType = _require3.AgencyType;
 
 var _require4 = require('sequelize'),
-    Sequelize = _require4.Sequelize; // Hàm cập nhật cài đặt
+    Sequelize = _require4.Sequelize; // Update settings function
 
 
 function updateSettings(updateData) {
@@ -35,7 +34,7 @@ function updateSettings(updateData) {
             break;
           }
 
-          throw new Error('Không tìm thấy cài đặt nào để cập nhật');
+          throw new Error('No settings found to update');
 
         case 6:
           if (!(regulation.maxAgenciesPerDistrict > updateData.maxAgentsInDistrict)) {
@@ -45,11 +44,11 @@ function updateSettings(updateData) {
 
           _context.next = 9;
           return regeneratorRuntime.awrap(Agency.findAll({
-            attributes: ['district', [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount'] // Đếm số đại lý trong mỗi quận
+            attributes: ['district', [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount'] // Count agencies in each district
             ],
             group: ['district'],
-            // Nhóm theo quận
-            having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict) // Lọc các quận có số đại lý vượt quá giới hạn
+            // Group by district
+            having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict) // Filter districts exceeding the limit
 
           }));
 
@@ -66,7 +65,7 @@ function updateSettings(updateData) {
           }).join(', ');
           return _context.abrupt("return", {
             success: false,
-            message: "C\u1EA2NH B\xC1O! C\xE1c qu\u1EADn sau \u0111ang c\xF3 s\u1ED1 \u0111\u1EA1i l\xFD nhi\u1EC1u h\u01A1n gi\u1EDBi h\u1EA1n: ".concat(districtNames)
+            message: "WARNING! The following districts have more agencies than the limit: ".concat(districtNames)
           });
 
         case 13:
@@ -80,7 +79,7 @@ function updateSettings(updateData) {
 
         case 16:
           agencyTypes = _context.sent;
-          // Kiểm tra các loại đại lý không có đại lý nào thuộc về
+          // Check for agency types that don't have any agencies assigned
           emptyAgencyTypes = [];
           _iteratorNormalCompletion = true;
           _didIteratorError = false;
@@ -156,12 +155,12 @@ function updateSettings(updateData) {
 
           return _context.abrupt("return", {
             success: false,
-            message: 'Hiện đang tồn tại nhiều hơn ' + ' loại đại lí.'
+            message: 'There are more agency types than expected.'
           });
 
         case 48:
-          // Tính toán chênh lệch giữa numAgentTypes và agencyTypeCount
-          difference = regulation.agencyTypeCount - updateData.numAgentTypes; // Nếu chênh lệch quá lớn so với số loại đại lý trống, không thể xoá
+          // Calculate the difference between numAgentTypes and agencyTypeCount
+          difference = regulation.agencyTypeCount - updateData.numAgentTypes; // If the difference is too large compared to the number of empty agency types, deletion is not possible
 
           if (!(difference > emptyAgencyTypes.length)) {
             _context.next = 51;
@@ -170,16 +169,16 @@ function updateSettings(updateData) {
 
           return _context.abrupt("return", {
             success: false,
-            message: 'Chênh lệch quá lớn so với số loại đại lý trống, không thể xoá.'
+            message: 'The difference is too large compared to the number of empty agency types, cannot delete.'
           });
 
         case 51:
-          // Sắp xếp theo thứ tự giảm dần (loại đại lý có type lớn hơn sẽ được xóa trước)
+          // Sort by descending order (agency types with a higher type will be deleted first)
           sortedEmptyAgencyTypes = emptyAgencyTypes.sort(function (a, b) {
             return b.type - a.type;
-          }); // Lấy ra đúng số loại đại lý cần xóa theo số lượng chênh lệch
+          }); // Get the required number of agency types to delete based on the difference
 
-          typesToDelete = sortedEmptyAgencyTypes.slice(0, difference); // Xóa các loại đại lý không có đại lý nào thuộc về
+          typesToDelete = sortedEmptyAgencyTypes.slice(0, difference); // Delete agency types with no agencies assigned
 
           _context.next = 55;
           return regeneratorRuntime.awrap(AgencyType.destroy({
@@ -191,7 +190,7 @@ function updateSettings(updateData) {
           }));
 
         case 55:
-          // Cập nhật lại agencyTypeCount trong regulation
+          // Update the agencyTypeCount in the regulation
           regulation.agencyTypeCount = updateData.numAgentTypes;
           regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict;
           _context.next = 59;
@@ -200,7 +199,7 @@ function updateSettings(updateData) {
         case 59:
           return _context.abrupt("return", {
             success: true,
-            message: 'Đã xóa các loại đại lý không có đại lý và cập nhật lại Số loại đại lí.',
+            message: 'Deleted empty agency types and updated the number of agency types.',
             updatedSettings: regulation
           });
 
@@ -211,22 +210,22 @@ function updateSettings(updateData) {
             typesToCreate.push({
               type: i,
               productCount: 5,
-              // Giả sử productCount là 5 cho các loại mới
+              // Assuming productCount is 5 for new types
               unitCount: 3,
-              // Giả sử unitCount là 3 cho các loại mới
-              maxDebt: 0 // Giả sử maxDebt là 0 cho các loại mới
+              // Assuming unitCount is 3 for new types
+              maxDebt: 0 // Assuming maxDebt is 0 for new types
 
             });
-          } // Tạo các loại đại lý mới
+          } // Create new agency types
 
 
           _context.next = 64;
           return regeneratorRuntime.awrap(AgencyType.bulkCreate(typesToCreate));
 
         case 64:
-          // Cập nhật các trường dữ liệu trong Regulation
+          // Update fields in Regulation
           regulation.agencyTypeCount = updateData.numAgentTypes;
-          regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict; // Lưu lại bản ghi đã cập nhật
+          regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict; // Save the updated record
 
           _context.next = 68;
           return regeneratorRuntime.awrap(regulation.save());
@@ -234,7 +233,7 @@ function updateSettings(updateData) {
         case 68:
           return _context.abrupt("return", {
             success: true,
-            updatedSettings: regulation // Trả về cài đặt đã được cập nhật
+            updatedSettings: regulation // Return the updated settings
 
           });
 
@@ -244,7 +243,7 @@ function updateSettings(updateData) {
           console.error('Error updating settings:', _context.t1);
           return _context.abrupt("return", {
             success: false,
-            message: 'Lỗi khi cập nhật cài đặt'
+            message: 'Error updating settings'
           });
 
         case 75:

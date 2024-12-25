@@ -15,6 +15,12 @@ const Inventory = sequelize.define('Inventory', {
 
 Inventory.associate = function(models) {
   // define association here
+  Inventory.hasMany(models.Distribution, {
+    foreignKey: 'productCode', // Chỉ định khóa ngoại trong Distribution
+    sourceKey: 'productCode', // Chỉ định khóa chính trong Inventory
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  });
 };
 
 module.exports = { Inventory };

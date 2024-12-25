@@ -22,5 +22,8 @@ contextBridge.exposeInMainWorld('api', {
   },
   getAgencyTypes: function getAgencyTypes() {
     return ipcRenderer.invoke('get-agency-types');
+  },
+  updateAgencyTypeSettings: function updateAgencyTypeSettings(updateData) {
+    return ipcRenderer.invoke('agency-type-1', updateData);
   }
 });

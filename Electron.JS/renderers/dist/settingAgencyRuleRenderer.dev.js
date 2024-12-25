@@ -1,76 +1,84 @@
 "use strict";
 
-document.getElementById('agency-rule-1').addEventListener('click', function _callee(event) {
+document.getElementById('agency-rule-1').addEventListener('click', function _callee2(event) {
   var updateData;
-  return regeneratorRuntime.async(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          event.preventDefault(); // Lấy dữ liệu từ form
-
-          updateData = {
-            numAgentTypes: document.getElementById('inputNumAgentTypes').value,
-            maxAgentsInDistrict: document.getElementById('inputMaxAgentsInDist').value,
-            currencyUnit: document.getElementById('currencyUnit').value
-          }; // Gửi dữ liệu đến backend qua `window.api`
-
-          window.api.updateSettings(updateData).then(function (result) {
-            if (result.success) {
-              alert('Cập nhật thành công!'); // Thực hiện các hành động cần thiết sau khi cập nhật
-
-              console.log('Updated settings:', result.updatedSettings);
-            } else {
-              alert(result.message);
-            }
-          })["catch"](function (error) {
-            console.error('Error in frontend:', error);
-            alert("\u0110\xE3 x\u1EA3y ra l\u1ED7i: ".concat(error.message));
-          });
-
-        case 3:
-        case "end":
-          return _context.stop();
-      }
-    }
-  });
-});
-document.addEventListener('DOMContentLoaded', function _callee2() {
-  var agencyTypes, agentTypeSelect;
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          _context2.prev = 0;
-          _context2.next = 3;
-          return regeneratorRuntime.awrap(window.electron.getAgencyTypes());
+          event.preventDefault(); // Get data from the form
+
+          updateData = {
+            numAgentTypes: document.getElementById('inputAgencyTypes').value,
+            maxAgentsInDistrict: document.getElementById('inputMaxAgenciesPerDist').value,
+            currencyUnit: document.getElementById('currencyUnit').value
+          }; // Send data to the backend via `window.api`
+
+          window.api.updateSettings(updateData).then(function _callee(result) {
+            var agencyTypes, agencyTypeSelect;
+            return regeneratorRuntime.async(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (!result.success) {
+                      _context.next = 19;
+                      break;
+                    }
+
+                    alert('Update successful!'); // Perform necessary actions after update
+
+                    console.log('Updated settings:', result.updatedSettings);
+                    _context.prev = 3;
+                    _context.next = 6;
+                    return regeneratorRuntime.awrap(window.api.getAgencyTypes());
+
+                  case 6:
+                    agencyTypes = _context.sent;
+                    console.log('Agency Types:', agencyTypes); // Get the select element from the HTML
+
+                    agencyTypeSelect = document.getElementById('agencyType');
+                    agencyTypeSelect.innerHTML = ''; // Clear old options in select
+                    // Add options to select
+
+                    agencyTypes.forEach(function (type) {
+                      var option = document.createElement('option');
+                      option.value = type; // The value is the agency type
+
+                      option.textContent = type; // Display the agency type
+
+                      agencyTypeSelect.appendChild(option);
+                    });
+                    _context.next = 17;
+                    break;
+
+                  case 13:
+                    _context.prev = 13;
+                    _context.t0 = _context["catch"](3);
+                    console.error('Error fetching agency types:', _context.t0);
+                    alert('An error occurred while fetching agency types');
+
+                  case 17:
+                    _context.next = 20;
+                    break;
+
+                  case 19:
+                    alert(result.message);
+
+                  case 20:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, null, null, [[3, 13]]);
+          })["catch"](function (error) {
+            console.error('Error in frontend:', error);
+            alert("An error occurred: ".concat(error.message));
+          });
 
         case 3:
-          agencyTypes = _context2.sent;
-          // Lấy phần tử select từ HTML
-          agentTypeSelect = document.getElementById('agentType');
-          agentTypeSelect.innerHTML = ''; // Xóa các lựa chọn cũ trong select
-          // Thêm các lựa chọn vào select
-
-          agencyTypes.forEach(function (agencyType) {
-            var option = document.createElement('option');
-            option.value = agencyType.type; // Giả sử 'type' là thuộc tính của AgencyType
-
-            option.textContent = agencyType.type; // Hiển thị type trong dropdown
-
-            agentTypeSelect.appendChild(option);
-          });
-          _context2.next = 12;
-          break;
-
-        case 9:
-          _context2.prev = 9;
-          _context2.t0 = _context2["catch"](0);
-          console.error('Lỗi khi lấy loại đại lý:', _context2.t0);
-
-        case 12:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  });
 });

@@ -1,48 +1,47 @@
-// Import model Regulation (giả sử bạn đã định nghĩa mô hình Regulation)
 const { Regulation } = require('../models/regulation');
 const { Agency } = require('../models/agency');
 const { AgencyType } = require('../models/agencyType');
 const { Sequelize } = require('sequelize');
 
-// Hàm cập nhật cài đặt
+// Update settings function
 async function updateSettings(updateData) {
     try {
-        // Truy cập vào model Regulation để tìm đối tượng Regulation (có thể có nhiều đối tượng hoặc chỉ một)
-        // Giả sử bạn chỉ có một bản ghi duy nhất trong bảng Regulation
+        // Access the Regulation model to find the Regulation object (could be multiple or just one)
+        // Assuming you only have one record in the Regulation table
 
         const regulation = await Regulation.findOne();
 
         if (!regulation) {
-            throw new Error('Không tìm thấy cài đặt nào để cập nhật');
+            throw new Error('No settings found to update');
         }
 
-        // Kiểm tra nếu số maxAgenciesPerDistrict hiện tại lớn hơn maxAgentsInDistrict
+        // Check if the current maxAgenciesPerDistrict is greater than maxAgentsInDistrict
         if (regulation.maxAgenciesPerDistrict > updateData.maxAgentsInDistrict) {
-            // Truy vấn để lấy danh sách các quận có số đại lý vượt quá giới hạn
+            // Query to get the list of districts with more agencies than the limit
             const districtsExceedingLimit = await Agency.findAll({
                 attributes: [
                     'district',
-                    [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount'] // Đếm số đại lý trong mỗi quận
+                    [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount'] // Count agencies in each district
                 ],
-                group: ['district'], // Nhóm theo quận
-                having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict), // Lọc các quận có số đại lý vượt quá giới hạn
+                group: ['district'], // Group by district
+                having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict), // Filter districts exceeding the limit
             });
 
-            // Nếu có quận nào vi phạm giới hạn
+            // If there are any districts exceeding the limit
             if (districtsExceedingLimit.length > 0) {
                 const districtNames = districtsExceedingLimit.map(district => district.district).join(', ');
                 return {
                     success: false,
-                    message: `CẢNH BÁO! Các quận sau đang có số đại lý nhiều hơn giới hạn: ${districtNames}`
+                    message: `WARNING! The following districts have more agencies than the limit: ${districtNames}`
                 };
             }
         }
 
         if (regulation.agencyTypeCount > updateData.numAgentTypes) {
-            // Lấy danh sách tất cả các loại đại lý
+            // Get the list of all agency types
             const agencyTypes = await AgencyType.findAll();
         
-            // Kiểm tra các loại đại lý không có đại lý nào thuộc về
+            // Check for agency types that don't have any agencies assigned
             const emptyAgencyTypes = [];
         
             for (const agencyType of agencyTypes) {
@@ -55,32 +54,32 @@ async function updateSettings(updateData) {
                 }
             }
         
-            // Nếu không có loại đại lý nào không có đại lý thuộc về
+            // If there are no agency types with no agencies assigned
             if (emptyAgencyTypes.length === 0) {
                 return {
                     success: false,
-                    message: 'Hiện đang tồn tại nhiều hơn ' + ' loại đại lí.',
+                    message: 'There are more agency types than expected.'
                 };
             }
         
-            // Tính toán chênh lệch giữa numAgentTypes và agencyTypeCount
+            // Calculate the difference between numAgentTypes and agencyTypeCount
             const difference = regulation.agencyTypeCount - updateData.numAgentTypes;
         
-            // Nếu chênh lệch quá lớn so với số loại đại lý trống, không thể xoá
+            // If the difference is too large compared to the number of empty agency types, deletion is not possible
             if (difference > emptyAgencyTypes.length) {
                 return {
                     success: false,
-                    message: 'Chênh lệch quá lớn so với số loại đại lý trống, không thể xoá.',
+                    message: 'The difference is too large compared to the number of empty agency types, cannot delete.'
                 };
             }
         
-            // Sắp xếp theo thứ tự giảm dần (loại đại lý có type lớn hơn sẽ được xóa trước)
+            // Sort by descending order (agency types with a higher type will be deleted first)
             const sortedEmptyAgencyTypes = emptyAgencyTypes.sort((a, b) => b.type - a.type);
         
-            // Lấy ra đúng số loại đại lý cần xóa theo số lượng chênh lệch
+            // Get the required number of agency types to delete based on the difference
             const typesToDelete = sortedEmptyAgencyTypes.slice(0, difference);
         
-            // Xóa các loại đại lý không có đại lý nào thuộc về
+            // Delete agency types with no agencies assigned
             await AgencyType.destroy({
                 where: {
                     type: {
@@ -89,14 +88,14 @@ async function updateSettings(updateData) {
                 }
             });
         
-            // Cập nhật lại agencyTypeCount trong regulation
+            // Update the agencyTypeCount in the regulation
             regulation.agencyTypeCount = updateData.numAgentTypes;
             regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict;
             await regulation.save();
         
             return {
                 success: true,
-                message: 'Đã xóa các loại đại lý không có đại lý và cập nhật lại Số loại đại lí.',
+                message: 'Deleted empty agency types and updated the number of agency types.',
                 updatedSettings: regulation
             };
         }
@@ -105,30 +104,30 @@ async function updateSettings(updateData) {
             for (let i = regulation.agencyTypeCount + 1; i <= updateData.numAgentTypes; i++) {
                 typesToCreate.push({
                     type: i,
-                    productCount: 5,   // Giả sử productCount là 5 cho các loại mới
-                    unitCount: 3,      // Giả sử unitCount là 3 cho các loại mới
-                    maxDebt: 0         // Giả sử maxDebt là 0 cho các loại mới
+                    productCount: 5,   // Assuming productCount is 5 for new types
+                    unitCount: 3,      // Assuming unitCount is 3 for new types
+                    maxDebt: 0         // Assuming maxDebt is 0 for new types
                 });
             }
 
-            // Tạo các loại đại lý mới
+            // Create new agency types
             await AgencyType.bulkCreate(typesToCreate);
 
-        // Cập nhật các trường dữ liệu trong Regulation
+        // Update fields in Regulation
         regulation.agencyTypeCount = updateData.numAgentTypes;
         regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict;
 
-        // Lưu lại bản ghi đã cập nhật
+        // Save the updated record
         await regulation.save();
 
-        // Trả về kết quả thành công
+        // Return success
         return {
             success: true,
-            updatedSettings: regulation // Trả về cài đặt đã được cập nhật
+            updatedSettings: regulation // Return the updated settings
         };
     } catch (error) {
         console.error('Error updating settings:', error);
-        return { success: false, message: 'Lỗi khi cập nhật cài đặt' };
+        return { success: false, message: 'Error updating settings' };
     }
 }
 

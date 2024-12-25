@@ -4,6 +4,7 @@ const { addAgency } = require('./controllers/agencyController');
 const { connect } = require('./config/database');
 const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
+const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
 const path = require('path');
 
 connect();
@@ -24,11 +25,7 @@ app.on('ready', () => {
         },
     });
 
-<<<<<<< HEAD
-    mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
-=======
-    mainWindow.loadFile(path.join(__dirname, 'views/searchAgent.html'));
->>>>>>> 347b6554297e30eb0ef9adaa6d9819282de14d25
+    mainWindow.loadFile(path.join(__dirname, 'views/addAgent.html'));
 });
 
 ipcMain.handle('search', async (event, criteria) => {
@@ -44,13 +41,9 @@ ipcMain.handle('add-agency', async (event, agencyData) => {
     try {
         return await addAgency({ body: agencyData });
     } catch (error) {
-<<<<<<< HEAD
-        console.error('Error in ipcMain handle add-agency:', error);
-        return { success: false, message: 'Lỗi xử lý từ backend.' };
-=======
         console.error(error);
         return { success: false, message: 'Error adding data!' };
->>>>>>> 347b6554297e30eb0ef9adaa6d9819282de14d25
+
     }
 });
 
@@ -62,15 +55,28 @@ ipcMain.handle('agency-rule-1', async (event, updateData) => {
         return result;
     } catch (error) {
         console.error('Error in ipcMain handle updateSettings:', error);
-        return { success: false, message: 'Lỗi xử lý từ backend.' };
+        return { success: false, message: 'Error in ipcMain handle updateSettings.' };
+    }
+});
+
+ipcMain.handle('agency-type-1', async (event, updateData) => {
+    try {
+        // Giả sử bạn có một hàm updateSettings trong backend để xử lý cập nhật dữ liệu.
+        const result = await updateAgencyTypeSettings(updateData); // Bạn sẽ thực hiện hành động cần thiết với `updateData`
+
+        return result;
+    } catch (error) {
+        console.error('Error in ipcMain handle updateSettings:', error);
+        return { success: false, message: 'Error in ipcMain handle updateSettings.' };
     }
 });
 
 ipcMain.handle('get-agency-types', async () => {
     try {
         // Lấy danh sách các loại đại lý từ cơ sở dữ liệu
-        const agencyTypes = await AgencyType.findAll();
-        return agencyTypes; // Trả về danh sách loại đại lý
+        const agencyTypes = await getAgencyTypesFromDB();
+        console.log(agencyTypes);
+        return agencyTypes;
     } catch (error) {
         console.error('Error fetching agency types:', error);
         return [];  // Trả về mảng rỗng nếu có lỗi
