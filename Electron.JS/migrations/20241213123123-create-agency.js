@@ -19,7 +19,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       type: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'AgencyType',
+          key: 'type',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
       },
       onboardDate: {
         type: Sequelize.DATE

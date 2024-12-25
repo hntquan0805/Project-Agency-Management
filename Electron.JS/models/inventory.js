@@ -8,8 +8,7 @@ const Inventory = sequelize.define('Inventory', {
     primaryKey: true,
   },
   productName: DataTypes.STRING,
-  price: DataTypes.DOUBLE,
-  quantityInStock: DataTypes.INTEGER
+  quantityInStock: DataTypes.INTEGER,
 }, {
   freezeTableName: true,
 });

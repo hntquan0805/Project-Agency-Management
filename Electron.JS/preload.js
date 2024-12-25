@@ -6,4 +6,8 @@ contextBridge.exposeInMainWorld('api', {
     addAgency: (agencyData) => ipcRenderer.invoke('add-agency', agencyData),
 
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
+
+    updateSettings: (updateData) => ipcRenderer.invoke('agency-rule-1', updateData),
+
+    getAgencyTypes: () => ipcRenderer.invoke('get-agency-types'),
 });

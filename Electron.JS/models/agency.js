@@ -57,6 +57,12 @@ Agency.associate = (models) => {
         onDelete: 'SET NULL',
         onUpdate: 'CASCADE',
     });
+    Account.belongsTo(models.AgencyType, {
+        foreignKey: 'type',
+        targetKey: 'type',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
+    });
 };
 
 module.exports = { Agency };

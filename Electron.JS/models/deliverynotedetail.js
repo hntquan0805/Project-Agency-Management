@@ -10,8 +10,13 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    type: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     unit: {
         type: DataTypes.STRING,
+        allowNull: false,
     },
     quantity: {
         type: DataTypes.INTEGER,
@@ -28,15 +33,21 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
 });
 
 DeliveryNoteDetail.associate = (models) => {
-    DeliveryNoteDetail.belongsTo(models.Inventory, {
-        foreignKey: 'productCode',
-        targetKey: 'productCode',
-        onUpdate: 'CASCADE',
-    });
     DeliveryNoteDetail.belongsTo(models.DeliveryNote, {
         foreignKey: 'deliveryNoteCode',
         targetKey: 'deliveryNoteCode',
         onUpdate: 'CASCADE',
+    });
+    sequelize.addConstraint('DeliveryNoteDetail', {
+        fields: ['productCode', 'type', 'unit'], // Các trường tham gia khóa ngoại
+        type: 'foreign key',
+        name: 'fk_deliverynote_distribution', // Tên khóa ngoại
+        references: {
+            table: 'Distribution',
+            fields: ['productCode', 'type', 'unit'], // Trường liên kết
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
     });
 };
 
