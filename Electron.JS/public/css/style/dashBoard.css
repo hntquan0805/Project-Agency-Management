@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Galada&family=Geologica:wght@100..900&display=swap');
 
 html
 {
@@ -374,6 +375,9 @@ header .open-active .sub-button .sub:hover{
     font-weight: bold;
     text-align: center;
     line-height: 4rem;
+
+    font-family: "Geologica", sans-serif;
+
 }
 /* End Welcome Header */
 
@@ -403,6 +407,7 @@ header .open-active .sub-button .sub:hover{
     flex-direction: column;
     justify-content: center;
     flex-shrink: 1;
+    font-family: "Geologica", sans-serif;
 }
 
 .box-title {
@@ -419,6 +424,7 @@ header .open-active .sub-button .sub:hover{
 .box-desc {
     font-size: clamp(1rem, 2vw, 1.8rem);
     color: #FFEB3B;
+    font-weight: bold;
 }
 
 /* End Statistics Box */
@@ -436,6 +442,7 @@ header .open-active .sub-button .sub:hover{
     border-radius: 5px;
     border: #B8B8B8 solid 1px;
     border-left: #4B9941 solid 8px;
+    font-family: "Geologica", sans-serif;
 }
 
 .noti-content {
@@ -466,6 +473,8 @@ header .open-active .sub-button .sub:hover{
     border-radius: 5px;   
     border: #B8B8B8 solid 1px;
     padding: 2rem 3rem 3rem 3rem;
+    font-family: "Geologica", sans-serif;
+
 }
 
 .tools-header{
@@ -483,7 +492,7 @@ header .open-active .sub-button .sub:hover{
 .feature-header {
     background-color: #F57D31;
     text-align: center;
-    border: #B8B8B8 solid;
+    border: #B8B8B8 solid 1px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     min-height: 110px;
@@ -501,6 +510,8 @@ header .open-active .sub-button .sub:hover{
     font-weight: bold;
     color: #FFFFFF;
     margin: 0;
+    font-family: "Geologica", sans-serif;
+
 }
 
 .feature-title i{
@@ -515,8 +526,8 @@ header .open-active .sub-button .sub:hover{
     background-color: #FFFFFF;
     padding: 10px;
     margin-top: 0px;
-
-    border: #B8B8B8 solid;
+    border: #B8B8B8 solid 1px;
+    border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     min-height: 110px;
