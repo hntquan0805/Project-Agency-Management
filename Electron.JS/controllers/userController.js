@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { User } = require('../models/user');
 
-async function hashPassword(password) {
+const hashPassword = async (password) => {
     const salt = crypto.randomBytes(16);
     const keylen = 64;
     return new Promise((resolve, reject) => {
@@ -12,10 +12,10 @@ async function hashPassword(password) {
     });
 }
 
-async function signUpUser(username, password) {
+const signUpUser = async (username, password) => {
     try {
         const { hashedPassword, salt } = await hashPassword(password);
-        const newUser = await db.User.create({ 
+        const newUser = await User.create({ 
             username, 
             password: hashedPassword, 
             salt        

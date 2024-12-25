@@ -10,4 +10,6 @@ contextBridge.exposeInMainWorld('api', {
     updateSettings: (updateData) => ipcRenderer.invoke('agency-rule-1', updateData),
 
     getAgencyTypes: () => ipcRenderer.invoke('get-agency-types'),
+
+    getProductsByAgency: (type) => ipcRenderer.invoke('get-products', type),
 });
