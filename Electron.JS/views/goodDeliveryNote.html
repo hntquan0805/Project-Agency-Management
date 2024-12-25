@@ -231,6 +231,7 @@
                                 <!-- Dynamic rows for Agent Debt Report -->
                             </tbody>
                         </table>
+
                         <div class="col-xl-4 col-md-12 col-12 button">
                             <button class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
                         </div>
@@ -259,7 +260,53 @@
     </div>
 
    
-    
+    <div id="goodsDeliveryNoteModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>GOODS DELIVERY NOTE</h2>
+            
+            
+            <div class="info-input">
+                <p class="info-row">
+                    <strong class="info-label">Agent Name:</strong> 
+                    <span id="modalAgentName" class="info-value"></span>
+                </p>
+                <p class="info-row">
+                    <strong class="info-label">Date:</strong> 
+                    <span id="modalDate" class="info-value"></span>
+                </p>
+                <p class="info-row">
+                    <strong class="info-label">List of Goods:</strong>
+                    <span id="modalList"></span>
+                </p>
+            </div>
+            
+            <div>
+               
+                <table class="goods-table">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Name of Good</th>
+                            <th>Calculation Unit</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="goodsListTable"></tbody>
+                </table>
+                <div class="total">
+                    <span class="totalFrom">Total:</span> <span id="grandTotal"></span>
+                </div>
+                <p class="thank-you">Thanks for your order!</p>
+               
+            </div>
+            <div class="button-note">
+                <button class="modal-close-button" onclick="closeModal()">Close <i class="bi bi-x"></i></button>
+                <button class="modal-print-button">Print <i class="bi bi-printer-fill"></i></button>
+            </div>
+        </div>
+    </div>
     
     <script>
         const hamBurger = document.querySelector(".toggle-btn");

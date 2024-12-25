@@ -149,3 +149,50 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCartTable();
 });
 
+document.querySelector(".createButton").addEventListener("click", function () {
+    // Lấy thông tin Agent Name và Date
+    const agentName = document.getElementById("agentName").value;
+    const date = document.getElementById("date").value;
+
+    // Gắn thông tin vào modal
+    document.getElementById("modalAgentName").textContent = agentName;
+    document.getElementById("modalDate").textContent = date;
+
+    // Lấy dữ liệu từ bảng Cart
+    const cartRows = document.querySelectorAll("#resultsCart tr");
+    const goodsListTable = document.getElementById("goodsListTable");
+    goodsListTable.innerHTML = ""; // Xóa dữ liệu cũ
+
+    let grandTotal = 0;
+
+    cartRows.forEach((row) => {
+        const serial = row.children[0].textContent;
+        const nameOfGood = row.children[1].textContent;
+        const calculationUnit = row.children[2].textContent;
+        const price = parseFloat(row.children[3].textContent.replace(/,/g, ""));
+        const quantity = parseInt(row.children[4].textContent);
+
+        const total = price * quantity;
+        grandTotal += total;
+
+        const newRow = `<tr>
+            <td>${serial}</td>
+            <td>${nameOfGood}</td>
+            <td>${calculationUnit}</td>
+            <td>${price.toLocaleString()} VND</td>
+            <td>${quantity}</td>
+            <td>${total.toLocaleString()} VND</td>
+        </tr>`;
+        goodsListTable.innerHTML += newRow;
+    });
+
+    // Hiển thị tổng số
+    document.getElementById("grandTotal").textContent = `${grandTotal.toLocaleString()} VND`;
+
+    // Hiển thị modal
+    document.getElementById("goodsDeliveryNoteModal").style.display = "flex";
+});
+
+function closeModal() {
+    document.getElementById("goodsDeliveryNoteModal").style.display = "none";
+}
