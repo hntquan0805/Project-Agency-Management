@@ -1,7 +1,7 @@
 const { Agency } = require('../models/agency');
 const { Regulation } = require('../models/regulation');
 
-async function addAgency(agencyData) {
+const addAgency = async (agencyData) => {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {
         const regulation = await Regulation.findOne();
