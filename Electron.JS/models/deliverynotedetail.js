@@ -64,9 +64,25 @@ DeliveryNoteDetail.belongsTo(DeliveryNote, {
 });
 
 // Thiết lập khóa ngoại với Distribution
+// Thiết lập quan hệ với Distribution cho từng cặp khóa
 DeliveryNoteDetail.belongsTo(Distribution, {
-    foreignKey: ['productCode', 'type', 'unit'],
-    targetKey: ['productCode', 'type', 'unit'],
+    foreignKey: 'productCode', // Trường khóa ngoại 1
+    targetKey: 'productCode',  // Trường khóa chính tương ứng
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   });
+  
+  DeliveryNoteDetail.belongsTo(Distribution, {
+    foreignKey: 'type', // Trường khóa ngoại 2
+    targetKey: 'type',  // Trường khóa chính tương ứng
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  });
+  
+  DeliveryNoteDetail.belongsTo(Distribution, {
+    foreignKey: 'unit', // Trường khóa ngoại 3
+    targetKey: 'unit',  // Trường khóa chính tương ứng
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  });
+  

@@ -68,7 +68,7 @@ const Agency = sequelize.define('Agency', {
 module.exports =  { Agency };
 
 const { DeliveryNote } = require('./deliverynote');
-const { RevenueReport } = require('./revenueteport');
+const { RevenueReport } = require('./revenuereport');
 const { DebtHistory } = require('./debthistory');
 const { PaymentReceipt } = require('./paymentreceipt');
 const { AgencyType } = require('./agencytype');
