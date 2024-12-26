@@ -1,6 +1,6 @@
 const { Agency } = require('../models/agency');
 
-async function addAgency(agencyData) {
+const addAgency = async (agencyData) => {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {
         // Get the largest agencyCode currently to generate the new code
