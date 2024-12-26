@@ -240,6 +240,32 @@
                         </div>
                     </div>
 
+                    <div id="downloadModal" class="modal">
+                        <div class="modal-content" style="background-color: rgb(250, 231, 207);">
+                            <span class="close-btn top-left">&times;</span>
+                            <div class="modal-body">
+                                <div class="flex-row">
+                                    <div class="file-input-group">
+                                        <label for="fileName">File name:</label>
+                                        <input type="text" id="fileName" readonly>
+                                    </div>
+                                    <div class="file-input-group short">
+                                        <label for="fileType">Save as:</label>
+                                        <select id="fileType" class="form-select">
+                                            <option value="xlsx">XLSX</option>
+                                            <option value="png">PNG</option>
+                                            <option value="pdf">PDF</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="downloadConfirm" class="btn download-button">Download <i class="bi bi-download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
     <script src = "../renderers/ExportReportRenders.js"></script>
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
