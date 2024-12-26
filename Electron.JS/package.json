@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec electron .",
-    "build": "electron-builder"
+    "build": "electron-builder --no-dist"
   },
   "author": "nhom_06",
   "license": "ISC",
