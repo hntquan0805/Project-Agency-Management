@@ -1,12 +1,15 @@
 const { app, BrowserWindow, ipcMain, screen} = require('electron');
+const { connect } = require('./config/database');
+const path = require('path');
+
 const { signUpUser } = require('./controllers/userController');
 const { addAgency } = require('./controllers/agencyController');
-const { connect } = require('./config/database');
 const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
-const { getProductsByAgency } = require('./controllers/getProductsByAgency');
+const { getProductsByAgency, getProductsByCode } = require('./controllers/getProductsByAgencyController');
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
-const path = require('path');
+const { deleteProductByAgency } = require('./controllers/editProductsByAgencyController');
+const { updateProductByAgency } = require('./controllers/editProductsByAgencyController');
 
 connect();
 
@@ -29,12 +32,37 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 
+ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) => {
+    try {
+        return await getProductsByCode(productCode, unit, type);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fetching data!' };
+    }
+});
+
+ipcMain.handle('update-product', async (event, { productCode, unit, type, price }) => {
+    try {
+        return await updateProductByAgency(productCode, unit, type, price);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error deleting data!' };
+    }
+});
+
+ipcMain.handle('delete-product', async (event, { productCode, unit, type}) => {
+    try {
+        return await deleteProductByAgency(productCode, unit, type);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error deleting data!' };
+    }
+});
+
 ipcMain.handle('get-products', async (event, type) => {
     try {
-         // Gọi hàm lấy dữ liệu sản phẩm
-         const products = await getProductsByAgency(type);
-         return products;
-        //return await getProductsByAgency(type);
+        const products = await getProductsByAgency(type);
+        return products;
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };

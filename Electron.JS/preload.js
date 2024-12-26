@@ -13,5 +13,11 @@ contextBridge.exposeInMainWorld('api', {
 
     getProductsByAgency: (type) => ipcRenderer.invoke('get-products', type),
 
-    updateAgencyTypeSettings: (updateData) => ipcRenderer.invoke('agency-type-1', updateData),    
+    updateAgencyTypeSettings: (updateData) => ipcRenderer.invoke('agency-type-1', updateData),
+
+    deleteProductByAgnecy: (productCode, unit, type) => ipcRenderer.invoke('delete-product', { productCode, unit, type }),
+
+    updateProductByAgency: (productCode, unit, type, price) => ipcRenderer.invoke('update-product', { productCode, unit, type, price }),
+    
+    getProductsByCode: (productCode, unit, type) => ipcRenderer.invoke('get-products-code', {productCode, unit, type}),
 });

@@ -268,13 +268,13 @@
 
     <div id="overlay" class="overlay"></div>
     
-    <div id="goods-pop-up" class="pop-up">
+    <div id="edit-modal" class="pop-up">
         <div class="pop-up-header">
             <div class="pop-up-header-title">GOODS INFORMATION</div>
             <buton id="close-pop-up-button" class="btn-close"></buton>
         </div>
 
-        <form action="#" method="post" autocomplete="off">
+        <form id="edit-form" action="#" method="post" autocomplete="off">
             <div class="mb-3">
                 <label for="goods-code" class="form-label form-label-pop-up">Code</label>
                 <input type="text" id="goods-code" class="form-control form-control-pop-up" required>
@@ -305,37 +305,6 @@
         </form>
     </div>
 
-
-    <script>
-        const addGoodsButton = document.getElementById("add-goods-button");
-        const editButtons = document.querySelectorAll(".edit-button");
-        const closePopUpButton = document.getElementById("close-pop-up-button");
-        const overlay = document.getElementById("overlay");
-        const popUp = document.getElementById("goods-pop-up");
-        const body = document.body;
-
-        function openPopUp(){
-            body.classList.add("no-scroll");
-            overlay.style.display = "block";
-            popUp.style.display = "block";
-        }
-
-        function closePopUp(){
-            body.classList.remove("no-scroll");
-            overlay.style.display = "none";
-            popUp.style.display = "none";
-        }
-
-        // Gán sự kiện cho tất cả nút Edit
-        editButtons.forEach(button => {
-            button.addEventListener("click", () => openPopUp());
-        });
-        
-        addGoodsButton.addEventListener("click", openPopUp);
-        
-        closePopUpButton.addEventListener("click", closePopUp);
-    </script>
-
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
         hamBurger.addEventListener("click", function () {
@@ -343,7 +312,7 @@
         });
     </script>
 
-    <script src="../renderers/getProductsRenderer.js"></script>
+    <script src="../renderers/getProductsByAgencyRenderer.js"></script>
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../renderers/loadAgencyTypeRenderer.js"></script>
     <script src="../renderers/settingAgencyRuleRenderer.js"></script>
