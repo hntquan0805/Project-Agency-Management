@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     const editModal = document.getElementById('edit-modal');
     const editForm = document.getElementById('edit-form');
     const editCancel = document.getElementById('close-pop-up-button');
+    const overlay = document.getElementById('overlay');
 
     async function loadProducts() {
         const products = await window.api.getProductsByAgency(type.value);
@@ -78,4 +79,8 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     }
 
     loadProducts();
+
+    type.addEventListener('change', async (event) => {
+        loadProducts();
+    });
 });

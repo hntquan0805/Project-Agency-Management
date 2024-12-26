@@ -1,10 +1,10 @@
 "use strict";
 
-document.addEventListener('DOMContentLoaded', function _callee4(e) {
-  var type, productsList, editModal, editForm, editCancel, loadProducts;
-  return regeneratorRuntime.async(function _callee4$(_context5) {
+document.addEventListener('DOMContentLoaded', function _callee5(e) {
+  var type, productsList, editModal, editForm, editCancel, overlay, loadProducts;
+  return regeneratorRuntime.async(function _callee5$(_context6) {
     while (1) {
-      switch (_context5.prev = _context5.next) {
+      switch (_context6.prev = _context6.next) {
         case 0:
           loadProducts = function _ref() {
             var products;
@@ -129,11 +129,26 @@ document.addEventListener('DOMContentLoaded', function _callee4(e) {
           editModal = document.getElementById('edit-modal');
           editForm = document.getElementById('edit-form');
           editCancel = document.getElementById('close-pop-up-button');
+          overlay = document.getElementById('overlay');
           loadProducts();
+          type.addEventListener('change', function _callee4(event) {
+            return regeneratorRuntime.async(function _callee4$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    loadProducts();
 
-        case 8:
+                  case 1:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            });
+          });
+
+        case 10:
         case "end":
-          return _context5.stop();
+          return _context6.stop();
       }
     }
   });
