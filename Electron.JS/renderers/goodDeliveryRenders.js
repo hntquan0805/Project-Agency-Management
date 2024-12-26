@@ -196,3 +196,60 @@ document.querySelector(".createButton").addEventListener("click", function () {
 function closeModal() {
     document.getElementById("goodsDeliveryNoteModal").style.display = "none";
 }
+
+function printModalContent() {
+    const modalElement = document.getElementById("goodsDeliveryNoteModal");
+    
+    // Ẩn các nút không cần thiết
+    const closeButton = modalElement.querySelector(".modal-close-button");
+    const printButton = modalElement.querySelector(".modal-print-button");
+    if (closeButton) closeButton.style.display = "none";
+    if (printButton) printButton.style.display = "none";
+
+    // Tạo cửa sổ mới để in
+    const printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>Print Goods Delivery Note</title>');
+    printWindow.document.write('<style>');
+    printWindow.document.write(`
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #F57D31;
+            color: white;
+        }
+        .total {
+            font-size: 16px;
+            font-weight: bold;
+            color: red;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .thank-you {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    `); // Thêm CSS tùy chỉnh nếu cần
+    printWindow.document.write('</style></head><body>');
+    printWindow.document.write(modalElement.innerHTML); // Chỉ in nội dung modal
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+
+    // Hiển thị lại các nút sau khi in
+    if (closeButton) closeButton.style.display = "block";
+    if (printButton) printButton.style.display = "block";
+}
+
+
+document.querySelector(".modal-print-button").addEventListener("click", printModalContent);
