@@ -1,9 +1,4 @@
-document.addEventListener('DOMContentLoaded', async (e) => {
-    e.preventDefault();
-
-    const type = document.getElementById('type').value;
-    const products = await window.api.getProductsByAgency(type);
-
+function updateProductTable(products) {
     const productsList = document.getElementById('products-list');
     productsList.innerHTML = '';
 
@@ -19,5 +14,26 @@ document.addEventListener('DOMContentLoaded', async (e) => {
             <td><button class="btn btn-danger btn-sm">Delete</button></td>
         `;
         productsList.appendChild(row);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async (e) => {
+    e.preventDefault();
+
+    const typeSelect = document.getElementById('type');
+
+    const type = typeSelect.value;
+
+    const products = await window.api.getProductsByAgency(type);
+
+    updateProductTable(products);
+
+    typeSelect.addEventListener('change', async (event) => {
+        console.log("Thay đổi giá trị select");
+
+        const selectedType = event.target.value;
+        const products_n = await window.api.getProductsByAgency(selectedType);
+
+        updateProductTable(products_n);
     });
 });

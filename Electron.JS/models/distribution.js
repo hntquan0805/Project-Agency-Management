@@ -23,22 +23,6 @@ const Distribution = sequelize.define('Distribution', {
   tableName: 'Distribution'
 });
 
-// Distribution.associate = function(models) {
-//   // define association here
-//   Distribution.belongsTo(models.Inventory, {
-//     foreignKey: 'productCode',
-//     targetKey: 'productCode',
-//     onUpdate: 'CASCADE',
-//     onDelete: 'CASCADE',
-//   });
-//   Distribution.belongsTo(models.Unit, {
-//     foreignKey: 'unit',
-//     targetKey: 'unitName',
-//     onUpdate: 'CASCADE',
-//     onDelete: 'CASCADE',
-//   });
-// };
-
 module.exports = { Distribution };
 
 const { Inventory } = require('./inventory');
