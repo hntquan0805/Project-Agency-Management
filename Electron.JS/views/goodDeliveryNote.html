@@ -144,6 +144,7 @@
                 <div class="col-12">
                     <h1>GOODS DELIVERY NOTE</h1>
                 </div>
+                  <!-- Agent information -->
                 <div class="goodDelivery">
                     <div class="container">
                         <div class="row title">
@@ -185,7 +186,7 @@
                                 <div class="col-12 info search-input">
                                     <label for="search"></label><br>
                                     <div class="input-wrapper">
-                                        <input type="text" id="search" name="search" required placeholder="milk">
+                                        <input type="text" id="search" name="search" required>
                                         <button type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
                                     </div>
                                 </div>
@@ -210,7 +211,7 @@
                         </div>
                     </div>
                     <!-- Cart -->
-                    <div class="cart" id="cart" >
+                    <div class="cart" id="cart" style="display: none;">
                         <div class="inner-head">
                             <div class="inner-title">
                                 Cart
@@ -227,8 +228,39 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="resultsCart">
-                                <!-- Dynamic rows for Agent Debt Report -->
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Banana Milk</td>
+                                    <td>thùng</td>
+                                    <td>600,000 VND</td>
+                                    <td>10</td>
+                                    <td><i class="bi bi-pencil"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Coconut Milk</td>
+                                    <td>thùng</td>
+                                    <td>450,000 VND</td>
+                                    <td>5</td>
+                                    <td><i class="bi bi-pencil"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Strawberry Milk</td>
+                                    <td>thùng</td>
+                                    <td>450,000 VND</td>
+                                    <td>5</td>
+                                    <td><i class="bi bi-pencil"></i></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Oat Milk</td>
+                                    <td>thùng</td>
+                                    <td>700,000 VND</td>
+                                    <td>5</td>
+                                    <td><i class="bi bi-pencil"></i></td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -241,38 +273,113 @@
             </main>
         </div>
     </div>
-    
-    <div class="modal-overlay">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="col-12 info search-input">
-                <label for="search"></label><br>
-                <div class="input-wrapper">
-                    <input type="text" id="search" name="search" required>
-                    <button type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="results-table"></div>
-            </div>
-            <button class="modal-done">Done</button>
-        </div>
-    </div>
+      <!-- PopUp-Search Goods -->
+      <div class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+          <button class="modal-close">&times;</button>
+          <div class="col-12 info search-input">
+              <div class="input-wrapper">
+                  <input type="text" id="search" name="search" required>
+                  <button type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
+              </div>
+          </div>
+          <div class="modal-body">
+              <table class="results-table">
+                  <thead>
+                      <tr>
+                          <th>Serial</th>
+                          <th>Name</th>
+                          <th>Unit</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>1</td>
+                          <td>Banana Milk</td>
+                          <td>thùng</td>
+                          <td>600,000</td>
+                          <td>
+                            <div class="quantity-control">
+                                <i class="bi bi-dash-lg quantity-btn"></i>
+                                <span class="quantity-value">0</span>
+                                <i class="bi bi-plus-lg quantity-btn"></i>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>2</td>
+                          <td>Coconut Milk</td>
+                          <td>thùng</td>
+                          <td>450,000</td>
+                          <td>
+                            <div class="quantity-control">
+                                <i class="bi bi-dash-lg quantity-btn"></i>
+                                <span class="quantity-value">0</span>
+                                <i class="bi bi-plus-lg quantity-btn"></i>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>3</td>
+                          <td>Strawberry Milk</td>
+                          <td>thùng</td>
+                          <td>450,000</td>
+                          <td>
+                            <div class="quantity-control">
+                                <i class="bi bi-dash-lg quantity-btn"></i>
+                                <span class="quantity-value">0</span>
+                                <i class="bi bi-plus-lg quantity-btn"></i>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>4</td>
+                          <td>Oat Milk</td>
+                          <td>thùng</td>
+                          <td>700,000</td>
+                          <td>
+                            <div class="quantity-control">
+                                <i class="bi bi-dash-lg quantity-btn"></i>
+                                <span class="quantity-value">0</span>
+                                <i class="bi bi-plus-lg quantity-btn"></i>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td>5</td>
+                          <td>Papaya Milk</td>
+                          <td>thùng</td>
+                          <td>600,000</td>
+                          <td>
+                            <div class="quantity-control">
+                                <i class="bi bi-dash-lg quantity-btn"></i>
+                                <span class="quantity-value">0</span>
+                                <i class="bi bi-plus-lg quantity-btn"></i>
+                            </div>
+                        </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <button class="modal-done">Done</button>
+      </div>
+  </div> 
 
-   
+    <!-- NOTE -->
     <div id="goodsDeliveryNoteModal" class="modal" style="display: none;">
         <div class="modal-content">
             <h2>GOODS DELIVERY NOTE</h2>
             
-            
             <div class="info-input">
                 <p class="info-row">
                     <strong class="info-label">Agent Name:</strong> 
-                    <span id="modalAgentName" class="info-value"></span>
+                    <span id="modalAgentName" class="info-value">Flower Snow</span>
                 </p>
                 <p class="info-row">
                     <strong class="info-label">Date:</strong> 
-                    <span id="modalDate" class="info-value"></span>
+                    <span id="modalDate" class="info-value">10/11/2024</span>
                 </p>
                 <p class="info-row">
                     <strong class="info-label">List of Goods:</strong>
@@ -293,16 +400,41 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody id="goodsListTable"></tbody>
+                    <tbody id="goodsListTable">
+                        <tr>
+                            <td>1</td>
+                            <td>Banana Milk</td>
+                            <td>thùng</td>
+                            <td>600,000 VND</td>
+                            <td>10</td>
+                            <td>6,000,000 VND</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Coconut Milk</td>
+                            <td>thùng</td>
+                            <td>450,000 VND</td>
+                            <td>5</td>
+                            <td>2,250,000 VND</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Strawberry Milk</td>
+                            <td>thùng</td>
+                            <td>450,000 VND</td>
+                            <td>5</td>
+                            <td>2,250,000 VND</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <div class="total">
-                    <span class="totalFrom">Total:</span> <span id="grandTotal"></span>
+                    <span class="totalFrom">Total:</span> <span id="grandTotal">10.500.000 VND</span>
                 </div>
                 <p class="thank-you">Thanks for your order!</p>
                
             </div>
             <div class="button-note">
-                <button class="modal-close-button" onclick="closeModal()">Close <i class="bi bi-x"></i></button>
+                 <button class="modal-close-button">Close <i class="bi bi-x"></i></button>
                 <button class="modal-print-button">Print <i class="bi bi-printer-fill"></i></button>
             </div>
         </div>
@@ -316,6 +448,5 @@
     </script>
 
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src ="../renderers/goodDeliveryRenders.js"></script>
 </body>
 </html>
