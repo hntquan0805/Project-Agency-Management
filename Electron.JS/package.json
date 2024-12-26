@@ -4,7 +4,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec electron ."
+    "start": "nodemon --exec electron .",
+    "build": "electron-builder"
   },
   "author": "nhom_06",
   "license": "ISC",
@@ -23,8 +24,38 @@
     "babel-loader": "^9.2.1",
     "electron": "^33.2.1",
     "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2",
     "nodemon": "^3.1.7",
     "sequelize-cli": "^6.6.2",
     "webpack-cli": "^5.1.4"
+  },
+  "build": {
+    "appId": "com.nhom_06.app",
+    "productName": "Agency Management",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "src/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "rpm"
+      ]
+    }
   }
 }

@@ -1,15 +1,15 @@
 const { app, BrowserWindow, ipcMain, screen} = require('electron');
+const { connect } = require('./config/database');
+const path = require('path');
+
 const { signUpUser } = require('./controllers/userController');
 const { addAgency } = require('./controllers/agencyController');
-const { connect } = require('./config/database');
 const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
-const { getProductsByAgency } = require('./controllers/getProductsByAgency');
+const { getProductsByAgency, getProductsByCode } = require('./controllers/getProductsByAgencyController');
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
-const { deleteProductByAgency } = require('./controllers/editProductsByAgency');
-const { updateProductByAgency } = require('./controllers/editProductsByAgency');
-const { getProductsByCode } = require('./controllers/getProductsByAgency');
-const path = require('path');
+const { deleteProductByAgency } = require('./controllers/editProductsByAgencyController');
+const { updateProductByAgency } = require('./controllers/editProductsByAgencyController');
 
 connect();
 
