@@ -21,9 +21,12 @@ var _require5 = require('./controllers/searchAgencyController'),
 var _require6 = require('./controllers/settingAgencyRuleController'),
     updateSettings = _require6.updateSettings;
 
-var _require7 = require('./controllers/settingAgencyTypeController'),
-    updateAgencyTypeSettings = _require7.updateAgencyTypeSettings,
-    getAgencyTypesFromDB = _require7.getAgencyTypesFromDB;
+var _require7 = require('./controllers/getProductsByAgency'),
+    getProductsByAgency = _require7.getProductsByAgency;
+
+var _require8 = require('./controllers/settingAgencyTypeController'),
+    updateAgencyTypeSettings = _require8.updateAgencyTypeSettings,
+    getAgencyTypesFromDB = _require8.getAgencyTypesFromDB;
 
 var path = require('path');
 
@@ -45,20 +48,25 @@ app.on('ready', function () {
   });
   mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
-ipcMain.handle('search', function _callee(event, criteria) {
+ipcMain.handle('get-products', function _callee(event, type) {
+  var products;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return regeneratorRuntime.awrap(searchAgencies(criteria));
+          return regeneratorRuntime.awrap(getProductsByAgency(type));
 
         case 3:
-          return _context.abrupt("return", _context.sent);
+          products = _context.sent;
+          // Xuất ra sản phẩm đã lấy được
+          console.log('Products fetched from getProductsByAgency:', products); // Trả về kết quả
 
-        case 6:
-          _context.prev = 6;
+          return _context.abrupt("return", products);
+
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", {
@@ -66,23 +74,21 @@ ipcMain.handle('search', function _callee(event, criteria) {
             message: 'Error fectching data!'
           });
 
-        case 10:
+        case 12:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 6]]);
+  }, null, null, [[0, 8]]);
 });
-ipcMain.handle('add-agency', function _callee2(event, agencyData) {
+ipcMain.handle('search', function _callee2(event, criteria) {
   return regeneratorRuntime.async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return regeneratorRuntime.awrap(addAgency({
-            body: agencyData
-          }));
+          return regeneratorRuntime.awrap(searchAgencies(criteria));
 
         case 3:
           return _context2.abrupt("return", _context2.sent);
@@ -93,7 +99,7 @@ ipcMain.handle('add-agency', function _callee2(event, agencyData) {
           console.error(_context2.t0);
           return _context2.abrupt("return", {
             success: false,
-            message: 'Error adding data!'
+            message: 'Error fectching data!'
           });
 
         case 10:
@@ -103,37 +109,37 @@ ipcMain.handle('add-agency', function _callee2(event, agencyData) {
     }
   }, null, null, [[0, 6]]);
 });
-ipcMain.handle('agency-rule-1', function _callee3(event, updateData) {
-  var result;
+ipcMain.handle('add-agency', function _callee3(event, agencyData) {
   return regeneratorRuntime.async(function _callee3$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
         case 0:
           _context3.prev = 0;
           _context3.next = 3;
-          return regeneratorRuntime.awrap(updateSettings(updateData));
+          return regeneratorRuntime.awrap(addAgency({
+            body: agencyData
+          }));
 
         case 3:
-          result = _context3.sent;
-          return _context3.abrupt("return", result);
+          return _context3.abrupt("return", _context3.sent);
 
-        case 7:
-          _context3.prev = 7;
+        case 6:
+          _context3.prev = 6;
           _context3.t0 = _context3["catch"](0);
-          console.error('Error in ipcMain handle updateSettings:', _context3.t0);
+          console.error(_context3.t0);
           return _context3.abrupt("return", {
             success: false,
-            message: 'Error in ipcMain handle updateSettings.'
+            message: 'Error adding data!'
           });
 
-        case 11:
+        case 10:
         case "end":
           return _context3.stop();
       }
     }
-  }, null, null, [[0, 7]]);
+  }, null, null, [[0, 6]]);
 });
-ipcMain.handle('agency-type-1', function _callee4(event, updateData) {
+ipcMain.handle('agency-rule-1', function _callee4(event, updateData) {
   var result;
   return regeneratorRuntime.async(function _callee4$(_context4) {
     while (1) {
@@ -141,7 +147,7 @@ ipcMain.handle('agency-type-1', function _callee4(event, updateData) {
         case 0:
           _context4.prev = 0;
           _context4.next = 3;
-          return regeneratorRuntime.awrap(updateAgencyTypeSettings(updateData));
+          return regeneratorRuntime.awrap(updateSettings(updateData));
 
         case 3:
           result = _context4.sent;
@@ -163,50 +169,80 @@ ipcMain.handle('agency-type-1', function _callee4(event, updateData) {
     }
   }, null, null, [[0, 7]]);
 });
-ipcMain.handle('get-agency-types', function _callee5() {
-  var agencyTypes;
+ipcMain.handle('agency-type-1', function _callee5(event, updateData) {
+  var result;
   return regeneratorRuntime.async(function _callee5$(_context5) {
     while (1) {
       switch (_context5.prev = _context5.next) {
         case 0:
           _context5.prev = 0;
           _context5.next = 3;
-          return regeneratorRuntime.awrap(getAgencyTypesFromDB());
+          return regeneratorRuntime.awrap(updateAgencyTypeSettings(updateData));
 
         case 3:
-          agencyTypes = _context5.sent;
-          console.log(agencyTypes);
-          return _context5.abrupt("return", agencyTypes);
+          result = _context5.sent;
+          return _context5.abrupt("return", result);
 
-        case 8:
-          _context5.prev = 8;
+        case 7:
+          _context5.prev = 7;
           _context5.t0 = _context5["catch"](0);
-          console.error('Error fetching agency types:', _context5.t0);
-          return _context5.abrupt("return", []);
+          console.error('Error in ipcMain handle updateSettings:', _context5.t0);
+          return _context5.abrupt("return", {
+            success: false,
+            message: 'Error in ipcMain handle updateSettings.'
+          });
 
-        case 12:
+        case 11:
         case "end":
           return _context5.stop();
       }
     }
-  }, null, null, [[0, 8]]);
+  }, null, null, [[0, 7]]);
 });
-ipcMain.handle('sign-up', function _callee6(event, _ref) {
-  var username, password;
+ipcMain.handle('get-agency-types', function _callee6() {
+  var agencyTypes;
   return regeneratorRuntime.async(function _callee6$(_context6) {
     while (1) {
       switch (_context6.prev = _context6.next) {
         case 0:
-          username = _ref.username, password = _ref.password;
+          _context6.prev = 0;
           _context6.next = 3;
+          return regeneratorRuntime.awrap(getAgencyTypesFromDB());
+
+        case 3:
+          agencyTypes = _context6.sent;
+          console.log(agencyTypes);
+          return _context6.abrupt("return", agencyTypes);
+
+        case 8:
+          _context6.prev = 8;
+          _context6.t0 = _context6["catch"](0);
+          console.error('Error fetching agency types:', _context6.t0);
+          return _context6.abrupt("return", []);
+
+        case 12:
+        case "end":
+          return _context6.stop();
+      }
+    }
+  }, null, null, [[0, 8]]);
+});
+ipcMain.handle('sign-up', function _callee7(event, _ref) {
+  var username, password;
+  return regeneratorRuntime.async(function _callee7$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          username = _ref.username, password = _ref.password;
+          _context7.next = 3;
           return regeneratorRuntime.awrap(signUpUser(username, password));
 
         case 3:
-          return _context6.abrupt("return", _context6.sent);
+          return _context7.abrupt("return", _context7.sent);
 
         case 4:
         case "end":
-          return _context6.stop();
+          return _context7.stop();
       }
     }
   });

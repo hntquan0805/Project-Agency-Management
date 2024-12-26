@@ -17,12 +17,21 @@ const RevenueReport = sequelize.define('RevenueReport', {
   freezeTableName: true,
 });
 
-RevenueReport.associate = function(models) {
-  this.belongsTo(models.Agency, {
-    foreignKey: 'agencyCode',
-    targetKey: 'agencyCode',
-    onUpdate: 'CASCADE',
-  });
-};
+// RevenueReport.associate = function(models) {
+//   RevenueReport.belongsTo(models.Agency, {
+//     foreignKey: 'agencyCode',
+//     targetKey: 'agencyCode',
+//     onUpdate: 'CASCADE',
+//   });
+// };
 
 module.exports = { RevenueReport };
+
+const { Agency } = require('./agency');
+
+// Thiết lập mối quan hệ với Agency
+RevenueReport.belongsTo(Agency, {
+  foreignKey: 'agencyCode',
+  targetKey: 'agencyCode',
+  onUpdate: 'CASCADE',
+});

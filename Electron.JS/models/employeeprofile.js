@@ -20,8 +20,4 @@ const EmployeeProfile = sequelize.define('EmployeeProfile', {
   freezeTableName: true,
 });
 
-EmployeeProfile.associate = function(models) {
-  // define association here
-};
-
 module.exports = { EmployeeProfile };

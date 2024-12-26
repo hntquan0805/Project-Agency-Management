@@ -1,21 +1,24 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/database');
+"use strict";
 
-const PaymentReceipt = sequelize.define('PaymentReceipt', {
+var _require = require('sequelize'),
+    DataTypes = _require.DataTypes;
+
+var _require2 = require('../config/database'),
+    sequelize = _require2.sequelize;
+
+var PaymentReceipt = sequelize.define('PaymentReceipt', {
   paymentReceiptCode: {
     type: DataTypes.STRING,
     allowNull: false,
-    primaryKey: true,
+    primaryKey: true
   },
   paymentDate: DataTypes.DATE,
   amount: DataTypes.DOUBLE,
   agentCode: DataTypes.STRING,
   createdBy: DataTypes.STRING
 }, {
-  freezeTableName: true,
-});
-
-// PaymentReceipt.associate = function(models) {
+  freezeTableName: true
+}); // PaymentReceipt.associate = function(models) {
 //   this.belongsTo(models.Account, {
 //     foreignKey: 'createdBy',
 //     targetKey: 'personnelCode',
@@ -30,23 +33,27 @@ const PaymentReceipt = sequelize.define('PaymentReceipt', {
 //   });
 // };
 
-module.exports = { PaymentReceipt };
+module.exports = {
+  PaymentReceipt: PaymentReceipt
+};
 
-const { Account } = require('./account');
-const { Agency } = require('./agency');
+var _require3 = require('./account'),
+    Account = _require3.Account;
 
-// Thiết lập mối quan hệ với Account
+var _require4 = require('./agency'),
+    Agency = _require4.Agency; // Thiết lập mối quan hệ với Account
+
+
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'personnelCode',
   onDelete: 'SET NULL',
-  onUpdate: 'CASCADE',
-});
+  onUpdate: 'CASCADE'
+}); // Thiết lập mối quan hệ với Agency
 
-// Thiết lập mối quan hệ với Agency
 PaymentReceipt.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
   onDelete: 'SET NULL',
-  onUpdate: 'CASCADE',
+  onUpdate: 'CASCADE'
 });

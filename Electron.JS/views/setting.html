@@ -255,87 +255,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Banana Milk</td>
-                                    <td>gal</td>
-                                    <td>220.000 VND</td>
-                                    <td>100</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>    
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>Coconut Milk</td>
-                                    <td>gal</td>
-                                    <td>230.000 VND</td>
-                                    <td>200</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>    
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>Oat Milk</td>
-                                    <td>gal</td>
-                                    <td>280.000 VND</td>
-                                    <td>150</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>    
-
-                                <tr>
-                                    <td>4</td>
-                                    <td>Soy Milk</td>
-                                    <td>gal</td>
-                                    <td>120.000 VND</td>
-                                    <td>60</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>    
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>Strawberry Milk</td>
-                                    <td>gal</td>
-                                    <td>130.000 VND</td>
-                                    <td>70</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>   
-
-                                <tr>
-                                    <td>6</td>
-                                    <td>Melon Milk</td>
-                                    <td>gal</td>
-                                    <td>250.000 VND</td>
-                                    <td>240</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>   
-
-                                <tr>
-                                    <td>7</td>
-                                    <td>Chocolate Milk</td>
-                                    <td>gal</td>
-                                    <td>120.000 VND</td>
-                                    <td>135</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>   
-
-                                <tr>
-                                    <td>8</td>
-                                    <td>Papaya Milk</td>
-                                    <td>gal</td>
-                                    <td>240.000 VND</td>
-                                    <td>238</td>
-                                    <td><button class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                                    <td><button class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
-                                </tr>   
-                            </tbody>
+                            <tbody id="products-list"></tbody>
                         </table>
                         <div class="mb-3 add-goods-button">
                             <button id="add-goods-button" class="add-goods-button-title">Add<i class="bi bi-plus-circle add-goods-button-icon"></i></button>
@@ -423,9 +343,10 @@
         });
     </script>
 
+    <script src="../renderers/getProductsRenderer.js"></script>
+    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../renderers/loadAgencyTypeRenderer.js"></script>
     <script src="../renderers/settingAgencyRuleRenderer.js"></script>
     <script src="../renderers/settingAgencyTypeRenderer.js"></script>
-
 </body>
 </html>

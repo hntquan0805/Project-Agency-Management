@@ -21,3 +21,12 @@ const Unit = sequelize.define('Unit', {
 });
 
 module.exports = { Unit };
+
+const { Distribution } = require('./distribution');
+
+Unit.hasMany(Distribution, {
+    foreignKey: 'unit',
+    sourceKey: 'unitName',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+});

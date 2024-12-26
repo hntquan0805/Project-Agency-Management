@@ -32,23 +32,41 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
     tableName: 'DeliveryNoteDetail',
 });
 
-DeliveryNoteDetail.associate = (models) => {
-    DeliveryNoteDetail.belongsTo(models.DeliveryNote, {
-        foreignKey: 'deliveryNoteCode',
-        targetKey: 'deliveryNoteCode',
-        onUpdate: 'CASCADE',
-    });
-    sequelize.addConstraint('DeliveryNoteDetail', {
-        fields: ['productCode', 'type', 'unit'], // Các trường tham gia khóa ngoại
-        type: 'foreign key',
-        name: 'fk_deliverynote_distribution', // Tên khóa ngoại
-        references: {
-            table: 'Distribution',
-            fields: ['productCode', 'type', 'unit'], // Trường liên kết
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
-    });
-};
+// DeliveryNoteDetail.associate = (models) => {
+//     DeliveryNoteDetail.belongsTo(models.DeliveryNote, {
+//         foreignKey: 'deliveryNoteCode',
+//         targetKey: 'deliveryNoteCode',
+//         onUpdate: 'CASCADE',
+//     });
+//     sequelize.addConstraint('DeliveryNoteDetail', {
+//         fields: ['productCode', 'type', 'unit'], // Các trường tham gia khóa ngoại
+//         type: 'foreign key',
+//         name: 'fk_deliverynote_distribution', // Tên khóa ngoại
+//         references: {
+//             table: 'Distribution',
+//             fields: ['productCode', 'type', 'unit'], // Trường liên kết
+//         },
+//         onUpdate: 'CASCADE',
+//         onDelete: 'CASCADE',
+//     });
+// };
 
 module.exports = { DeliveryNoteDetail };
+
+const { DeliveryNote } = require('./deliverynote');
+const { Distribution } = require('./distribution');
+
+// Thiết lập mối quan hệ với DeliveryNote
+DeliveryNoteDetail.belongsTo(DeliveryNote, {
+  foreignKey: 'deliveryNoteCode',
+  targetKey: 'deliveryNoteCode',
+  onUpdate: 'CASCADE',
+});
+
+// Thiết lập khóa ngoại với Distribution
+DeliveryNoteDetail.belongsTo(Distribution, {
+    foreignKey: ['productCode', 'type', 'unit'],
+    targetKey: ['productCode', 'type', 'unit'],
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  });

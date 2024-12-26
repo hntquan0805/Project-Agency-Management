@@ -1,6 +1,6 @@
 const { Agency } = require('../models/agency');
 
-function searchAgencies(criteria) {
+const searchAgencies = async (criteria) => {
   try {
     const { name, filters } = criteria;
     const where = {};
