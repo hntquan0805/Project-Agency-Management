@@ -51,3 +51,46 @@ document.querySelector('.export-button').addEventListener('click', function () {
         </tr>
     `;
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const downloadButton = document.querySelector(".download-button");
+    const modal = document.getElementById("downloadModal");
+    const closeModal = document.querySelector(".close-btn");
+    const confirmDownload = document.getElementById("downloadConfirm");
+    const fileNameInput = document.getElementById("fileName");
+    const fileTypeSelect = document.getElementById("fileType");
+
+    let selectedMonth = document.getElementById("month").value;
+    let selectedYear = document.getElementById("year").value;
+
+    downloadButton.addEventListener("click", () => {
+        // Update file name based on the table
+        const isAgentDebt = document.querySelector("#agentDebtReport").style.display !== "none";
+        const baseName ="SaleReport";
+        fileNameInput.value = `${baseName} ${selectedMonth}/${selectedYear}`;
+        modal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    confirmDownload.addEventListener("click", () => {
+        const fileName = fileNameInput.value;
+        const fileType = fileTypeSelect.value;
+        modal.style.display = "none";
+
+        // Fake download logic
+        const blob = new Blob(["File content"], { type: "text/plain" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `${fileName}.${fileType}`;
+        link.click();
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});

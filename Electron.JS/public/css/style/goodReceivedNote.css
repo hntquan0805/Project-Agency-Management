@@ -122,6 +122,7 @@ select{
 
 /* Tổng thể của bảng thông tin */
 .result-container {
+    position: relative;
     background-color: #ffffff; /* Nền trắng */
     padding: 20px;
     border-radius: 5px;
@@ -142,33 +143,71 @@ select{
     text-transform: uppercase;
 }
 
-/* Các thông tin trong bảng */
-.result-container p {
-    font-size: 14px;
-    margin: 10px 0;
-    line-height: 1.6; /* Tăng khoảng cách dòng */
-}
-
-/* Các tiêu đề nhỏ */
+/* Căn chỉnh phần 'Information' và 'Payment' */
 .result-container p strong {
-    font-weight: bold;
-    color: #333333; /* Màu chữ đậm */
+    display: inline-block;
+    width: 120px; /* Độ rộng cố định để căn lề */
+    text-align: left;
 }
 
-/* Nhóm nút */
-.button-group {
-    text-align: center;
-    margin-top: 20px;
-    display: flex; /* Sử dụng flexbox để dễ điều chỉnh */
-    justify-content: center; /* Căn giữa các nút */
-    gap: 20px; /* Khoảng cách giữa các nút */
+/* Tên input lùi vào 1 khoảng */
+
+/* Gạch chân hết dòng */
+.result-container p {
+    display: flex; /* Đặt các phần tử trên cùng một dòng */
+    align-items: center;
+    margin: 10px 0;
+    padding-bottom: 5px; /* Khoảng cách dưới */
+    position: relative; /* Tạo bối cảnh cho pseudo-element */
+    width: 100%;
+}
+
+.result-container p::after {
+    content: ""; /* Tạo một đường gạch chân */
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Gạch chân kéo dài toàn dòng */
+    height: 1px; /* Độ dày của gạch chân */
+    background-color: #d3d3d3; /* Màu gạch chân */
+    z-index: -1; /* Đưa gạch chân xuống dưới chữ */
+}
+
+/* Nhãn (Tên input) */
+.result-container p strong {
+    width: 150px; /* Độ rộng cố định cho nhãn */
+    text-align: left;
+    flex-shrink: 0; /* Không co nhãn lại */
+}
+
+/* Phần thông tin input */
+.result-container p span {
+    flex-grow: 1; /* Kéo dài để lấp đầy không gian còn lại */
+    text-align: left; /* Căn trái thông tin */
+}
+
+/* Khoảng cách giữa tên input và thông tin input */
+.result-container p span {
+    margin-left: 15px;
+    text-decoration: underline;
+    text-decoration-color: #d3d3d3; /* Gạch chân màu xám */
+    text-underline-offset: 5px; /* Khoảng cách giữa chữ và gạch chân */
+    flex-grow: 1;
+    width: 100%;
 }
 
 /* Nút Close và Print */
-.button-group button {
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Đẩy nút sang 2 mép trái và phải */
+    padding: 0 20px 20px; /* Khoảng cách nút sát mép */
+    margin-top: 20px ;
+    
+}
+
+.closeButton, .printButton {
     font-size: 14px;
-    padding: 10px 15px;
-    border: none;
+    padding: 5px 30px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -177,14 +216,14 @@ select{
 .closeButton {
     background-color: #F57D31;
     color: white;
-    margin: 0; /* Đặt margin riêng nếu cần */
+    margin-left: 205px;
 }
 
 /* Nút Print */
 .printButton {
     background-color: #4caf50;
     color: white;
-    margin: 0; /* Đặt margin riêng nếu cần */
+    margin-right: 205px ;
 }
 
 /* Hover hiệu ứng */
@@ -195,4 +234,5 @@ select{
 .printButton:hover {
     background-color: #17a71e;
 }
+
 
