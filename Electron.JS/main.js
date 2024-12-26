@@ -31,11 +31,20 @@ app.on('ready', () => {
 
 ipcMain.handle('get-products', async (event, type) => {
     try {
-        return await getProductsByAgency(type);
+         // Gọi hàm lấy dữ liệu sản phẩm
+         const products = await getProductsByAgency(type);
+
+         // Xuất ra sản phẩm đã lấy được
+         console.log('Products fetched from getProductsByAgency:', products);
+ 
+         // Trả về kết quả
+         return products;
+        //return await getProductsByAgency(type);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
     }
+
 });
 
 ipcMain.handle('search', async (event, criteria) => {

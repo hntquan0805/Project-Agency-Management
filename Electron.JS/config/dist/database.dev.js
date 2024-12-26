@@ -4,7 +4,7 @@ var _require = require('sequelize'),
     Sequelize = _require.Sequelize,
     Model = _require.Model;
 
-var sequelize = new Sequelize('db_app', 'root', 'YeChan@_2024', {
+var sequelize = new Sequelize('myapp', 'root', '1234', {
   host: 'localhost',
   dialect: 'mysql'
 });

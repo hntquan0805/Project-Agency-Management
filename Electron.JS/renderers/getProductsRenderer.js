@@ -10,10 +10,13 @@ document.addEventListener('DOMContentLoaded', async (e) => {
     products.forEach(product => {
         const row = document.createElement('tr');
         row.innerHTML = `
-        <th>${product.dataValues.agencyCode}</th>
-        <th>${product.dataValues.name}</th>
-        <th>${product.dataValues.type}</th>
-        <th>${product.dataValues.district}</th>
+            <td>${product.productCode}</td>
+            <td>${product.productName || 'N/A'}</td>
+            <td>${product.unit}</td>
+            <td>${product.price}</td>
+            <td>${product.stock}</td>
+            <td><button class="btn btn-warning btn-sm">Edit</button></td>
+            <td><button class="btn btn-danger btn-sm">Delete</button></td>
         `;
         productsList.appendChild(row);
     });

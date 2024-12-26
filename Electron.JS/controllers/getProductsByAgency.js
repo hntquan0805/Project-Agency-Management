@@ -12,14 +12,17 @@ const getProductsByAgency = async (type) => {
                     attributes: ['productName', 'quantityInStock'],
                 },
             ],
+            raw: true,
         });
-
+        
         const result = products.map(product => ({
             productCode: product.productCode,
-            productName: product.inventory ? products.inventory.productName : null,
+            //productName: product.inventory ? product.inventory.productName : null, 
+            productName: product['Inventory.productName'] || null,
             unit: product.unit,
             price: product.price,
-            stock: product.inventory ? product.inventory.quantityInStock : 0,
+            //stock: product.inventory ? product.inventory.quantityInStock : 0,
+            stock: product['Inventory.quantityInStock'] || 0
         }));
 
         return result;

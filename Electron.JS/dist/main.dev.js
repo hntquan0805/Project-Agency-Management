@@ -49,6 +49,7 @@ app.on('ready', function () {
   mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 ipcMain.handle('get-products', function _callee(event, type) {
+  var products;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -58,10 +59,14 @@ ipcMain.handle('get-products', function _callee(event, type) {
           return regeneratorRuntime.awrap(getProductsByAgency(type));
 
         case 3:
-          return _context.abrupt("return", _context.sent);
+          products = _context.sent;
+          // Xuất ra sản phẩm đã lấy được
+          console.log('Products fetched from getProductsByAgency:', products); // Trả về kết quả
 
-        case 6:
-          _context.prev = 6;
+          return _context.abrupt("return", products);
+
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", {
@@ -69,12 +74,12 @@ ipcMain.handle('get-products', function _callee(event, type) {
             message: 'Error fectching data!'
           });
 
-        case 10:
+        case 12:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 6]]);
+  }, null, null, [[0, 8]]);
 });
 ipcMain.handle('search', function _callee2(event, criteria) {
   return regeneratorRuntime.async(function _callee2$(_context2) {

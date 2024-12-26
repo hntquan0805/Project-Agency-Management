@@ -13,14 +13,24 @@ const Inventory = sequelize.define('Inventory', {
   freezeTableName: true,
 });
 
-Inventory.associate = function(models) {
-  // define association here
-  Inventory.hasMany(models.Distribution, {
-    foreignKey: 'productCode',
-    sourceKey: 'productCode',
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-  });
-};
+// Inventory.associate = function(models) {
+//   // define association here
+//   Inventory.hasMany(models.Distribution, {
+//     foreignKey: 'productCode',
+//     sourceKey: 'productCode',
+//     onDelete: 'CASCADE',
+//     onUpdate: 'CASCADE',
+//   });
+// };
 
 module.exports = { Inventory };
+
+const { Distribution } = require('./distribution');
+
+// Thiết lập mối quan hệ ngược lại với Distribution
+Inventory.hasMany(Distribution, {
+  foreignKey: 'productCode',
+  sourceKey: 'productCode',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+});

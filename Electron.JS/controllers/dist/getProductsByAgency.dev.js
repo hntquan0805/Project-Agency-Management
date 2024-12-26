@@ -22,7 +22,8 @@ var getProductsByAgency = function getProductsByAgency(type) {
             include: [{
               model: Inventory,
               attributes: ['productName', 'quantityInStock']
-            }]
+            }],
+            raw: true
           }));
 
         case 3:
@@ -30,10 +31,12 @@ var getProductsByAgency = function getProductsByAgency(type) {
           result = products.map(function (product) {
             return {
               productCode: product.productCode,
-              productName: product.inventory ? products.inventory.productName : null,
+              //productName: product.inventory ? product.inventory.productName : null, 
+              productName: product['Inventory.productName'] || null,
               unit: product.unit,
               price: product.price,
-              stock: product.inventory ? product.inventory.quantityInStock : 0
+              //stock: product.inventory ? product.inventory.quantityInStock : 0,
+              stock: product['Inventory.quantityInStock'] || 0
             };
           });
           return _context.abrupt("return", result);
