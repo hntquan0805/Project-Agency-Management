@@ -30,6 +30,18 @@ document.getElementById('agency-rule-1').addEventListener('click', async functio
                     option.textContent = type; // Display the agency type
                     agencyTypeSelect.appendChild(option);
                 });
+
+                const typeSelect = document.getElementById('type');
+                typeSelect.innerHTML = ''; // Clear old options in select
+
+                // Add options to type select
+                agencyTypes.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type; // The value is the agency type
+                    option.textContent = type; // Display the agency type
+                    typeSelect.appendChild(option);
+                });
+
             } catch (error) {
                 console.error('Error fetching agency types:', error);
                 alert('An error occurred while fetching agency types');

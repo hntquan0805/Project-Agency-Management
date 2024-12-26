@@ -35,39 +35,7 @@ var Agency = sequelize.define('Agency', {
 }, {
   freezeTableName: true,
   tableName: 'Agency'
-}); // Agency.associate = (models) => {
-//     Agency.hasMany(models.DeliveryNote, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.RevenueReport, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.DebtHistory, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.PaymentReceipt, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Account.belongsTo(models.AgencyType, {
-//         foreignKey: 'type',
-//         targetKey: 'type',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
+});
 module.exports = {
   Agency: Agency
 };
@@ -75,7 +43,7 @@ module.exports = {
 var _require3 = require('./deliverynote'),
     DeliveryNote = _require3.DeliveryNote;
 
-var _require4 = require('./revenueteport'),
+var _require4 = require('./revenuereport'),
     RevenueReport = _require4.RevenueReport;
 
 var _require5 = require('./debthistory'),

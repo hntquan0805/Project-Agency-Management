@@ -33,11 +33,6 @@ ipcMain.handle('get-products', async (event, type) => {
     try {
          // Gọi hàm lấy dữ liệu sản phẩm
          const products = await getProductsByAgency(type);
-
-         // Xuất ra sản phẩm đã lấy được
-         console.log('Products fetched from getProductsByAgency:', products);
- 
-         // Trả về kết quả
          return products;
         //return await getProductsByAgency(type);
     } catch (error) {

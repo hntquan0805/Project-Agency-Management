@@ -32,43 +32,10 @@ const Agency = sequelize.define('Agency', {
     tableName: 'Agency',
 });
 
-// Agency.associate = (models) => {
-//     Agency.hasMany(models.DeliveryNote, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.RevenueReport, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.DebtHistory, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Agency.hasMany(models.PaymentReceipt, {
-//         foreignKey: 'agencyCode',
-//         sourceKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Account.belongsTo(models.AgencyType, {
-//         foreignKey: 'type',
-//         targetKey: 'type',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
 module.exports =  { Agency };
 
 const { DeliveryNote } = require('./deliverynote');
-const { RevenueReport } = require('./revenueteport');
+const { RevenueReport } = require('./revenuereport');
 const { DebtHistory } = require('./debthistory');
 const { PaymentReceipt } = require('./paymentreceipt');
 const { AgencyType } = require('./agencytype');

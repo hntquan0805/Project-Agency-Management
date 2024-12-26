@@ -20,27 +20,7 @@ var Account = sequelize.define('Account', {
 }, {
   freezeTableName: true,
   tableName: 'Account'
-}); // Account.associate = (models) => {
-//     Account.hasMany(models.DeliveryNote, {
-//         foreignKey: 'createBy',
-//         sourceKey: 'personnelCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Account.belongsTo(models.EmployeeProfile, {
-//         foreignKey: 'profileCode',
-//         targetKey: 'profileCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     Account.hasMany(models.PaymentReceipt, {
-//         foreignKey: 'createBy',
-//         sourceKey: 'personnelCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
+});
 module.exports = {
   Account: Account
 };

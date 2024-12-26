@@ -27,14 +27,7 @@ var DebtHistory = sequelize.define('DebtHistory', {
 }, {
   freezeTableName: true,
   tableName: 'DebtHistory'
-}); // DebtHistory.associate = (models) => {
-//     DebtHistory.belongsTo(models.Agency, {
-//         foreignKey: 'agencyCode',
-//         targetKey: 'agencyCode',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
+});
 module.exports = {
   DebtHistory: DebtHistory
 };

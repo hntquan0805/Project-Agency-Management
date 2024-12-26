@@ -24,14 +24,6 @@ const DebtHistory = sequelize.define('DebtHistory', {
     tableName: 'DebtHistory',
 });
 
-// DebtHistory.associate = (models) => {
-//     DebtHistory.belongsTo(models.Agency, {
-//         foreignKey: 'agencyCode',
-//         targetKey: 'agencyCode',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
 module.exports = { DebtHistory };
 
 const { Agency } = require('./agency');

@@ -60,13 +60,10 @@ ipcMain.handle('get-products', function _callee(event, type) {
 
         case 3:
           products = _context.sent;
-          // Xuất ra sản phẩm đã lấy được
-          console.log('Products fetched from getProductsByAgency:', products); // Trả về kết quả
-
           return _context.abrupt("return", products);
 
-        case 8:
-          _context.prev = 8;
+        case 7:
+          _context.prev = 7;
           _context.t0 = _context["catch"](0);
           console.error(_context.t0);
           return _context.abrupt("return", {
@@ -74,12 +71,12 @@ ipcMain.handle('get-products', function _callee(event, type) {
             message: 'Error fectching data!'
           });
 
-        case 12:
+        case 11:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 8]]);
+  }, null, null, [[0, 7]]);
 });
 ipcMain.handle('search', function _callee2(event, criteria) {
   return regeneratorRuntime.async(function _callee2$(_context2) {

@@ -23,27 +23,7 @@ var DeliveryNote = sequelize.define('DeliveryNote', {
 }, {
   freezeTableName: true,
   tableName: 'DeliveryNote'
-}); // DeliveryNote.associate = (models) => {
-//     DeliveryNote.belongsTo(models.Agency, {
-//         foreignKey: 'agencyCode',
-//         targetKey: 'agencyCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     DeliveryNote.belongsTo(models.Account, {
-//         foreignKey: 'createdBy',
-//         targetKey: 'personnelCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-//     DeliveryNote.hasMany(models.DeliveryNoteDetail, {
-//         foreignKey: 'deliveryNoteCode',
-//         sourceKey: 'deliveryNoteCode',
-//         onDelete: 'SET NULL',
-//         onUpdate: 'CASCADE',
-//     });
-// };
-
+});
 module.exports = {
   DeliveryNote: DeliveryNote
 };
