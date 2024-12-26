@@ -469,3 +469,12 @@ select{
     margin-left: 10px; /* Khoảng cách giữa nhãn và giá trị */
 }
 
+
+@media print {
+    .modal-close-button,
+    .modal-print-button {
+        display: none; /* Ẩn nút Close và Print trong chế độ in */
+    }
+}
+
+
