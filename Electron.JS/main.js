@@ -6,6 +6,9 @@ const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
 const { getProductsByAgency } = require('./controllers/getProductsByAgency');
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
+const { deleteProductByAgency } = require('./controllers/editProductsByAgency');
+const { updateProductByAgency } = require('./controllers/editProductsByAgency');
+const { getProductsByCode } = require('./controllers/getProductsByAgency');
 const path = require('path');
 
 connect();
@@ -29,17 +32,37 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
 });
 
+ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) => {
+    try {
+        return await getProductsByCode(productCode, unit, type);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fetching data!' };
+    }
+});
+
+ipcMain.handle('update-product', async (event, { productCode, unit, type, price }) => {
+    try {
+        return await updateProductByAgency(productCode, unit, type, price);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error deleting data!' };
+    }
+});
+
+ipcMain.handle('delete-product', async (event, { productCode, unit, type}) => {
+    try {
+        return await deleteProductByAgency(productCode, unit, type);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error deleting data!' };
+    }
+});
+
 ipcMain.handle('get-products', async (event, type) => {
     try {
-         // Gọi hàm lấy dữ liệu sản phẩm
-         const products = await getProductsByAgency(type);
-
-         // Xuất ra sản phẩm đã lấy được
-         console.log('Products fetched from getProductsByAgency:', products);
- 
-         // Trả về kết quả
-         return products;
-        //return await getProductsByAgency(type);
+        const products = await getProductsByAgency(type);
+        return products;
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };

@@ -30,4 +30,35 @@ const getProductsByAgency = async (type) => {
     }
 };
 
-module.exports = { getProductsByAgency };
+const getProductsByCode = async (productCode, unit, type) => {
+    try {
+        const product = await Distribution.findOne({
+            where: { type: type, productCode: productCode, unit: unit },
+            attributes: ['productCode', 'unit', 'price'],
+            include: [
+                {
+                    model:  Inventory,
+                    attributes: ['productName', 'quantityInStock'],
+                },
+            ],
+            raw: true,
+        });
+
+        if (!product) {
+            throw new Error('Product not found');
+        }
+        
+        return {
+            productCode: product.productCode, 
+            productName: product['Inventory.productName'] || null,
+            unit: product.unit,
+            price: product.price,
+            stock: product['Inventory.quantityInStock'] || 0
+        };
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+}
+
+module.exports = { getProductsByAgency, getProductsByCode };
