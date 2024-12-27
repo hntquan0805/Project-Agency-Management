@@ -2,12 +2,13 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
 const Account = sequelize.define('Account', {
-    personnelCode: {
+    username: {
         type: DataTypes.STRING,
         primaryKey: true,
     },
-    profileCode: {
-        type: DataTypes.STRING,
+    password: {
+        type: DataTypes.STRING, // Mật khẩu
+        allowNull: false,
     },
     position: {
         type: DataTypes.STRING,
@@ -26,14 +27,14 @@ const { PaymentReceipt } = require('./paymentreceipt');
 // Thiết lập mối quan hệ với DeliveryNote
 Account.hasMany(DeliveryNote, {
     foreignKey: 'createBy',
-    sourceKey: 'personnelCode',
+    sourceKey: 'username',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
   });
   
   // Thiết lập mối quan hệ với EmployeeProfile
   Account.belongsTo(EmployeeProfile, {
-    foreignKey: 'profileCode',
+    foreignKey: 'username',
     targetKey: 'profileCode',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
@@ -42,7 +43,7 @@ Account.hasMany(DeliveryNote, {
   // Thiết lập mối quan hệ với PaymentReceipt
   Account.hasMany(PaymentReceipt, {
     foreignKey: 'createBy',
-    sourceKey: 'personnelCode',
+    sourceKey: 'username',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
   });

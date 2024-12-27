@@ -14,9 +14,6 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
-      },
       gender: {
         type: Sequelize.STRING
       },
@@ -30,9 +27,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone: {
-        type: Sequelize.STRING
-      },
-      status: {
         type: Sequelize.STRING
       },
       createdAt: {

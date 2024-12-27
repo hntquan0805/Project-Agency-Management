@@ -37,7 +37,7 @@ DeliveryNote.belongsTo(Agency, {
 // Thiết lập mối quan hệ với Account
 DeliveryNote.belongsTo(Account, {
   foreignKey: 'createdBy',
-  targetKey: 'personnelCode',
+  targetKey: 'username',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });

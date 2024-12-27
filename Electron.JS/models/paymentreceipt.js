@@ -23,7 +23,7 @@ const { Agency } = require('./agency');
 // Thiết lập mối quan hệ với Account
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
-  targetKey: 'personnelCode',
+  targetKey: 'username',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });

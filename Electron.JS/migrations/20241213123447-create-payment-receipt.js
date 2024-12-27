@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
         references: {
           model: 'Account',
-          key: 'personnelCode'
+          key: 'username'
         }
       },
       createdAt: {
