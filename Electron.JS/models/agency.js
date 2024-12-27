@@ -1,6 +1,12 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { DeliveryNote } = require('./deliverynote');
+const { RevenueReport } = require('./revenuereport');
+const { DebtHistory } = require('./debthistory');
+const { PaymentReceipt } = require('./paymentreceipt');
+const { AgencyType } = require('./agencytype');
+
 const Agency = sequelize.define('Agency', {
     agencyCode: {
         type: DataTypes.STRING,
@@ -34,13 +40,6 @@ const Agency = sequelize.define('Agency', {
 
 module.exports =  { Agency };
 
-const { DeliveryNote } = require('./deliverynote');
-const { RevenueReport } = require('./revenuereport');
-const { DebtHistory } = require('./debthistory');
-const { PaymentReceipt } = require('./paymentreceipt');
-const { AgencyType } = require('./agencytype');
-
-// Thiết lập mối quan hệ với DeliveryNote
 Agency.hasMany(DeliveryNote, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
@@ -48,7 +47,6 @@ Agency.hasMany(DeliveryNote, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với RevenueReport
 Agency.hasMany(RevenueReport, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
@@ -56,7 +54,7 @@ Agency.hasMany(RevenueReport, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với DebtHistory
+
 Agency.hasMany(DebtHistory, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
@@ -64,7 +62,6 @@ Agency.hasMany(DebtHistory, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với PaymentReceipt
 Agency.hasMany(PaymentReceipt, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
@@ -72,11 +69,9 @@ Agency.hasMany(PaymentReceipt, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với AgencyType
 Agency.belongsTo(AgencyType, {
   foreignKey: 'type',
   targetKey: 'type',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });
-

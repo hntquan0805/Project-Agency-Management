@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { DeliveryNote } = require('./deliverynote');
+const { Distribution } = require('./distribution');
+
 const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
     deliveryNoteCode: {
         type: DataTypes.STRING,
@@ -34,36 +37,29 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
 
 module.exports = { DeliveryNoteDetail };
 
-const { DeliveryNote } = require('./deliverynote');
-const { Distribution } = require('./distribution');
-
-// Thiết lập mối quan hệ với DeliveryNote
 DeliveryNoteDetail.belongsTo(DeliveryNote, {
   foreignKey: 'deliveryNoteCode',
   targetKey: 'deliveryNoteCode',
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập khóa ngoại với Distribution
-// Thiết lập quan hệ với Distribution cho từng cặp khóa
 DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'productCode', // Trường khóa ngoại 1
-  targetKey: 'productCode',  // Trường khóa chính tương ứng
+  foreignKey: 'productCode',
+  targetKey: 'productCode',
   onUpdate: 'CASCADE',
   onDelete: 'CASCADE',
 });
 
 DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'type', // Trường khóa ngoại 2
-  targetKey: 'type',  // Trường khóa chính tương ứng
+  foreignKey: 'type',
+  targetKey: 'type',
   onUpdate: 'CASCADE',
   onDelete: 'CASCADE',
 });
 
 DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'unit', // Trường khóa ngoại 3
-  targetKey: 'unit',  // Trường khóa chính tương ứng
+  foreignKey: 'unit',
+  targetKey: 'unit',
   onUpdate: 'CASCADE',
   onDelete: 'CASCADE',
 });
-

@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Account } = require('./account');
+const { Agency } = require('./agency');
+
 const PaymentReceipt = sequelize.define('PaymentReceipt', {
   paymentReceiptCode: {
     type: DataTypes.STRING,
@@ -17,10 +20,6 @@ const PaymentReceipt = sequelize.define('PaymentReceipt', {
 
 module.exports = { PaymentReceipt };
 
-const { Account } = require('./account');
-const { Agency } = require('./agency');
-
-// Thiết lập mối quan hệ với Account
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'personnelCode',
@@ -28,7 +27,6 @@ PaymentReceipt.belongsTo(Account, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với Agency
 PaymentReceipt.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',

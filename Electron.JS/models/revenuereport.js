@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Agency } = require('./agency');
+
 const RevenueReport = sequelize.define('RevenueReport', {
   date: {
     type: DataTypes.DATE,
@@ -17,19 +19,8 @@ const RevenueReport = sequelize.define('RevenueReport', {
   freezeTableName: true,
 });
 
-// RevenueReport.associate = function(models) {
-//   RevenueReport.belongsTo(models.Agency, {
-//     foreignKey: 'agencyCode',
-//     targetKey: 'agencyCode',
-//     onUpdate: 'CASCADE',
-//   });
-// };
-
 module.exports = { RevenueReport };
 
-const { Agency } = require('./agency');
-
-// Thiết lập mối quan hệ với Agency
 RevenueReport.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',

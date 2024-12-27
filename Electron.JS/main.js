@@ -10,6 +10,7 @@ const { getProductsByAgency, getProductsByCode } = require('./controllers/getPro
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
 const { deleteProductByAgency } = require('./controllers/editProductsByAgencyController');
 const { updateProductByAgency } = require('./controllers/editProductsByAgencyController');
+const UserController = require('./controllers/loginController');
 
 connect();
 
@@ -29,7 +30,11 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/login.html'));
+});
+
+ipcMain.handle('login', async (event, { name, password }) => {
+    return await UserController.login(name, password);
 });
 
 ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) => {

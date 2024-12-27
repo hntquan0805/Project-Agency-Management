@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Inventory } = require('./inventory');
+const { Unit } = require('./unit');
+
 const Distribution = sequelize.define('Distribution', {
   productCode: {
     type: DataTypes.STRING,
@@ -25,10 +28,6 @@ const Distribution = sequelize.define('Distribution', {
 
 module.exports = { Distribution };
 
-const { Inventory } = require('./inventory');
-const { Unit } = require('./unit');
-
-// Thiết lập mối quan hệ với Inventory
 Distribution.belongsTo(Inventory, {
   foreignKey: 'productCode',
   targetKey: 'productCode',
@@ -36,7 +35,6 @@ Distribution.belongsTo(Inventory, {
   onDelete: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với Unit
 Distribution.belongsTo(Unit, {
   foreignKey: 'unit',
   targetKey: 'unitName',
