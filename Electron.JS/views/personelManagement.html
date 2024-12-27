@@ -62,11 +62,11 @@
 
                     <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Goods Delivery Note</a>
+                            <a href="./goodDeliveryNote.html" class="sidebar-link">Goods Delivery Note</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Goods Received Note</a>
+                            <a href="./goodReceivedNote.html" class="sidebar-link">Goods Received Note</a>
                         </li>
 
                         <li class="sidebar-item">
@@ -127,7 +127,7 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="#"><span class="name-span">
+                            <a href="./PersonalInfo.html"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
@@ -144,116 +144,48 @@
                 <div class="section-1">
                     <h1 class="page-title">USER ACCOUNT MANAGEMENT</h1> 
                 </div>  
-
+                
                 <div class="section-2">
-                    <div class="account-approval-list">
-                        <div class="inner-head">
-                            <div class="inner-title">
-                                LIST OF ACCOUNTS PENDING FOR APPROVAL
+                    <div class="create-acc-form container">
+                        <div class="row section2-title-row">
+                            <div class="col-12 form-header">
+                                CREATE USER ACCOUNT
+                            </div>    
+                        </div>
+                        
+                        <form id="create-account-form" action="#" target="_self" method="post" class="row section2-form-row">
+                            <div class="col-lg-6">
+                                <div class="mb-1">
+                                    <label for="inputUserName" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="inputUserName" required>
+                                </div>   
                             </div>
-                        </div>
-                        <table class="table-account-pending">
-                            <thead class="table-head">
-                                <tr>
-                                    <th>Serial</th>
-                                    <th>Name</th>
-                                    <th>Registration Date</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th class="accept">Accept</th>
-                                    <th class="delete">Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>1</th>
-                                    <th>Alice</th>
-                                    <th>22/12/2024</th>
-                                    <th>0901232565</th>
-                                    <th>alice@gmail.com</th>
-                                    <th><button class="accept-button btn" title="accept">
-                                        <div class="button-title">Accept</div>
-                                        <i class="bi bi-person-plus"></i>
-                                    </button></th>
-                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
-                                </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <th>Bob</th>                                    
-                                    <th>25/12/2024</th>
-                                    <th>0901234460</th>
-                                    <th>bob@gmail.com</th>
-                                    <th><button class="accept-button btn" title="accept">
-                                        <div class="button-title">Accept</div>
-                                        <i class="bi bi-person-plus"></i>
-                                    </button></th>
-                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <th>Caleus</th>
-                                    <th>25/12/2024</th>
-                                    <th>0901437762</th>
-                                    <th>greatmall@gmail.com</th>
-                                    <th><button class="accept-button btn" title="accept">
-                                        <div class="button-title">Accept</div>
-                                        <i class="bi bi-person-plus"></i>
-                                    </button></th>
-                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
-                                </tr>
-                                <tr>
-                                    <th>4</th>
-                                    <th>John</th>
-                                    <th>24/12/2024</th>
-                                    <th>0905234564</th>
-                                    <th>megamart@gmail.com</th>
-                                    <th><button class="accept-button btn" title="accept">
-                                        <div class="button-title">Accept</div>
-                                        <i class="bi bi-person-plus"></i>
-                                    </button></th>
-                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
-                                </tr>
-                                <tr>
-                                    <th>5</th>
-                                    <th>Julius</th>
-                                    <th>23/12/2024</th>
-                                    <th>0901534562</th>
-                                    <th>trademaster@gmail.com</th>
-                                    <th><button class="accept-button btn" title="accept">
-                                        <div class="button-title">Accept</div>
-                                        <i class="bi bi-person-plus"></i>
-                                    </button></th>
-                                    <th><button class="delete-button btn" title="delete"><i class="bi bi-trash3"></i></button></th>
-                                </tr>                                
-                            </tbody>
-                        </table>
-
-                        <div class="time-delete-note">
-                            <p>Account creation requests will be deleted if not approved within 7 days.</p>
-                        </div>
-
-                        <div class="form-pagination">
-                            <div class="container pag">
-                                <ul class="pagination">
-                                  <li class="icon">
-                                    <a href="#"><span class="fas fa-angle-left"></span>Previous</a>
-                                  </li>
-                                  <li><a href="#">1</a></li>
-                                  <li><a href="#">2</a></li>
-                                  <li><a href="#">3</a></li>
-                                  <li><a href="#">4</a></li>
-                                  <li><a href="#">5</a></li>
-                                  <li><a href="#">6</a></li>
-                                  <li><a href="#">7</a></li>
-                                  <li><a href="#">8</a></li>
-                                  <li><a href="#">9</a></li>
-                                  <li><a href="#">10</a></li>
-                                  <li class="icon">
-                                    <a href="#">Next<span class="fas fa-angle-right"></span></a>
-                                  </li>
-                                </ul>
+    
+                            <div class="col-lg-6">
+                                <div class="mb-1">
+                                    <label for="inputPass" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="inputPass" minlength="8" required>
+                                </div>
                             </div>
-                        </div>
+    
+                            <div class="col-lg-6">
+                                <div class="mb-1">
+                                    <label for="inputEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="inputEmail" required>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="mb-1">
+                                    <label for="inputPhone" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" id="inputPhone" minlength="10" required>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 add-button">
+                                <button id="add-account-button" type="submit" class="add-button-title">Add<i class="bi bi-plus-circle add-button-icon"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
