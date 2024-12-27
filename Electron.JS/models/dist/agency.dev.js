@@ -53,37 +53,32 @@ var _require6 = require('./paymentreceipt'),
     PaymentReceipt = _require6.PaymentReceipt;
 
 var _require7 = require('./agencytype'),
-    AgencyType = _require7.AgencyType; // Thiết lập mối quan hệ với DeliveryNote
-
+    AgencyType = _require7.AgencyType;
 
 Agency.hasMany(DeliveryNote, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với RevenueReport
-
+});
 Agency.hasMany(RevenueReport, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với DebtHistory
-
+});
 Agency.hasMany(DebtHistory, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với PaymentReceipt
-
+});
 Agency.hasMany(PaymentReceipt, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với AgencyType
-
+});
 Agency.belongsTo(AgencyType, {
   foreignKey: 'type',
   targetKey: 'type',

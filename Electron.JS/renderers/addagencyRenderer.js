@@ -17,8 +17,6 @@ document.getElementById('add-agency').addEventListener('click', async function(e
         if (result.success) {
             alert('Agency has been successfully added!');
             document.querySelector('form').reset();
-            
-            // Update the table after adding a new agency
             updateAgencyTable(result.agencies);
         } else {
             alert(`Failed to add agency: ${result.message}`);
@@ -36,7 +34,7 @@ function formatDate(dateString) {
 
 function updateAgencyTable(agencies) {
     const tableBody = document.querySelector('.table-agent tbody');
-    tableBody.innerHTML = ''; // Clear old rows
+    tableBody.innerHTML = '';
     console.log(agencies);
     agencies.forEach((agency, index) => {
         const row = document.createElement('tr');

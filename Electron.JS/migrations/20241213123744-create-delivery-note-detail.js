@@ -15,6 +15,12 @@ module.exports = {
       productCode: {
         type: Sequelize.STRING,
         allowNull: false,
+        references: {
+          model: 'Inventory',
+          key: 'productCode',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       type: {
         type: Sequelize.INTEGER,
@@ -23,6 +29,12 @@ module.exports = {
       unit: {
         type: Sequelize.STRING,
         allowNull: false,
+        references: {
+          model: 'Unit',
+          key: 'unitName',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       quantity: {
         type: Sequelize.INTEGER,
@@ -50,21 +62,21 @@ module.exports = {
       name: 'pk_deliverynotedetail', // Tên constraint (tuỳ chọn)
     });
 
-    await queryInterface.addConstraint('DeliveryNoteDetail', {
-      fields: ['productCode', 'type', 'unit'], // Các cột tham gia khóa ngoại
-      type: 'foreign key',
-      name: 'fk_deliverynotedetail_distribution', // Tên constraint
-      references: {
-        table: 'Distribution', // Bảng tham chiếu
-        fields: ['productCode', 'type', 'unit'], // Cột tham chiếu
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
-    });
+    // await queryInterface.addConstraint('DeliveryNoteDetail', {
+    //   fields: ['productCode', 'type', 'unit'], // Các cột tham gia khóa ngoại
+    //   type: 'foreign key',
+    //   name: 'fk_deliverynotedetail_distribution', // Tên constraint
+    //   references: {
+    //     table: 'Distribution', // Bảng tham chiếu
+    //     fields: ['productCode', 'type', 'unit'], // Cột tham chiếu
+    //   },
+    //   onUpdate: 'CASCADE',
+    //   onDelete: 'CASCADE',
+    // });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.removeConstraint('DeliveryNoteDetail', 'fk_deliverynotedetail_distribution');
+    // await queryInterface.removeConstraint('DeliveryNoteDetail', 'fk_deliverynotedetail_distribution');
     await queryInterface.removeConstraint('DeliveryNoteDetail', 'pk_deliverynotedetail');
     await queryInterface.dropTable('DeliveryNoteDetail');
   },

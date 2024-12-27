@@ -22,8 +22,7 @@ module.exports = {
 };
 
 var _require3 = require('./distribution'),
-    Distribution = _require3.Distribution; // Thiết lập mối quan hệ ngược lại với Distribution
-
+    Distribution = _require3.Distribution;
 
 Inventory.hasMany(Distribution, {
   foreignKey: 'productCode',

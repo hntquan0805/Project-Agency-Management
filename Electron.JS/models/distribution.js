@@ -28,7 +28,6 @@ module.exports = { Distribution };
 const { Inventory } = require('./inventory');
 const { Unit } = require('./unit');
 
-// Thiết lập mối quan hệ với Inventory
 Distribution.belongsTo(Inventory, {
   foreignKey: 'productCode',
   targetKey: 'productCode',
@@ -36,7 +35,6 @@ Distribution.belongsTo(Inventory, {
   onDelete: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với Unit
 Distribution.belongsTo(Unit, {
   foreignKey: 'unit',
   targetKey: 'unitName',

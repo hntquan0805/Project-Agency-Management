@@ -35,23 +35,20 @@ var _require4 = require('./account'),
     Account = _require4.Account;
 
 var _require5 = require('./deliverynotedetail'),
-    DeliveryNoteDetail = _require5.DeliveryNoteDetail; // Thiết lập mối quan hệ với Agency
-
+    DeliveryNoteDetail = _require5.DeliveryNoteDetail;
 
 DeliveryNote.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với Account
-
+});
 DeliveryNote.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'personnelCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với DeliveryNoteDetail
-
+});
 DeliveryNote.hasMany(DeliveryNoteDetail, {
   foreignKey: 'deliveryNoteCode',
   sourceKey: 'deliveryNoteCode',

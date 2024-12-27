@@ -6,14 +6,12 @@ document.getElementById('agency-rule-1').addEventListener('click', function _cal
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          event.preventDefault(); // Get data from the form
-
+          event.preventDefault();
           updateData = {
             numAgentTypes: document.getElementById('inputAgencyTypes').value,
             maxAgentsInDistrict: document.getElementById('inputMaxAgenciesPerDist').value,
             currencyUnit: document.getElementById('currencyUnit').value
-          }; // Send data to the backend via `window.api`
-
+          };
           window.api.updateSettings(updateData).then(function _callee(result) {
             var agencyTypes, agencyTypeSelect, typeSelect;
             return regeneratorRuntime.async(function _callee$(_context) {
@@ -25,8 +23,7 @@ document.getElementById('agency-rule-1').addEventListener('click', function _cal
                       break;
                     }
 
-                    alert('Update successful!'); // Perform necessary actions after update
-
+                    alert('Update successful!');
                     console.log('Updated settings:', result.updatedSettings);
                     _context.prev = 3;
                     _context.next = 6;
@@ -34,30 +31,22 @@ document.getElementById('agency-rule-1').addEventListener('click', function _cal
 
                   case 6:
                     agencyTypes = _context.sent;
-                    console.log('Agency Types:', agencyTypes); // Get the select element from the HTML
-
+                    console.log('Agency Types:', agencyTypes);
                     agencyTypeSelect = document.getElementById('agencyType');
-                    agencyTypeSelect.innerHTML = ''; // Clear old options in select
-                    // Add options to select
-
+                    agencyTypeSelect.innerHTML = '';
                     agencyTypes.forEach(function (type) {
                       var option = document.createElement('option');
-                      option.value = type; // The value is the agency type
-
-                      option.textContent = type; // Display the agency type
-
+                      option.value = type;
+                      option.textContent = type;
                       agencyTypeSelect.appendChild(option);
                     });
                     typeSelect = document.getElementById('type');
-                    typeSelect.innerHTML = ''; // Clear old options in select
-                    // Add options to type select
+                    typeSelect.innerHTML = ''; // Add options to type select
 
                     agencyTypes.forEach(function (type) {
                       var option = document.createElement('option');
-                      option.value = type; // The value is the agency type
-
-                      option.textContent = type; // Display the agency type
-
+                      option.value = type;
+                      option.textContent = type;
                       typeSelect.appendChild(option);
                     });
                     _context.next = 20;

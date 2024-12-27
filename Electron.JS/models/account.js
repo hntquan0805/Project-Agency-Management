@@ -23,15 +23,13 @@ const { DeliveryNote } = require('./deliverynote');
 const { EmployeeProfile } = require('./employeeprofile');
 const { PaymentReceipt } = require('./paymentreceipt');
 
-// Thiết lập mối quan hệ với DeliveryNote
 Account.hasMany(DeliveryNote, {
-    foreignKey: 'createBy',
+    foreignKey: 'createdBy',
     sourceKey: 'personnelCode',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
   });
   
-  // Thiết lập mối quan hệ với EmployeeProfile
   Account.belongsTo(EmployeeProfile, {
     foreignKey: 'profileCode',
     targetKey: 'profileCode',
@@ -39,9 +37,8 @@ Account.hasMany(DeliveryNote, {
     onUpdate: 'CASCADE',
   });
   
-  // Thiết lập mối quan hệ với PaymentReceipt
   Account.hasMany(PaymentReceipt, {
-    foreignKey: 'createBy',
+    foreignKey: 'createdBy',
     sourceKey: 'personnelCode',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',

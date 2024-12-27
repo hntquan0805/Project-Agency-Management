@@ -7,6 +7,11 @@ contextBridge.exposeInMainWorld('api', {
 
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
 
+    searchDeliveryNotesByDate: (criteria) => ipcRenderer.invoke('search-by-month', criteria),
+
+    countNoteByAgency: (criteria) => ipcRenderer.invoke('count-agency', criteria),
+
+
     updateSettings: (updateData) => ipcRenderer.invoke('agency-rule-1', updateData),
 
     getAgencyTypes: () => ipcRenderer.invoke('get-agency-types'),

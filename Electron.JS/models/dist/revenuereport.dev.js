@@ -6,36 +6,29 @@ var _require = require('sequelize'),
 var _require2 = require('../config/database'),
     sequelize = _require2.sequelize;
 
-var DebtHistory = sequelize.define('DebtHistory', {
-  agencyCode: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
+var RevenueReport = sequelize.define('RevenueReport', {
   date: {
     type: DataTypes.DATE,
     allowNull: false
   },
-  initialDebt: {
-    type: DataTypes.DOUBLE
+  agentCode: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
-  endDebt: {
-    type: DataTypes.DOUBLE
-  },
-  incurredDebt: {
-    type: DataTypes.DOUBLE
-  }
+  numberOfDeliveryNotes: DataTypes.INTEGER,
+  totalValue: DataTypes.DOUBLE,
+  rate: DataTypes.DECIMAL
 }, {
-  freezeTableName: true,
-  tableName: 'DebtHistory'
+  freezeTableName: true
 });
 module.exports = {
-  DebtHistory: DebtHistory
+  RevenueReport: RevenueReport
 };
 
 var _require3 = require('./agency'),
     Agency = _require3.Agency;
 
-DebtHistory.belongsTo(Agency, {
+RevenueReport.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
   onUpdate: 'CASCADE'

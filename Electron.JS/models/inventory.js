@@ -17,7 +17,6 @@ module.exports = { Inventory };
 
 const { Distribution } = require('./distribution');
 
-// Thiết lập mối quan hệ ngược lại với Distribution
 Inventory.hasMany(Distribution, {
   foreignKey: 'productCode',
   sourceKey: 'productCode',

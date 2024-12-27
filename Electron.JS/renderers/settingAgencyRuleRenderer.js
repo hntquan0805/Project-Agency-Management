@@ -1,44 +1,35 @@
 document.getElementById('agency-rule-1').addEventListener('click', async function(event) {
     event.preventDefault();
-
-    // Get data from the form
     const updateData = {
         numAgentTypes: document.getElementById('inputAgencyTypes').value,
         maxAgentsInDistrict: document.getElementById('inputMaxAgenciesPerDist').value,
         currencyUnit: document.getElementById('currencyUnit').value
     };    
 
-    // Send data to the backend via `window.api`
     window.api.updateSettings(updateData).then(async (result) => {
         if (result.success) {
             alert('Update successful!');
-            
-            // Perform necessary actions after update
             console.log('Updated settings:', result.updatedSettings);
             try {
-                // Call the `get-agency-types` function again to get the updated list of agency types
                 const agencyTypes = await window.api.getAgencyTypes();
                 console.log('Agency Types:', agencyTypes);
-                // Get the select element from the HTML
                 const agencyTypeSelect = document.getElementById('agencyType');
-                agencyTypeSelect.innerHTML = ''; // Clear old options in select
-
-                // Add options to select
+                agencyTypeSelect.innerHTML = '';
                 agencyTypes.forEach(type => {
                     const option = document.createElement('option');
-                    option.value = type; // The value is the agency type
-                    option.textContent = type; // Display the agency type
+                    option.value = type;
+                    option.textContent = type;
                     agencyTypeSelect.appendChild(option);
                 });
 
                 const typeSelect = document.getElementById('type');
-                typeSelect.innerHTML = ''; // Clear old options in select
+                typeSelect.innerHTML = '';
 
                 // Add options to type select
                 agencyTypes.forEach(type => {
                     const option = document.createElement('option');
-                    option.value = type; // The value is the agency type
-                    option.textContent = type; // Display the agency type
+                    option.value = type;
+                    option.textContent = type;
                     typeSelect.appendChild(option);
                 });
 

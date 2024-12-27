@@ -1,33 +1,26 @@
 const { Regulation } = require('../models/regulation');
 const { Agency } = require('../models/agency');
-const { AgencyType } = require('../models/agencyType');
+const { AgencyType } = require('../models/agencytype');
 const { Sequelize } = require('sequelize');
 
-// Update settings function
-async function updateSettings(updateData) {
+ const updateSettings = async (updateData) => {
     try {
-        // Access the Regulation model to find the Regulation object (could be multiple or just one)
-        // Assuming you only have one record in the Regulation table
-
         const regulation = await Regulation.findOne();
 
         if (!regulation) {
             throw new Error('No settings found to update');
         }
 
-        // Check if the current maxAgenciesPerDistrict is greater than maxAgentsInDistrict
         if (regulation.maxAgenciesPerDistrict > updateData.maxAgentsInDistrict) {
-            // Query to get the list of districts with more agencies than the limit
             const districtsExceedingLimit = await Agency.findAll({
                 attributes: [
                     'district',
-                    [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount'] // Count agencies in each district
+                    [Sequelize.fn('COUNT', Sequelize.col('agencyCode')), 'agencyCount']
                 ],
-                group: ['district'], // Group by district
-                having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict), // Filter districts exceeding the limit
+                group: ['district'],
+                having: Sequelize.literal('COUNT(agencyCode) > ' + updateData.maxAgentsInDistrict),
             });
 
-            // If there are any districts exceeding the limit
             if (districtsExceedingLimit.length > 0) {
                 const districtNames = districtsExceedingLimit.map(district => district.district).join(', ');
                 return {
@@ -38,10 +31,8 @@ async function updateSettings(updateData) {
         }
 
         if (regulation.agencyTypeCount > updateData.numAgentTypes) {
-            // Get the list of all agency types
             const agencyTypes = await AgencyType.findAll();
         
-            // Check for agency types that don't have any agencies assigned
             const emptyAgencyTypes = [];
         
             for (const agencyType of agencyTypes) {
@@ -54,7 +45,6 @@ async function updateSettings(updateData) {
                 }
             }
         
-            // If there are no agency types with no agencies assigned
             if (emptyAgencyTypes.length === 0) {
                 return {
                     success: false,
@@ -62,10 +52,8 @@ async function updateSettings(updateData) {
                 };
             }
         
-            // Calculate the difference between numAgentTypes and agencyTypeCount
             const difference = regulation.agencyTypeCount - updateData.numAgentTypes;
         
-            // If the difference is too large compared to the number of empty agency types, deletion is not possible
             if (difference > emptyAgencyTypes.length) {
                 return {
                     success: false,
@@ -73,13 +61,10 @@ async function updateSettings(updateData) {
                 };
             }
         
-            // Sort by descending order (agency types with a higher type will be deleted first)
             const sortedEmptyAgencyTypes = emptyAgencyTypes.sort((a, b) => b.type - a.type);
-        
-            // Get the required number of agency types to delete based on the difference
+
             const typesToDelete = sortedEmptyAgencyTypes.slice(0, difference);
-        
-            // Delete agency types with no agencies assigned
+
             await AgencyType.destroy({
                 where: {
                     type: {
@@ -88,7 +73,6 @@ async function updateSettings(updateData) {
                 }
             });
         
-            // Update the agencyTypeCount in the regulation
             regulation.agencyTypeCount = updateData.numAgentTypes;
             regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict;
             await regulation.save();
@@ -104,26 +88,22 @@ async function updateSettings(updateData) {
             for (let i = regulation.agencyTypeCount + 1; i <= updateData.numAgentTypes; i++) {
                 typesToCreate.push({
                     type: i,
-                    productCount: 5,   // Assuming productCount is 5 for new types
-                    unitCount: 3,      // Assuming unitCount is 3 for new types
-                    maxDebt: 0         // Assuming maxDebt is 0 for new types
+                    productCount: 5,
+                    unitCount: 3,
+                    maxDebt: 0
                 });
             }
 
-            // Create new agency types
             await AgencyType.bulkCreate(typesToCreate);
 
-        // Update fields in Regulation
         regulation.agencyTypeCount = updateData.numAgentTypes;
         regulation.maxAgenciesPerDistrict = updateData.maxAgentsInDistrict;
 
-        // Save the updated record
         await regulation.save();
 
-        // Return success
         return {
             success: true,
-            updatedSettings: regulation // Return the updated settings
+            updatedSettings: regulation
         };
     } catch (error) {
         console.error('Error updating settings:', error);

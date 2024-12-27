@@ -26,7 +26,6 @@ const { Agency } = require('./agency');
 const { Account } = require('./account');
 const { DeliveryNoteDetail } = require('./deliverynotedetail');
 
-// Thiết lập mối quan hệ với Agency
 DeliveryNote.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
@@ -34,7 +33,6 @@ DeliveryNote.belongsTo(Agency, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với Account
 DeliveryNote.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'personnelCode',
@@ -42,7 +40,6 @@ DeliveryNote.belongsTo(Account, {
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập mối quan hệ với DeliveryNoteDetail
 DeliveryNote.hasMany(DeliveryNoteDetail, {
   foreignKey: 'deliveryNoteCode',
   sourceKey: 'deliveryNoteCode',

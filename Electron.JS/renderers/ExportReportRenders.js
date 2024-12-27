@@ -1,31 +1,29 @@
-document.querySelector('.export-button').addEventListener('click', function () {
+document.querySelector('.export-button').addEventListener('click', async function () {
+    const month = document.getElementById('month').value;
+    const year = document.getElementById('year').value;
+    const delivery_note = await window.api.searchDeliveryNotesByDate({ month, year });
+    const table = await window.api.countNoteByAgency(delivery_note);
+
+
+
     // Hiển thị bảng sales-report
     const salesReport = document.getElementById('salesReport');
     salesReport.style.display = 'block';
 
-    // Thêm dữ liệu mẫu vào bảng (tùy chỉnh theo yêu cầu thực tế)
-    const results = document.getElementById('results');
-    results.innerHTML = `
-        <tr>
-            <td>1</td>
-            <td>Agent A</td>
-            <td>5</td>
-            <td>$500</td>
-            <td>25%</td>
-            <td><button class="fix-button btn btn-sm"><i class="bi bi-pencil"></i></button></td>
-            <td><button class="delete-button btn btn-sm"><i class="bi bi-trash3"></i></button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Agent B</td>
-            <td>3</td>
-            <td>$300</td>
-            <td>15%</td>
-            <td><button class="fix-button btn btn-sm"><i class="bi bi-pencil"></i></button></td>
-            <td><button class="delete-button btn btn-sm"><i class="bi bi-trash3"></i></button></td>
-        </tr>
-    `;
-
+    const resultsTable = document.getElementById('results');
+    console.log(table);
+    resultsTable.innerHTML = '';
+    for (const agencyCode in table) {
+          const note = table[agencyCode]; // Đối tượng tương ứng với agencyCode
+          console.log(note);
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <th>${agencyCode}</th>
+            <th>${note || 'N/A'}</th>
+            <th>${note.count}</th>
+          `;
+          resultsTable.appendChild(row);
+    }
     const agentDebtReport = document.getElementById('agentDebtReport');
     agentDebtReport.style.display = 'block';
 
@@ -51,3 +49,7 @@ document.querySelector('.export-button').addEventListener('click', function () {
         </tr>
     `;
 });
+
+
+
+

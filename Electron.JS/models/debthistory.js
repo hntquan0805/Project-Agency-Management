@@ -28,7 +28,6 @@ module.exports = { DebtHistory };
 
 const { Agency } = require('./agency');
 
-// Thiết lập mối quan hệ với Agency
 DebtHistory.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',

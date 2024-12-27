@@ -12,28 +12,20 @@ document.addEventListener('DOMContentLoaded', function _callee() {
 
         case 3:
           agencyTypes = _context.sent;
-          // Get the select element from the HTML
           agencyTypeSelect = document.getElementById('agencyType');
-          agencyTypeSelect.innerHTML = ''; // Clear previous options in select
-          // Add options to the select
-
+          agencyTypeSelect.innerHTML = '';
           agencyTypes.forEach(function (type) {
             var option = document.createElement('option');
-            option.value = type; // The value is just the type
-
-            option.textContent = type; // Display the type value
-
+            option.value = type;
+            option.textContent = type;
             agencyTypeSelect.appendChild(option);
           });
           typeSelect = document.getElementById('type');
-          typeSelect.innerHTML = ''; // Xóa các option cũ trong select
-
+          typeSelect.innerHTML = '';
           agencyTypes.forEach(function (type) {
             var option = document.createElement('option');
-            option.value = type; // The value is just the type
-
-            option.textContent = type; // Display the type value
-
+            option.value = type;
+            option.textContent = type;
             typeSelect.appendChild(option);
           });
           _context.next = 15;

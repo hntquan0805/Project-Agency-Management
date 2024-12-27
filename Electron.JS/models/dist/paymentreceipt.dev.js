@@ -27,16 +27,14 @@ var _require3 = require('./account'),
     Account = _require3.Account;
 
 var _require4 = require('./agency'),
-    Agency = _require4.Agency; // Thiết lập mối quan hệ với Account
-
+    Agency = _require4.Agency;
 
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'personnelCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với Agency
-
+});
 PaymentReceipt.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',

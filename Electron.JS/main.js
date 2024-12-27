@@ -6,6 +6,7 @@ const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
 const { getProductsByAgency } = require('./controllers/getProductsByAgency');
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
+const { searchDeliveryNotesByDate, countNoteByAgency } = require('./controllers/monthlyReportController');
 const path = require('path');
 
 connect();
@@ -26,15 +27,12 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/setting.html'));
+    mainWindow.loadFile(path.join(__dirname, 'views/monthlyReport.html'));
 });
 
 ipcMain.handle('get-products', async (event, type) => {
     try {
-         // Gọi hàm lấy dữ liệu sản phẩm
-         const products = await getProductsByAgency(type);
-         return products;
-        //return await getProductsByAgency(type);
+        return await getProductsByAgency(type);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -45,6 +43,24 @@ ipcMain.handle('get-products', async (event, type) => {
 ipcMain.handle('search', async (event, criteria) => {
     try {
         return await searchAgencies(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
+});
+
+ipcMain.handle('search-by-month', async (event, criteria) => {
+    try {
+        return await searchDeliveryNotesByDate(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
+});
+
+ipcMain.handle('count-agency', async (event, criteria) => {
+    try {
+        return await countNoteByAgency(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };

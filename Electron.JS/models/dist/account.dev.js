@@ -32,25 +32,22 @@ var _require4 = require('./employeeprofile'),
     EmployeeProfile = _require4.EmployeeProfile;
 
 var _require5 = require('./paymentreceipt'),
-    PaymentReceipt = _require5.PaymentReceipt; // Thiết lập mối quan hệ với DeliveryNote
-
+    PaymentReceipt = _require5.PaymentReceipt;
 
 Account.hasMany(DeliveryNote, {
-  foreignKey: 'createBy',
+  foreignKey: 'createdBy',
   sourceKey: 'personnelCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với EmployeeProfile
-
+});
 Account.belongsTo(EmployeeProfile, {
   foreignKey: 'profileCode',
   targetKey: 'profileCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'
-}); // Thiết lập mối quan hệ với PaymentReceipt
-
+});
 Account.hasMany(PaymentReceipt, {
-  foreignKey: 'createBy',
+  foreignKey: 'createdBy',
   sourceKey: 'personnelCode',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE'

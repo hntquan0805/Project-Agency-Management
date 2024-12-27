@@ -36,34 +36,47 @@ module.exports = { DeliveryNoteDetail };
 
 const { DeliveryNote } = require('./deliverynote');
 const { Distribution } = require('./distribution');
+const { Inventory } = require('./inventory');
+const { Unit } = require('./unit');
 
-// Thiết lập mối quan hệ với DeliveryNote
 DeliveryNoteDetail.belongsTo(DeliveryNote, {
   foreignKey: 'deliveryNoteCode',
   targetKey: 'deliveryNoteCode',
   onUpdate: 'CASCADE',
 });
 
-// Thiết lập khóa ngoại với Distribution
-// Thiết lập quan hệ với Distribution cho từng cặp khóa
-DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'productCode', // Trường khóa ngoại 1
-  targetKey: 'productCode',  // Trường khóa chính tương ứng
-  onUpdate: 'CASCADE',
-  onDelete: 'CASCADE',
+DeliveryNoteDetail.belongsTo(Inventory, {
+    foreignKey: 'productCode',
+    targetKey: 'productCode',
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL', // Or another suitable delete behavior like CASCADE, depending on your use case
 });
 
-DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'type', // Trường khóa ngoại 2
-  targetKey: 'type',  // Trường khóa chính tương ứng
-  onUpdate: 'CASCADE',
-  onDelete: 'CASCADE',
+DeliveryNoteDetail.belongsTo(Unit, {
+    foreignKey: 'unit',
+    targetKey: 'unitName',
+    onUpdate: 'CASCADE',
+    onDelete: 'SET NULL', // Or another suitable delete behavior
 });
 
-DeliveryNoteDetail.belongsTo(Distribution, {
-  foreignKey: 'unit', // Trường khóa ngoại 3
-  targetKey: 'unit',  // Trường khóa chính tương ứng
-  onUpdate: 'CASCADE',
-  onDelete: 'CASCADE',
-});
+// DeliveryNoteDetail.belongsTo(Distribution, {
+//   foreignKey: 'productCode',
+//   targetKey: 'productCode',
+//   onUpdate: 'CASCADE',
+//   onDelete: 'CASCADE',
+// });
+
+// DeliveryNoteDetail.belongsTo(Distribution, {
+//   foreignKey: 'type',
+//   targetKey: 'type',
+//   onUpdate: 'CASCADE',
+//   onDelete: 'CASCADE',
+// });
+
+// DeliveryNoteDetail.belongsTo(Distribution, {
+//   foreignKey: 'unit',
+//   targetKey: 'unit',
+//   onUpdate: 'CASCADE',
+//   onDelete: 'CASCADE',
+// });
 
