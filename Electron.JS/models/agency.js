@@ -32,7 +32,11 @@ const Agency = sequelize.define('Agency', {
     },
     address: {
         type: DataTypes.STRING,
-    }
+    },
+    currentDebt: {  //Thêm thuộc tính nợ hiện tại
+      type: DataTypes.DOUBLE,
+      defaultValue: 0,  
+  }
 }, {
     freezeTableName: true,
     tableName: 'Agency',
