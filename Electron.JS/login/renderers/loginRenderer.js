@@ -14,6 +14,8 @@ loginForm.addEventListener('submit', async (event) => {
         return;
     }
 
+    sessionStorage.setItem('accountType', result.accountType);
+
     if (response.success) {
         window.location.href = '../views/dashboard.html';
     } else {

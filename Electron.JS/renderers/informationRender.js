@@ -1,11 +1,11 @@
 
 class Information {
-    static checkAccountType = () => {
+    static removeSetting = () => {
         const accountType = sessionStorage.getItem('accountType');
 
         const setting = document.getElementById('setting');
 
-        if (accountType === '1' && addAccountButton) {
+        if (accountType === '1') {
             setting.remove();
         }
     }
