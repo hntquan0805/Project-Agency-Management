@@ -51,56 +51,68 @@ tbody tr:hover{
 
 
 /* Section 2 - List account pending for approval */
-.section-2 .table-account-pending{
-    width: 100%;
-    text-align: center;
-    /* font-family: figtree; */
-    font-size: 14px;
-    color:black;
-    border-radius: 5px;
-    border: 1px solid var(--border-clr);
+.section-2{
+    margin-bottom: 60px;
+}
+.section-2 .container{
+    margin: 0;
+    min-width: 100%;
     background: white;
 }
-/* Accept and delete button */
-.table-account-pending th:nth-child(6){
-    width: 70px;
+
+.section2-title-row{
+    background-color: #F57D31;
+    border: #B8B8B8 solid 2px;
+    color: #FFF;
+    font-size: 1.7rem;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 5px 20px;
+    text-align: center;
 }
-.table-account-pending .accept-button{
-    width: 67px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.section2-form-row{
+    background-color: #FFF;
+    border-left:#B8B8B8 solid 2px;
+    border-right:#B8B8B8 solid 2px;
+    border-bottom:#B8B8B8 solid 2px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.5rem;
 }
-.table-account-pending .accept-button .button-title{
-    align-content: center;
-    font-size: 13px;
+.form-label{
+    font-size: 1.2rem;
 }
-.table-account-pending .accept-button, .table-account-pending .delete-button{
-    padding: 0;
-    height: fit-content;
-    border-radius: 5px;
-    border: 2px solid var(--bg-clr);
-    color:var(--bg-clr);  
-    background: rgba(255, 255, 255, 0.5); 
-}
-.table-account-pending .accept-button i, .table-account-pending .delete-button i{
-    font-size: 14px;
-}
-.table-account-pending .delete-button{
-    padding: 0 2px;
-}
-.table-account-pending button:hover{
-    color: var(--button-hover-bg);
-    border: 2px solid var(--button-hover-bg);
+.form-control, .form-select{
+    font-size: 1.4rem;
+    border:#B8B8B8 solid 1px;
 }
 
-/* Note */
-.section-2 .time-delete-note{
-    color: red;
-    padding-left: 10px;
+.section-2 .section2-form-row .col-lg-6{
+    margin-bottom: 10px;
 }
-.section-2 .time-delete-note p{
-    margin-bottom: 0;
+
+/* add account button */
+.section-2 .add-button{
+    text-align: right;
+    margin-top: 10px; /* Khoảng cách giữa button và các row nội dung form */
+    padding: auto; /* Padding auto box bao quanh update button để bên trong nội dung có thể chỉnh lớn nhỏ được */
+}
+
+.section-2 .add-button-title{
+    padding: 3px 0px;
+    width: 100px;
+    background-color: #F57D31;
+    border:#B8B8B8 solid 1px;
+    border-radius: 5px;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+}
+.section-2 .add-button-icon{
+    margin-left: 3px;
+    font-size: 16px;
+    text-shadow: 0 0 1px #FFF;
 }
 /* End Section-2 */
 

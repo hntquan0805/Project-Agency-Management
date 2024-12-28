@@ -1,6 +1,7 @@
 const { Agency } = require('../models/agency');
 const { Regulation } = require('../models/regulation');
 
+
 const addAgency = async (agencyData) => {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {

@@ -9,13 +9,11 @@ const EmployeeProfile = sequelize.define('EmployeeProfile', {
   },
   fullName: DataTypes.STRING,
   email: DataTypes.STRING,
-  password: DataTypes.STRING,
   gender: DataTypes.STRING,
   cccd: DataTypes.STRING,
   dob: DataTypes.DATE,
   address: DataTypes.STRING,
-  phone: DataTypes.STRING,
-  status: DataTypes.STRING
+  phone: DataTypes.STRING
 }, {
   freezeTableName: true,
 });

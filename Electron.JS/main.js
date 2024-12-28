@@ -6,9 +6,9 @@ const { addAgency } = require('./controllers/agencyController');
 const { searchAgencies } = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
 const { getProductsByAgency, getProductsByCode } = require('./controllers/getProductsByAgencyController');
-const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
-const { searchDeliveryNotesByDate, countNoteByAgency, calculateProportion, renderDebtTable, saveRevenueReport, saveDebtHistory } = require('./controllers/monthlyReportController');
-const { saveGoodsReceivedNote } = require('./controllers/addReceivedNote');
+const settingAgencyTypeController = require('./controllers/settingAgencyTypeController');
+const monthlyReportController = require('./controllers/monthlyReportController');
+const addReceivedNoteController = require('./controllers/addReceivedNote');
 const path = require('path');
 
 const { deleteProductByAgency } = require('./controllers/editProductsByAgencyController');
@@ -84,7 +84,7 @@ ipcMain.handle('search', async (event, criteria) => {
 
 ipcMain.handle('search-by-month', async (event, criteria) => {
     try {
-        return await searchDeliveryNotesByDate(criteria);
+        return await monthlyReportController.searchDeliveryNotesByDate(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -93,7 +93,7 @@ ipcMain.handle('search-by-month', async (event, criteria) => {
 
 ipcMain.handle('save-received-note', async (event, criteria) => {
     try {
-        return await saveGoodsReceivedNote(criteria);
+        return await addReceivedNoteController.saveGoodsReceivedNote(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -103,7 +103,7 @@ ipcMain.handle('save-received-note', async (event, criteria) => {
 
 ipcMain.handle('count-agency', async (event, criteria) => {
     try {
-        return await countNoteByAgency(criteria);
+        return await monthlyReportController.countNoteByAgency(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -112,7 +112,7 @@ ipcMain.handle('count-agency', async (event, criteria) => {
 
 ipcMain.handle('cal-propor', async (event, criteria) => {
     try {
-        return await calculateProportion(criteria);
+        return await monthlyReportController.calculateProportion(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -121,7 +121,7 @@ ipcMain.handle('cal-propor', async (event, criteria) => {
 
 ipcMain.handle('debt-report', async (event, { month, year, table }) => {
     try {
-        return await renderDebtTable(month, year, table);
+        return await monthlyReportController.renderDebtTable(month, year, table);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -130,7 +130,7 @@ ipcMain.handle('debt-report', async (event, { month, year, table }) => {
 
 ipcMain.handle('save-debt-history', async (event, { month, year, table_debt }) => {
     try {
-        await saveDebtHistory(month, year, table_debt);
+        await monthlyReportController.saveDebtHistory(month, year, table_debt);
         return { success: true };
     } catch (error) {
         console.error('Error saving debt history:', error);
@@ -141,7 +141,7 @@ ipcMain.handle('save-debt-history', async (event, { month, year, table_debt }) =
 ipcMain.handle('save-revenue-report', async (event, { month, year, reportData }) => {
     try {
         // Gọi hàm lưu báo cáo
-        await saveRevenueReport(month, year, reportData);
+        await monthlyReportController.saveRevenueReport(month, year, reportData);
         return { success: true };
     } catch (error) {
         console.error('Error saving report to database:', error);
@@ -161,7 +161,6 @@ ipcMain.handle('add-agency', async (event, agencyData) => {
 ipcMain.handle('agency-rule-1', async (event, updateData) => {
     try {
         const result = await updateSettings(updateData);
-
         return result;
     } catch (error) {
         console.error('Error in ipcMain handle updateSettings:', error);
@@ -171,7 +170,7 @@ ipcMain.handle('agency-rule-1', async (event, updateData) => {
 
 ipcMain.handle('agency-type-1', async (event, updateData) => {
     try {
-        const result = await updateAgencyTypeSettings(updateData);
+        const result = await settingAgencyTypeController.updateAgencyTypeSettings(updateData);
         return result;
     } catch (error) {
         console.error('Error in ipcMain handle updateSettings:', error);
@@ -181,8 +180,7 @@ ipcMain.handle('agency-type-1', async (event, updateData) => {
 
 ipcMain.handle('get-agency-types', async () => {
     try {
-        const agencyTypes = await getAgencyTypesFromDB();
-        console.log(agencyTypes);
+        const agencyTypes = await settingAgencyTypeController.getAgencyTypesFromDB();
         return agencyTypes;
     } catch (error) {
         console.error('Error fetching agency types:', error);

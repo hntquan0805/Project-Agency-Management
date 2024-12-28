@@ -25,28 +25,19 @@ var _require7 = require('./controllers/getProductsByAgencyController'),
     getProductsByAgency = _require7.getProductsByAgency,
     getProductsByCode = _require7.getProductsByCode;
 
-var _require8 = require('./controllers/settingAgencyTypeController'),
-    updateAgencyTypeSettings = _require8.updateAgencyTypeSettings,
-    getAgencyTypesFromDB = _require8.getAgencyTypesFromDB;
+var settingAgencyTypeController = require('./controllers/settingAgencyTypeController');
 
-var _require9 = require('./controllers/monthlyReportController'),
-    searchDeliveryNotesByDate = _require9.searchDeliveryNotesByDate,
-    countNoteByAgency = _require9.countNoteByAgency,
-    calculateProportion = _require9.calculateProportion,
-    renderDebtTable = _require9.renderDebtTable,
-    saveRevenueReport = _require9.saveRevenueReport,
-    saveDebtHistory = _require9.saveDebtHistory;
+var monthlyReportController = require('./controllers/monthlyReportController');
 
-var _require10 = require('./controllers/addReceivedNote'),
-    saveGoodsReceivedNote = _require10.saveGoodsReceivedNote;
+var addReceivedNoteController = require('./controllers/addReceivedNote');
 
 var path = require('path');
 
-var _require11 = require('./controllers/editProductsByAgencyController'),
-    deleteProductByAgency = _require11.deleteProductByAgency;
+var _require8 = require('./controllers/editProductsByAgencyController'),
+    deleteProductByAgency = _require8.deleteProductByAgency;
 
-var _require12 = require('./controllers/editProductsByAgencyController'),
-    updateProductByAgency = _require12.updateProductByAgency;
+var _require9 = require('./controllers/editProductsByAgencyController'),
+    updateProductByAgency = _require9.updateProductByAgency;
 
 connect();
 var mainWindow;
@@ -219,7 +210,7 @@ ipcMain.handle('search-by-month', function _callee6(event, criteria) {
         case 0:
           _context6.prev = 0;
           _context6.next = 3;
-          return regeneratorRuntime.awrap(searchDeliveryNotesByDate(criteria));
+          return regeneratorRuntime.awrap(monthlyReportController.searchDeliveryNotesByDate(criteria));
 
         case 3:
           return _context6.abrupt("return", _context6.sent);
@@ -247,7 +238,7 @@ ipcMain.handle('save-received-note', function _callee7(event, criteria) {
         case 0:
           _context7.prev = 0;
           _context7.next = 3;
-          return regeneratorRuntime.awrap(saveGoodsReceivedNote(criteria));
+          return regeneratorRuntime.awrap(addReceivedNoteController.saveGoodsReceivedNote(criteria));
 
         case 3:
           return _context7.abrupt("return", _context7.sent);
@@ -275,7 +266,7 @@ ipcMain.handle('count-agency', function _callee8(event, criteria) {
         case 0:
           _context8.prev = 0;
           _context8.next = 3;
-          return regeneratorRuntime.awrap(countNoteByAgency(criteria));
+          return regeneratorRuntime.awrap(monthlyReportController.countNoteByAgency(criteria));
 
         case 3:
           return _context8.abrupt("return", _context8.sent);
@@ -303,7 +294,7 @@ ipcMain.handle('cal-propor', function _callee9(event, criteria) {
         case 0:
           _context9.prev = 0;
           _context9.next = 3;
-          return regeneratorRuntime.awrap(calculateProportion(criteria));
+          return regeneratorRuntime.awrap(monthlyReportController.calculateProportion(criteria));
 
         case 3:
           return _context9.abrupt("return", _context9.sent);
@@ -333,7 +324,7 @@ ipcMain.handle('debt-report', function _callee10(event, _ref4) {
           month = _ref4.month, year = _ref4.year, table = _ref4.table;
           _context10.prev = 1;
           _context10.next = 4;
-          return regeneratorRuntime.awrap(renderDebtTable(month, year, table));
+          return regeneratorRuntime.awrap(monthlyReportController.renderDebtTable(month, year, table));
 
         case 4:
           return _context10.abrupt("return", _context10.sent);
@@ -363,7 +354,7 @@ ipcMain.handle('save-debt-history', function _callee11(event, _ref5) {
           month = _ref5.month, year = _ref5.year, table_debt = _ref5.table_debt;
           _context11.prev = 1;
           _context11.next = 4;
-          return regeneratorRuntime.awrap(saveDebtHistory(month, year, table_debt));
+          return regeneratorRuntime.awrap(monthlyReportController.saveDebtHistory(month, year, table_debt));
 
         case 4:
           return _context11.abrupt("return", {
@@ -395,7 +386,7 @@ ipcMain.handle('save-revenue-report', function _callee12(event, _ref6) {
           month = _ref6.month, year = _ref6.year, reportData = _ref6.reportData;
           _context12.prev = 1;
           _context12.next = 4;
-          return regeneratorRuntime.awrap(saveRevenueReport(month, year, reportData));
+          return regeneratorRuntime.awrap(monthlyReportController.saveRevenueReport(month, year, reportData));
 
         case 4:
           return _context12.abrupt("return", {
@@ -486,7 +477,7 @@ ipcMain.handle('agency-type-1', function _callee15(event, updateData) {
         case 0:
           _context15.prev = 0;
           _context15.next = 3;
-          return regeneratorRuntime.awrap(updateAgencyTypeSettings(updateData));
+          return regeneratorRuntime.awrap(settingAgencyTypeController.updateAgencyTypeSettings(updateData));
 
         case 3:
           result = _context15.sent;
@@ -516,25 +507,24 @@ ipcMain.handle('get-agency-types', function _callee16() {
         case 0:
           _context16.prev = 0;
           _context16.next = 3;
-          return regeneratorRuntime.awrap(getAgencyTypesFromDB());
+          return regeneratorRuntime.awrap(settingAgencyTypeController.getAgencyTypesFromDB());
 
         case 3:
           agencyTypes = _context16.sent;
-          console.log(agencyTypes);
           return _context16.abrupt("return", agencyTypes);
 
-        case 8:
-          _context16.prev = 8;
+        case 7:
+          _context16.prev = 7;
           _context16.t0 = _context16["catch"](0);
           console.error('Error fetching agency types:', _context16.t0);
           return _context16.abrupt("return", []);
 
-        case 12:
+        case 11:
         case "end":
           return _context16.stop();
       }
     }
-  }, null, null, [[0, 8]]);
+  }, null, null, [[0, 7]]);
 });
 ipcMain.handle('sign-up', function _callee17(event, _ref7) {
   var username, password;
