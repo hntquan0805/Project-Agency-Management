@@ -14,7 +14,7 @@ loginForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    sessionStorage.setItem('accountType', result.accountType);
+    sessionStorage.setItem('account-position', response.dataValues.position);
 
     if (response.success) {
         window.location.href = '../views/dashboard.html';
