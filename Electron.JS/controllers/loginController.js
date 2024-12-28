@@ -1,10 +1,10 @@
-const { User } = require('../models/user');
+const { Account } = require('../models/account');
 
 class UserController {
     static login = async (name, password) => {
         try {
-            const user = await User.findOne({ where: { name: name, password: password } });
-            if (user) {
+            const account = await Account.findOne({ where: { name: name, password: password } });
+            if (account) {
                 return { success: true };
             } else {
                 return { success: false, message: 'Invalid credentials' };

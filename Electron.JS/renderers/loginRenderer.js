@@ -9,6 +9,11 @@ loginForm.addEventListener('submit', async (event) => {
 
     const response = await window.api.login(username, password);
 
+    if (!response.success) {
+        alert(response.message);
+        return;
+    }
+
     if (response.success) {
         window.location.href = '../views/dashboard.html';
     } else {

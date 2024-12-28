@@ -11,7 +11,7 @@ const Account = sequelize.define('Account', {
         primaryKey: true,
     },
     password: {
-        type: DataTypes.STRING, // Mật khẩu
+        type: DataTypes.STRING,
         allowNull: false,
     },
     position: {
@@ -31,8 +31,8 @@ Account.hasMany(DeliveryNote, {
     onUpdate: 'CASCADE',
 });
   
-  // Thiết lập mối quan hệ với EmployeeProfile
-  Account.belongsTo(EmployeeProfile, {
+
+Account.belongsTo(EmployeeProfile, {
     foreignKey: 'username',
     targetKey: 'profileCode',
     onDelete: 'SET NULL',
