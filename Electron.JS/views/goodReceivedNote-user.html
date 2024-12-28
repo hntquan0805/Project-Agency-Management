@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Agency - Agency Management System</title>
+    <title>Good Received Note - Agencies Management System</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" 
     integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" 
@@ -11,9 +11,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../public/css/bootstrap/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/style/main.css">
-    <link rel="stylesheet" href="../public/css/style/searchAgent.css"> 
+    <link rel="stylesheet" href="../public/css/style/goodReceivedNote.css">    
 </head>
 <body>
     <div class="wrapper">
@@ -26,7 +26,7 @@
                     <a href="#">Menu</a>
                 </div>
             </div>
-
+    
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="./dashBoard-user.html" class="sidebar-link">
@@ -34,47 +34,47 @@
                         <span>DashBoard</span>
                     </a>
                 </li>
-
+    
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAgent" 
                     aria-expanded="false" aria-controls="manageAgent">
                         <i class="bi bi-building"></i>
                         <span>Manage Agency</span>
                     </a>
-
+    
                     <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a href="./addAgent-user.html" class="sidebar-link">Add Agency</a>
                         </li>
-
+    
                         <li class="sidebar-item">
                             <a href="./searchAgent-user.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
-
+    
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#paperWork" 
                     aria-expanded="false" aria-controls="paperWork">
                         <i class="bi bi-file-earmark-text"></i>
                         <span>Paper Work</span>
                     </a>
-
+    
                     <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a href="./goodDeliveryNote-user.html" class="sidebar-link">Goods Delivery Note</a>
                         </li>
-
+    
                         <li class="sidebar-item">
                             <a href="./goodReceivedNote-user.html" class="sidebar-link">Goods Received Note</a>
                         </li>
-
+    
                         <li class="sidebar-item">
                             <a href="./monthlyReport-user.html" class="sidebar-link">Monthly Report</a>
                         </li>
                     </ul>
                 </li>
-
+    
                 <li class="sidebar-item">
                     <a href="./personalInfo-user.html" class="sidebar-link">
                         <i class="bi bi-person-vcard"></i>
@@ -82,16 +82,16 @@
                     </a>
                 </li>
             </ul>
-
+    
             <div class="sidebar-footer">
-                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <img src="./images/logo.png" alt="Logo" class="logo-footer">
                 <div class="detail-footer">
                     <div class="text-footer">Agency Management Software</div>
                     <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
                 </div>
             </div>
         </aside>
-
+        
         <div class="child-wrapper">
             <header>
                 <div class="logo">
@@ -109,7 +109,7 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="./personalInfo-user.html"><span class="name-span">
+                            <a href="#"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
@@ -121,74 +121,78 @@
                     </ul>
                 </div>
             </header>
-
             <main class="main">
-                <div class="search-form">
+                <!--Good Received-->
+                <div class="goodReceived">
                     <div class="container">
-                        <div class="row inner-head">
+                        <div class="row title">
                             <div class="col-12">
-                                <h1 class="inner-title">Search Agency</h1>
+                                <h1>GOODS RECEIVED NOTE</h1>
                             </div>
                         </div>
-                        <form id="search-form" class="inner-main">
-                            <div class="row">
-                                <div class="col-12 inner-desc">
-                                    <p class="desc">Enter at least 1 information to search</p>
-                                </div>
-                                <div class="col-lg-4 col-6">
-                                    <label for="agentName">Agency Name</label>
-                                    <input type="text" id="agentName" name="agent_name">
-                                </div>
-                                <div class="col-lg-4 col-6" id="input-type">
-                                    <label for="type">Type</label>
-                                    <select name="type" id="type">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4 col-sm-8 col-12">
-                                    <label for="district">District</label>
-                                    <input type="text" id="district" name="district">
-                                </div>
-                                <div class=" col-xl-2 col-12">
-                                    <button type="submit" class="search-button">
-                                        <div class="content-button">
-                                            <h3>Search</h3>
-                                            <i class="fa-solid fa-map-pin" ></i>
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>                        
+                        <form action="#" class="row">
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="agentName">Agency Name</label><br>
+                                <input type="text" id="agentName" name="agent_name" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="type">Address</label><br>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="phoneNumber">Phone number</label><br>
+                                <input type="text" id="phoneNumber" name="phone_number" maxlength="10" required>
+                            </div>
+                            <div class=" col-xl-4 col-md-6 col-12 info">
+                                <label for="email">Email</label><br>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="receptionDate">Date</label><br>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="col-xl-4 col-md-6 col-12 info">
+                                <label for="district">Amount paid</label><br>
+                                <input type="text" id="amount" name="amount" required>
+                            </div>
+                            <div class="col-xl-4 col-md-12 col-12 button">
+                                <button class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
+                            </div>
                         </form>
                     </div>
                 </div>
-        
-                <div class="agent-list">
-                    <div class="inner-head">
-                        <div class="inner-title">
-                            Agency Information
+                    <!-- Khu vực hiển thị thông tin sau khi nhập -->
+                    <div class="result" style ="display: none;">
+                        <h2>GOODS RECEIVED NOTE</h2>
+                        <div class="result-container">
+                            <h3>GOODS RECEIVED NOTE</h3>
+                            <p><b>Information:</b></p>
+                            <p><strong>Supplier Name:</strong> <span>Flower Snow</span></p>
+                            <p><strong>Email:</strong> <span>flowersnow@example.com</span></p>
+                            <p><strong>Phone Number:</strong> <span>0123456789</span></p>
+                            <p><strong>Address:</strong> <span>123 Flower Street, Snow City</span></p>
+                            <p><b>Payment:</b></p>
+                            <p><strong>Amount Paid:</strong> <span>5.000.000 VND</span></p>
+                            <p><strong>Date:</strong> <span>26/12/2024</span></p>
+                            <p><strong>Received By:</strong> <span>Admin</span></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="closeButton">Close <i class="bi bi-x"></i></button>
+                            <button class="printButton">Print <i class="bi bi-printer-fill"></i></button>
                         </div>
                     </div>
-                    <table class="table-agent">
-                        <thead class="table-head">
-                            <tr>
-                                <th>Serial</th>
-                                <th>Agency Name</th>
-                                <th>Type</th>
-                                <th>District</th>
-                                <th>Debt</th>
-                                <th class="fix"></th>
-                                <th class="delete"></th>
-                            </tr>
-                        </thead>
-                        <tbody id = "results">
-                        </tbody>
-                    </table>
+
             </main>
         </div>
     </div>
+    
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>
 
-    <script src = "../renderers/searchAgencyRenderer.js"></script>
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

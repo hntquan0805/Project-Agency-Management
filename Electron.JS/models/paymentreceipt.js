@@ -22,7 +22,7 @@ module.exports = { PaymentReceipt };
 
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
-  targetKey: 'personnelCode',
+  targetKey: 'username',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });

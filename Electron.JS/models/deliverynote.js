@@ -35,7 +35,7 @@ DeliveryNote.belongsTo(Agency, {
 
 DeliveryNote.belongsTo(Account, {
   foreignKey: 'createdBy',
-  targetKey: 'personnelCode',
+  targetKey: 'username',
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });

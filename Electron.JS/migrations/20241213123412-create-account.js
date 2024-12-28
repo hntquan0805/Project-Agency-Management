@@ -3,14 +3,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Account', {
-      personnelCode: {
+      username: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
         primaryKey: true,
-      },
-      profileCode: {
-        type: Sequelize.STRING,
         references: {
           model: 'EmployeeProfile',
           key: 'profileCode',
@@ -19,6 +16,9 @@ module.exports = {
         onDelete: 'SET NULL',
       },
       position: {
+        type: Sequelize.STRING
+      },
+      password: {
         type: Sequelize.STRING
       },
       createdAt: {
