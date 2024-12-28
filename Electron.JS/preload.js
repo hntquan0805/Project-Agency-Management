@@ -1,6 +1,8 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
+    login: (name, password) => ipcRenderer.invoke('login', { name, password }),
+
     signUp: (username, password) => ipcRenderer.invoke('sign-up', { username, password }),
 
     addAgency: (agencyData) => ipcRenderer.invoke('add-agency', agencyData),
@@ -34,4 +36,6 @@ contextBridge.exposeInMainWorld('api', {
     updateProductByAgency: (productCode, unit, type, price) => ipcRenderer.invoke('update-product', { productCode, unit, type, price }),
     
     getProductsByCode: (productCode, unit, type) => ipcRenderer.invoke('get-products-code', {productCode, unit, type}),
+
+    findAllProducts: (name, type) => ipcRenderer.invoke('find-all-products', { name, type }),
 });

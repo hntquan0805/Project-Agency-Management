@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Distribution } = require('./distribution');
+
 const Unit = sequelize.define('Unit', {
     unitName: {
         type: DataTypes.STRING,
@@ -21,8 +23,6 @@ const Unit = sequelize.define('Unit', {
 });
 
 module.exports = { Unit };
-
-const { Distribution } = require('./distribution');
 
 Unit.hasMany(Distribution, {
     foreignKey: 'unit',

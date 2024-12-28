@@ -24,7 +24,6 @@ class addReceivedNoteController {
             const latestReceipt = await PaymentReceipt.findOne({
                 order: [['paymentReceiptCode', 'DESC']]
             });
-
             let newCode = 'PR001';
             if (latestReceipt) {
                 const lastCode = latestReceipt.paymentReceiptCode;

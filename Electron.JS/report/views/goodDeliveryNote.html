@@ -144,7 +144,7 @@
                 <div class="col-12">
                     <h1>GOODS DELIVERY NOTE</h1>
                 </div>
-                  <!-- Agent information -->
+                  <!-- Agency information -->
                 <div class="goodDelivery">
                     <div class="container">
                         <div class="row title">
@@ -159,7 +159,7 @@
                             </div>
                             <div class="col-xl-4 col-md-6 col-12 info">
                                 <label for="type">Type</label><br>
-                                <select name="type" id="type" required>
+                                <select name="type" id="agency-type" required>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                 </select>
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <!-- Cart -->
-                    <div class="cart" id="cart" style="display: none;">
+                    <div class="cart" id="cart" style="display: block;">
                         <div class="inner-head">
                             <div class="inner-title">
                                 Cart
@@ -228,39 +228,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Banana Milk</td>
-                                    <td>thùng</td>
-                                    <td>600,000 VND</td>
-                                    <td>10</td>
-                                    <td><i class="bi bi-pencil"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Coconut Milk</td>
-                                    <td>thùng</td>
-                                    <td>450,000 VND</td>
-                                    <td>5</td>
-                                    <td><i class="bi bi-pencil"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Strawberry Milk</td>
-                                    <td>thùng</td>
-                                    <td>450,000 VND</td>
-                                    <td>5</td>
-                                    <td><i class="bi bi-pencil"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Oat Milk</td>
-                                    <td>thùng</td>
-                                    <td>700,000 VND</td>
-                                    <td>5</td>
-                                    <td><i class="bi bi-pencil"></i></td>
-                                </tr>
+                            <tbody id="cart-table">
                             </tbody>
                         </table>
 
@@ -275,12 +243,12 @@
     </div>
       <!-- PopUp-Search Goods -->
       <div class="modal-overlay" style="display: none;">
-      <div class="modal-content">
-          <button class="modal-close">&times;</button>
+      <div id="choose-form" class="modal-content">
+          <button id="close-button-choose-form" class="modal-close">&times;</button>
           <div class="col-12 info search-input">
               <div class="input-wrapper">
-                  <input type="text" id="search" name="search" required>
-                  <button type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
+                  <input type="name" id="search" name="search" required>
+                  <button type="search-product" class="search-btn">Search <i class="bi bi-search"></i></button>
               </div>
           </div>
           <div class="modal-body">
@@ -294,72 +262,7 @@
                           <th>Quantity</th>
                       </tr>
                   </thead>
-                  <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>Banana Milk</td>
-                          <td>thùng</td>
-                          <td>600,000</td>
-                          <td>
-                            <div class="quantity-control">
-                                <i class="bi bi-dash-lg quantity-btn"></i>
-                                <span class="quantity-value">0</span>
-                                <i class="bi bi-plus-lg quantity-btn"></i>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Coconut Milk</td>
-                          <td>thùng</td>
-                          <td>450,000</td>
-                          <td>
-                            <div class="quantity-control">
-                                <i class="bi bi-dash-lg quantity-btn"></i>
-                                <span class="quantity-value">0</span>
-                                <i class="bi bi-plus-lg quantity-btn"></i>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>3</td>
-                          <td>Strawberry Milk</td>
-                          <td>thùng</td>
-                          <td>450,000</td>
-                          <td>
-                            <div class="quantity-control">
-                                <i class="bi bi-dash-lg quantity-btn"></i>
-                                <span class="quantity-value">0</span>
-                                <i class="bi bi-plus-lg quantity-btn"></i>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>4</td>
-                          <td>Oat Milk</td>
-                          <td>thùng</td>
-                          <td>700,000</td>
-                          <td>
-                            <div class="quantity-control">
-                                <i class="bi bi-dash-lg quantity-btn"></i>
-                                <span class="quantity-value">0</span>
-                                <i class="bi bi-plus-lg quantity-btn"></i>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                          <td>5</td>
-                          <td>Papaya Milk</td>
-                          <td>thùng</td>
-                          <td>600,000</td>
-                          <td>
-                            <div class="quantity-control">
-                                <i class="bi bi-dash-lg quantity-btn"></i>
-                                <span class="quantity-value">0</span>
-                                <i class="bi bi-plus-lg quantity-btn"></i>
-                            </div>
-                        </td>
-                      </tr>
+                  <tbody id="results-table">
                   </tbody>
               </table>
           </div>

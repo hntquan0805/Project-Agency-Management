@@ -1,4 +1,7 @@
-const { AgencyType } = require('../models/agencytype');
+const { Regulation } = require('../../models/regulation');
+const { Agency } = require('../../models/agency');
+const { AgencyType } = require('../../models/agencytype');
+const { Sequelize } = require('sequelize');
 
 class settingAgencyTypeController {
     static updateAgencyTypeSettings = async (updateData) => {
@@ -42,4 +45,5 @@ class settingAgencyTypeController {
         }
     }
 }
+
 module.exports = { settingAgencyTypeController };

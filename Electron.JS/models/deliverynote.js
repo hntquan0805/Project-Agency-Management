@@ -1,6 +1,10 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Agency } = require('./agency');
+const { Account } = require('./account');
+const { DeliveryNoteDetail } = require('./deliverynotedetail');
+
 const DeliveryNote = sequelize.define('DeliveryNote', {
     deliveryNoteCode: {
         type: DataTypes.STRING,
@@ -21,10 +25,6 @@ const DeliveryNote = sequelize.define('DeliveryNote', {
 });
 
 module.exports = { DeliveryNote };
-
-const { Agency } = require('./agency');
-const { Account } = require('./account');
-const { DeliveryNoteDetail } = require('./deliverynotedetail');
 
 DeliveryNote.belongsTo(Agency, {
   foreignKey: 'agencyCode',

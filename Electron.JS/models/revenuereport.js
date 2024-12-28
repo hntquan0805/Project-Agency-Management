@@ -1,6 +1,8 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { Agency } = require('./agency');
+
 const RevenueReport = sequelize.define('RevenueReport', {
   date: {
     type: DataTypes.DATE,
@@ -20,8 +22,6 @@ const RevenueReport = sequelize.define('RevenueReport', {
 });
 
 module.exports = { RevenueReport };
-
-const { Agency } = require('./agency');
 
 RevenueReport.belongsTo(Agency, {
   foreignKey: 'agencyCode',

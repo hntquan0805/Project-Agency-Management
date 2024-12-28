@@ -29,7 +29,7 @@
     
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="./dashBoard-user.html" class="sidebar-link">
+                    <a href="./dashBoard.html" class="sidebar-link">
                         <i class="bi bi-speedometer2"></i>
                         <span>DashBoard</span>
                     </a>
@@ -44,11 +44,11 @@
     
                     <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="./addAgent-user.html" class="sidebar-link">Add Agency</a>
+                            <a href="./addAgent.html" class="sidebar-link">Add Agency</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="./searchAgent-user.html" class="sidebar-link">Search Agency</a>
+                            <a href="./searchAgent.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -62,23 +62,41 @@
     
                     <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="./goodDeliveryNote-user.html" class="sidebar-link">Goods Delivery Note</a>
+                            <a href="./goodDeliveryNote.html" class="sidebar-link">Goods Delivery Note</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="./goodReceivedNote-user.html" class="sidebar-link">Goods Received Note</a>
+                            <a href="./goodReceivedNote.html" class="sidebar-link">Goods Received Note</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="./monthlyReport-user.html" class="sidebar-link">Monthly Report</a>
+                            <a href="./monthlyReport.html" class="sidebar-link">Monthly Report</a>
                         </li>
                     </ul>
                 </li>
     
                 <li class="sidebar-item">
-                    <a href="./personalInfo-user.html" class="sidebar-link">
+                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse" data-bs-target="#manageAccount" 
+                    aria-expanded="false" aria-controls="manageAccount">
                         <i class="bi bi-person-vcard"></i>
-                        <span>Personal Infomation</span>
+                        <span>Manage Account</span>
+                    </a>
+    
+                    <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="./PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
+                        </li>
+    
+                        <li class="sidebar-item">
+                            <a href="./personelManagement.html" class="sidebar-link">Personel Management</a>
+                        </li>
+                    </ul>
+                </li>
+    
+                <li class="sidebar-item">
+                    <a href="./setting.html" class="sidebar-link">
+                        <i class="bi bi-gear"></i>
+                        <span>Setting</span>
                     </a>
                 </li>
             </ul>
@@ -102,8 +120,8 @@
                     <div class="open-list">
                         <div class="mini-avatar"></div>
                         <div class="userinfo">
-                            <p class="username">User 123</p>
-                            <p class="acc-title">User</p>
+                            <p class="username">Admin 123</p>
+                            <p class="acc-title">Administrator</p>
                         </div>
                         <i class="fa-solid fa-angle-down"></i>
                     </div>
@@ -156,13 +174,13 @@
                                 <input type="text" id="amount" name="amount" required>
                             </div>
                             <div class="col-xl-4 col-md-12 col-12 button">
-                                <button class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
+                                <button id="create-received-note" class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
                             </div>
                         </form>
                     </div>
                 </div>
                     <!-- Khu vực hiển thị thông tin sau khi nhập -->
-                    <div class="result" style ="display: none;">
+                    <div class="result" style ="display: block;">
                         <h2>GOODS RECEIVED NOTE</h2>
                         <div class="result-container">
                             <h3>GOODS RECEIVED NOTE</h3>
@@ -181,7 +199,14 @@
                             <button class="printButton">Print <i class="bi bi-printer-fill"></i></button>
                         </div>
                     </div>
-
+                        <!--Failure-PopUp-->
+                    <div id="failurePopup" class="popup hidden" style="display: none;">
+                        <div class="popup-content">
+                            <h2>Notice</h2>
+                            <p> Create failed!<br>Please check the information again</p>
+                            <button id="closePopupButton" class="modal-close-button">Close </button>
+                        </div>
+                    </div>
             </main>
         </div>
     </div>
@@ -194,5 +219,7 @@
     </script>
 
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../renderers/addReceivedNoteRenderer.js"></script>
+    
 </body>
 </html>

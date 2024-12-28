@@ -1,6 +1,12 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+const { DeliveryNote } = require('./deliverynote');
+const { RevenueReport } = require('./revenuereport');
+const { DebtHistory } = require('./debthistory');
+const { PaymentReceipt } = require('./paymentreceipt');
+const { AgencyType } = require('./agencytype');
+
 const Agency = sequelize.define('Agency', {
     agencyCode: {
         type: DataTypes.STRING,
@@ -33,12 +39,6 @@ const Agency = sequelize.define('Agency', {
 });
 
 module.exports =  { Agency };
-
-const { DeliveryNote } = require('./deliverynote');
-const { RevenueReport } = require('./revenuereport');
-const { DebtHistory } = require('./debthistory');
-const { PaymentReceipt } = require('./paymentreceipt');
-const { AgencyType } = require('./agencytype');
 
 Agency.hasMany(DeliveryNote, {
   foreignKey: 'agencyCode',
@@ -74,4 +74,3 @@ Agency.belongsTo(AgencyType, {
   onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
 });
-

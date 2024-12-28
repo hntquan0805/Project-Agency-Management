@@ -1,18 +1,17 @@
 const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { connect } = require('./config/database');
 
-const { signUpUser } = require('./controllers/userController');
 const { addAgency } = require('./controllers/agencyController');
-const { searchAgencies } = require('./controllers/searchAgencyController');
+const SearchAgencies = require('./controllers/searchAgencyController');
 const { updateSettings } = require('./controllers/settingAgencyRuleController');
 const { getProductsByAgency, getProductsByCode } = require('./controllers/getProductsByAgencyController');
 const settingAgencyTypeController = require('./controllers/settingAgencyTypeController');
 const monthlyReportController = require('./controllers/monthlyReportController');
 const addReceivedNoteController = require('./controllers/addReceivedNote');
 const path = require('path');
-
-const { deleteProductByAgency } = require('./controllers/editProductsByAgencyController');
-const { updateProductByAgency } = require('./controllers/editProductsByAgencyController');
+const EditProductsByAgency = require('./controllers/editProductsByAgencyController');
+const UserController = require('./controllers/loginController');
+const AddDeliveryNote = require('./controllers/addDeliveryNoteController');
 
 
 connect();
@@ -36,6 +35,19 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, 'views/goodReceivedNote.html'));
 });
 
+ipcMain.handle('find-all-products', async (event, { name, type }) => {
+    try {
+        return await AddDeliveryNote.findAllProducts(name, type);
+    } catch (error) {
+        console.error('Error in ipcMain handle findAllProducts:', error);
+        return { success: false, message: 'Error fetching data!' };
+    }
+});
+
+ipcMain.handle('login', async (event, { name, password }) => {
+    return await UserController.login(name, password);
+});
+
 ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) => {
     try {
         return await getProductsByCode(productCode, unit, type);
@@ -47,7 +59,7 @@ ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) =
 
 ipcMain.handle('update-product', async (event, { productCode, unit, type, price }) => {
     try {
-        return await updateProductByAgency(productCode, unit, type, price);
+        return await EditProductsByAgency.updateProductByAgency(productCode, unit, type, price);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error deleting data!' };
@@ -56,7 +68,7 @@ ipcMain.handle('update-product', async (event, { productCode, unit, type, price 
 
 ipcMain.handle('delete-product', async (event, { productCode, unit, type}) => {
     try {
-        return await deleteProductByAgency(productCode, unit, type);
+        return await EditProductsByAgency.deleteProductByAgency(productCode, unit, type);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error deleting data!' };
@@ -75,7 +87,7 @@ ipcMain.handle('get-products', async (event, type) => {
 
 ipcMain.handle('search', async (event, criteria) => {
     try {
-        return await searchAgencies(criteria);
+        return await SearchAgencies.searchAgencies(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };

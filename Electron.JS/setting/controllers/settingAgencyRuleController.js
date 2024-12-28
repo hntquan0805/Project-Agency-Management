@@ -1,9 +1,9 @@
-const { Regulation } = require('../models/regulation');
-const { Agency } = require('../models/agency');
-const { AgencyType } = require('../models/agencytype');
+const { Regulation } = require('../../models/regulation');
+const { Agency } = require('../../models/agency');
+const { AgencyType } = require('../../models/agencytype');
 const { Sequelize } = require('sequelize');
 
- const updateSettings = async (updateData) => {
+async function updateSettings(updateData) {
     try {
         const regulation = await Regulation.findOne();
 
@@ -44,23 +44,21 @@ const { Sequelize } = require('sequelize');
                     emptyAgencyTypes.push(agencyType);
                 }
             }
-        
             if (emptyAgencyTypes.length === 0) {
                 return {
                     success: false,
                     message: 'There are more agency types than expected.'
                 };
             }
-        
+
             const difference = regulation.agencyTypeCount - updateData.numAgentTypes;
-        
+
             if (difference > emptyAgencyTypes.length) {
                 return {
                     success: false,
                     message: 'The difference is too large compared to the number of empty agency types, cannot delete.'
                 };
             }
-        
             const sortedEmptyAgencyTypes = emptyAgencyTypes.sort((a, b) => b.type - a.type);
 
             const typesToDelete = sortedEmptyAgencyTypes.slice(0, difference);

@@ -1,5 +1,5 @@
-const { Agency } = require('../models/agency');
-const { Regulation } = require('../models/regulation');
+const { Agency } = require('../../models/agency');
+const { Regulation } = require('../../models/regulation');
 
 
 const addAgency = async (agencyData) => {
