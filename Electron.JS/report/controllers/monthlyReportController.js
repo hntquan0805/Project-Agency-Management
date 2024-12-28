@@ -336,4 +336,4 @@ class monthlyReportController {
   }
 }
 
-module.exports = { monthlyReportController };
+module.exports = monthlyReportController;

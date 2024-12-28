@@ -1,17 +1,17 @@
 const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { connect } = require('./config/database');
-
-const { addAgency } = require('./controllers/agencyController');
-const SearchAgencies = require('./controllers/searchAgencyController');
-const { updateSettings } = require('./controllers/settingAgencyRuleController');
-const { getProductsByAgency, getProductsByCode } = require('./controllers/getProductsByAgencyController');
-const settingAgencyTypeController = require('./controllers/settingAgencyTypeController');
-const monthlyReportController = require('./controllers/monthlyReportController');
-const addReceivedNoteController = require('./controllers/addReceivedNote');
 const path = require('path');
-const EditProductsByAgency = require('./controllers/editProductsByAgencyController');
-const UserController = require('./controllers/loginController');
-const AddDeliveryNote = require('./controllers/addDeliveryNoteController');
+
+const { addAgency } = require('./agency/controllers/agencyController');
+const SearchAgencies = require('./agency/controllers/searchAgencyController');
+const { updateSettings } = require('./setting/controllers/settingAgencyRuleController');
+const GetProductsByAgency = require('./setting/controllers/getProductsByAgencyController');
+const settingAgencyTypeController = require('./setting/controllers/settingAgencyTypeController');
+const monthlyReportController = require('./report/controllers/monthlyReportController');
+const addReceivedNoteController = require('./report/controllers/addReceivedNote');
+const EditProductsByAgency = require('./setting/controllers/editProductsByAgencyController');
+const UserController = require('./login/controllers/loginController');
+const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
 
 
 connect();
@@ -50,7 +50,7 @@ ipcMain.handle('login', async (event, { name, password }) => {
 
 ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) => {
     try {
-        return await getProductsByCode(productCode, unit, type);
+        return await GetProductsByAgency.getProductsByCode(productCode, unit, type);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fetching data!' };
@@ -77,7 +77,7 @@ ipcMain.handle('delete-product', async (event, { productCode, unit, type}) => {
 
 ipcMain.handle('get-products', async (event, type) => {
     try {
-        return await getProductsByAgency(type);
+        return await GetProductsByAgency.getProductsByAgency(type);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
@@ -152,7 +152,6 @@ ipcMain.handle('save-debt-history', async (event, { month, year, table_debt }) =
 
 ipcMain.handle('save-revenue-report', async (event, { month, year, reportData }) => {
     try {
-        // Gọi hàm lưu báo cáo
         await monthlyReportController.saveRevenueReport(month, year, reportData);
         return { success: true };
     } catch (error) {

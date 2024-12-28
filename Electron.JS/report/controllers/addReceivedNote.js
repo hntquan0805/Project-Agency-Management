@@ -49,4 +49,4 @@ class addReceivedNoteController {
     }
 }
 
-module.exports = { addReceivedNoteController }
+module.exports = addReceivedNoteController;
