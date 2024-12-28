@@ -44,8 +44,6 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 const type = button.getAttribute('data-type');
 
                 const product = await window.api.getProductsByCode(productCode, unit, type);
-
-                console.log(product);
                 
                 document.getElementById('goods-code').value = product.productCode;
                 document.getElementById('goods-name').value = product.productName;

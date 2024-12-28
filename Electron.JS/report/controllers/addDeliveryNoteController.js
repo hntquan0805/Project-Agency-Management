@@ -1,5 +1,6 @@
 const { Inventory } = require('../../models/inventory');
 const { Distribution } = require('../../models/distribution');
+const { DeliveryNote } = require('../../models/deliverynote');
 const { Op } = require('sequelize');
 
 class AddDeliveryNote {
@@ -28,6 +29,16 @@ class AddDeliveryNote {
         }));
 
         return result;
+    }
+
+    static createDeliveryNote = async (deliveryNoteData) => {
+        try {
+            const deliveryNote = await DeliveryNote.create(deliveryNoteData);
+            return { success: true, deliveryNote };
+        } catch (error) {
+            console.error('Error in createDeliveryNote:', error);
+            return { success: false, message: 'Error creating delivery note!' };
+        }
     }
 }
 

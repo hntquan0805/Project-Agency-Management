@@ -158,7 +158,7 @@
                         <form action="#" class="row">
                             <div class="col-xl-4 col-md-6 col-12 info">
                                 <label for="agentName">Agency Name</label><br>
-                                <input type="text" id="agentName" name="agent_name" required>
+                                <input type="text" id="agency-name" name="agent_name" required>
                             </div>
                             <div class="col-xl-4 col-md-6 col-12 info">
                                 <label for="type">Type</label><br>
@@ -169,10 +169,8 @@
                             </div>
                             <div class="col-xl-4 col-md-6 col-12 info">
                                 <label for="receptionDate">Date</label><br>
-                                <input type="date" id="date" name="date" required>
+                                <input type="date" id="created-date" name="date" required>
                             </div>
-                            
-                           
                         </form>
                     </div>
                 </div>
@@ -195,21 +193,21 @@
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="serial">Serial</label><br>
-                                    <input type="number" id="serial" name="serial" required>
+                                    <input id="serial" type="number" id="serial" name="serial" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="nameOfGood">Name of Goods</label><br>
-                                    <input type="text" id="good" name="good" required>
+                                    <input id="name" type="text" id="good" name="good" required>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="quantity">Quantity</label><br>
-                                    <input type="text" id="quantity" name="quantity" required>
+                                    <input id="quantity" type="text" id="quantity" name="quantity" required>
                                 </div>
                                 
                                 
                             </form>
                             <div class="col-xl-4 col-md-12 col-12 Button">
-                                <button class="addButton">Add <i class="fa-solid fa-plus"></i></button>                        
+                                <button id="add-button" class="addButton">Add <i class="fa-solid fa-plus"></i></button>                        
                             </div>
                         </div>
                     </div>
@@ -236,7 +234,7 @@
                         </table>
 
                         <div class="col-xl-4 col-md-12 col-12 button">
-                            <button class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
+                            <button type="create" id="create-button" class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
                         </div>
                        
                     </div>
@@ -281,11 +279,11 @@
             <div class="info-input">
                 <p class="info-row">
                     <strong class="info-label">Agency Name:</strong> 
-                    <span id="modalAgentName" class="info-value">Flower Snow</span>
+                    <span id="modalAgencyName" class="info-value"></span>
                 </p>
                 <p class="info-row">
                     <strong class="info-label">Date:</strong> 
-                    <span id="modalDate" class="info-value">10/11/2024</span>
+                    <span id="modalDate" class="info-value"></span>
                 </p>
                 <p class="info-row">
                     <strong class="info-label">List of Goods:</strong>
@@ -293,8 +291,7 @@
                 </p>
             </div>
             
-            <div>
-               
+            <div>               
                 <table class="goods-table">
                     <thead>
                         <tr>
@@ -306,32 +303,7 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody id="goodsListTable">
-                        <tr>
-                            <td>1</td>
-                            <td>Banana Milk</td>
-                            <td>thùng</td>
-                            <td>600,000 VND</td>
-                            <td>10</td>
-                            <td>6,000,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Coconut Milk</td>
-                            <td>thùng</td>
-                            <td>450,000 VND</td>
-                            <td>5</td>
-                            <td>2,250,000 VND</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Strawberry Milk</td>
-                            <td>thùng</td>
-                            <td>450,000 VND</td>
-                            <td>5</td>
-                            <td>2,250,000 VND</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="goodsListTable"></tbody>
                 </table>
                 <div class="total">
                     <span class="totalFrom">Total:</span> <span id="grandTotal">10.500.000 VND</span>
