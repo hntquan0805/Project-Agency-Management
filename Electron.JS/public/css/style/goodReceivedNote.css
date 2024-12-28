@@ -15,6 +15,7 @@ button{
 .child-wrapper{
     width: calc(100% - 70px);
 }
+
 /* class goodReceived */
 .goodReceived{
     text-align: left;
@@ -250,7 +251,8 @@ p strong {
 strong{
     margin-left: 30px;
 }
-span{
+
+.main span{
     color: black;
     font-weight: bold;
     display: inline-block;
