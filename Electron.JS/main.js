@@ -9,6 +9,7 @@ const { getProductsByAgency, getProductsByCode } = require('./controllers/getPro
 const { updateAgencyTypeSettings, getAgencyTypesFromDB } = require('./controllers/settingAgencyTypeController');
 const EditProductsByAgency = require('./controllers/editProductsByAgencyController');
 const UserController = require('./controllers/loginController');
+const AddDeliveryNote = require('./controllers/addDeliveryNoteController');
 
 connect();
 
@@ -29,6 +30,15 @@ app.on('ready', () => {
     });
 
     mainWindow.loadFile(path.join(__dirname, 'views/login.html'));
+});
+
+ipcMain.handle('find-all-products', async (event, { name, type }) => {
+    try {
+        return await AddDeliveryNote.findAllProducts(name, type);
+    } catch (error) {
+        console.error('Error in ipcMain handle findAllProducts:', error);
+        return { success: false, message: 'Error fetching data!' };
+    }
 });
 
 ipcMain.handle('login', async (event, { name, password }) => {

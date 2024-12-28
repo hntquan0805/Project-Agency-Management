@@ -2,7 +2,6 @@ const { Distribution } = require('../models/distribution');
 const { Inventory } = require('../models/inventory');
 
 class GetProductsByAgency{
-
     static getProductsByAgency = async (type) => {
         try {
             const products = await Distribution.findAll({

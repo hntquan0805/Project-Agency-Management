@@ -22,4 +22,6 @@ contextBridge.exposeInMainWorld('api', {
     updateProductByAgency: (productCode, unit, type, price) => ipcRenderer.invoke('update-product', { productCode, unit, type, price }),
     
     getProductsByCode: (productCode, unit, type) => ipcRenderer.invoke('get-products-code', {productCode, unit, type}),
+
+    findAllProducts: (name, type) => ipcRenderer.invoke('find-all-products', { name, type }),
 });
