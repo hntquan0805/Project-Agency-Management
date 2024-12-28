@@ -9,7 +9,7 @@ const PaymentReceipt = sequelize.define('PaymentReceipt', {
   },
   paymentDate: DataTypes.DATE,
   amount: DataTypes.DOUBLE,
-  agentCode: DataTypes.STRING,
+  agencyCode: DataTypes.STRING,
   createdBy: DataTypes.STRING
 }, {
   freezeTableName: true,

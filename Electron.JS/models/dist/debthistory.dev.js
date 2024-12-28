@@ -9,11 +9,13 @@ var _require2 = require('../config/database'),
 var DebtHistory = sequelize.define('DebtHistory', {
   agencyCode: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   },
   date: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   },
   initialDebt: {
     type: DataTypes.DOUBLE

@@ -102,7 +102,7 @@
             </ul>
     
             <div class="sidebar-footer">
-                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <img src="./images/logo.png" alt="Logo" class="logo-footer">
                 <div class="detail-footer">
                     <div class="text-footer">Agent Management Software</div>
                     <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
@@ -140,6 +140,7 @@
                 </div>
             </header>
             <main class="main">
+                <!--Good Received-->
                 <div class="goodReceived">
                     <div class="container">
                         <div class="row title">
@@ -172,15 +173,32 @@
                                 <label for="district">Amount paid</label><br>
                                 <input type="text" id="amount" name="amount" required>
                             </div>
-                            
-                            <!-- <div class="col-xl-8 col-md-8 col-0"></div><div class="col-xl-8 col-md-6 col-0"></div> -->
                             <div class="col-xl-4 col-md-12 col-12 button">
-                                <button class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
+                                <button id="create-received-note" class="createButton">Create <i class="bi bi-file-earmark-plus-fill"></i></i></button>                        
                             </div>
                         </form>
                     </div>
                 </div>
                     <!-- Khu vực hiển thị thông tin sau khi nhập -->
+                    <div class="result" style ="display: none;">
+                        <h2>GOODS RECEIVED NOTE</h2>
+                        <div class="result-container">
+                            <h3>GOODS RECEIVED NOTE</h3>
+                            <p><b>Information:</b></p>
+                            <p><strong>Supplier Name:</strong> <span>Flower Snow</span></p>
+                            <p><strong>Email:</strong> <span>flowersnow@example.com</span></p>
+                            <p><strong>Phone Number:</strong> <span>0123456789</span></p>
+                            <p><strong>Address:</strong> <span>123 Flower Street, Snow City</span></p>
+                            <p><b>Payment:</b></p>
+                            <p><strong>Amount Paid:</strong> <span>5.000.000 VND</span></p>
+                            <p><strong>Date:</strong> <span>26/12/2024</span></p>
+                            <p><strong>Received By:</strong> <span>Admin</span></p>
+                        </div>
+                        <div class="button-group">
+                            <button class="closeButton">Close <i class="bi bi-x"></i></button>
+                            <button class="printButton">Print <i class="bi bi-printer-fill"></i></button>
+                        </div>
+                    </div>
 
             </main>
         </div>
@@ -194,6 +212,7 @@
     </script>
 
     <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src ="../renderers/goodReceivedRenders.js"></script>
+    <script src="../renderers/addReceivedNoteRenderer.js"></script>
+    
 </body>
 </html>

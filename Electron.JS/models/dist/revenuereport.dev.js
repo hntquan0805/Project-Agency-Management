@@ -9,11 +9,13 @@ var _require2 = require('../config/database'),
 var RevenueReport = sequelize.define('RevenueReport', {
   date: {
     type: DataTypes.DATE,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   },
-  agentCode: {
+  agencyCode: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   },
   numberOfDeliveryNotes: DataTypes.INTEGER,
   totalValue: DataTypes.DOUBLE,

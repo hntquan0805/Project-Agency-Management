@@ -5,10 +5,12 @@ const DebtHistory = sequelize.define('DebtHistory', {
     agencyCode: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
     },
     date: {
         type: DataTypes.DATE,
         allowNull: false,
+        primaryKey: true,
     },
     initialDebt: {
         type: DataTypes.DOUBLE,

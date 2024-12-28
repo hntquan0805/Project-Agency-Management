@@ -5,10 +5,12 @@ const RevenueReport = sequelize.define('RevenueReport', {
   date: {
     type: DataTypes.DATE,
     allowNull: false,
+    primaryKey: true,
   },
-  agentCode: {
+  agencyCode: {
     type: DataTypes.STRING,
     allowNull: false,
+    primaryKey: true,
   },
   numberOfDeliveryNotes: DataTypes.INTEGER,
   totalValue: DataTypes.DOUBLE,

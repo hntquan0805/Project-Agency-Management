@@ -122,6 +122,7 @@ select{
 
 /* Tổng thể của bảng thông tin */
 .result-container {
+    position: relative;
     background-color: #ffffff; /* Nền trắng */
     padding: 20px;
     border-radius: 5px;
@@ -142,33 +143,56 @@ select{
     text-transform: uppercase;
 }
 
-/* Các thông tin trong bảng */
-.result-container p {
-    font-size: 14px;
-    margin: 10px 0;
-    line-height: 1.6; /* Tăng khoảng cách dòng */
-}
-
-/* Các tiêu đề nhỏ */
+/* Căn chỉnh phần 'Information' và 'Payment' */
 .result-container p strong {
-    font-weight: bold;
-    color: #333333; /* Màu chữ đậm */
+    display: inline-block;
+    width: 120px; /* Độ rộng cố định để căn lề */
+    text-align: left;
 }
 
-/* Nhóm nút */
-.button-group {
-    text-align: center;
-    margin-top: 20px;
-    display: flex; /* Sử dụng flexbox để dễ điều chỉnh */
-    justify-content: center; /* Căn giữa các nút */
-    gap: 20px; /* Khoảng cách giữa các nút */
+/* Tên input lùi vào 1 khoảng */
+
+/* Gạch chân hết dòng */
+.result-container p {
+    display: flex; /* Đặt các phần tử trên cùng một dòng */
+    align-items: center;
+    margin: 10px 0;
+    padding-bottom: 5px; /* Khoảng cách dưới */
+    position: relative; /* Tạo bối cảnh cho pseudo-element */
+    width: 100%;
+    color: black;
 }
+
+
+
+/* Nhãn (Tên input) */
+.result-container p strong {
+    width: 150px; /* Độ rộng cố định cho nhãn */
+    text-align: left;
+    flex-shrink: 0; /* Không co nhãn lại */
+}
+
+/* Phần thông tin input */
+.result-container p span {
+    flex-grow: 1; /* Kéo dài để lấp đầy không gian còn lại */
+    text-align: left; /* Căn trái thông tin */
+    
+}
+
+
 
 /* Nút Close và Print */
-.button-group button {
+.button-group {
+    display: flex;
+    justify-content: space-between; /* Đẩy nút sang 2 mép trái và phải */
+    padding: 0 20px 20px; /* Khoảng cách nút sát mép */
+    margin-top: 20px ;
+    
+}
+
+.closeButton, .printButton {
     font-size: 14px;
-    padding: 10px 15px;
-    border: none;
+    padding: 5px 30px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -177,14 +201,14 @@ select{
 .closeButton {
     background-color: #F57D31;
     color: white;
-    margin: 0; /* Đặt margin riêng nếu cần */
+    margin-left: 95px;
 }
 
 /* Nút Print */
 .printButton {
     background-color: #4caf50;
     color: white;
-    margin: 0; /* Đặt margin riêng nếu cần */
+    margin-right: 95px ;
 }
 
 /* Hover hiệu ứng */
@@ -194,5 +218,45 @@ select{
 
 .printButton:hover {
     background-color: #17a71e;
+}
+
+
+.result-container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+}
+h3 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+p strong {
+    display: inline-block;
+    width: 150px; /* Căn chỉnh tên input */
+    text-align: left;
+    
+}
+
+strong{
+    margin-left: 30px;
+}
+span{
+    color: black;
+    font-weight: bold;
+    display: inline-block;
+    flex-grow: 1; /* Input chiếm toàn bộ không gian còn lại */
+    border-bottom: 1px solid #ccc; /* Gạch chân */
+    padding-bottom: 5px; /* Khoảng cách giữa giá trị và gạch chân */
+    margin-left: 10px; /* Khoảng cách giữa nhãn và giá trị */
 }
 
