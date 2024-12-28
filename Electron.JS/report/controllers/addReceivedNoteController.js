@@ -1,4 +1,4 @@
-const { Agency } = require('../models/agency');
+const { Agency } = require('../../models/agency');
 
 class AddReceivedNote{
     static addReceivedNote = async (paymentReceiptCode, paymentDate, amount, agentCode, createdBy) => {

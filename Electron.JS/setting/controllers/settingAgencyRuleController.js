@@ -1,6 +1,6 @@
-const { Regulation } = require('../models/regulation');
-const { Agency } = require('../models/agency');
-const { AgencyType } = require('../models/agencyType');
+const { Regulation } = require('../../models/regulation');
+const { Agency } = require('../../models/agency');
+const { AgencyType } = require('../../models/agencyType');
 const { Sequelize } = require('sequelize');
 
 async function updateSettings(updateData) {

@@ -1,4 +1,4 @@
-const { Agency } = require('../models/agency');
+const { Agency } = require('../../models/agency');
 
 class SearchAgencies{
   static searchAgencies = async (criteria) => {

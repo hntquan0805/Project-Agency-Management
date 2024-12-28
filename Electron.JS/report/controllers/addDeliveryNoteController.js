@@ -1,5 +1,5 @@
-const { Inventory } = require('../models/inventory');
-const { Distribution } = require('../models/distribution');
+const { Inventory } = require('../../models/inventory');
+const { Distribution } = require('../../models/distribution');
 const { Op } = require('sequelize');
 
 class AddDeliveryNote {

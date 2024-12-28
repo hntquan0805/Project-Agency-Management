@@ -12,4 +12,3 @@ class Information {
 }  
 
 module.exports = Information;
-  

@@ -1,5 +1,5 @@
-const { Distribution } = require('../models/distribution');
-const { Inventory } = require('../models/inventory');
+const { Distribution } = require('../../models/distribution');
+const { Inventory } = require('../../models/inventory');
 
 class GetProductsByAgency{
     static getProductsByAgency = async (type) => {

@@ -1,4 +1,4 @@
-const { Distribution } = require('../models/distribution');
+const { Distribution } = require('../../models/distribution');
 class EditProductsByAgency
 {
     static deleteProductByAgency = async (productCode, unit, type) => {
