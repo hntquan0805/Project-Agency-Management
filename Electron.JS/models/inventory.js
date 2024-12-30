@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { Distribution } = require('./distribution');
 
 const Inventory = sequelize.define('Inventory', {
   productCode: {
@@ -16,6 +15,8 @@ const Inventory = sequelize.define('Inventory', {
 });
 
 module.exports = { Inventory };
+
+const { Distribution } = require('./distribution');
 
 Inventory.hasMany(Distribution, {
   foreignKey: 'productCode',

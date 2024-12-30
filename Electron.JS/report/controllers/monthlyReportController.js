@@ -1,9 +1,9 @@
-const { DeliveryNote } = require('../models/deliverynote');
-const { Agency } = require('../models/agency');
-const { DeliveryNoteDetail } = require('../models/deliverynotedetail');
-const { PaymentReceipt } = require('../models/paymentreceipt');
-const { RevenueReport } = require('../models/revenuereport');
-const { DebtHistory } = require('../models/debthistory');
+const { DeliveryNote } = require('../../models/deliverynote');
+const { Agency } = require('../../models/agency');
+const { DeliveryNoteDetail } = require('../../models/deliverynotedetail');
+const { PaymentReceipt } = require('../../models/paymentreceipt');
+const { RevenueReport } = require('../../models/revenuereport');
+const { DebtHistory } = require('../../models/debthistory');
 const { Op } = require('sequelize');
 
 class monthlyReportController {

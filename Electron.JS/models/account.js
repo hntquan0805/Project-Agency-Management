@@ -1,9 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { DeliveryNote } = require('./deliverynote');
-const { EmployeeProfile } = require('./employeeprofile');
-const { PaymentReceipt } = require('./paymentreceipt');
 
 const Account = sequelize.define('Account', {
     username: {
@@ -24,6 +21,10 @@ const Account = sequelize.define('Account', {
 
 module.exports = { Account };
 
+const { DeliveryNote } = require('./deliverynote');
+const { EmployeeProfile } = require('./employeeprofile');
+const { PaymentReceipt } = require('./paymentreceipt');
+
 Account.hasMany(DeliveryNote, {
     foreignKey: 'createdBy',
     sourceKey: 'username',
@@ -35,7 +36,7 @@ Account.hasMany(DeliveryNote, {
 Account.belongsTo(EmployeeProfile, {
     foreignKey: 'username',
     targetKey: 'profileCode',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
 });
   

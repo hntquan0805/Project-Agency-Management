@@ -1,8 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { Account } = require('./account');
-const { Agency } = require('./agency');
 
 const PaymentReceipt = sequelize.define('PaymentReceipt', {
   paymentReceiptCode: {
@@ -19,6 +17,9 @@ const PaymentReceipt = sequelize.define('PaymentReceipt', {
 });
 
 module.exports = { PaymentReceipt };
+
+const { Account } = require('./account');
+const { Agency } = require('./agency');
 
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',

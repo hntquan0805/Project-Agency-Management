@@ -11,9 +11,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="../public/css/bootstrap/bootstrap.min.css"> 
-    <link rel="stylesheet" href="../public/css/style/main.css">
-    <link rel="stylesheet" href="../public/css/style/searchAgent.css"> 
+    <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.min.css"> 
+    <link rel="stylesheet" href="../../public/css/style/main.css">
+    <link rel="stylesheet" href="../../public/css/style/searchAgent.css"> 
 </head>
 <body>
     <div class="wrapper">
@@ -29,7 +29,7 @@
 
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="./dashBoard.html" class="sidebar-link">
+                    <a href="/home/views/dashBoard.html" class="sidebar-link">
                         <i class="bi bi-speedometer2"></i>
                         <span>DashBoard</span>
                     </a>
@@ -44,11 +44,11 @@
 
                     <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="./addAgent.html" class="sidebar-link">Add Agency</a>
+                            <a href="/agency/views/addAgent.html" class="sidebar-link">Add Agency</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="./searchAgent.html" class="sidebar-link">Search Agency</a>
+                            <a href="/agency/views/searchAgent.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -210,6 +210,7 @@
     </div>
 
     <script src = "../renderers/searchAgencyRenderer.js"></script>
-    <script src="../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../../renderers/removeRenderer.js"></script>
 </body>
 </html>

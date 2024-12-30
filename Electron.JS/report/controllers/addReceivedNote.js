@@ -1,5 +1,5 @@
-const { PaymentReceipt } = require('../models/paymentreceipt');
-const { Agency } = require('../models/agency');
+const { PaymentReceipt } = require('../../models/paymentreceipt');
+const { Agency } = require('../../models/agency');
 
 class addReceivedNoteController {
     static saveGoodsReceivedNote = async (formData) => {

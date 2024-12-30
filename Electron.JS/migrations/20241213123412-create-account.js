@@ -13,7 +13,7 @@ module.exports = {
           key: 'profileCode',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
       },
       position: {
         type: Sequelize.STRING
