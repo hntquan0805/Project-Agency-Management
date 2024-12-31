@@ -6,5 +6,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (accountType === 'Staff') {
         setting.remove();
     }
-    console.log('vo remove roi ne!')
   });
