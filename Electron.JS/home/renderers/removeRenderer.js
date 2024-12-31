@@ -4,6 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const setting = document.getElementById('setting');
 
     if (accountType === 'Staff') {
-        setting.remove();
+        setting.classList.add('disabled');
     }
 });

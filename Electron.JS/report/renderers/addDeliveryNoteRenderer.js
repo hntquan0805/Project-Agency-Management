@@ -13,7 +13,7 @@ searchForm.addEventListener('submit', async (e) => {
 chooseButton.addEventListener('click', async (e) => {
     e.preventDefault();
 
-    const name = document.getElementById('2123-product-name');
+    const name = document.getElementById('product-name');
     const resultsTable = document.getElementById('results-table');
     const close = document.getElementById('close-button-choose-form');
     const done = document.getElementById('done-button-choose-form');

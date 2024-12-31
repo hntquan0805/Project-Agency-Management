@@ -383,3 +383,9 @@ header .open-active .sub-button .sub:hover{
     background-color: #F5F5F5;
     padding: 30px;
 } */
+
+.disabled {
+    background-color: #000000;
+    pointer-events: none;
+    cursor: not-allowed;
+}
