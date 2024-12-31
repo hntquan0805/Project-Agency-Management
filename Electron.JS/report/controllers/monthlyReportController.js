@@ -1,9 +1,9 @@
-const { DeliveryNote } = require('../models/deliverynote');
-const { Agency } = require('../models/agency');
-const { DeliveryNoteDetail } = require('../models/deliverynotedetail');
-const { PaymentReceipt } = require('../models/paymentreceipt');
-const { RevenueReport } = require('../models/revenuereport');
-const { DebtHistory } = require('../models/debthistory');
+const { DeliveryNote } = require('../../models/deliverynote');
+const { Agency } = require('../../models/agency');
+const { DeliveryNoteDetail } = require('../../models/deliverynotedetail');
+const { PaymentReceipt } = require('../../models/paymentreceipt');
+const { RevenueReport } = require('../../models/revenuereport');
+const { DebtHistory } = require('../../models/debthistory');
 const { Op } = require('sequelize');
 
 class monthlyReportController {
@@ -63,7 +63,7 @@ class monthlyReportController {
         }
       });
 
-      const totalPriceByAgency = await sumTotalPriceByAgency(deliveryNotes);
+      const totalPriceByAgency = await this.sumTotalPriceByAgency(deliveryNotes);
 
       for (const agencyCode in totalPriceByAgency) {
         if (countByAgency[agencyCode]) {
@@ -213,22 +213,45 @@ class monthlyReportController {
           }
         });
 
-        const debtBefore = await getTotalDebtBeforeMonth(month, year);
-        
-        const payBefore = await getPaymentsBeforeMonth(month, year);
+        const previousMonth = month === 1 ? 12 : month - 1;
+        const previousYear = month === 1 ? year - 1 : year;
+
+        // Xác định phạm vi ngày cho tháng trước
+        const startOfLastMonth = new Date(previousYear, previousMonth - 1, 1);
+        const endOfLastMonth = new Date(previousYear, previousMonth, 0);
+
+        // Truy xuất dữ liệu từ DebtHistory
+        const previousDebtRecords = await DebtHistory.findAll({
+          where: {
+            date: {
+              [Op.between]: [startOfLastMonth, endOfLastMonth],
+            },
+          },
+          attributes: ['agencyCode', 'endDebt'],
+        });
+
+
         const initDebtData = {};
+        previousDebtRecords.forEach(record => {
+          initDebtData[record.agencyCode] = record.endDebt;
+        });
 
-        for (const agencyCode in debtBefore) {
-          const totalDebt = debtBefore[agencyCode];
+        if (Object.keys(initDebtData).length === 0) {
+          const debtBefore = await this.getTotalDebtBeforeMonth(month, year);
+          const payBefore = await this.getPaymentsBeforeMonth(month, year);
 
-          let totalPaid = 0;
-          payBefore.forEach(payment => {
-            if (payment.agencyCode === agencyCode) {
-              totalPaid += payment.amount;
-            }
-          });
+          for (const agencyCode in debtBefore) {
+            const totalDebt = debtBefore[agencyCode];
 
-          initDebtData[agencyCode] = totalDebt - totalPaid;
+            let totalPaid = 0;
+            payBefore.forEach(payment => {
+              if (payment.agencyCode === agencyCode) {
+                totalPaid += payment.amount;
+              }
+            });
+
+            initDebtData[agencyCode] = totalDebt - totalPaid;
+          }
         }
 
         for (const agencyCode in initDebtData) {

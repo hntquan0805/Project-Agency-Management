@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { Agency } = require('./agency');
 
 const DebtHistory = sequelize.define('DebtHistory', {
     agencyCode: {
@@ -29,6 +28,8 @@ const DebtHistory = sequelize.define('DebtHistory', {
 });
 
 module.exports = { DebtHistory };
+
+const { Agency } = require('./agency');
 
 DebtHistory.belongsTo(Agency, {
   foreignKey: 'agencyCode',

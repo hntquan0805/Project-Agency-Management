@@ -32,7 +32,7 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, 'views/goodReceivedNote.html'));
+    mainWindow.loadFile(path.join(__dirname, './home/views/dashBoard.html'));
 });
 
 ipcMain.handle('create-delivery-note', async (event, deliveryNoteData) => {

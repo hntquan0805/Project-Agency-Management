@@ -3,7 +3,7 @@ const loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    
+    console.log("vo goi ne!");
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -13,11 +13,11 @@ loginForm.addEventListener('submit', async (event) => {
         alert(response.message);
         return;
     }
-
-    sessionStorage.setItem('account-position', response.dataValues.position);
+    console.log(response);
+    sessionStorage.setItem('account-position', response.account.dataValues.position);
 
     if (response.success) {
-        window.location.href = '../views/dashboard.html';
+        window.location.href = '../../home/views/dashboard.html';
     } else {
         // errorMessage.textContent = response.message;
         // errorMessage.style.display = 'block';

@@ -1,8 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { DeliveryNote } = require('./deliverynote');
-const { Distribution } = require('./distribution');
 
 const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
     deliveryNoteCode: {
@@ -36,6 +34,9 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
 });
 
 module.exports = { DeliveryNoteDetail };
+
+const { DeliveryNote } = require('./deliverynote');
+const { Distribution } = require('./distribution');
 
 DeliveryNoteDetail.belongsTo(DeliveryNote, {
   foreignKey: 'deliveryNoteCode',
