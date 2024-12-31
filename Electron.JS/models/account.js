@@ -42,7 +42,7 @@ Account.belongsTo(EmployeeProfile, {
   
 
 Account.hasMany(PaymentReceipt, {
-    foreignKey: 'createBy',
+    foreignKey: 'createdBy',
     sourceKey: 'username',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',

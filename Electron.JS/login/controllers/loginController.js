@@ -1,9 +1,8 @@
 const { Account } = require('../../models/account');
-
 class UserController {
     static login = async (name, password) => {
         try {
-            const account = await Account.findOne({ where: { name: name, password: password } });
+            const account = await Account.findOne({ where: { username: name, password: password } });
             if (account) {
                 return { success: true };
             } else {

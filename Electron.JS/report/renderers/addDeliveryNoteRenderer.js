@@ -19,7 +19,7 @@ chooseFrom.addEventListener('search-product', async (e) => {
     resultsTable.innerHTML = '';
 
     products.forEach((product, index) => {
-        const count = 0;
+        let count = 0;
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${index + 1}</td>
@@ -40,24 +40,64 @@ chooseFrom.addEventListener('search-product', async (e) => {
     done.addEventListener('click', () => {
         overlay.style.display = 'none';
         
-        const cartTable = document.getElementById('cart-table');
-
-        products.forEach(product => {
+        const filteredProducts = products.filter(product => {
             const quantitySpan = document.getElementById(`quantity-${product.productCode}`);
-            const row = document.createElement('tr');
             const quantity = parseInt(quantitySpan.textContent, 10);
-            if (quantity > 0) {
-                row.innerHTML = `
-                    <td>${serial + 1}</td>
-                    <td>${product.productName || 'N/A'}</td>
-                    <td>${product.unit}</td>
-                    <td>${product.price}</td>
-                    <td>${quantity}</td>
-                `;
-                cartTable.appendChild(row);
-            }
+            return quantity > 0;
         });
+    
+        let currentIndex = 0;
+    
+        const displayNextProduct = () => {
+            if (currentIndex < filteredProducts.length) {
+                const product = filteredProducts[currentIndex];
+                const quantitySpan = document.getElementById(`quantity-${product.productCode}`);
+                const quantity = parseInt(quantitySpan.textContent, 10);
+    
+                document.getElementById('serial').value = currentIndex;
+                document.getElementById('name').value = product.productName;
+                document.getElementById('quantity').value = quantity;
+    
+                document.getElementById('add-button').addEventListener('click', () => {
+                    currentIndex++;
+                    displayNextProduct();
+                    
+                    const cartTable = document.getElementById('cart-table');
+                    cartTable.innerHTML = '';
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${serial + 1}</td>
+                        <td>${product.productName || 'N/A'}</td>
+                        <td>${quantity}</td>
+                    `;
+                    cartTable.appendChild(row);
+                });
+            }
+        };
+    
+        displayNextProduct();
     });
+});
+
+cart.addEventListener('create', async (e) => {
+    e.preventDefault();
+
+    const agency_name = document.getElementById('agency-name').value;
+    const created_date = document.getElementById('created-date').value;
+
+    document.getElementById('modalAgencyName').textContent = agency_name;
+    document.getElementById('modalDate').textContent = created_date;
+    
+    const productsTableForm = document.getElementById('goodsListTable');
+    const cartTable = document.getElementById('cart-table');
+
+    productsTableForm.innerHTML = '';
+
+    Array.from(cartTable.rows).forEach(row => {
+        productsTableForm.appendChild(row.cloneNode(true));
+    });
+
+    const response = await window.api.createDeliveryNote();
 });
 
 const increaseQuantity = (productId, stock) => {

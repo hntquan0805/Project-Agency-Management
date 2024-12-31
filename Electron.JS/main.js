@@ -35,6 +35,15 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, './home/views/dashBoard.html'));
 });
 
+ipcMain.handle('create-delivery-note', async (event, deliveryNoteData) => {
+    try {
+        return await AddDeliveryNote.createDeliveryNote(deliveryNoteData);
+    } catch (error) {
+        console.error('Error in ipcMain handle createDeliveryNote:', error);
+        return { success: false, message: 'Error creating delivery note!' };
+    }
+});
+
 ipcMain.handle('find-all-products', async (event, { name, type }) => {
     try {
         return await AddDeliveryNote.findAllProducts(name, type);

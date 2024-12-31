@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/style/main.css">
-    <link rel="stylesheet" href="../../public/css/style/addAgent.css">    
+    <link rel="stylesheet" href="../../public/css/style/addAgency.css">   
 </head>
 <body>
     <div class="wrapper">
@@ -29,7 +29,7 @@
     
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="/home/views/dashBoard.html" class="sidebar-link">
+                    <a href="../../home/views/dashBoard.html" class="sidebar-link">
                         <i class="bi bi-speedometer2"></i>
                         <span>DashBoard</span>
                     </a>
@@ -44,11 +44,11 @@
     
                     <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="/agency/views/addAgent.html" class="sidebar-link">Add Agency</a>
+                            <a href="./addAgency.html" class="sidebar-link">Add Agency</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="/agency/views/searchAgent.html" class="sidebar-link">Search Agency</a>
+                            <a href="./searchAgency.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -62,15 +62,15 @@
     
                     <ul id="paperWork" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="/report/views/goodDeliveryNote.html" class="sidebar-link">Goods Delivery Note</a>
+                            <a href="../../report/views/goodDeliveryNote.html" class="sidebar-link">Goods Delivery Note</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="/report/views/goodReceivedNote.html" class="sidebar-link">Goods Received Note</a>
+                            <a href="../../report/views/goodReceivedNote.html" class="sidebar-link">Goods Received Note</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="/report/views/monthlyReport.html" class="sidebar-link">Monthly Report</a>
+                            <a href="../../report/views/monthlyReport.html" class="sidebar-link">Monthly Report</a>
                         </li>
                     </ul>
                 </li>
@@ -84,18 +84,18 @@
     
                     <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="/views/PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
+                            <a href="../../views/personalInfo.html" class="sidebar-link">Personal Infomation</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="/views/personelManagement.html" class="sidebar-link">Personel Management</a>
+                            <a href="../../views/personelManagement.html" class="sidebar-link">Personel Management</a>
                         </li>
                     </ul>
                 </li>
     
                 <div id="setting">
                     <li class="sidebar-item">
-                        <a href="/setting/views/setting.html" class="sidebar-link">
+                        <a href="../../setting/views/setting.html" class="sidebar-link">
                             <i class="bi bi-gear"></i>
                             <span>Setting</span>
                         </a>
@@ -105,7 +105,7 @@
             </ul>
     
             <div class="sidebar-footer">
-                <img src="./Images/logo.png" alt="Logo" class="logo-footer">
+                <img src="../../public/images/logo.png" alt="Logo" class="logo-footer">
                 <div class="detail-footer">
                     <div class="text-footer">Agency Management Software</div>
                     <div class="copy-right">Inc © 2024 - Copyright by Group 06</div>
@@ -130,12 +130,12 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="/views/PersonalInfo.html"><span class="name-span">
+                            <a href="../../views/personalInfo.html"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
                         <li class="sub">
-                            <a href="/login/views/login.html"><span class="name-span">
+                            <a href="../../login/views/login.html"><span class="name-span">
                                 <span class="sub-title">Log Out</span> <i class="fa-solid fa-person-through-window"></i>
                             </span></a>
                         </li>
@@ -371,5 +371,6 @@
     <script src = "../renderers/addagencyRenderer.js"></script>
     <script src="../../renderers/removeRenderer.js"></script>
     
+    <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@ module.exports = {
         onboardDate: new Date('2015-11-05'),
         district: '3',
         address: '17 Phan Xich Long, P.10',
+        currentDebt: 0, // Thêm giá trị nợ hiện tại
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -24,6 +25,7 @@ module.exports = {
         onboardDate: new Date('2024-12-21'),
         district: 'Binh Thanh',
         address: '456 Ly Thuong Kiet, Da Nang',
+        currentDebt: 0, // Thêm giá trị nợ hiện tại
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -36,6 +38,7 @@ module.exports = {
         onboardDate: new Date('2024-08-10'),
         district: '1',
         address: '15 Nguyen Hue, P. Ben Nghe',
+        currentDebt: 0, // Thêm giá trị nợ hiện tại
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -48,6 +51,7 @@ module.exports = {
         onboardDate: new Date('2022-01-07'),
         district: 'Binh Thanh',
         address: '75 Le Quang Dinh',
+        currentDebt: 0, // Thêm giá trị nợ hiện tại
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -60,6 +64,7 @@ module.exports = {
         onboardDate: new Date('2024-10-20'),
         district: 'Tan Binh',
         address: '100 Vo Van Kiet',
+        currentDebt: 0, // Thêm giá trị nợ hiện tại
         createdAt: new Date(),
         updatedAt: new Date()
       },

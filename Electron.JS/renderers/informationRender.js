@@ -1,7 +1,6 @@
-
 class Information {
     static removeSetting = () => {
-        const accountType = sessionStorage.getItem('accountType');
+        const accountType = sessionStorage.getItem('account-position');
 
         const setting = document.getElementById('setting');
 

@@ -89,7 +89,7 @@ footer{
   width: 90%;
 }
 
-.log-in-selection{
+/* .log-in-selection{
   margin: 0px;
 }
 
@@ -109,10 +109,10 @@ footer{
   font-weight: bold;
   padding: 25px 0px;
   background-color: #e7dcd5;
-}
+} */
 
 .log-in-form-wrapper{
-  padding: 20px 20px 0px 20px; /* Bottom không cần padding vì form đã tự cách ra */
+  padding: 50px 30px 20px 30px; /* Bottom cách ít hơn do form đã tự cách ra */
 }
 
 .log-in-header{

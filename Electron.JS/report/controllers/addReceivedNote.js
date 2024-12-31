@@ -21,6 +21,13 @@ class addReceivedNoteController {
 
             const agencyCode = agency.agencyCode;
 
+            if (parseFloat(amount) > agency.currentDebt) {
+                return { success: false, message: 'The amount is greater than the current debt!' };
+            }
+
+            agency.currentDebt -= parseFloat(amount);
+            await agency.save();
+
             const latestReceipt = await PaymentReceipt.findOne({
                 order: [['paymentReceiptCode', 'DESC']]
             });

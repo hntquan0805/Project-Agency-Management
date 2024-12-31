@@ -38,4 +38,6 @@ contextBridge.exposeInMainWorld('api', {
     getProductsByCode: (productCode, unit, type) => ipcRenderer.invoke('get-products-code', {productCode, unit, type}),
 
     findAllProducts: (name, type) => ipcRenderer.invoke('find-all-products', { name, type }),
+
+    createDeliveryNote: (deliveryNoteData) => ipcRenderer.invoke('create-delivery-note', deliveryNoteData),
 });

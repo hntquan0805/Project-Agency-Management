@@ -63,7 +63,7 @@ class monthlyReportController {
         }
       });
 
-      const totalPriceByAgency = await sumTotalPriceByAgency(deliveryNotes);
+      const totalPriceByAgency = await this.sumTotalPriceByAgency(deliveryNotes);
 
       for (const agencyCode in totalPriceByAgency) {
         if (countByAgency[agencyCode]) {
@@ -188,6 +188,23 @@ class monthlyReportController {
 
     static renderDebtTable = async (month, year, table) => {
       try {
+        const startOfMonth = new Date(year, month - 1, 1); // Ngày đầu tháng hiện tại
+        const endOfMonth = new Date(year, month, 0); // Ngày cuối tháng hiện tại
+
+        // Kiểm tra xem đã có báo cáo cho tháng hiện tại hay chưa
+        const existingReport = await DebtHistory.findOne({
+            where: {
+                date: {
+                    [Op.between]: [startOfMonth, endOfMonth], // Phạm vi tháng hiện tại
+                },
+            },
+            attributes: ['agencyCode'], // Truy xuất tối thiểu
+        });
+
+        if (existingReport) {
+            return { success: false, message: 'The report for this month has already been generated!' };
+        }
+
         const agencies = await Agency.findAll({
           attributes: ['agencyCode', 'name'],
         });
@@ -213,22 +230,45 @@ class monthlyReportController {
           }
         });
 
-        const debtBefore = await getTotalDebtBeforeMonth(month, year);
-        
-        const payBefore = await getPaymentsBeforeMonth(month, year);
+        const previousMonth = month === 1 ? 12 : month - 1;
+        const previousYear = month === 1 ? year - 1 : year;
+
+        // Xác định phạm vi ngày cho tháng trước
+        const startOfLastMonth = new Date(previousYear, previousMonth - 1, 1);
+        const endOfLastMonth = new Date(previousYear, previousMonth, 0);
+
+        // Truy xuất dữ liệu từ DebtHistory
+        const previousDebtRecords = await DebtHistory.findAll({
+          where: {
+            date: {
+              [Op.between]: [startOfLastMonth, endOfLastMonth],
+            },
+          },
+          attributes: ['agencyCode', 'endDebt'],
+        });
+
+
         const initDebtData = {};
+        previousDebtRecords.forEach(record => {
+          initDebtData[record.agencyCode] = record.endDebt;
+        });
 
-        for (const agencyCode in debtBefore) {
-          const totalDebt = debtBefore[agencyCode];
+        if (Object.keys(initDebtData).length === 0) {
+          const debtBefore = await this.getTotalDebtBeforeMonth(month, year);
+          const payBefore = await this.getPaymentsBeforeMonth(month, year);
 
-          let totalPaid = 0;
-          payBefore.forEach(payment => {
-            if (payment.agencyCode === agencyCode) {
-              totalPaid += payment.amount;
-            }
-          });
+          for (const agencyCode in debtBefore) {
+            const totalDebt = debtBefore[agencyCode];
 
-          initDebtData[agencyCode] = totalDebt - totalPaid;
+            let totalPaid = 0;
+            payBefore.forEach(payment => {
+              if (payment.agencyCode === agencyCode) {
+                totalPaid += payment.amount;
+              }
+            });
+
+            initDebtData[agencyCode] = totalDebt - totalPaid;
+          }
         }
 
         for (const agencyCode in initDebtData) {

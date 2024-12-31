@@ -264,10 +264,6 @@ h1 {
     background-color: #f1f1f1;
 }
 
-
-
-
-
 .flex-row {
     display: flex;
     justify-content: space-between;
@@ -357,4 +353,50 @@ h1 {
     padding: 20px;
     background-color: #fff;
 }
+
+/* General Styling for Notification Boxes */
+.notification-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    padding: 10px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa chính xác */
+    z-index: 9999; /* Đảm bảo nó nằm trên các phần tử khác */
+}
+
+/* Success Notification */
+.notification-box.success {
+    background-color: #28a745; /* Xanh lá */
+    border-color: #218838; /* Viền đậm hơn */
+}
+
+/* Failure Notification */
+.notification-box.failure {
+    background-color: #dc3545; /* Đỏ */
+    border-color: #c82333; /* Viền đậm hơn */
+}
+
+/* Text Styling */
+.notification-box .message {
+    flex: 1; /* Để nội dung chiếm không gian linh hoạt */
+    text-align: center;
+}
+
+/* Icon Styling */
+.notification-box i {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
 

@@ -20,29 +20,48 @@ document.getElementById('create-received-note').addEventListener('click', async 
 
     // Kiểm tra nếu việc lưu thành công
     if (result.success) {
-        // Cập nhật thông tin trong phần tử .result
-        document.querySelector(".result .result-container h3").textContent = `GOODS RECEIVED NOTE`;
-        document.querySelector(".result .result-container p span:nth-child(1)").textContent = agencyName; // Supplier Name
-        document.querySelector(".result .result-container p span:nth-child(2)").textContent = email; // Email
-        document.querySelector(".result .result-container p span:nth-child(3)").textContent = phoneNumber; // Phone Number
-        document.querySelector(".result .result-container p span:nth-child(4)").textContent = address; // Address
-        document.querySelector(".result .result-container p span:nth-child(5)").textContent = amount + " VND"; // Amount Paid
-        document.querySelector(".result .result-container p span:nth-child(6)").textContent = date; // Date
-        document.querySelector(".result .result-container p span:nth-child(7)").textContent = 'Admin'; // Received By
+        const spans = document.querySelectorAll(".result .result-container p span");
+        if (spans.length === 7) { // Điều chỉnh cho 7 phần tử <span> (bao gồm 'Received By')
+            spans[0].textContent = agencyName;
+            spans[1].textContent = email;
+            spans[2].textContent = phoneNumber;
+            spans[3].textContent = address;
+            spans[4].textContent = amount + " VND";
+            
+            // Định dạng ngày thành dd/mm/yyyy
+            const formattedDate = new Date(date);
+            const day = String(formattedDate.getDate()).padStart(2, '0'); // Đảm bảo 2 chữ số cho ngày
+            const month = String(formattedDate.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, nên cộng thêm 1
+            const year = formattedDate.getFullYear();
+            const formattedDateString = `${day}/${month}/${year}`;
+            
+            spans[5].textContent = formattedDateString;
+            spans[6].textContent = "Admin"; // Hoặc sử dụng dữ liệu phù hợp từ form
 
-        // Hiển thị phần tử .result
-        document.querySelector(".result").style.display = 'block';
-        
-        // Thêm sự kiện cho nút Close
-        document.querySelector(".closeButton").addEventListener('click', function() {
-            document.querySelector(".result").style.display = 'none';
-        });
+            // Hiển thị phần tử .result
+            document.querySelector(".result").style.display = 'block';
+            document.querySelector(".goodReceived").style.display = 'none'; // Ẩn form
 
-        // Thêm sự kiện cho nút Print
-        document.querySelector(".printButton").addEventListener('click', function() {
-            window.print(); // In trang hiện tại
-        });
+            // Thêm sự kiện cho nút Close
+            document.querySelector(".closeButton").addEventListener('click', function() {
+                document.querySelector(".result").style.display = 'none';
+                document.querySelector(".goodReceived").style.display = 'block'; // Hiện lại form
+            });
+
+            // Thêm sự kiện cho nút Print
+            document.querySelector(".printButton").addEventListener('click', function() {
+                window.print(); // In trang hiện tại
+            });
+        } else {
+            console.log('Không tìm thấy đủ các phần tử span.');
+        }
     } else {
-        alert(result.message); // Nếu không thành công, hiển thị thông báo lỗi
+        const failurePopup = document.getElementById("failurePopup");
+        failurePopup.style.display = "block"; // Hiển thị popup lỗi
+
+        // Thêm sự kiện cho nút đóng popup
+        document.getElementById("closePopupButton").addEventListener("click", function() {
+            failurePopup.style.display = "none"; // Ẩn popup khi nhấn Close
+        });
     }
 })
