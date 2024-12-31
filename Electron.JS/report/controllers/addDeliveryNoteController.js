@@ -6,15 +6,18 @@ const { Op } = require('sequelize');
 
 class AddDeliveryNote {
     static findAllProducts = async (name, type) => {
+        console.log('findAllProducts:', name, type);
         const products = await Distribution.findAll({
             where: { 
-                type: type,
-                '$Inventory.productName$': { [Op.iLike]: `%${name}%` }
+                type: type
             },
             attributes: ['productCode', 'unit', 'price'],
             include: [
                 {
                     model:  Inventory,
+                    where: {
+                        productName: { [Op.like]: `%${name}%` }
+                    },
                     attributes: ['productName', 'quantityInStock'],
                 },
             ],
