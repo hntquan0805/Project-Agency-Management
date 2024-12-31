@@ -36,8 +36,8 @@ module.exports = {
       address: {
         type: Sequelize.STRING
       },
-      currentDebt: {  // Thêm thuộc tính nợ hiện tại
-        type: DataTypes.DOUBLE,
+      currentDebt: {
+        type: Sequelize.DOUBLE,
         defaultValue: 0, 
       },
       createdAt: {

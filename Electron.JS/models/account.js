@@ -35,13 +35,13 @@ Account.hasMany(DeliveryNote, {
 Account.belongsTo(EmployeeProfile, {
     foreignKey: 'username',
     targetKey: 'profileCode',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
 });
   
 
 Account.hasMany(PaymentReceipt, {
-    foreignKey: 'createBy',
+    foreignKey: 'createdBy',
     sourceKey: 'username',
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
