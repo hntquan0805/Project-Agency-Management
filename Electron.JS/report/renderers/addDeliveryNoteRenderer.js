@@ -1,12 +1,12 @@
 const chooseFrom = document.getElementById('choose-from');
 const cart = document.getElementById('cart');
+const type = document.getElementById('agency-type').value;
 const serial = 0;
 
 chooseFrom.addEventListener('search-product', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
-    const type = document.getElementById('agency-type').value;
     const resultsTable = document.getElementById('results-table');
     const close = document.getElementById('close-button-choose-form');
     const done = document.getElementById('done-button-choose-form');
@@ -97,7 +97,29 @@ cart.addEventListener('create', async (e) => {
         productsTableForm.appendChild(row.cloneNode(true));
     });
 
-    const response = await window.api.createDeliveryNote();
+    const products = Array.from(cartTable.rows).map(row => {
+        return {
+            productCode: row.querySelector('.product-code').textContent,
+            productName: row.querySelector('.product-name').textContent,
+            unit: row.querySelector('.product-unit').textContent,
+            price: parseFloat(row.querySelector('.product-price').textContent),
+            quantity: parseInt(row.querySelector('.product-quantity').textContent, 10)
+        };
+    });
+
+    const deliveryNoteData = {
+        agencyType: type,
+        createdDate: created_date,
+        products: products
+    };
+
+    const response = await window.api.createDeliveryNote(deliveryNoteData);
+
+    if (response.success) {
+        alert('Delivery note created successfully!');
+    } else {
+        alert(`Failed to create delivery note: ${response.message}`);
+    }
 });
 
 const increaseQuantity = (productId, stock) => {
