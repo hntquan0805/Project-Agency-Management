@@ -31,8 +31,6 @@ try {
         <td>${new Date(agencyData.onboardDate).toLocaleDateString()}</td>
         <td>${agencyData.phone}</td>
         <td>${agencyData.email}</td>
-        <td><button class="edit-btn">Edit</button></td>
-        <td><button class="delete-btn">Delete</button></td>
         `;
         agencyTableBody.appendChild(row);
     });

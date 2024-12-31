@@ -198,17 +198,112 @@
                                 <th>Type</th>
                                 <th>District</th>
                                 <th>Debt</th>
-                                <th class="fix"></th>
-                                <th class="delete"></th>
+                                <th class="fix">Edit</th>
+                                <th class="delete">Delete</th>
                             </tr>
                         </thead>
                         <tbody id = "results">
+                            <tr>
+                                <th>1</th>
+                                <th>Elite Mart</th>
+                                <th>2</th>
+                                <th>15 Nguyễn Huệ, P.Bến Nghé</th>
+                                <th>elitemart@gmail.com</th>
+                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <th>Golden Deals</th>
+                                <th>2</th>
+                                <th>33 Dương Bá Trạc, P.1</th>
+                                <th>goldendeals@gmail.com</th>
+                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <th>Great Mall</th>
+                                <th>1</th>
+                                <th>7 Phan Văn Trị, P.11</th>
+                                <th>greatmall@gmail.com</th>
+                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
+                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
+                            </tr>
                         </tbody>
                     </table>
             </main>
         </div>
     </div>
+
+    <div id="overlay" class="overlay"></div>
     
+    <div id="edit-agency-pop-up" class="pop-up">
+    	<div class="pop-up-header">
+        	<div class="pop-up-header-title">EDIT AGENCY INFORMATION</div>
+        	<buton id="close-pop-up-button" class="btn-close custom-btn-close"></buton>
+    	</div>
+ 
+    	<form action="#" method="post" autocomplete="off">
+            <div class="mb-3">
+            	<label for="serial" class="form-label form-label-pop-up">Serial</label>
+            	<input type="text" id="agency-serial" class="form-control form-control-pop-up" placeholder="1" readonly>
+        	</div>
+
+        	<div class="mb-3">
+            	<label for="agency-name" class="form-label form-label-pop-up">Agency Name</label>
+            	<input type="text" id="agency-name" class="form-control form-control-pop-up" value="ABC" required>
+        	</div>
+ 
+        	<div class="mb-3">
+            	<label for="type" class="form-label form-label-pop-up">Type</label>
+            	<input type="number" id="agency-type" class="form-control form-control-pop-up" value="2" required>
+        	</div>
+ 
+        	<div class="mb-3">
+            	<label for="district" class="form-label form-label-pop-up">District</label>
+            	<input type="text" id="agency-district" class="form-control form-control-pop-up" value="15 Nguyễn Huệ, P.Bến Nghé" required>
+        	</div>
+ 
+        	<div class="mb-3">
+            	<label for="debt" class="form-label form-label-pop-up">Debt</label>
+            	<input type="number" id="agency-debt" class="form-control form-control-pop-up" min="0" value="1000000" required>
+        	</div>
+
+        	<div class="mb-3 confirm-button">
+            	<button type="submit" class="confirm-button-title">Confirm</button>
+        	</div>
+    	</form>
+	</div>
+
+    <!-- <script>
+        // js for form edit
+        const editButtons = document.querySelectorAll(".fix-button");
+    	const closePopUpButton = document.getElementById("close-pop-up-button");
+    	const overlay = document.getElementById("overlay");
+    	const popUp = document.getElementById("edit-agency-pop-up");
+    	const body = document.body;
+ 
+    	function openPopUp(){
+        	body.classList.add("no-scroll");
+        	overlay.style.display = "block";
+        	popUp.style.display = "block";
+    	}
+ 
+    	function closePopUp(){
+        	body.classList.remove("no-scroll");
+        	overlay.style.display = "none";
+        	popUp.style.display = "none";
+    	}
+ 
+    	// Gán sự kiện cho tất cả nút Edit
+    	editButtons.forEach(button => {
+        	button.addEventListener("click", () => openPopUp());
+    	});
+       
+    	closePopUpButton.addEventListener("click", closePopUp);
+    </script>
+     -->
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
         hamBurger.addEventListener("click", function () {
@@ -218,6 +313,6 @@
 
     <script src = "../renderers/searchAgencyRenderer.js"></script>
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../../renderers/removeRenderer.js"></script>
+    <script src = "../renderers/editAgencyRenderer.js"></script>
 </body>
 </html>

@@ -11,6 +11,8 @@ contextBridge.exposeInMainWorld('api', {
 
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
 
+    updateAgency: (criteria) => ipcRenderer.invoke('update-agency-data', criteria),
+
     searchDeliveryNotesByDate: (criteria) => ipcRenderer.invoke('search-by-month', criteria),
 
     countNoteByAgency: (criteria) => ipcRenderer.invoke('count-agency', criteria),

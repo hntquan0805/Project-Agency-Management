@@ -14,7 +14,7 @@ const EditProductsByAgency = require('./setting/controllers/editProductsByAgency
 const UserController = require('./login/controllers/loginController');
 const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
 const saveFormData = require('./setting/controllers/addController');
-
+const updateAgency = require('./agency/controllers/editAgencyController');
 
 connect();
 
@@ -108,6 +108,16 @@ ipcMain.handle('search', async (event, criteria) => {
 ipcMain.handle('search-by-month', async (event, criteria) => {
     try {
         return await monthlyReportController.searchDeliveryNotesByDate(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
+});
+
+ipcMain.handle('update-agency-data', async (event, criteria) => {
+    try {
+        console.log('vo main goi')
+        return await updateAgency(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };
