@@ -3,6 +3,7 @@ const { connect } = require('./config/database');
 const path = require('path');
 
 const { addAgency } = require('./agency/controllers/agencyController');
+const { getAllAgencies } = require('./agency/controllers/loadAgencyController');
 const SearchAgencies = require('./agency/controllers/searchAgencyController');
 const { updateSettings } = require('./setting/controllers/settingAgencyRuleController');
 const GetProductsByAgency = require('./setting/controllers/getProductsByAgencyController');
@@ -12,6 +13,7 @@ const addReceivedNoteController = require('./report/controllers/addReceivedNote'
 const EditProductsByAgency = require('./setting/controllers/editProductsByAgencyController');
 const UserController = require('./login/controllers/loginController');
 const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
+const saveFormData = require('./setting/controllers/addController');
 
 
 connect();
@@ -178,6 +180,15 @@ ipcMain.handle('add-agency', async (event, agencyData) => {
     }
 });
 
+ipcMain.handle('get-agency-data', async () => {
+    try {
+        return await getAllAgencies();
+    } catch (error) {
+      console.error('Error fetching agency data:', error);
+      throw new Error('Failed to fetch data');
+    }
+});
+
 ipcMain.handle('agency-rule-1', async (event, updateData) => {
     try {
         const result = await updateSettings(updateData);
@@ -208,6 +219,14 @@ ipcMain.handle('get-agency-types', async () => {
     }
 });
 
+ipcMain.handle('save-distribute-data', async (event, formData) => {
+    try {
+        return saveFormData(formData);
+    } catch (error) {
+        console.error('Error fetching agency types:', error);
+        return [];
+    }
+});
 
 ipcMain.handle('sign-up', async (event, { username, password }) => {
     return await signUpUser(username, password);
