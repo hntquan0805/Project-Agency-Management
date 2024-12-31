@@ -3,6 +3,7 @@
     --bg-clr: #F57D31;
     --menu-bg-clr: #FFE9D6;
     --img-border-clr: #4c4a4a;
+    --button-hover-bg: #b94401;
 }
 
 h1, h3, p, i{
@@ -193,6 +194,10 @@ button{
     /* position: absolute;
     right: 15px;
     bottom: 25px; */
+}
+.section-1 .change-pass-button:hover{
+    color: var(--button-hover-bg);
+    border: 1px solid var(--button-hover-bg);
 }
 /*End Section-1 */
 
