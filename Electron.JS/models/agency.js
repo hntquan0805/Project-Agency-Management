@@ -9,37 +9,37 @@ const { AgencyType } = require('./agencytype');
 
 const Agency = sequelize.define('Agency', {
     agencyCode: {
-        type: DataTypes.STRING,
-        primaryKey: true,
+      type: DataTypes.STRING,
+      primaryKey: true,
     },
     name: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     phone: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     email: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     type: {
-        type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,
     },
     onboardDate: {
-        type: DataTypes.DATE,
+      type: DataTypes.DATE,
     },
     district: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
     address: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
-    currentDebt: {  //Thêm thuộc tính nợ hiện tại
-      type: DataTypes.DOUBLE,
-      defaultValue: 0,  
+    currentDebt: {
+    type: DataTypes.DOUBLE,
+    defaultValue: 0,  
   }
 }, {
-    freezeTableName: true,
-    tableName: 'Agency',
+  freezeTableName: true,
+  tableName: 'Agency',
 });
 
 module.exports =  { Agency };
