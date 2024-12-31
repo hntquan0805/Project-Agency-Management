@@ -188,23 +188,6 @@ class monthlyReportController {
 
     static renderDebtTable = async (month, year, table) => {
       try {
-        const startOfMonth = new Date(year, month - 1, 1); // Ngày đầu tháng hiện tại
-        const endOfMonth = new Date(year, month, 0); // Ngày cuối tháng hiện tại
-
-        // Kiểm tra xem đã có báo cáo cho tháng hiện tại hay chưa
-        const existingReport = await DebtHistory.findOne({
-            where: {
-                date: {
-                    [Op.between]: [startOfMonth, endOfMonth], // Phạm vi tháng hiện tại
-                },
-            },
-            attributes: ['agencyCode'], // Truy xuất tối thiểu
-        });
-
-        if (existingReport) {
-            return { success: false, message: 'The report for this month has already been generated!' };
-        }
-
         const agencies = await Agency.findAll({
           attributes: ['agencyCode', 'name'],
         });
