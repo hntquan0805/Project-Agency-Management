@@ -50,7 +50,12 @@ document.querySelector('.export-button').addEventListener('click', async functio
           <td><button class="delete-button btn btn-sm"><i class="bi bi-trash3"></i></button></td>
         `;
         resultsDebt.appendChild(row);
-  }
+    }
+
+    if (table_debt.success === false) {
+        console.error("Failed to render debt table.");
+    return; // Không tiếp tục thực hiện đoạn mã sau
+    }
   const response = await window.api.saveDebtHistory(month, year, table_debt);
 });
 

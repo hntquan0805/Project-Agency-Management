@@ -84,7 +84,7 @@
     
                     <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../../views/PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
+                            <a href="../../views/personalInfo.html" class="sidebar-link">Personal Infomation</a>
                         </li>
     
                         <li class="sidebar-item">
@@ -92,7 +92,7 @@
                         </li>
                     </ul>
                 </li>
-    
+                
                 <div id="setting">
                     <li class="sidebar-item">
                         <a href="../../setting/views/setting.html" class="sidebar-link">
@@ -130,7 +130,7 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="#"><span class="name-span">
+                            <a href="../../views/personalInfo.html"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
@@ -267,21 +267,16 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--Download successfully-->
-                    <div class="notification-box success" style="display: none;">
-                        <span class="message">DOWNLOAD SUCCESSFULLY</span>
-                        <i class="bi bi-check-lg"></i>
-                    </div>
-                
-                    <!--Download failed-->
-                    <div class="notification-box failure" style="display: none;">
-                        <span class="message">DOWNLOAD FAILED</span>
-                        <i class="bi bi-x-circle-fill"></i>
-                    </div>
                     
-                    
+    <script>
+        const hamBurger = document.querySelector(".toggle-btn");
+        hamBurger.addEventListener("click", function () {
+        document.querySelector("#sidebar").classList.toggle("expand");
+        });
+    </script>        
+            
     <script src = "../renderers/ExportReportRenders.js"></script>
+    <script src="../renderers/removeRenderer.js"></script>
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

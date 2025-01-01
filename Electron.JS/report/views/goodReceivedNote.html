@@ -84,7 +84,7 @@
     
                     <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../../views/PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
+                            <a href="../../views/personalInfo.html" class="sidebar-link">Personal Infomation</a>
                         </li>
     
                         <li class="sidebar-item">
@@ -130,7 +130,7 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="#"><span class="name-span">
+                            <a href="../../views/personalInfo.html"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
@@ -183,7 +183,7 @@
                     </div>
                 </div>
                     <!-- Khu vực hiển thị thông tin sau khi nhập -->
-                    <div class="result" style ="display: block;">
+                    <div class="result" id="resultDisplay" style ="display: none;">
                         <h2>GOODS RECEIVED NOTE</h2>
                         <div class="result-container">
                             <h3>GOODS RECEIVED NOTE</h3>
@@ -223,7 +223,7 @@
 
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="../renderers/addReceivedNoteRenderer.js"></script>
-
+    <script src="../renderers/removeRenderer.js"></script>
     
 </body>
 </html>

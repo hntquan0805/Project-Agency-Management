@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/style/main.css">
     <link rel="stylesheet" href="../../public/css/style/goodDeliveryNote.css">  
-    
 </head>
 <body>
     <div class="wrapper">
@@ -85,7 +84,7 @@
     
                     <ul id="manageAccount" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../../views/PersonalInfo.html" class="sidebar-link">Personal Infomation</a>
+                            <a href="../../views/personalInfo.html" class="sidebar-link">Personal Infomation</a>
                         </li>
     
                         <li class="sidebar-item">
@@ -131,7 +130,7 @@
                     </div>
                     <ul class="sub-button">
                         <li class="sub">
-                            <a href="#"><span class="name-span">
+                            <a href="../../views/personalInfo.html"><span class="name-span">
                                 <span class="sub-title">Change Info</span> <i class="fa-solid fa-user-gear"></i>
                             </span></a>
                         </li>
@@ -183,26 +182,25 @@
                                     <h2>Choose Goods</h2>
                                 </div>
                             </div>
-                            <form action="#" class="row">
-                                
+                            <form id="search-form" action="#" class="row">                                
                                 <div class="col-12 info search-input">
                                     <label for="search"></label><br>
                                     <div class="input-wrapper">
-                                        <input type="text" id="search" name="search" required>
+                                        <input type="text" id="search" name="search">
                                         <button type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="serial">Serial</label><br>
-                                    <input id="serial" type="number" id="serial" name="serial" required>
+                                    <input id="serial" type="number" name="serial">
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="nameOfGood">Name of Goods</label><br>
-                                    <input id="name" type="text" id="good" name="good" required>
+                                    <input id="name" type="text" name="good">
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12 info">
                                     <label for="quantity">Quantity</label><br>
-                                    <input id="quantity" type="text" id="quantity" name="quantity" required>
+                                    <input id="quantity" type="text" name="quantity">
                                 </div>
                                 
                                 
@@ -244,13 +242,13 @@
         </div>
     </div>
       <!-- PopUp-Search Goods -->
-      <div class="modal-overlay" style="display: none;">
-      <div id="choose-form" class="modal-content">
+      <div id="modal-overlay" class="modal-overlay">
+      <div class="modal-content">
           <button id="close-button-choose-form" class="modal-close">&times;</button>
           <div class="col-12 info search-input">
               <div class="input-wrapper">
-                  <input type="name" id="search" name="search" required>
-                  <button type="search-product" class="search-btn">Search <i class="bi bi-search"></i></button>
+                  <input type="text" id="product-name" name="search">
+                  <button id="choose-button" type="submit" class="search-btn">Search <i class="bi bi-search"></i></button>
               </div>
           </div>
           <div class="modal-body">
@@ -268,7 +266,7 @@
                   </tbody>
               </table>
           </div>
-          <button class="modal-done">Done</button>
+          <button id="done-button-choose-form" class="modal-done">Done</button>
       </div>
   </div> 
 
@@ -333,6 +331,9 @@
         document.querySelector("#sidebar").classList.toggle("expand");
         });
     </script>
+    
+    <script src="../renderers/addDeliveryNoteRenderer.js"></script>
+    <script src="../renderers/removeRenderer.js"></script>
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 
 </body>

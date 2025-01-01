@@ -4,22 +4,22 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Account', [
       {
-        personnelCode: 'AC001',
-        profileCode: 'EP001',
+        username: 'AC001',
+        password: '123',
         position: 'Manager',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        personnelCode: 'AC002',
-        profileCode: 'EP002',
+        username: 'AC002',
+        password: '123',
         position: 'Staff',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        personnelCode: 'AC003',
-        profileCode: 'EP003',
+        username: 'AC003',
+        password: '123',
         position: 'Staff',
         createdAt: new Date(),
         updatedAt: new Date(),

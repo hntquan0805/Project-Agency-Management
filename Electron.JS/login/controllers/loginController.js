@@ -4,7 +4,7 @@ class UserController {
         try {
             const account = await Account.findOne({ where: { username: name, password: password } });
             if (account) {
-                return { success: true };
+                return { success: true, account };
             } else {
                 return { success: false, message: 'Invalid credentials' };
             }

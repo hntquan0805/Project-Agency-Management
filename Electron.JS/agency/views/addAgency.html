@@ -44,11 +44,11 @@
     
                     <ul id="manageAgent" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="./addAgent.html" class="sidebar-link">Add Agency</a>
+                            <a href="./addAgency.html" class="sidebar-link">Add Agency</a>
                         </li>
     
                         <li class="sidebar-item">
-                            <a href="./searchAgent.html" class="sidebar-link">Search Agency</a>
+                            <a href="./searchAgency.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -207,8 +207,6 @@
                                 <th>Reception Date</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th class="fix">Edit</th>
-                                <th class="delete">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -221,8 +219,6 @@
                                 <th>28/10/2024</th>
                                 <th>0901232565</th>
                                 <th>elitemart@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>2</th>
@@ -233,8 +229,6 @@
                                 <th>25/10/2024</th>
                                 <th>0901234460</th>
                                 <th>goldendeals@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>3</th>
@@ -245,8 +239,6 @@
                                 <th>07/10/2024</th>
                                 <th>0901437762</th>
                                 <th>greatmall@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>4</th>
@@ -257,8 +249,6 @@
                                 <th>20/10/2024</th>
                                 <th>0905234564</th>
                                 <th>megamart@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>5</th>
@@ -269,8 +259,6 @@
                                 <th>03/11/2024</th>
                                 <th>0901534562</th>
                                 <th>trademaster@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>6</th>
@@ -281,8 +269,6 @@
                                 <th>12/10/2024</th>
                                 <th>0909234569</th>
                                 <th>smartchoice@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>7</th>
@@ -293,8 +279,6 @@
                                 <th>28/10/2024</th>
                                 <th>0901232565</th>
                                 <th>elitemart@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>8</th>
@@ -305,8 +289,6 @@
                                 <th>25/10/2024</th>
                                 <th>0901234460</th>
                                 <th>goldendeals@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>9</th>
@@ -317,8 +299,6 @@
                                 <th>07/10/2024</th>
                                 <th>0901437762</th>
                                 <th>greatmall@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                             <tr>
                                 <th>10</th>
@@ -329,8 +309,6 @@
                                 <th>20/10/2024</th>
                                 <th>0905234564</th>
                                 <th>megamart@gmail.com</th>
-                                <th><button class="fix-button" title="Edit"><i class="fa-solid fa-pen"></i></button></th>
-                                <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                             </tr>
                         </tbody>
                     </table>
@@ -357,6 +335,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!--Failure-PopUp-->
+                <div id="fail-pop-up" class="popup hidden" style="display: none;">
+                    <div class="inner-pop-up">
+                        <div class="pop-up-header">
+                            <h2 class="pop-up-header-title">Notice</h2>
+                            <buton id="close-pop-up-button" class="btn-close custom-btn-close"></buton>
+                        </div>
+                        <div class="popup-content">                        
+                            <p> Create failed!<br>Please check the information again</p>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
@@ -367,8 +358,9 @@
         document.querySelector("#sidebar").classList.toggle("expand");
         });
     </script>
-
-    <script src = "../renderers/addagencyRenderer.js"></script>
+    <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src = "../renderer/addagencyRenderer.js"></script>
+    
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>

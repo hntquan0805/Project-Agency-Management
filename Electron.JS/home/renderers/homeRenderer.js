@@ -1,1 +1,1 @@
-console.log('Welcome to the Home Page!');
+console.log('homeRenderer.js');

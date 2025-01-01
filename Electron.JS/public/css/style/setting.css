@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 /* MAIN */
+.main {
+    font-family: "Roboto", sans-serif;
+}
 
 /* Khoảng cách. giữa các section */
 .section1, .section2{
@@ -233,3 +236,45 @@
 /* END POP UP GOODS INFORMATION */
 
 
+/* FAILURE POP UP */
+.failure-pop-up{
+    /* display: none; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 20px;
+    border-radius: 8px;
+    z-index: 1001;
+    width: 80%;
+    max-width: 250px;
+    background-color: #ffecdf;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+
+
+.failure-pop-up-header{
+    color: #e74c3c;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.failure-pop-up-header-content-box{
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.close-failure-pop-up-button{
+    color: #FFF;
+    background-color: #F57D31;
+    font-size: 1.5rem;
+
+    padding: 3px 15px;
+    border-radius: 5px;
+}
+
+/* END FAILURE POP UP */

@@ -1,48 +1,49 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
+
+const Agency = sequelize.define('Agency', {
+    agencyCode: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+    phone: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+    },
+    type: {
+      type: DataTypes.INTEGER,
+    },
+    onboardDate: {
+      type: DataTypes.DATE,
+    },
+    district: {
+      type: DataTypes.STRING,
+    },
+    address: {
+      type: DataTypes.STRING,
+    },
+    currentDebt: {
+    type: DataTypes.DOUBLE,
+    defaultValue: 0,  
+  }
+}, {
+  freezeTableName: true,
+  tableName: 'Agency',
+});
+
+module.exports =  { Agency };
+
 const { DeliveryNote } = require('./deliverynote');
 const { RevenueReport } = require('./revenuereport');
 const { DebtHistory } = require('./debthistory');
 const { PaymentReceipt } = require('./paymentreceipt');
 const { AgencyType } = require('./agencytype');
-
-const Agency = sequelize.define('Agency', {
-    agencyCode: {
-        type: DataTypes.STRING,
-        primaryKey: true,
-    },
-    name: {
-        type: DataTypes.STRING,
-    },
-    phone: {
-        type: DataTypes.STRING,
-    },
-    email: {
-        type: DataTypes.STRING,
-    },
-    type: {
-        type: DataTypes.INTEGER,
-    },
-    onboardDate: {
-        type: DataTypes.DATE,
-    },
-    district: {
-        type: DataTypes.STRING,
-    },
-    address: {
-        type: DataTypes.STRING,
-    },
-    currentDebt: {  //Thêm thuộc tính nợ hiện tại
-      type: DataTypes.DOUBLE,
-      defaultValue: 0,  
-  }
-}, {
-    freezeTableName: true,
-    tableName: 'Agency',
-});
-
-module.exports =  { Agency };
 
 Agency.hasMany(DeliveryNote, {
   foreignKey: 'agencyCode',

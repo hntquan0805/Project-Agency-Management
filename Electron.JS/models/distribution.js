@@ -1,8 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
-const { Inventory } = require('./inventory');
-const { Unit } = require('./unit');
 
 const Distribution = sequelize.define('Distribution', {
   productCode: {
@@ -27,6 +25,9 @@ const Distribution = sequelize.define('Distribution', {
 });
 
 module.exports = { Distribution };
+
+const { Inventory } = require('./inventory');
+const { Unit } = require('./unit');
 
 Distribution.belongsTo(Inventory, {
   foreignKey: 'productCode',
