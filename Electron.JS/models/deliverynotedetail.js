@@ -20,6 +20,7 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
     unit: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
     },
     quantity: {
         type: DataTypes.INTEGER,

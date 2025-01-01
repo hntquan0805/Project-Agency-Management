@@ -19,14 +19,18 @@ module.exports = {
         references: {
           model: 'Agency',
           key: 'agencyCode'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       createdBy: {
         type: Sequelize.STRING,
         references: {
           model: 'Account',
           key: 'username'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
       createdAt: {
         allowNull: false,

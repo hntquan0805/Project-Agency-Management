@@ -7,8 +7,8 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-            model: 'Inventory', // Tên bảng Inventory
-            key: 'productCode', // Trường trong Inventory
+            model: 'Inventory',
+            key: 'productCode',
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
@@ -42,9 +42,9 @@ module.exports = {
     });
 
     await queryInterface.addConstraint('Distribution', {
-        fields: ['productCode', 'type', 'unit'], // Các cột tham gia khóa chính
-        type: 'primary key', // Loại constraint
-        name: 'pk_Distribution', // Tên constraint (tuỳ chọn)
+        fields: ['productCode', 'type', 'unit'],
+        type: 'primary key',
+        name: 'pk_Distribution',
       });
   },
 

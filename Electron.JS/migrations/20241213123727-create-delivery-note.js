@@ -15,6 +15,7 @@ module.exports = {
           model: 'Agency',
           key: 'agencyCode',
         },
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
       deliveryDate: {
@@ -26,6 +27,7 @@ module.exports = {
           model: 'Account',
           key: 'username',
         },
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
       createdAt: {

@@ -15,6 +15,7 @@ module.exports = {
           key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       numberOfDeliveryNotes: {
         type: Sequelize.INTEGER
