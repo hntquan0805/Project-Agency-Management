@@ -12,18 +12,29 @@ document.getElementById('add-agency').addEventListener('click', async function(e
     };
 
     window.api.addAgency(agencyData).then((result) => {
-
+        const popup = document.getElementById('fail-pop-up');
+        const popupMessage = document.getElementById('popup-message');
         if (result.success) {
-            alert('Agency has been successfully added!');
+            popupMessage.innerHTML = 'Agency has been successfully added!';
+            showPopup(popup);
             document.querySelector('form').reset();
             updateAgencyTable(result.agencies);
         } else {
-            alert(`Failed to add agency: ${result.message}`);
+            popupMessage.innerHTML = `Failed to add agency: ${result.message}`;
+            showPopup(popup);
         }
     }).catch((error) => {
         console.error('Error in frontend:', error);
         alert(`An error occurred: ${error.message}`);
     });
+});
+
+function showPopup(popup) {
+    popup.style.display = 'block';
+}
+
+document.getElementById('close-pop-up-button').addEventListener('click', () => {
+    document.getElementById('fail-pop-up').style.display = 'none'; // Ẩn popup khi đóng
 });
 
 function formatDate(dateString) {

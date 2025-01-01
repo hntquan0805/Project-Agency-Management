@@ -37,30 +37,6 @@ class EditAgency{
         return { success: false, message: 'Agency not found' };
       }
 
-<<<<<<< HEAD
-      const regulation = await Regulation.findOne();
-
-      if (!regulation || !regulation.maxAgenciesPerDistrict) {
-        return { success: false, message: 'Regulation not found or invalid' };
-      }
-
-      const maxAgenciesPerDistrict = regulation.maxAgenciesPerDistrict;
-
-      const agencyCount = await Agency.count({
-        where: {
-          district: agencyDistrict,
-        },
-      });
-
-      if (agencyCount >= maxAgenciesPerDistrict) {
-        return { 
-          success: false, 
-          message: `Cannot update agency. District ${agencyDistrict} already has ${agencyCount} agencies, which exceeds the limit of ${maxAgenciesPerDistrict}.` 
-        };
-      }
-
-=======
->>>>>>> c953bbb2f167676a86d819a037707d41229ae723
       agency.name = agencyName;
       agency.type = agencyType;
       agency.address = agencyAddress;
@@ -93,11 +69,7 @@ class EditAgency{
       if (!agency) {
         return { success: false, message: 'Agency not found' };
       }
-<<<<<<< HEAD
-
-=======
       
->>>>>>> c953bbb2f167676a86d819a037707d41229ae723
       await agency.destroy();
 
       return { success: true, message: 'Agency deleted successfully' };

@@ -1,7 +1,7 @@
 const { Sequelize, Model } = require('sequelize');
 const path = require('path');
-const envPath = path.join(process.resourcesPath, '.env');
-require('dotenv').config({ path: envPath });
+//const envPath = path.join(process.resourcesPath, '.env');
+require('dotenv').config();
 const fs = require('fs');
 const logStream = fs.createWriteStream('database.log', { flags: 'a' });
 
