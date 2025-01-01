@@ -3,6 +3,7 @@ const { Distribution } = require('../../models/distribution');
 const { DeliveryNote } = require('../../models/deliverynote');
 const { Agency } = require('../../models/agency');
 const { AgencyType } = require('../../models/agencytype');
+const {DeliveryNoteDetail} = require('../../models/deliverynotedetail');
 const { Op } = require('sequelize');
 
 class AddDeliveryNote {
@@ -93,6 +94,25 @@ class AddDeliveryNote {
         } catch (error) {
             console.error('Error in createDeliveryNote:', error);
             return { success: false, message: 'Error creating delivery note!' };
+        }
+    }
+
+    static createDeliveryNoteDetail = async (deliveryNoteDetailData) => {
+        try {
+            const deliveryNoteDetail = await DeliveryNoteDetail.create({
+                deliveryNoteCode: deliveryNoteDetailData.deliveryNoteCode,
+                productCode: deliveryNoteDetailData.productCode,
+                type: deliveryNoteDetailData.type,
+                unit: deliveryNoteDetailData.unit,
+                quantity: deliveryNoteDetailData.quantity,
+                unitPrice: deliveryNoteDetailData.price,
+                totalPrice: deliveryNoteDetailData.totalPrice,
+            });
+
+            return { success: true, deliveryNoteDetail };
+        } catch (error) {
+            console.error('Error in createDeliveryNoteDetail:', error);
+            return { success: false, message: 'Error creating delivery note detail!' };
         }
     }
 }

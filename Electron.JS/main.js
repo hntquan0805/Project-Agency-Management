@@ -37,6 +37,15 @@ app.on('ready', () => {
     mainWindow.loadFile(path.join(__dirname, './login/views/login.html'));
 });
 
+ipcMain.handle('create-delivery-note-detail', async (event, deliveryNoteDetailData) => {
+    try {
+        return await AddDeliveryNote.createDeliveryNoteDetail(deliveryNoteDetailData);
+    } catch (error) {
+        console.error('Error in ipcMain handle createDeliveryNoteDetail:', error);
+        return { success: false, message: 'Error creating delivery note detail!' };
+    }
+});
+
 ipcMain.handle('delete-agency', async (event, agencyCode) => {
     try {
         return await EditAgency.deleteAgency(agencyCode);
