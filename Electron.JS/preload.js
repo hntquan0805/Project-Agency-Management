@@ -48,4 +48,8 @@ contextBridge.exposeInMainWorld('api', {
     findAllProducts: (name, type) => ipcRenderer.invoke('find-all-products', { name, type }),
 
     createDeliveryNote: (deliveryNoteData) => ipcRenderer.invoke('create-delivery-note', deliveryNoteData),
+
+    deleteAgency: (agencyCode) => ipcRenderer.invoke('delete-agency', agencyCode),
+
+    createDeliveryNoteDetail: (deliveryNoteDetailData) => ipcRenderer.invoke('create-delivery-note-detail', deliveryNoteDetailData),
 });

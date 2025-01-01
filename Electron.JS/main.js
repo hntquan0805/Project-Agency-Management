@@ -14,7 +14,7 @@ const EditProductsByAgency = require('./setting/controllers/editProductsByAgency
 const UserController = require('./login/controllers/loginController');
 const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
 const saveFormData = require('./setting/controllers/addController');
-const updateAgency = require('./agency/controllers/editAgencyController');
+const EditAgency = require('./agency/controllers/editAgencyController');
 
 connect();
 
@@ -35,6 +35,24 @@ app.on('ready', () => {
     });
 
     mainWindow.loadFile(path.join(__dirname, './login/views/login.html'));
+});
+
+ipcMain.handle('create-delivery-note-detail', async (event, deliveryNoteDetailData) => {
+    try {
+        return await AddDeliveryNote.createDeliveryNoteDetail(deliveryNoteDetailData);
+    } catch (error) {
+        console.error('Error in ipcMain handle createDeliveryNoteDetail:', error);
+        return { success: false, message: 'Error creating delivery note detail!' };
+    }
+});
+
+ipcMain.handle('delete-agency', async (event, agencyCode) => {
+    try {
+        return await EditAgency.deleteAgency(agencyCode);
+    } catch (error) {
+        console.error('Error in ipcMain handle deleteAgency:', error);
+        return { success: false, message: 'Error deleting agency!' };
+    }
 });
 
 ipcMain.handle('create-delivery-note', async (event, deliveryNoteData) => {
@@ -117,7 +135,7 @@ ipcMain.handle('search-by-month', async (event, criteria) => {
 ipcMain.handle('update-agency-data', async (event, criteria) => {
     try {
         console.log('vo main goi')
-        return await updateAgency(criteria);
+        return await EditAgency.updateAgency(criteria);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error fectching data!' };

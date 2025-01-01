@@ -106,7 +106,8 @@ chooseButton.addEventListener('click', async (e) => {
                 document.getElementById('serial').value = currentIndex + 1;
                 document.getElementById('name').value = product.productName;
                 document.getElementById('quantity').value = quantity;
-    
+
+                
                 document.getElementById('add-button').addEventListener('click', () => {
                     cart.style.display = 'block';
                     currentIndex++;
@@ -119,6 +120,7 @@ chooseButton.addEventListener('click', async (e) => {
                         <td class = "product-price">${product.price || 'N/A'}</td>
                         <td class = "product-quantity">${quantity}</td>
                     `;
+
                     cartTable.appendChild(row);
                     displayNextProduct();
                 }, { once: true });
@@ -136,7 +138,7 @@ chooseButton.addEventListener('click', async (e) => {
 
 createButton.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log("create-Cart-ne!");
+
     const agency_name = document.getElementById('agency-name').value;
     const created_date = document.getElementById('created-date').value;
 
@@ -161,9 +163,10 @@ createButton.addEventListener('click', async (e) => {
             quantity: parseInt(row.querySelector('.product-quantity').textContent, 10)
         };
     });
+
     const accountCode = sessionStorage.getItem('account-code');
     const get_agency_code = await window.api.getAgencyCode(agency_name);
-    console.log(get_agency_code);
+
     const deliveryNoteData = {
         agencyCode: get_agency_code,
         agencyType: currentType,
@@ -176,6 +179,20 @@ createButton.addEventListener('click', async (e) => {
 
     if (response.success) {
         modal.style.display = 'block';
+
+        products.forEach(product => async () => { 
+            const deliveryNoteDetailData = {
+                deliveryNoteCode: response.deliveryNote.dataValues.deliveryNoteCode,
+                productCode: product.productCode,
+                type: currentType,
+                unit: product.unit,
+                quantity: product.quantity,
+                price: product.price,
+                totalPrice: product.price * product.quantity
+            };
+
+            deltail_response = await window.api.createDeliveryNoteDetail(deliveryNoteDetailData);
+        });
     } else {
         alert(`Failed to create delivery note: ${response.message}`);
     }
