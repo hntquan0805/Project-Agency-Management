@@ -3,7 +3,7 @@ const searchForm = document.getElementById('search-form');
 const overlay = document.getElementById('modal-overlay');
 const cart = document.getElementById('cart');
 const type = document.getElementById('agency-type').value;
-const serial = 0;
+let serial = 0;
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -90,21 +90,22 @@ chooseButton.addEventListener('click', async (e) => {
                 document.getElementById('serial').value = currentIndex + 1;
                 document.getElementById('name').value = product.productName;
                 document.getElementById('quantity').value = quantity;
-    
+
+                
                 document.getElementById('add-button').addEventListener('click', () => {
                     cart.style.display = 'block';
                     currentIndex++;
                     const cartTable = document.getElementById('cart-table');
-                    cartTable.innerHTML = '';
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${serial + 1}</td>
                         <td>${product.productName || 'N/A'}</td>
                         <td>${quantity}</td>
                     `;
+
                     cartTable.appendChild(row);
                     displayNextProduct();
-                });
+                }, { once: true });
             }
             else {
                 document.getElementById('serial').value = '';
