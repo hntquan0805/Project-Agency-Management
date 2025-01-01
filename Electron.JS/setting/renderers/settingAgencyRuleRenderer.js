@@ -12,7 +12,7 @@ document.getElementById('agency-rule-1').addEventListener('click', async functio
             console.log('Updated settings:', result.updatedSettings);
             try {
                 const agencyTypes = await window.api.getAgencyTypes();
-                console.log('Agency Types:', agencyTypes);
+
                 const agencyTypeSelect = document.getElementById('agencyType');
                 agencyTypeSelect.innerHTML = '';
                 agencyTypes.forEach(type => {
@@ -25,7 +25,6 @@ document.getElementById('agency-rule-1').addEventListener('click', async functio
                 const typeSelect = document.getElementById('type');
                 typeSelect.innerHTML = '';
 
-                // Add options to type select
                 agencyTypes.forEach(type => {
                     const option = document.createElement('option');
                     option.value = type;

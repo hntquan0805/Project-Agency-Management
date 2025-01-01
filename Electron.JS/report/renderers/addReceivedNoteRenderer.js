@@ -23,42 +23,37 @@ document.getElementById('create-received-note').addEventListener('click', async 
 
     const result = await window.api.saveGoodsReceivedNote(formData);
 
-    // Kiểm tra nếu việc lưu thành công
     if (result.success) {
         const spans = document.querySelectorAll(".result .result-container p span");
-        if (spans.length === 7) { // Điều chỉnh cho 7 phần tử <span> (bao gồm 'Received By')
+        if (spans.length === 7) {
             spans[0].textContent = agencyName;
             spans[1].textContent = email;
             spans[2].textContent = phoneNumber;
             spans[3].textContent = address;
             spans[4].textContent = amount + " VND";
             
-            // Định dạng ngày thành dd/mm/yyyy
             const formattedDate = new Date(date);
-            const day = String(formattedDate.getDate()).padStart(2, '0'); // Đảm bảo 2 chữ số cho ngày
-            const month = String(formattedDate.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0, nên cộng thêm 1
+            const day = String(formattedDate.getDate()).padStart(2, '0');
+            const month = String(formattedDate.getMonth() + 1).padStart(2, '0');
             const year = formattedDate.getFullYear();
             const formattedDateString = `${day}/${month}/${year}`;
             
             spans[5].textContent = formattedDateString;
-            spans[6].textContent = "Admin"; // Hoặc sử dụng dữ liệu phù hợp từ form
+            spans[6].textContent = "Admin";
 
-            // Hiển thị phần tử .result
             document.querySelector(".result").style.display = 'block';
-            document.querySelector(".goodReceived").style.display = 'none'; // Ẩn form
+            document.querySelector(".goodReceived").style.display = 'none';
 
-            // Thêm sự kiện cho nút Close
             document.querySelector(".closeButton").addEventListener('click', function() {
                 document.querySelector(".result").style.display = 'none';
-                document.querySelector(".goodReceived").style.display = 'block'; // Hiện lại form
+                document.querySelector(".goodReceived").style.display = 'block';
             });
 
-            // Thêm sự kiện cho nút Print
             document.querySelector(".printButton").addEventListener('click', function() {
-                window.print(); // In trang hiện tại
+                window.print();
             });
         } else {
-            console.log('Không tìm thấy đủ các phần tử span.');
+            console.log('Cannot find members in span.');
         }
     } else {
         const failurePopup = document.getElementById("failurePopup");

@@ -9,7 +9,6 @@ const { Op } = require('sequelize');
 
 class AddDeliveryNote {
     static findAllProducts = async (name, type) => {
-        console.log('findAllProducts:', name, type);
         const products = await Distribution.findAll({
             where: { 
                 type: type
@@ -46,17 +45,13 @@ class AddDeliveryNote {
             });
     
             if (!lastNote) {
-                return 'DN001'; // If no delivery notes exist
+                return 'DN001';
             }
     
-            // Extract the numeric part of the last deliveryNoteCode (e.g., "DN123" -> 123)
             const lastCode = lastNote.deliveryNoteCode;
-            const numericPart = parseInt(lastCode.slice(2), 10); // Remove "DN" and parse number
+            const numericPart = parseInt(lastCode.slice(2), 10);
     
-            // Increment the number and format it as 3 digits
             const nextNumber = (numericPart + 1).toString().padStart(3, '0');
-            console.log(nextNumber);
-            console.log(`DN${nextNumber}`);
             return `DN${nextNumber}`;
         } catch (error) {
             console.error('Error generating deliveryNoteCode:', error);
@@ -72,15 +67,19 @@ class AddDeliveryNote {
             }, 0);
 
             const agency = await Agency.findOne({where: { agencyCode: deliveryNoteData.agencyCode.dataValues.agencyCode }});
+
             if (!agency) {
                 return { success: false, message: 'Agency not found!' };
             }
+
             const maxDebt = await AgencyType.findOne({where: { type: deliveryNoteData.agencyType } , attribute: ['maxDebt']});
+
             if ((totalAmount + agency.dataValues.currentDebt) > maxDebt) {
                 return { success: false, message: 'Total amount exceeds the agency\'s debt!' };
             }
+
             const delivery_note_code = await this.generateDeliveryNoteCode();
-            console.log("code ne!!!",delivery_note_code);
+
             const deliveryNote = await DeliveryNote.create({
                 deliveryNoteCode: delivery_note_code,
                 agencyCode: deliveryNoteData.agencyCode.dataValues.agencyCode,
@@ -89,6 +88,7 @@ class AddDeliveryNote {
             });
 
             agency.dataValues.currentDebt -= totalAmount;
+            
             await agency.save();
 
             return { success: true, deliveryNote };

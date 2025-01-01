@@ -31,7 +31,5 @@ document.addEventListener("DOMContentLoaded", () => {
             createdDate: createdDate,
             cartData: cartData
         };
-        
-        console.log("Collected Request Data:", requestData);
     });
 });
