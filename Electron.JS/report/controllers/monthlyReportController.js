@@ -328,12 +328,11 @@ class monthlyReportController {
                 }
             });
 
-            // Nếu có báo cáo nợ rồi, không thêm nữa
             if (existingDebt) {
                 console.log(`Debt report for ${agencyCode} in ${dateString} already exists. Skipping...`);
                 continue;
             }
-
+            
             await DebtHistory.create({
                 agencyCode: agencyCode,
                 date: new Date(dateString),
