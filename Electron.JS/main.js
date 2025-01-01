@@ -2,7 +2,8 @@ const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { connect } = require('./config/database');
 const path = require('path');
 
-const { addAgency } = require('./agency/controllers/agencyController');
+const _Agency = require('./agency/controllers/agencyController');
+const { getAllAgencies } = require('./agency/controllers/loadAgencyController');
 const SearchAgencies = require('./agency/controllers/searchAgencyController');
 const { updateSettings } = require('./setting/controllers/settingAgencyRuleController');
 const GetProductsByAgency = require('./setting/controllers/getProductsByAgencyController');
@@ -12,7 +13,8 @@ const addReceivedNoteController = require('./report/controllers/addReceivedNote'
 const EditProductsByAgency = require('./setting/controllers/editProductsByAgencyController');
 const UserController = require('./login/controllers/loginController');
 const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
-
+const saveFormData = require('./setting/controllers/addController');
+const updateAgency = require('./agency/controllers/editAgencyController');
 
 connect();
 
@@ -112,6 +114,16 @@ ipcMain.handle('search-by-month', async (event, criteria) => {
     }
 });
 
+ipcMain.handle('update-agency-data', async (event, criteria) => {
+    try {
+        console.log('vo main goi')
+        return await updateAgency(criteria);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error fectching data!' };
+    }
+});
+
 ipcMain.handle('save-received-note', async (event, criteria) => {
     try {
         return await addReceivedNoteController.saveGoodsReceivedNote(criteria);
@@ -171,10 +183,28 @@ ipcMain.handle('save-revenue-report', async (event, { month, year, reportData })
 
 ipcMain.handle('add-agency', async (event, agencyData) => {
     try {
-        return await addAgency({ body: agencyData });
+        return await _Agency.addAgency({ body: agencyData });
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error adding data!' };
+    }
+});
+
+ipcMain.handle('get-agency-code', async (event, agency_name) => {
+    try {
+        return await _Agency.get_agency_code(agency_name);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error adding data!' };
+    }
+});
+
+ipcMain.handle('get-agency-data', async () => {
+    try {
+        return await getAllAgencies();
+    } catch (error) {
+      console.error('Error fetching agency data:', error);
+      throw new Error('Failed to fetch data');
     }
 });
 
@@ -208,6 +238,14 @@ ipcMain.handle('get-agency-types', async () => {
     }
 });
 
+ipcMain.handle('save-distribute-data', async (event, formData) => {
+    try {
+        return saveFormData(formData);
+    } catch (error) {
+        console.error('Error fetching agency types:', error);
+        return [];
+    }
+});
 
 ipcMain.handle('sign-up', async (event, { username, password }) => {
     return await signUpUser(username, password);

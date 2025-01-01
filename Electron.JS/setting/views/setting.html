@@ -44,11 +44,11 @@
 
                     <ul id="manageAgency" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../../agency/views/addAgent.html" class="sidebar-link">Add Agency</a>
+                            <a href="../../agency/views/addAgency.html" class="sidebar-link">Add Agency</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="../../agency/views/searchAgent.html" class="sidebar-link">Search Agency</a>
+                            <a href="../../agency/views/searchAgency.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -306,6 +306,27 @@
         </form>
     </div>
 
+<<<<<<< HEAD
+    <div id="error-modal" class="pop-up" style="display: none;">
+        <div class="pop-up-header">
+            <div class="pop-up-header-title">Error</div>
+            <button id="close-error-pop-up-button" class="btn-close"></button>
+        </div>
+        <div id="error-message" class="pop-up-body"></div>
+=======
+    <!--Failure-PopUp-->
+    <div id="failurePopup" class="failure-pop-up">
+        <div class="failure-pop-up-header">
+            Notice
+        </div>
+        <div class="failure-pop-up-header-content-box">
+            <div class = "failure-pop-up-header-content">Create failed!</div>
+            <div class = "failure-pop-up-header-content">Please check again!</div>
+        </div>
+        <buton type = "submit" id="closeFailurePopUpButton" class="close-failure-pop-up-button">Close</buton>
+>>>>>>> c194c08cb2280710578569c232a77fa7efcc3150
+    </div>
+
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
         hamBurger.addEventListener("click", function () {
@@ -318,6 +339,10 @@
     <script src="../renderers/loadAgencyTypeRenderer.js"></script>
     <script src="../renderers/settingAgencyRuleRenderer.js"></script>
     <script src="../renderers/settingAgencyTypeRenderer.js"></script>
+<<<<<<< HEAD
+    <script src="../renderers/addRenderer.js"></script>
+=======
     <script src="../renderers/removeRenderer.js"></script>
+>>>>>>> 461ac66362d10684d9289825c34e036d6a1131db
 </body>
 </html>

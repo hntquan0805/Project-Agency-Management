@@ -28,7 +28,7 @@ const { PaymentReceipt } = require('./paymentreceipt');
 Account.hasMany(DeliveryNote, {
     foreignKey: 'createdBy',
     sourceKey: 'username',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
 });
   
@@ -44,6 +44,6 @@ Account.belongsTo(EmployeeProfile, {
 Account.hasMany(PaymentReceipt, {
     foreignKey: 'createdBy',
     sourceKey: 'username',
-    onDelete: 'SET NULL',
+    onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
 });

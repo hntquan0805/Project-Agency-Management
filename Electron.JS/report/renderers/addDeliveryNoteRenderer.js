@@ -2,6 +2,7 @@ const chooseButton = document.getElementById('choose-button');
 const searchForm = document.getElementById('search-form');
 const overlay = document.getElementById('modal-overlay');
 const cart = document.getElementById('cart');
+const createButton = document.getElementById('create-button');
 const type = document.getElementById('agency-type').value;
 let serial = 0;
 
@@ -82,6 +83,7 @@ chooseButton.addEventListener('click', async (e) => {
         let currentIndex = 0;
     
         const displayNextProduct = () => {
+            console.log(currentIndex);
             if (currentIndex < filteredProducts.length) {
                 const product = filteredProducts[currentIndex];
                 const quantitySpan = document.getElementById(`quantity-${product.productCode}-${product.unit}`);
@@ -98,9 +100,11 @@ chooseButton.addEventListener('click', async (e) => {
                     const cartTable = document.getElementById('cart-table');
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${serial + 1}</td>
-                        <td>${product.productName || 'N/A'}</td>
-                        <td>${quantity}</td>
+                        <td class = "product-code">${product.productCode}</td>
+                        <td class = "product-name">${product.productName || 'N/A'}</td>
+                        <td class = "product-unit">${product.unit || 'N/A'}</td>
+                        <td class = "product-price">${product.price || 'N/A'}</td>
+                        <td class = "product-quantity">${quantity}</td>
                     `;
 
                     cartTable.appendChild(row);
@@ -118,9 +122,9 @@ chooseButton.addEventListener('click', async (e) => {
     });
 });
 
-cart.addEventListener('create', async (e) => {
+createButton.addEventListener('click', async (e) => {
     e.preventDefault();
-
+    console.log("create-Cart-ne!");
     const agency_name = document.getElementById('agency-name').value;
     const created_date = document.getElementById('created-date').value;
 
@@ -145,10 +149,14 @@ cart.addEventListener('create', async (e) => {
             quantity: parseInt(row.querySelector('.product-quantity').textContent, 10)
         };
     });
-
+    const accountCode = sessionStorage.getItem('account-code');
+    const get_agency_code = await window.api.getAgencyCode(agency_name);
+    console.log(get_agency_code);
     const deliveryNoteData = {
+        agencyCode: get_agency_code,
         agencyType: type,
         createdDate: created_date,
+        createdBy: accountCode,
         products: products
     };
 

@@ -42,6 +42,7 @@ DeliveryNoteDetail.belongsTo(DeliveryNote, {
   foreignKey: 'deliveryNoteCode',
   targetKey: 'deliveryNoteCode',
   onUpdate: 'CASCADE',
+  onDelete: 'CASCADE',
 });
 
 DeliveryNoteDetail.belongsTo(Distribution, {

@@ -7,7 +7,13 @@ contextBridge.exposeInMainWorld('api', {
 
     addAgency: (agencyData) => ipcRenderer.invoke('add-agency', agencyData),
 
+    getAgencyData: () => ipcRenderer.invoke('get-agency-data'),
+
+    getAgencyCode: (agency_name) => ipcRenderer.invoke('get-agency-code', agency_name),
+
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
+
+    updateAgency: (criteria) => ipcRenderer.invoke('update-agency-data', criteria),
 
     searchDeliveryNotesByDate: (criteria) => ipcRenderer.invoke('search-by-month', criteria),
 
@@ -26,6 +32,8 @@ contextBridge.exposeInMainWorld('api', {
     updateSettings: (updateData) => ipcRenderer.invoke('agency-rule-1', updateData),
 
     getAgencyTypes: () => ipcRenderer.invoke('get-agency-types'),
+    
+    saveFormData: (formData) => ipcRenderer.invoke('save-distribute-data', formData),
 
     getProductsByAgency: (type) => ipcRenderer.invoke('get-products', type),
 

@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', async () => {
+    document.querySelector(".result").style.display = 'none';
+    document.querySelector(".popup_hidden").style.display = 'none';
+}),
+
 document.getElementById('create-received-note').addEventListener('click', async function(event) {
     event.preventDefault();
     const agencyName = document.getElementById("agentName").value;

@@ -48,34 +48,34 @@ const { AgencyType } = require('./agencytype');
 Agency.hasMany(DeliveryNote, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 Agency.hasMany(RevenueReport, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 Agency.hasMany(DebtHistory, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 Agency.hasMany(PaymentReceipt, {
   foreignKey: 'agencyCode',
   sourceKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 Agency.belongsTo(AgencyType, {
   foreignKey: 'type',
   targetKey: 'type',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
