@@ -178,9 +178,10 @@ createButton.addEventListener('click', async (e) => {
     const response = await window.api.createDeliveryNote(deliveryNoteData);
 
     if (response.success) {
+        console.log('Delivery note detail response:');
         modal.style.display = 'block';
 
-        products.forEach(product => async () => { 
+        products.forEach(async(product) => { 
             const deliveryNoteDetailData = {
                 deliveryNoteCode: response.deliveryNote.dataValues.deliveryNoteCode,
                 productCode: product.productCode,
@@ -192,6 +193,7 @@ createButton.addEventListener('click', async (e) => {
             };
 
             deltail_response = await window.api.createDeliveryNoteDetail(deliveryNoteDetailData);
+            console.log('Delivery note detail response:', deltail_response);
         });
     } else {
         alert(`Failed to create delivery note: ${response.message}`);
