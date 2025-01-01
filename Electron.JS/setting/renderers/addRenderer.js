@@ -20,30 +20,23 @@ closeErrorButton.addEventListener('click', function() {
 });
 
 addButton.addEventListener('click', function() {
-    // Hiển thị pop-up và overlay
     editModal.style.display = 'block';
     overlay.style.display = 'block';
 });
 
-// Xử lý sự kiện khi người dùng nhấn vào nút đóng pop-up
 closeButton.addEventListener('click', function() {
-    // Ẩn pop-up và overlay
     editModal.style.display = 'none';
     overlay.style.display = 'none';
 });
 
-// Xử lý khi người dùng nhấp vào overlay (khu vực bên ngoài pop-up)
 overlay.addEventListener('click', function() {
-    // Ẩn pop-up và overlay
     editModal.style.display = 'none';
     overlay.style.display = 'none';
 });
 
 form.addEventListener('submit', async function(event) {
-    // Ngừng hành động mặc định (khi submit)
     event.preventDefault();
-
-    // Lấy giá trị người dùng nhập vào các trường
+    
     const code = goodsCode.value;
     const name = goodsName.value;
     const calculationUnit = goodsCalculationUnit.value;
@@ -51,15 +44,6 @@ form.addEventListener('submit', async function(event) {
     const stockQuantity = goodsStockQuantity.value;
     const type = agencyTypeSelect.value;
 
-    // Xử lý thông tin (hiển thị hoặc gửi đến server)
-    console.log('Goods Code:', code);
-    console.log('Goods Name:', name);
-    console.log('Calculation Unit:', calculationUnit);
-    console.log('Price:', price);
-    console.log('Stock Quantity:', stockQuantity);
-    console.log('Selected Agency Type:', type);
-
-    // Ví dụ: gửi dữ liệu tới server (chỉ là một ví dụ)
     const formData = {
         code: code,
         name: name,

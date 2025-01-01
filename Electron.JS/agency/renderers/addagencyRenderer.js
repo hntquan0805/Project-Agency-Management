@@ -1,5 +1,4 @@
 document.getElementById('add-agency').addEventListener('click', async function(event) {
-    console.log('Button clicked!');
     event.preventDefault();
 
     const agencyData = {
@@ -35,7 +34,6 @@ function formatDate(dateString) {
 function updateAgencyTable(agencies) {
     const tableBody = document.querySelector('.table-agent tbody');
     tableBody.innerHTML = '';
-    console.log(agencies);
     agencies.forEach((agency, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `

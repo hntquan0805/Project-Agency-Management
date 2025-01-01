@@ -30,7 +30,6 @@ document.querySelector('.export-button').addEventListener('click', async functio
     const table_2 = await window.api.countNoteByAgency(delivery_note);
     const table_debt = await window.api.renderDebtTable(month, year, table_2);
     let serial_2 = 1;
-    console.log(table_debt);
 
     const agentDebtReport = document.getElementById('agentDebtReport');
     agentDebtReport.style.display = 'block';

@@ -123,7 +123,7 @@ class monthlyReportController {
         const agency = table[agencyCode];
         agency.proportion = totalSum === 0 
           ? 0 
-          : ((agency.totalPrice || 0) * 100 / totalSum).toFixed(2); // Làm tròn 2 chữ số
+          : ((agency.totalPrice || 0) * 100 / totalSum).toFixed(2);
       }
     
       return table;
@@ -196,7 +196,6 @@ class monthlyReportController {
         agencies.forEach(agency => {
           const agencyData = table[agency.agencyCode];
           if (agencyData) {
-            console.log(`Data for ${agency.agencyCode}:`, agencyData);
             debtData[agency.agencyCode] = {
               name: agency.name,
               initialDebt: 0, 
@@ -216,11 +215,9 @@ class monthlyReportController {
         const previousMonth = month === 1 ? 12 : month - 1;
         const previousYear = month === 1 ? year - 1 : year;
 
-        // Xác định phạm vi ngày cho tháng trước
         const startOfLastMonth = new Date(previousYear, previousMonth - 1, 1);
         const endOfLastMonth = new Date(previousYear, previousMonth, 0);
 
-        // Truy xuất dữ liệu từ DebtHistory
         const previousDebtRecords = await DebtHistory.findAll({
           where: {
             date: {
@@ -290,9 +287,7 @@ class monthlyReportController {
 
   static saveRevenueReport = async (month, year, reportData) => {
     try {
-        console.log("Month: ", month, "Year: ", year);
         const dateString = `${year}-${String(month).padStart(2, '0')}-01`;
-        console.log(dateString);
         for (const agencyCode in reportData) {
             const note = reportData[agencyCode];
             const existingReport = await RevenueReport.findOne({
@@ -321,29 +316,24 @@ class monthlyReportController {
 
   static saveDebtHistory = async (month, year, table_debt) => {
     try {
-        console.log("Month: ", month, "Year: ", year);
-        const dateString = `${year}-${String(month).padStart(2, '0')}-01`; // Ngày 1 của tháng
-        console.log(dateString);
+        const dateString = `${year}-${String(month).padStart(2, '0')}-01`;
 
-        // Duyệt qua các agency trong bảng table_debt
         for (const agencyCode in table_debt) {
             const note = table_debt[agencyCode];
 
-            // Kiểm tra xem có báo cáo nợ nào với cùng agencyCode và date trong cơ sở dữ liệu chưa
             const existingDebt = await DebtHistory.findOne({
                 where: {
                     agencyCode: agencyCode,
-                    date: new Date(dateString) // Kiểm tra theo ngày tháng đã định dạng
+                    date: new Date(dateString)
                 }
             });
 
             // Nếu có báo cáo nợ rồi, không thêm nữa
             if (existingDebt) {
                 console.log(`Debt report for ${agencyCode} in ${dateString} already exists. Skipping...`);
-                continue; // Bỏ qua phần tử này
+                continue;
             }
 
-            // Nếu không có, tiếp tục thêm báo cáo nợ mới vào cơ sở dữ liệu
             await DebtHistory.create({
                 agencyCode: agencyCode,
                 date: new Date(dateString),
@@ -352,7 +342,6 @@ class monthlyReportController {
                 incurredDebt: note.incurredCost || 0,
             });
         }
-        console.log("Debt reports saved successfully.");
     } catch (error) {
         throw new Error('Failed to save debt history: ' + error.message);
     }

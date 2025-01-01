@@ -22,7 +22,7 @@ document.getElementById('edit-agency-pop-up').addEventListener('submit', async f
         agencyEmail: agencyEmail,
         agencyDebt: agencyDebt
     };
-    console.log(updatedAgencyData);
+
     try {
         const response = await window.api.updateAgency(updatedAgencyData);
 
