@@ -8,6 +8,7 @@ const serial = 0;
 const close = document.getElementById('close-button-choose-form');
 const done = document.getElementById('done-button-choose-form');
 const modal = document.getElementById('goodsDeliveryNoteModal');
+const closeModal = document.getElementById('modal-close-button');
 const resultsTable = document.getElementById('results-table');
 let currentType = 1;
 document.addEventListener('DOMContentLoaded', async (e) => {
@@ -149,10 +150,25 @@ createButton.addEventListener('click', async (e) => {
     const cartTable = document.getElementById('cart-table');
 
     productsTableForm.innerHTML = '';
-
+    let grandTotal = 0;
     Array.from(cartTable.rows).forEach(row => {
-        productsTableForm.appendChild(row.cloneNode(true));
+        const newRow = row.cloneNode(true);
+        
+        // Calculate total price
+        const price = parseFloat(newRow.querySelector('.product-price').textContent);
+        const quantity = parseInt(newRow.querySelector('.product-quantity').textContent, 10);
+        const totalPrice = price * quantity;
+        grandTotal += totalPrice;
+        // Create a new cell for totalPrice and append it to the new row
+        const totalPriceCell = document.createElement('td');
+        totalPriceCell.textContent = totalPrice.toFixed(2);  // Format to 2 decimal places
+        newRow.appendChild(totalPriceCell);
+
+        // Append the row to the products table
+        productsTableForm.appendChild(newRow);
     });
+
+    document.getElementById('grandTotal').textContent = grandTotal.toFixed(2) + ' VND';
 
     const products = Array.from(cartTable.rows).map(row => {
         return {
@@ -160,7 +176,7 @@ createButton.addEventListener('click', async (e) => {
             productName: row.querySelector('.product-name').textContent,
             unit: row.querySelector('.product-unit').textContent,
             price: parseFloat(row.querySelector('.product-price').textContent),
-            quantity: parseInt(row.querySelector('.product-quantity').textContent, 10)
+            quantity: parseInt(row.querySelector('.product-quantity').textContent, 10),
         };
     });
 
@@ -180,6 +196,8 @@ createButton.addEventListener('click', async (e) => {
     if (response.success) {
         modal.style.display = 'block';
 
+
+
         products.forEach(product => async () => { 
             const deliveryNoteDetailData = {
                 deliveryNoteCode: response.deliveryNote.dataValues.deliveryNoteCode,
@@ -196,4 +214,8 @@ createButton.addEventListener('click', async (e) => {
     } else {
         alert(`Failed to create delivery note: ${response.message}`);
     }
+});
+
+closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
 });

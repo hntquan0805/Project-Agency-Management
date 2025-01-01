@@ -10,6 +10,7 @@ module.exports = {
           model: 'DeliveryNote',
           key: 'deliveryNoteCode',
         },
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       },
       productCode: {
@@ -57,26 +58,13 @@ module.exports = {
 
     // Thiết lập khóa chính tổng hợp
     await queryInterface.addConstraint('DeliveryNoteDetail', {
-      fields: ['deliveryNoteCode', 'productCode'], // Các cột tham gia khóa chính
-      type: 'primary key', // Loại constraint
-      name: 'pk_deliverynotedetail', // Tên constraint (tuỳ chọn)
+      fields: ['deliveryNoteCode', 'productCode', 'unit'],
+      type: 'primary key',
+      name: 'pk_deliverynotedetail',
     });
-
-    // await queryInterface.addConstraint('DeliveryNoteDetail', {
-    //   fields: ['productCode', 'type', 'unit'], // Các cột tham gia khóa ngoại
-    //   type: 'foreign key',
-    //   name: 'fk_deliverynotedetail_distribution', // Tên constraint
-    //   references: {
-    //     table: 'Distribution', // Bảng tham chiếu
-    //     fields: ['productCode', 'type', 'unit'], // Cột tham chiếu
-    //   },
-    //   onUpdate: 'CASCADE',
-    //   onDelete: 'CASCADE',
-    // });
   },
 
   async down(queryInterface, Sequelize) {
-    // await queryInterface.removeConstraint('DeliveryNoteDetail', 'fk_deliverynotedetail_distribution');
     await queryInterface.removeConstraint('DeliveryNoteDetail', 'pk_deliverynotedetail');
     await queryInterface.dropTable('DeliveryNoteDetail');
   },

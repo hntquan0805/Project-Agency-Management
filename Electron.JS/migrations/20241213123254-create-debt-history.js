@@ -11,6 +11,7 @@ module.exports = {
           key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       date: {
         type: Sequelize.DATE,

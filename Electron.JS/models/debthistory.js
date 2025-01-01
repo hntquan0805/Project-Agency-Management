@@ -35,4 +35,5 @@ DebtHistory.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
   onUpdate: 'CASCADE',
+  onDelete: 'CASCADE',
 });

@@ -24,13 +24,13 @@ const { Agency } = require('./agency');
 PaymentReceipt.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'username',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 PaymentReceipt.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
