@@ -8,7 +8,18 @@ document.getElementById('agency-rule-1').addEventListener('click', async functio
 
     window.api.updateSettings(updateData).then(async (result) => {
         if (result.success) {
-            alert('Update successful!');
+            const popupMessageElement = document.getElementById('popupMessage');
+            const failurePopup = document.getElementById('failurePopup');
+
+            popupMessageElement.innerHTML = 'Updated settings successfully!';
+
+            failurePopup.style.display = 'block';
+
+            document.getElementById('closePopupButton').addEventListener('click', () => {
+                const failurePopup = document.getElementById('failurePopup');
+                failurePopup.style.display = 'none';
+            });
+
             console.log('Updated settings:', result.updatedSettings);
             try {
                 const agencyTypes = await window.api.getAgencyTypes();
@@ -37,7 +48,17 @@ document.getElementById('agency-rule-1').addEventListener('click', async functio
                 alert('An error occurred while fetching agency types');
             }
         } else {
-            alert(result.message);
+            const popupMessageElement = document.getElementById('popupMessage');
+            const failurePopup = document.getElementById('failurePopup');
+
+            popupMessageElement.innerHTML = 'Updating settings failed!';
+
+            failurePopup.style.display = 'block';
+
+            document.getElementById('closePopupButton').addEventListener('click', () => {
+                const failurePopup = document.getElementById('failurePopup');
+                failurePopup.style.display = 'none';
+            });
         }
     }).catch((error) => {
         console.error('Error in frontend:', error);

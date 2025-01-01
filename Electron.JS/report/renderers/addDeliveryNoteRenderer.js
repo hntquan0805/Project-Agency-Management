@@ -226,7 +226,17 @@ createButton.addEventListener('click', async (e) => {
             deltail_response = await window.api.createDeliveryNoteDetail(deliveryNoteDetailData);
         });
     } else {
-       
+        const popupMessageElement = document.getElementById('popupMessage');
+        const failurePopup = document.getElementById('failurePopup');
+
+        popupMessageElement.innerHTML = 'Error: Failed to create delivery note!';
+
+        failurePopup.style.display = 'block';
+
+        document.getElementById('closePopupButton').addEventListener('click', () => {
+            const failurePopup = document.getElementById('failurePopup');
+            failurePopup.style.display = 'none';
+        });
     }
 });
 
