@@ -6,10 +6,12 @@ const DeliveryNoteDetail = sequelize.define('DeliveryNoteDetail', {
     deliveryNoteCode: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
     },
     productCode: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
     },
     type: {
         type: DataTypes.INTEGER,
