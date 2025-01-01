@@ -23,7 +23,7 @@ try {
     if (!unit) {
         return { success: false, message: `Unit "${formData.calculationUnit}" does not exist in the unit database.` };
     }
-
+    console.log(formData.type);
     const result = await Distribution.create({
         productCode: product.productCode,
         type: parseInt(formData.type),
@@ -34,7 +34,7 @@ try {
     return { success: true, result };
 } catch (error) {
     console.error('Error saving data:', error);
-    throw error;
+    return { success: false, message: 'Error!' }
 }
 }
 

@@ -15,7 +15,7 @@ document.getElementById('agency-type-1').addEventListener('click', async functio
 
             failurePopup.style.display = 'block';
 
-            document.getElementById('closePopupButton').addEventListener('click', () => {
+            document.getElementById('closeFailurePopUpButton').addEventListener('click', () => {
                 const failurePopup = document.getElementById('failurePopup');
                 failurePopup.style.display = 'none';
             });
@@ -28,7 +28,7 @@ document.getElementById('agency-type-1').addEventListener('click', async functio
 
             failurePopup.style.display = 'block';
 
-            document.getElementById('closePopupButton').addEventListener('click', () => {
+            document.getElementById('closeFailurePopUpButton').addEventListener('click', () => {
                 const failurePopup = document.getElementById('failurePopup');
                 failurePopup.style.display = 'none';
             });
