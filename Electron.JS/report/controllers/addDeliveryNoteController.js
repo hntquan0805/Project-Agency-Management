@@ -4,6 +4,7 @@ const { DeliveryNote } = require('../../models/deliverynote');
 const { Agency } = require('../../models/agency');
 const { AgencyType } = require('../../models/agencytype');
 const {DeliveryNoteDetail} = require('../../models/deliverynotedetail');
+const {Regulation} = require('../../models/regulation');
 const { Op } = require('sequelize');
 
 class AddDeliveryNote {
@@ -114,6 +115,11 @@ class AddDeliveryNote {
             console.error('Error in createDeliveryNoteDetail:', error);
             return { success: false, message: 'Error creating delivery note detail!' };
         }
+    }
+
+    static getMaxProduct = async (currentType) => {
+        const maxProduct = await AgencyType.findOne({where:{type: currentType}, attribute:['productCount']});
+        return maxProduct;
     }
 }
 

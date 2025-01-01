@@ -107,21 +107,39 @@ chooseButton.addEventListener('click', async (e) => {
                 document.getElementById('quantity').value = quantity;
 
                 
-                document.getElementById('add-button').addEventListener('click', () => {
+                document.getElementById('add-button').addEventListener('click', async () => {
                     cart.style.display = 'block';
-                    currentIndex++;
-                    const cartTable = document.getElementById('cart-table');
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td class = "product-code">${product.productCode}</td>
-                        <td class = "product-name">${product.productName || 'N/A'}</td>
-                        <td class = "product-unit">${product.unit || 'N/A'}</td>
-                        <td class = "product-price">${product.price || 'N/A'}</td>
-                        <td class = "product-quantity">${quantity}</td>
-                    `;
+                    const max_product = await window.api.getMaxProduct(currentType);
+                    console.log(max_product);
+                    if(max_product.dataValues.productCount >= document.getElementById('serial').value){
+                        currentIndex++;
+                        const cartTable = document.getElementById('cart-table');
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td class = "product-code">${product.productCode}</td>
+                            <td class = "product-name">${product.productName || 'N/A'}</td>
+                            <td class = "product-unit">${product.unit || 'N/A'}</td>
+                            <td class = "product-price">${product.price || 'N/A'}</td>
+                            <td class = "product-quantity">${quantity}</td>
+                        `;
 
-                    cartTable.appendChild(row);
-                    displayNextProduct();
+                        cartTable.appendChild(row);
+                        displayNextProduct();
+                    }else{
+                        const popupMessageElement = document.getElementById('popupMessage');
+                        const failurePopup = document.getElementById('failurePopup');
+
+                        // Cập nhật nội dung thông báo lỗi
+                        popupMessageElement.innerHTML = 'Error: Products ecession!';
+
+                        // Hiển thị popup
+                        failurePopup.style.display = 'block';
+
+                        document.getElementById('closePopupButton').addEventListener('click', () => {
+                            const failurePopup = document.getElementById('failurePopup');
+                            failurePopup.style.display = 'none';
+                        });
+                    }
                 }, { once: true });
             }
             else {

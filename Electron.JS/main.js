@@ -189,6 +189,15 @@ ipcMain.handle('save-debt-history', async (event, { month, year, table_debt }) =
     }
 });
 
+ipcMain.handle('get-max-product', async (event, currentType) => {
+    try {
+        return await AddDeliveryNote.getMaxProduct(currentType);
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error adding data!' };
+    }
+});
+
 ipcMain.handle('save-revenue-report', async (event, { month, year, reportData }) => {
     try {
         await monthlyReportController.saveRevenueReport(month, year, reportData);
