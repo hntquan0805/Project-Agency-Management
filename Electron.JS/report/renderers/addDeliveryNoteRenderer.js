@@ -4,12 +4,14 @@ const overlay = document.getElementById('modal-overlay');
 const cart = document.getElementById('cart');
 const createButton = document.getElementById('create-button');
 const type = document.getElementById('agency-type');
-const serial = 0;
 const close = document.getElementById('close-button-choose-form');
 const done = document.getElementById('done-button-choose-form');
 const modal = document.getElementById('goodsDeliveryNoteModal');
 const resultsTable = document.getElementById('results-table');
+
 let currentType = 1;
+const serial = 0;
+
 document.addEventListener('DOMContentLoaded', async (e) => {
     overlay.style.display = 'none';
 });
@@ -77,7 +79,6 @@ chooseButton.addEventListener('click', async (e) => {
             let quantity = parseInt(quantitySpan.textContent, 10);
             quantity++;
             quantitySpan.textContent = quantity;
-            console.log('Increase quantity:', quantitySpan.textContent);
         });
     });
 
@@ -91,13 +92,10 @@ chooseButton.addEventListener('click', async (e) => {
             const quantity = parseInt(quantitySpan.textContent, 10);
             return quantity > 0;
         });
-
-        console.log('Filtered products:', filteredProducts);
     
         let currentIndex = 0;
     
         const displayNextProduct = () => {
-            console.log(currentIndex);
             if (currentIndex < filteredProducts.length) {
                 const product = filteredProducts[currentIndex];
                 const quantitySpan = document.getElementById(`quantity-${product.productCode}-${product.unit}`);
@@ -178,7 +176,6 @@ createButton.addEventListener('click', async (e) => {
     const response = await window.api.createDeliveryNote(deliveryNoteData);
 
     if (response.success) {
-        console.log('Delivery note detail response:');
         modal.style.display = 'block';
 
         products.forEach(async(product) => { 
@@ -193,7 +190,6 @@ createButton.addEventListener('click', async (e) => {
             };
 
             deltail_response = await window.api.createDeliveryNoteDetail(deliveryNoteDetailData);
-            console.log('Delivery note detail response:', deltail_response);
         });
     } else {
         alert(`Failed to create delivery note: ${response.message}`);
