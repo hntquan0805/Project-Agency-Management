@@ -11,6 +11,8 @@ contextBridge.exposeInMainWorld('api', {
 
     getAgencyCode: (agency_name) => ipcRenderer.invoke('get-agency-code', agency_name),
 
+    getMaxProduct: (currentType) => ipcRenderer.invoke('get-max-product', currentType),
+
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
 
     updateAgency: (criteria) => ipcRenderer.invoke('update-agency-data', criteria),

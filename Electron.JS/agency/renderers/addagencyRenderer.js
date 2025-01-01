@@ -47,8 +47,6 @@ function updateAgencyTable(agencies) {
             <td>${formatDate(agency.dataValues.onboardDate)}</td>
             <td>${agency.dataValues.phone}</td>
             <td>${agency.dataValues.email}</td>
-            <th><button class="fix-button"><i class="fa-solid fa-pen"></i></button></th>
-            <th><button class="delete-button"><i class="fa-solid fa-trash"></i></button></th>
         `;
         tableBody.appendChild(row);
     });

@@ -296,34 +296,6 @@
     	</form>
 	</div>
 
-    <!-- <script>
-        // js for form edit
-        const editButtons = document.querySelectorAll(".fix-button");
-    	const closePopUpButton = document.getElementById("close-pop-up-button");
-    	const overlay = document.getElementById("overlay");
-    	const popUp = document.getElementById("edit-agency-pop-up");
-    	const body = document.body;
- 
-    	function openPopUp(){
-        	body.classList.add("no-scroll");
-        	overlay.style.display = "block";
-        	popUp.style.display = "block";
-    	}
- 
-    	function closePopUp(){
-        	body.classList.remove("no-scroll");
-        	overlay.style.display = "none";
-        	popUp.style.display = "none";
-    	}
- 
-    	// Gán sự kiện cho tất cả nút Edit
-    	editButtons.forEach(button => {
-        	button.addEventListener("click", () => openPopUp());
-    	});
-       
-    	closePopUpButton.addEventListener("click", closePopUp);
-    </script>
-     -->
     <script>
         const hamBurger = document.querySelector(".toggle-btn");
         hamBurger.addEventListener("click", function () {
@@ -333,7 +305,6 @@
 
     <script src = "../renderers/searchAgencyRenderer.js"></script>
     <script src="../../public/css/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src = "../renderers/editAgencyRenderer.js"></script>
     <script src = "../renderers/loadSearchRenderer.js"></script>
 </body>
 </html>

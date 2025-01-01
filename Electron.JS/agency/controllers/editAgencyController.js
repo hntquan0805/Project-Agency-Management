@@ -1,5 +1,6 @@
 const { Agency } = require('../../models/agency');
 const { AgencyType } = require('../../models/agencytype');
+const { Regulation } = require('../../models/regulation')
 
 class EditAgency{
   static updateAgency = async (agencyData) => {
@@ -18,7 +19,6 @@ class EditAgency{
     console.log(`Updating agency with code: ${agencyCode}`);
 
     try {
-      // Kiểm tra xem type có tồn tại không
       const agencyTypeExists = await AgencyType.findOne({
         where: {
           type: agencyType,
@@ -29,7 +29,6 @@ class EditAgency{
         return { success: false, message: 'Invalid agency type' };
       }
 
-      // Tìm agency theo mã code
       const agency = await Agency.findOne({
         where: {
           agencyCode: agencyCode,
@@ -40,7 +39,27 @@ class EditAgency{
         return { success: false, message: 'Agency not found' };
       }
 
-      // Cập nhật thông tin agency
+      const regulation = await Regulation.findOne();
+
+      if (!regulation || !regulation.maxAgenciesPerDistrict) {
+        return { success: false, message: 'Regulation not found or invalid' };
+      }
+
+      const maxAgenciesPerDistrict = regulation.maxAgenciesPerDistrict;
+
+      const agencyCount = await Agency.count({
+        where: {
+          district: agencyDistrict,
+        },
+      });
+
+      if (agencyCount >= maxAgenciesPerDistrict) {
+        return { 
+          success: false, 
+          message: `Cannot update agency. District ${agencyDistrict} already has ${agencyCount} agencies, which exceeds the limit of ${maxAgenciesPerDistrict}.` 
+        };
+      }
+
       agency.name = agencyName;
       agency.type = agencyType;
       agency.address = agencyAddress;
@@ -50,7 +69,6 @@ class EditAgency{
       agency.email = agencyEmail;
       agency.currentDebt = agencyDebt;
 
-      // Lưu thay đổi vào database
       await agency.save();
 
       return { success: true, message: 'Agency updated successfully' };
@@ -65,7 +83,6 @@ class EditAgency{
     console.log(`Deleting agency with code: ${agencyCode}`);
 
     try {
-      // Tìm agency theo mã code
       const agency = await Agency.findOne({
         where: {
           agencyCode: agencyCode,
@@ -76,7 +93,6 @@ class EditAgency{
         return { success: false, message: 'Agency not found' };
       }
 
-      // Xóa agency khỏi database
       await agency.destroy();
 
       return { success: true, message: 'Agency deleted successfully' };
