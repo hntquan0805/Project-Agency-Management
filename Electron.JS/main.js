@@ -13,7 +13,7 @@ const addReceivedNoteController = require('./report/controllers/addReceivedNote'
 const EditProductsByAgency = require('./setting/controllers/editProductsByAgencyController');
 const UserController = require('./login/controllers/loginController');
 const AddDeliveryNote = require('./report/controllers/addDeliveryNoteController');
-const saveFormData = require('./setting/controllers/addController');
+const saveFormData = require('./setting/controllers/addProductsByAgencyController');
 const EditAgency = require('./agency/controllers/editAgencyController');
 
 connect();

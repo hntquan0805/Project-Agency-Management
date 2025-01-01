@@ -26,7 +26,7 @@ try {
     return { success: true, result };
 } catch (error) {
     console.error('Error saving data:', error);
-    return { success: false, message: 'Error!' }
+    return { success: false, message: 'Error: There is some data that already existed!' }
 }
 }
 

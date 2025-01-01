@@ -4,11 +4,11 @@ const editModal = document.getElementById('edit-modal');
 const closeButton = document.getElementById('close-pop-up-button');
 
 const form = document.getElementById('edit-form');
-const goodsCode = document.getElementById('goods-code');
-const goodsName = document.getElementById('goods-name');
-const goodsCalculationUnit = document.getElementById('goods-calculation-unit');
-const goodsPrice = document.getElementById('goods-price');
-const goodsStockQuantity = document.getElementById('goods-stock-quantity');
+let goodsCode = document.getElementById('goods-code');
+let goodsName = document.getElementById('goods-name');
+let goodsCalculationUnit = document.getElementById('goods-calculation-unit');
+let goodsPrice = document.getElementById('goods-price');
+let goodsStockQuantity = document.getElementById('goods-stock-quantity');
 const agencyTypeSelect = document.getElementById('type');
 
 const errorModal = document.getElementById('failurePopup');
@@ -71,15 +71,15 @@ form.addEventListener('submit', async function(event) {
                 <td>${product.unit}</td>
                 <td>${product.price}</td>
                 <td>${product.stock}</td>
-                <td><button data-type="${type.value}" data-id="${product.productCode}" data-unit="${product.unit}" class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
-                <td><button data-type="${type.value}" data-id="${product.productCode}" data-unit="${product.unit}" class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
+                <td><button data-type="${type}" data-id="${product.productCode}" data-unit="${product.unit}" class="edit-button"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                <td><button data-type="${type}" data-id="${product.productCode}" data-unit="${product.unit}" class="delete-button"><i class="fa-regular fa-trash-can"></i></button></td>
             `;
             productsList.appendChild(row);
         });
 
         document.querySelectorAll('.delete-button').forEach(button => {
             button.addEventListener('click', async (event) => {
-                if (confirm('Are you sure you want to delete this product?')){
+                if (1){
                 const productCode = button.getAttribute('data-id');
                 const unit = button.getAttribute('data-unit');
                 const type = button.getAttribute('data-type');
@@ -137,4 +137,8 @@ form.addEventListener('submit', async function(event) {
         
         loadProducts();
     }
+
+    agencyTypeSelect.addEventListener('change', async (event) => {
+        loadProducts();
+    });
 });

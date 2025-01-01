@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
         document.querySelectorAll('.delete-button').forEach(button => {
             button.addEventListener('click', async (event) => {
-                if (confirm('Are you sure you want to delete this product?')){
+                if (1){
                 const productCode = button.getAttribute('data-id');
                 const unit = button.getAttribute('data-unit');
                 const type = button.getAttribute('data-type');
