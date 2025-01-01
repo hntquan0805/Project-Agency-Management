@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
 try {
+    const popup = document.getElementById('fail-pop-up');
+    popup.style.display = 'none';
     const agencyTypes = await window.api.getAgencyTypes();
 
     const agencyTypeSelect = document.getElementById('type');

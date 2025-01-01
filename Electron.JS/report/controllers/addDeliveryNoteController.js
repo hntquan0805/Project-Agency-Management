@@ -6,6 +6,7 @@ const { AgencyType } = require('../../models/agencytype');
 const {DeliveryNoteDetail} = require('../../models/deliverynotedetail');
 const {Regulation} = require('../../models/regulation');
 const { Op } = require('sequelize');
+const { sequelize, DataTypes } = require('../../config/database');
 
 class AddDeliveryNote {
     static findAllProducts = async (name, type) => {
@@ -18,13 +19,16 @@ class AddDeliveryNote {
                 {
                     model:  Inventory,
                     where: {
-                        productName: { [Op.like]: `%${name}%` }
+                        productName: { [Op.like]: `%${name}%` },
+                        productCode: { [Op.eq]: sequelize.col('Distribution.productCode') },
                     },
                     attributes: ['productName', 'quantityInStock'],
                 },
             ],
             raw: true,
         });
+
+        console.log(products);
         
         const result = products.map(product => ({
             productCode: product.productCode, 
@@ -73,8 +77,10 @@ class AddDeliveryNote {
             }
 
             const maxDebt = await AgencyType.findOne({where: { type: deliveryNoteData.agencyType } , attribute: ['maxDebt']});
+            console.log('maxDebt: ', maxDebt);
+            console.log('total: ', totalAmount);
 
-            if ((totalAmount + agency.dataValues.currentDebt) > maxDebt) {
+            if ((totalAmount + agency.dataValues.currentDebt) > maxDebt.dataValues.maxDebt) {
                 return { success: false, message: 'Total amount exceeds the agency\'s debt!' };
             }
 
@@ -87,8 +93,7 @@ class AddDeliveryNote {
                 createdBy: deliveryNoteData.createdBy,
             });
 
-            agency.dataValues.currentDebt -= totalAmount;
-            
+            agency.currentDebt += totalAmount;
             await agency.save();
 
             return { success: true, deliveryNote };
@@ -97,8 +102,9 @@ class AddDeliveryNote {
             return { success: false, message: 'Error creating delivery note!' };
         }
     }
-
+    
     static createDeliveryNoteDetail = async (deliveryNoteDetailData) => {
+        const transaction = await sequelize.transaction();
         try {
             const deliveryNoteDetail = await DeliveryNoteDetail.create({
                 deliveryNoteCode: deliveryNoteDetailData.deliveryNoteCode,
@@ -108,15 +114,28 @@ class AddDeliveryNote {
                 quantity: deliveryNoteDetailData.quantity,
                 unitPrice: deliveryNoteDetailData.price,
                 totalPrice: deliveryNoteDetailData.totalPrice,
+            }, { transaction });
+    
+            const inventory = await Inventory.findOne({
+                where: {
+                    productCode: deliveryNoteDetailData.productCode,
+                    unit: deliveryNoteDetailData.unit,
+                },
             });
-
+    
+            inventory.quantityInStock -= deliveryNoteDetailData.quantity;
+            await inventory.save({ transaction });
+    
+            await transaction.commit();
+    
             return { success: true, deliveryNoteDetail };
         } catch (error) {
+            await transaction.rollback();
             console.error('Error in createDeliveryNoteDetail:', error);
             return { success: false, message: 'Error creating delivery note detail!' };
         }
-    }
-
+    };
+    
     static getMaxProduct = async (currentType) => {
         const maxProduct = await AgencyType.findOne({where:{type: currentType}, attribute:['productCount']});
         return maxProduct;

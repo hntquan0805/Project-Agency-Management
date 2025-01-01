@@ -6,12 +6,6 @@ module.exports = {
       productCode: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-            model: 'Inventory',
-            key: 'productCode',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       type: {
         type: Sequelize.INTEGER,
@@ -20,12 +14,6 @@ module.exports = {
       unit: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: 'Unit',
-          key: 'unitName',
-      },
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE',
       },
       price: {
         type: Sequelize.DOUBLE,
@@ -46,6 +34,18 @@ module.exports = {
         type: 'primary key',
         name: 'pk_Distribution',
       });
+
+    await queryInterface.addConstraint('Distribution', {
+      fields: ['productCode', 'unit'],
+      type: 'foreign key',
+      name: 'fk_Distribution_Inventory',
+      references: {
+        table: 'Inventory',
+        fields: ['productCode', 'unit'],
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    });
   },
 
   async down(queryInterface, Sequelize) {

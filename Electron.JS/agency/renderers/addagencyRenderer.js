@@ -1,6 +1,5 @@
-document.getElementById('add-agency').addEventListener('click', async function(event) {
+document.querySelector('form').addEventListener('submit', async function (event) {
     event.preventDefault();
-
     const agencyData = {
         name: document.getElementById('agentName').value,
         phone: document.getElementById('phoneNumber').value,
@@ -20,7 +19,7 @@ document.getElementById('add-agency').addEventListener('click', async function(e
             document.querySelector('form').reset();
             updateAgencyTable(result.agencies);
         } else {
-            popupMessage.innerHTML = `Failed to add agency: ${result.message}`;
+            popupMessage.innerHTML = `${result.message}`;
             showPopup(popup);
         }
     }).catch((error) => {
@@ -34,7 +33,7 @@ function showPopup(popup) {
 }
 
 document.getElementById('close-pop-up-button').addEventListener('click', () => {
-    document.getElementById('fail-pop-up').style.display = 'none'; // Ẩn popup khi đóng
+    document.getElementById('fail-pop-up').style.display = 'none';
 });
 
 function formatDate(dateString) {

@@ -13,7 +13,8 @@
 
     <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/style/main.css">
-    <link rel="stylesheet" href="../../public/css/style/addAgency.css">   
+    <link rel="stylesheet" href="../../public/css/style/addAgency.css"> 
+    <link rel="stylesheet" href="../../public/css/style/setting.css">  
 </head>
 <body>
     <div class="wrapper">
@@ -184,7 +185,7 @@
                             </div>
                             <!-- <div class="col-xl-8 col-md-8 col-0"></div><div class="col-xl-8 col-md-6 col-0"></div> -->
                             <div class="col-xl-4 col-md-12 col-12 button">
-                                <button id = "add-agency" class="addButton">Add agent <i class="fa-solid fa-plus"></i></button>                        
+                                <button id = "add-agency" class="addButton" type="submit">Add agent <i class="fa-solid fa-plus"></i></button>                        
                             </div>
                         </form>
                     </div>
@@ -337,7 +338,7 @@
                 </div>
 
                 <!--Failure-PopUp-->
-                <div id="fail-pop-up" class="popup hidden" style="display: none;">
+                <!-- <div id="fail-pop-up" class="popup hidden">
                     <div class="inner-pop-up">
                         <div class="pop-up-header">
                             <h2 class="pop-up-header-title">Notice</h2>
@@ -347,6 +348,15 @@
                             <p id="popup-message">Create failed!<br>Please check the information again</p>
                         </div>
                     </div>
+                </div> -->
+                <div id="fail-pop-up" class="failure-pop-up" style="display: none;">
+                    <div class="failure-pop-up-header">
+                        Notice
+                    </div>
+                    <div class="failure-pop-up-header-content-box">
+                        <div id="popup-message" class = "failure-pop-up-header-content">Create failed!</div>
+                    </div>
+                    <buton type = "submit" id="close-pop-up-button" class="close-failure-pop-up-button">Close</buton>
                 </div>
             </main>
         </div>

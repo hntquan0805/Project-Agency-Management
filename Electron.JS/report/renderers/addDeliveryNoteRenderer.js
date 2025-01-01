@@ -84,7 +84,7 @@ chooseButton.addEventListener('click', async (e) => {
     });
 
     
-
+    let currentIndex = 0;
     done.addEventListener('click', () => {
         overlay.style.display = 'none';
         
@@ -93,8 +93,8 @@ chooseButton.addEventListener('click', async (e) => {
             const quantity = parseInt(quantitySpan.textContent, 10);
             return quantity > 0;
         });
-    
-        let currentIndex = 0;
+        console.log(filteredProducts);
+       
     
         const displayNextProduct = () => {
             if (currentIndex < filteredProducts.length) {
@@ -150,7 +150,7 @@ chooseButton.addEventListener('click', async (e) => {
         };
     
         displayNextProduct();
-    });
+    }, { once: true });
 });
 
 createButton.addEventListener('click', async (e) => {

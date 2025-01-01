@@ -11,7 +11,7 @@ static addAgency = async (agencyData) => {
         const agencyCountInDistrict = await Agency.count({ where: { district } });
 
         if (agencyCountInDistrict >= maxAgenciesPerDistrict) {
-            return { success: false, message: `The number of agencies in the current district has exceeded the allowed limit of ${maxAgenciesPerDistrict}!` };
+            return { success: false, message: `Current district has exceeded the allowed limit of ${maxAgenciesPerDistrict}!` };
         }
 
         const lastAgency = await Agency.findOne({

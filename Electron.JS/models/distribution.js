@@ -27,7 +27,6 @@ const Distribution = sequelize.define('Distribution', {
 module.exports = { Distribution };
 
 const { Inventory } = require('./inventory');
-const { Unit } = require('./unit');
 
 Distribution.belongsTo(Inventory, {
   foreignKey: 'productCode',
@@ -36,9 +35,9 @@ Distribution.belongsTo(Inventory, {
   onDelete: 'CASCADE',
 });
 
-Distribution.belongsTo(Unit, {
+Distribution.belongsTo(Inventory, {
   foreignKey: 'unit',
-  targetKey: 'unitName',
+  targetKey: 'unit',
   onUpdate: 'CASCADE',
   onDelete: 'CASCADE',
 });

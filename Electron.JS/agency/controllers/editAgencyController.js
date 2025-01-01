@@ -37,6 +37,22 @@ class EditAgency{
         return { success: false, message: 'Agency not found' };
       }
 
+      const regulation = await Regulation.findOne();
+      const maxAgenciesPerDistrict = regulation.maxAgenciesPerDistrict;
+
+      const agencyCount = await Agency.count({
+        where: {
+          district: agencyDistrict,
+        },
+      });
+
+      if (agencyCount >= maxAgenciesPerDistrict) {
+        return { 
+          success: false, 
+          message: `District ${agencyDistrict} already has ${agencyCount} agencies, which exceeds the limit of ${maxAgenciesPerDistrict}.` 
+        };
+      }
+
       agency.name = agencyName;
       agency.type = agencyType;
       agency.address = agencyAddress;

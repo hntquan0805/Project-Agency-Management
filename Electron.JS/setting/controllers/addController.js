@@ -7,6 +7,7 @@ try {
     const product = await Inventory.findOne({
         where: {
             productName: formData.name,
+            unitName: formData.calculationUnit,
         },
     });
 
@@ -14,15 +15,6 @@ try {
         return { success: false, message: `Product name "${formData.name}" does not exist in the inventory.` };
     }
 
-    const unit = await Unit.findOne({
-        where: {
-          unitName: formData.calculationUnit,
-        },
-    });
-
-    if (!unit) {
-        return { success: false, message: `Unit "${formData.calculationUnit}" does not exist in the unit database.` };
-    }
     console.log(formData.type);
     const result = await Distribution.create({
         productCode: product.productCode,

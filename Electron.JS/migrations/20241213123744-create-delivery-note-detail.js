@@ -16,12 +16,6 @@ module.exports = {
       productCode: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: 'Inventory',
-          key: 'productCode',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       type: {
         type: Sequelize.INTEGER,
@@ -30,12 +24,6 @@ module.exports = {
       unit: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: 'Unit',
-          key: 'unitName',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       quantity: {
         type: Sequelize.INTEGER,
@@ -56,11 +44,22 @@ module.exports = {
       },
     });
 
-    // Thiết lập khóa chính tổng hợp
     await queryInterface.addConstraint('DeliveryNoteDetail', {
       fields: ['deliveryNoteCode', 'productCode', 'unit'],
       type: 'primary key',
       name: 'pk_deliverynotedetail',
+    });
+
+    await queryInterface.addConstraint('DeliveryNoteDetail', {
+      fields: ['productCode', 'unit'],
+      type: 'foreign key',
+      name: 'fk_DeliveryNoteDetail_Inventory',
+      references: {
+        table: 'Inventory',
+        fields: ['productCode', 'unit'],
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
     });
   },
 

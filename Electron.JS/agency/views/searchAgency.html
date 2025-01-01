@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../public/css/bootstrap/bootstrap.min.css"> 
     <link rel="stylesheet" href="../../public/css/style/main.css">
     <link rel="stylesheet" href="../../public/css/style/searchAgency.css"> 
+    <link rel="stylesheet" href="../../public/css/style/setting.css">  
 </head>
 <body>
     <div class="wrapper">
@@ -295,6 +296,16 @@
         	</div>
     	</form>
 	</div>
+
+    <div id="fail-pop-up" class="failure-pop-up" style="display: none;">
+        <div class="failure-pop-up-header">
+            Notice
+        </div>
+        <div class="failure-pop-up-header-content-box">
+            <div id="popup-message" class = "failure-pop-up-header-content">Create failed!</div>
+        </div>
+        <buton type = "submit" id="close-pop-up-fail-button" class="close-failure-pop-up-button">Close</buton>
+    </div>
 
     <script>
         const hamBurger = document.querySelector(".toggle-btn");

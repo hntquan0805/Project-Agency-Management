@@ -6,10 +6,13 @@ module.exports = {
       productCode: {
         type: Sequelize.STRING,
         allowNull: false,
-        primaryKey: true,
       },
       productName: {
         type: Sequelize.STRING
+      },
+      unit: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       quantityInStock: {
         type: Sequelize.INTEGER
@@ -22,6 +25,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+    });
+    await queryInterface.addConstraint('Inventory', {
+      fields: ['productCode', 'unit'],
+      type: 'primary key',
+      name: 'pk_Inventory',
     });
   },
 

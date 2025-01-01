@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         const agencyTypes = await window.api.getAgencyTypes();
-    
+        
         const agencyTypeSelect = document.getElementById('type');
         agencyTypeSelect.innerHTML = '';
         agencyTypes.forEach(type => {

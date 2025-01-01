@@ -10,6 +10,11 @@ document.getElementById('edit-agency-pop-up').addEventListener('submit', async f
   const agencyPhone = document.getElementById('agency-phone').value;
   const agencyEmail = document.getElementById('agency-email').value;
   const agencyDebt = document.getElementById('agency-debt').value;
+  const popup = document.getElementById('fail-pop-up');
+  const popupMessage = document.getElementById('popup-message');
+
+  console.log(popup);
+
 
   const updatedAgencyData = {
       agencyCode,
@@ -31,12 +36,22 @@ document.getElementById('edit-agency-pop-up').addEventListener('submit', async f
           document.getElementById('overlay').style.display = 'none';
           loadProducts();
       } else {
-          alert('Failed to update agency information. Please try again later.');
+          console.log('Loi ne!');
+          popupMessage.innerHTML = `${response.message}`;
+          showPopup(popup);
       }
   } catch (error) {
       console.error('Error updating agency:', error);
       alert('An error occurred. Please try again later.');
   }
+});
+
+function showPopup(popup) {
+  popup.style.display = 'block';
+}
+
+document.getElementById('close-pop-up-fail-button').addEventListener('click', () => {
+  document.getElementById('fail-pop-up').style.display = 'none';
 });
 
 document.getElementById('search-form').addEventListener('submit', async (e) => {
