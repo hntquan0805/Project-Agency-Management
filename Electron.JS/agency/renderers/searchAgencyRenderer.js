@@ -28,6 +28,10 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
     `;
     resultsTable.appendChild(row);
     row.dataset.agencyCode = agency.dataValues.agencyCode;
+    row.dataset.phone = agency.dataValues.phone;
+    row.dataset.onboardDate = agency.dataValues.onboardDate;
+    row.dataset.email = agency.dataValues.email;
+    row.dataset.address = agency.dataValues.address;
   });
 
   const editButtons = document.querySelectorAll('.fix-button');
@@ -42,11 +46,15 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
       
       const cells = row.children; // Lấy tất cả các phần tử <td> trong row
       const agencyCode = row.dataset.agencyCode;
+      const phone = row.dataset.phone;
+      const onboardDate = row.dataset.onboardDate;
+      const email = row.dataset.email;
+      const address = row.dataset.address;
       const agencyName = cells[1].textContent;
       const type = cells[2].textContent;
       const district = cells[3].textContent;
       const debt = cells[4].textContent;
-
+      
       // In ra giá trị để kiểm tra
       console.log("Serial:", agencyCode);
       console.log("Agency Name:", agencyName);
@@ -55,11 +63,14 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
       console.log("Debt:", debt);
 
       // Điền thông tin vào các trường trong form pop-up
-      const agencySerialInput =document.getElementById('agency-serial').value = agencyCode;
-      console.log('code',agencySerialInput); // Kiểm tra phần tử DOM
+      document.getElementById('agency-serial').value = agencyCode;
       document.getElementById('agency-name').value = agencyName;
       document.getElementById('agency-type').value = type;
+      document.getElementById('agency-address').value = address;
       document.getElementById('agency-district').value = district;
+      document.getElementById('reception-date').value = onboardDate;
+      document.getElementById('agency-phone').value = phone;
+      document.getElementById('agency-email').value = email;
       document.getElementById('agency-debt').value = debt;
 
       // Hiển thị Pop-up và overlay

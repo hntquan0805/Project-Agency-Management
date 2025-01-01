@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, screen} = require('electron');
 const { connect } = require('./config/database');
 const path = require('path');
 
-const { addAgency } = require('./agency/controllers/agencyController');
+const _Agency = require('./agency/controllers/agencyController');
 const { getAllAgencies } = require('./agency/controllers/loadAgencyController');
 const SearchAgencies = require('./agency/controllers/searchAgencyController');
 const { updateSettings } = require('./setting/controllers/settingAgencyRuleController');
@@ -34,7 +34,7 @@ app.on('ready', () => {
         },
     });
 
-    mainWindow.loadFile(path.join(__dirname, './home/views/dashBoard.html'));
+    mainWindow.loadFile(path.join(__dirname, './login/views/login.html'));
 });
 
 ipcMain.handle('create-delivery-note', async (event, deliveryNoteData) => {
@@ -183,7 +183,16 @@ ipcMain.handle('save-revenue-report', async (event, { month, year, reportData })
 
 ipcMain.handle('add-agency', async (event, agencyData) => {
     try {
-        return await addAgency({ body: agencyData });
+        return await _Agency.addAgency({ body: agencyData });
+    } catch (error) {
+        console.error(error);
+        return { success: false, message: 'Error adding data!' };
+    }
+});
+
+ipcMain.handle('get-agency-code', async (event, agency_name) => {
+    try {
+        return await _Agency.get_agency_code(agency_name);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error adding data!' };

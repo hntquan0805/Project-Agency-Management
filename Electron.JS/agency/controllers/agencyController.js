@@ -1,8 +1,8 @@
 const { Agency } = require('../../models/agency');
 const { Regulation } = require('../../models/regulation');
 
-
-const addAgency = async (agencyData) => {
+class _Agency {
+static addAgency = async (agencyData) => {
     const { body: { name, phone, email, type, address, onboardDate, district } } = agencyData;
     try {
         const regulation = await Regulation.findOne();
@@ -46,4 +46,18 @@ const addAgency = async (agencyData) => {
     }
 }
 
-module.exports = { addAgency };
+static get_agency_code = async (name) => {
+    try {
+        const agencyCode = await Agency.findOne({
+            where: { name: name },
+            attributes: ['agencyCode']
+        });
+        return agencyCode;
+    } catch (error) {
+        console.error('Error fetching agency types:', error);
+        return [];
+    }
+}
+};
+
+module.exports = _Agency;

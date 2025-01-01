@@ -9,6 +9,8 @@ contextBridge.exposeInMainWorld('api', {
 
     getAgencyData: () => ipcRenderer.invoke('get-agency-data'),
 
+    getAgencyCode: (agency_name) => ipcRenderer.invoke('get-agency-code', agency_name),
+
     searchAgencies: (criteria) => ipcRenderer.invoke('search', criteria),
 
     updateAgency: (criteria) => ipcRenderer.invoke('update-agency-data', criteria),

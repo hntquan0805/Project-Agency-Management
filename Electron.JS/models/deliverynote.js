@@ -30,20 +30,20 @@ const { DeliveryNoteDetail } = require('./deliverynotedetail');
 DeliveryNote.belongsTo(Agency, {
   foreignKey: 'agencyCode',
   targetKey: 'agencyCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 DeliveryNote.belongsTo(Account, {
   foreignKey: 'createdBy',
   targetKey: 'username',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
 
 DeliveryNote.hasMany(DeliveryNoteDetail, {
   foreignKey: 'deliveryNoteCode',
   sourceKey: 'deliveryNoteCode',
-  onDelete: 'SET NULL',
+  onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });

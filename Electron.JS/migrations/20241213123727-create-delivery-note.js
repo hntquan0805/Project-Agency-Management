@@ -16,7 +16,6 @@ module.exports = {
           key: 'agencyCode',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
       },
       deliveryDate: {
         type: Sequelize.DATE
@@ -28,7 +27,6 @@ module.exports = {
           key: 'username',
         },
         onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
       },
       createdAt: {
         allowNull: false,
