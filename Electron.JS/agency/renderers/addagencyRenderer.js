@@ -34,7 +34,7 @@ function showPopup(popup) {
 }
 
 document.getElementById('close-pop-up-button').addEventListener('click', () => {
-    document.getElementById('fail-pop-up').style.display = 'none'; // Ẩn popup khi đóng
+    document.getElementById('fail-pop-up').style.display = 'none';
 });
 
 function formatDate(dateString) {
