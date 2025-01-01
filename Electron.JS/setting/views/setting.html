@@ -44,11 +44,11 @@
 
                     <ul id="manageAgency" class ="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../../agency/views/addAgent.html" class="sidebar-link">Add Agency</a>
+                            <a href="../../agency/views/addAgency.html" class="sidebar-link">Add Agency</a>
                         </li>
 
                         <li class="sidebar-item">
-                            <a href="../../agency/views/searchAgent.html" class="sidebar-link">Search Agency</a>
+                            <a href="../../agency/views/searchAgency.html" class="sidebar-link">Search Agency</a>
                         </li>
                     </ul>
                 </li>
@@ -304,6 +304,18 @@
                 <button type="submit" class="add-button-title">Add</button>
             </div>
         </form>
+    </div>
+
+    <!--Failure-PopUp-->
+    <div id="failurePopup" class="failure-pop-up">
+        <div class="failure-pop-up-header">
+            Notice
+        </div>
+        <div class="failure-pop-up-header-content-box">
+            <div class = "failure-pop-up-header-content">Create failed!</div>
+            <div class = "failure-pop-up-header-content">Please check again!</div>
+        </div>
+        <buton type = "submit" id="closeFailurePopUpButton" class="close-failure-pop-up-button">Close</buton>
     </div>
 
     <script>
