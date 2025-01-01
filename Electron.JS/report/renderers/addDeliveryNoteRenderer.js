@@ -208,7 +208,7 @@ createButton.addEventListener('click', async (e) => {
             deltail_response = await window.api.createDeliveryNoteDetail(deliveryNoteDetailData);
         });
     } else {
-        alert(`Failed to create delivery note: ${response.message}`);
+       
     }
 });
 

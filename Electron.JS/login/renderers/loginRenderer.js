@@ -12,9 +12,10 @@ loginForm.addEventListener('submit', async (event) => {
         alert(response.message);
         return;
     }
-    console.log(response);
+
     sessionStorage.setItem('account-position', response.account.dataValues.position);
     sessionStorage.setItem('account-code', response.account.dataValues.username);
+    
     if (response.success) {
         window.location.href = '../../home/views/dashboard.html';
     } else {
