@@ -64,7 +64,7 @@ class AddDeliveryNote {
 
     static createDeliveryNote = async (deliveryNoteData) => {
         try {
-            console.log(deliveryNoteData.agencyCode.dataValues.agencyCode);
+            console.log(deliveryNoteData.agencyType);
             const totalAmount = deliveryNoteData.products.reduce((sum, product) => {
                 return sum + (product.price * product.quantity);
             }, 0);

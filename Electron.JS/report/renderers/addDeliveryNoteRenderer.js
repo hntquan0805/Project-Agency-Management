@@ -3,22 +3,38 @@ const searchForm = document.getElementById('search-form');
 const overlay = document.getElementById('modal-overlay');
 const cart = document.getElementById('cart');
 const createButton = document.getElementById('create-button');
-const type = document.getElementById('agency-type').value;
+const type = document.getElementById('agency-type');
 const serial = 0;
+const close = document.getElementById('close-button-choose-form');
+const done = document.getElementById('done-button-choose-form');
+const modal = document.getElementById('goodsDeliveryNoteModal');
+const resultsTable = document.getElementById('results-table');
+let currentType = 1;
+document.addEventListener('DOMContentLoaded', async (e) => {
+    overlay.style.display = 'none';
+});
+
+document.addEventListener('change', async (e) => {
+    currentType = type.value;
+});
 
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    resultsTable.innerHTML = '';
     overlay.style.display = 'block';
+    
+});
+
+close.addEventListener('click', () => {
+    overlay.style.display = 'none';
 });
 
 chooseButton.addEventListener('click', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('product-name');
-    const resultsTable = document.getElementById('results-table');
-    const close = document.getElementById('close-button-choose-form');
-    const done = document.getElementById('done-button-choose-form');
-    const products = await window.api.findAllProducts('Milk', type);
+    
+    const products = await window.api.findAllProducts('Milk', currentType);
 
     resultsTable.innerHTML = '';
 
@@ -65,9 +81,7 @@ chooseButton.addEventListener('click', async (e) => {
         });
     });
 
-    close.addEventListener('click', () => {
-        overlay.style.display = 'none';
-    });
+    
 
     done.addEventListener('click', () => {
         overlay.style.display = 'none';
@@ -152,7 +166,7 @@ createButton.addEventListener('click', async (e) => {
     console.log(get_agency_code);
     const deliveryNoteData = {
         agencyCode: get_agency_code,
-        agencyType: type,
+        agencyType: currentType,
         createdDate: created_date,
         createdBy: accountCode,
         products: products
@@ -161,7 +175,7 @@ createButton.addEventListener('click', async (e) => {
     const response = await window.api.createDeliveryNote(deliveryNoteData);
 
     if (response.success) {
-        alert('Delivery note created successfully!');
+        modal.style.display = 'block';
     } else {
         alert(`Failed to create delivery note: ${response.message}`);
     }
