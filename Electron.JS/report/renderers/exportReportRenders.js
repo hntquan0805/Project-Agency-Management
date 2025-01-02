@@ -20,8 +20,6 @@ document.querySelector('.export-button').addEventListener('click', async functio
             <td>${note.count || 0}</td>
             <td>${note.totalPrice || 0}</td>
             <td>${note.proportion}%</td>
-            <td><button class="fix-button btn btn-sm"><i class="bi bi-pencil"></i></button></td>
-            <td><button class="delete-button btn btn-sm"><i class="bi bi-trash3"></i></button></td>
           `;
           resultsTable.appendChild(row);
     }
@@ -45,8 +43,6 @@ document.querySelector('.export-button').addEventListener('click', async functio
           <td>${note.initialDebt || 0}</td>
           <td>${note.incurredCost || 0}</td>
           <td>${note.finalDebt}</td>
-          <td><button class="fix-button btn btn-sm"><i class="bi bi-pencil"></i></button></td>
-          <td><button class="delete-button btn btn-sm"><i class="bi bi-trash3"></i></button></td>
         `;
         resultsDebt.appendChild(row);
     }
