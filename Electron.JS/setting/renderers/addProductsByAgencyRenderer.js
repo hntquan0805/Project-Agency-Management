@@ -1,14 +1,14 @@
 const addButton = document.getElementById('add-goods-button');
 const overlay = document.getElementById('overlay');
-const editModal = document.getElementById('edit-modal');
-const closeButton = document.getElementById('close-pop-up-button');
+const editModal = document.getElementById('add-modal');
+const closeButton = document.getElementById('add-close-pop-up-button');
 
-const form = document.getElementById('edit-form');
-let goodsCode = document.getElementById('goods-code');
-let goodsName = document.getElementById('goods-name');
-let goodsCalculationUnit = document.getElementById('goods-calculation-unit');
-let goodsPrice = document.getElementById('goods-price');
-let goodsStockQuantity = document.getElementById('goods-stock-quantity');
+const form = document.getElementById('add-form');
+let goodsCode = document.getElementById('add-goods-code');
+let goodsName = document.getElementById('add-goods-name');
+let goodsCalculationUnit = document.getElementById('add-goods-calculation-unit');
+let goodsPrice = document.getElementById('add-goods-price');
+let goodsStockQuantity = document.getElementById('add-goods-stock-quantity');
 const agencyTypeSelect = document.getElementById('type');
 
 const errorModal = document.getElementById('failurePopup');
@@ -22,11 +22,11 @@ closeErrorButton.addEventListener('click', function() {
 addButton.addEventListener('click', function() {
     editModal.style.display = 'block';
     overlay.style.display = 'block';
-    goodsCode.textContent = '';
-    goodsName.textContent = '';
-    goodsCalculationUnit.textContent = '';
-    goodsPrice.textContent = '';
-    goodsStockQuantity.textContent = '';
+    goodsCode.value = '';
+    goodsName.value = '';
+    goodsCalculationUnit.value = '';
+    goodsPrice.value = '';
+    goodsStockQuantity.value = '';
 });
 
 closeButton.addEventListener('click', function() {
@@ -61,7 +61,7 @@ form.addEventListener('submit', async function(event) {
     const result = await window.api.saveFormData(formData);
 
     async function loadProducts() {
-        const products = await window.api.getProductsByAgency(type);
+        const products = await window.api.getProductsByAgency(agencyTypeSelect.value);
         productsList.innerHTML = '';
         products.forEach(product => {
             const row = document.createElement('tr');

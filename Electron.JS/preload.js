@@ -43,7 +43,7 @@ contextBridge.exposeInMainWorld('api', {
 
     deleteProductByAgnecy: (productCode, unit, type) => ipcRenderer.invoke('delete-product', { productCode, unit, type }),
 
-    updateProductByAgency: (productCode, unit, type, price) => ipcRenderer.invoke('update-product', { productCode, unit, type, price }),
+    updateProductByAgency: (productCode, unit, type, price, stock) => ipcRenderer.invoke('update-product', { productCode, unit, type, price, stock }),
     
     getProductsByCode: (productCode, unit, type) => ipcRenderer.invoke('get-products-code', {productCode, unit, type}),
 

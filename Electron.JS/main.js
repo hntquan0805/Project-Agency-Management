@@ -86,9 +86,9 @@ ipcMain.handle('get-products-code', async (event, { productCode, unit, type }) =
     }
 });
 
-ipcMain.handle('update-product', async (event, { productCode, unit, type, price }) => {
+ipcMain.handle('update-product', async (event, { productCode, unit, type, price, stock }) => {
     try {
-        return await EditProductsByAgency.updateProductByAgency(productCode, unit, type, price);
+        return await EditProductsByAgency.updateProductByAgency(productCode, unit, type, price, stock);
     } catch (error) {
         console.error(error);
         return { success: false, message: 'Error deleting data!' };

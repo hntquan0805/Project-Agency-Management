@@ -53,7 +53,7 @@ document.querySelector('.export-button').addEventListener('click', async functio
 
     if (table_debt.success === false) {
         console.error("Failed to render debt table.");
-    return; // Không tiếp tục thực hiện đoạn mã sau
+    return;
     }
   const response = await window.api.saveDebtHistory(month, year, table_debt);
 });

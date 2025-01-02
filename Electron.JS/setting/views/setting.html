@@ -278,17 +278,17 @@
         <form id="edit-form" action="#" method="post" autocomplete="off">
             <div class="mb-3">
                 <label for="goods-code" class="form-label form-label-pop-up">Code</label>
-                <input type="text" id="goods-code" class="form-control form-control-pop-up" required>
+                <input type="text" id="goods-code" class="form-control form-control-pop-up" readonly>
             </div>
 
             <div class="mb-3">
                 <label for="goods-name" class="form-label form-label-pop-up">Name</label>
-                <input type="text" id="goods-name" class="form-control form-control-pop-up" required>
+                <input type="text" id="goods-name" class="form-control form-control-pop-up" readonly>
             </div>
 
             <div class="mb-3">
                 <label for="goods-calculation-unit" class="form-label form-label-pop-up">Calculation Unit</label>
-                <input type="text" id="goods-calculation-unit" class="form-control form-control-pop-up" required>
+                <input type="text" id="goods-calculation-unit" class="form-control form-control-pop-up" readonly>
             </div>
 
             <div class="mb-3">
@@ -305,6 +305,44 @@
             </div>
         </form>
     </div>
+
+    <div id="add-modal" class="pop-up">
+        <div class="pop-up-header">
+            <div class="pop-up-header-title">GOODS INFORMATION</div>
+            <buton id="add-close-pop-up-button" class="btn-close"></buton>
+        </div>
+
+        <form id="add-form" action="#" method="post" autocomplete="off">
+            <div class="mb-3">
+                <label for="goods-code" class="form-label form-label-pop-up">Code</label>
+                <input type="text" id="add-goods-code" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-name" class="form-label form-label-pop-up">Name</label>
+                <input type="text" id="add-goods-name" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-calculation-unit" class="form-label form-label-pop-up">Calculation Unit</label>
+                <input type="text" id="add-goods-calculation-unit" class="form-control form-control-pop-up" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-price" class="form-label form-label-pop-up">Price</label>
+                <input type="number" id="add-goods-price" class="form-control form-control-pop-up" min="0" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="goods-stock-quantity" class="form-label form-label-pop-up">Stock Quantity</label>
+                <input type="number" id="add-goods-stock-quantity" class="form-control form-control-pop-up" min="0" required>
+            </div>
+            <div class="mb-3 add-button">
+                <button id ="add-goods-button-add" type="submit" class="add-button-title">Add</button>
+            </div>
+        </form>
+    </div>
+
 
     <!--Failure-PopUp-->
     <div id="failurePopup" class="failure-pop-up" style="display: none;">

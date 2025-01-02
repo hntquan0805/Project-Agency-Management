@@ -1,13 +1,12 @@
 const { Distribution } = require('../../models/distribution');
 const { Inventory } = require('../../models/inventory');
-const { Unit } = require('../../models/unit');
 
 const saveFormData = async (formData) => {
 try {
     const product = await Inventory.findOne({
         where: {
             productName: formData.name,
-            unitName: formData.calculationUnit,
+            unit: formData.calculationUnit,
         },
     });
 
@@ -15,9 +14,11 @@ try {
         return { success: false, message: `Product name "${formData.name}" does not exist in the inventory.` };
     }
 
-    console.log(formData.type);
+    product.quantityInStock = formData.stockQuantity;
+    await product.save();
+
     const result = await Distribution.create({
-        productCode: product.productCode,
+        productCode: product.dataValues.productCode,
         type: parseInt(formData.type),
         unit: formData.calculationUnit,
         price: parseFloat(formData.price),

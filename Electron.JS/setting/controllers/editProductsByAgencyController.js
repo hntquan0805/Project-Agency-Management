@@ -1,4 +1,5 @@
 const { Distribution } = require('../../models/distribution');
+const { Inventory } = require('../../models/inventory');
 class EditProductsByAgency
 {
     static deleteProductByAgency = async (productCode, unit, type) => {
@@ -10,9 +11,20 @@ class EditProductsByAgency
         }
     }
 
-    static updateProductByAgency = async (productCode, unit, type, price) => {
+    static updateProductByAgency = async (productCode, unit, type, price, stock) => {
         try {
-            await Distribution.update({ price: price }, { where: { productCode: productCode, unit: unit, type: type } });
+            const distribute_t = await Distribution.findOne({
+                where: { productCode: productCode, unit: unit, type: type }
+            });
+            distribute_t.price = price;
+            const inventory_t = await Inventory.findOne({
+                where: { productCode: productCode, unit: unit }
+            });
+            console.log(stock);
+            inventory_t.quantityInStock = stock;
+            await distribute_t.save();
+            console.log(inventory_t.quantityInStock);
+            await inventory_t.save();
         } catch (error) {
             console.error(error);
             throw new Error('Failed to update product');

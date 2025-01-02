@@ -1,5 +1,7 @@
 const { Distribution } = require('../../models/distribution');
 const { Inventory } = require('../../models/inventory');
+const { Op } = require('sequelize');
+const { sequelize, DataTypes } = require('../../config/database');
 
 class GetProductsByAgency{
     static getProductsByAgency = async (type) => {
@@ -10,6 +12,10 @@ class GetProductsByAgency{
                 include: [
                     {
                         model:  Inventory,
+                        where:
+                        {
+                            productCode: { [Op.eq]: sequelize.col('Distribution.productCode') },
+                        },
                         attributes: ['productName', 'quantityInStock'],
                     },
                 ],
@@ -39,6 +45,10 @@ class GetProductsByAgency{
                 include: [
                     {
                         model:  Inventory,
+                        where:
+                        {
+                            productCode: { [Op.eq]: sequelize.col('Distribution.productCode') },
+                        },
                         attributes: ['productName', 'quantityInStock'],
                     },
                 ],

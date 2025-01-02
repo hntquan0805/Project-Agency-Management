@@ -56,12 +56,12 @@ document.addEventListener('DOMContentLoaded', async (e) => {
                 editModal.style.display = 'block';                
 
                 editForm.addEventListener('submit', async (event) => {
-                    const price = parseFloat(document.getElementById('edit-price').value);
+                    const price = parseFloat(document.getElementById('goods-price').value);
                     const productCode = button.getAttribute('data-id');
-                    const unit = event.target.getAttribute('data-unit');
-                    const type = event.target.getAttribute('data-type');
-            
-                    await window.api.updateProduct(productCode, unit, type, price);
+                    const unit = button.getAttribute('data-unit');
+                    const type = button.getAttribute('data-type');
+                    const stock = parseFloat(document.getElementById('goods-stock-quantity').value);
+                    await window.api.updateProductByAgency(productCode, unit, type, price, stock);
             
                     editModal.style.display = 'none';
                     overlay.style.display = 'none';

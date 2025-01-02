@@ -70,7 +70,7 @@ async function loadProducts() {
   if (district) filters.district = district;
 
   const results = await window.api.searchAgencies({ name, filters });
-
+  console.log(results);
   const resultsTable = document.getElementById('results');
   resultsTable.innerHTML = '';
   results.forEach(agency => {

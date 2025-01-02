@@ -5,6 +5,10 @@ class addReceivedNoteController {
     static saveGoodsReceivedNote = async (formData) => {
         const { agencyName, address, phoneNumber, email, amount, date } = formData;
 
+        if(amount < 0){
+            return { success: false, message: 'Invalid input!' };
+        }
+
         try {
             const agency = await Agency.findOne({
                 where: {

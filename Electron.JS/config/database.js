@@ -7,7 +7,13 @@ const logStream = fs.createWriteStream('database.log', { flags: 'a' });
 
 const sequelize = new Sequelize(process.env.database, 'root', process.env.password, {
   host: 'localhost',
-  dialect: 'mysql'
+  //port: 28635,
+  dialect: 'mysql',
+  dialectOptions: {
+    // ssl: {
+    //   ca: fs.readFileSync(path.resolve(__dirname, '../certs/ca.pem')),
+    // }
+  }
 });
 
 function logToDatabase(message, databaseName) {

@@ -57,11 +57,10 @@ document.getElementById('create-received-note').addEventListener('click', async 
         }
     } else {
         const failurePopup = document.getElementById("failurePopup");
-        failurePopup.style.display = "block"; // Hiển thị popup lỗi
+        failurePopup.style.display = "block";
 
-        // Thêm sự kiện cho nút đóng popup
         document.getElementById("closePopupButton").addEventListener("click", function() {
-            failurePopup.style.display = "none"; // Ẩn popup khi nhấn Close
+            failurePopup.style.display = "none";
         });
     }
 })

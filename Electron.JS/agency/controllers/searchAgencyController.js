@@ -1,4 +1,5 @@
 const { Agency } = require('../../models/agency');
+const { Op } = require('sequelize');
 
 class SearchAgencies{
   static searchAgencies = async (criteria) => {
@@ -10,7 +11,7 @@ class SearchAgencies{
         if (filters.type) where.type = filters.type;
         if (filters.district) where.district = filters.district;
       }
-
+      console.log(Agency.findAll({ where }));
       return Agency.findAll({ where });
 
     } catch (error) {

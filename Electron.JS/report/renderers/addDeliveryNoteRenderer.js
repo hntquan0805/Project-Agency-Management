@@ -36,8 +36,7 @@ chooseButton.addEventListener('click', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('product-name');
-    
-    const products = await window.api.findAllProducts('Milk', currentType);
+    const products = await window.api.findAllProducts(name.value, currentType);
 
     resultsTable.innerHTML = '';
 
@@ -121,6 +120,7 @@ chooseButton.addEventListener('click', async (e) => {
                             <td class = "product-unit">${product.unit || 'N/A'}</td>
                             <td class = "product-price">${product.price || 'N/A'}</td>
                             <td class = "product-quantity">${quantity}</td>
+                            <th><button class="delete-button" title="Delete"><i class="fa-solid fa-trash"></i></button></th>
                         `;
 
                         cartTable.appendChild(row);
@@ -129,10 +129,8 @@ chooseButton.addEventListener('click', async (e) => {
                         const popupMessageElement = document.getElementById('popupMessage');
                         const failurePopup = document.getElementById('failurePopup');
 
-                        // Cập nhật nội dung thông báo lỗi
                         popupMessageElement.innerHTML = 'Error: Products ecession!';
 
-                        // Hiển thị popup
                         failurePopup.style.display = 'block';
 
                         document.getElementById('closePopupButton').addEventListener('click', () => {
