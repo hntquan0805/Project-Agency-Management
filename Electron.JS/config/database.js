@@ -5,17 +5,6 @@ const fs = require('fs');
 const logStream = fs.createWriteStream('database.log', { flags: 'a' });
 const caCert = fs.readFileSync(path.resolve(__dirname, '../certs/ca.pem'));
 
-<<<<<<< HEAD
-const sequelize = new Sequelize(process.env.database, 'root', process.env.password, {
-  host: 'localhost',
-  //port: 28635,
-  dialect: 'mysql',
-  dialectOptions: {
-    // ssl: {
-    //   ca: fs.readFileSync(path.resolve(__dirname, '../certs/ca.pem')),
-    // }
-  }
-=======
 const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASS, {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -26,7 +15,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
       ca: caCert.toString(),
     },
   },
->>>>>>> 86badb9c7d6f097db754dd81915a4e3de1a2c455
 });
 
 function logToDatabase(message, databaseName) {
